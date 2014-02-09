@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
+		15C21D4418A83D5500C9D410 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D4218A83D5500C9D410 /* InfoPlist.strings */; };
+		15C21D4618A83D5500C9D410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4518A83D5500C9D410 /* main.m */; };
+		15C21D4A18A83D5500C9D410 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D4818A83D5500C9D410 /* Credits.rtf */; };
+		15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4C18A83D5500C9D410 /* BPDocument.m */; };
+		15C21D5018A83D5500C9D410 /* BPDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D4E18A83D5500C9D410 /* BPDocument.xib */; };
+		15C21D5318A83D5500C9D410 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D5118A83D5500C9D410 /* MainMenu.xib */; };
+		15C21D5518A83D5500C9D410 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D5418A83D5500C9D410 /* Images.xcassets */; };
+		15C21D5C18A83D5500C9D410 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D5B18A83D5500C9D410 /* XCTest.framework */; };
+		15C21D5D18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
+		15C21D6518A83D5600C9D410 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D6318A83D5600C9D410 /* InfoPlist.strings */; };
+		15C21D6718A83D5600C9D410 /* TipTyperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D6618A83D5600C9D410 /* TipTyperTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15C21D5E18A83D5600C9D410 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15C21D2E18A83D5500C9D410 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15C21D3518A83D5500C9D410;
+			remoteInfo = TipTyper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15C21D3618A83D5500C9D410 /* TipTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15C21D3918A83D5500C9D410 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		15C21D3C18A83D5500C9D410 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		15C21D3D18A83D5500C9D410 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		15C21D3E18A83D5500C9D410 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		15C21D4118A83D5500C9D410 /* TipTyper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TipTyper-Info.plist"; sourceTree = "<group>"; };
+		15C21D4318A83D5500C9D410 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		15C21D4518A83D5500C9D410 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		15C21D4718A83D5500C9D410 /* TipTyper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipTyper-Prefix.pch"; sourceTree = "<group>"; };
+		15C21D4918A83D5500C9D410 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		15C21D4B18A83D5500C9D410 /* BPDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPDocument.h; sourceTree = "<group>"; };
+		15C21D4C18A83D5500C9D410 /* BPDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPDocument.m; sourceTree = "<group>"; };
+		15C21D4F18A83D5500C9D410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BPDocument.xib; sourceTree = "<group>"; };
+		15C21D5218A83D5500C9D410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		15C21D5418A83D5500C9D410 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		15C21D5A18A83D5500C9D410 /* TipTyperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipTyperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15C21D5B18A83D5500C9D410 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		15C21D6218A83D5600C9D410 /* TipTyperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TipTyperTests-Info.plist"; sourceTree = "<group>"; };
+		15C21D6418A83D5600C9D410 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		15C21D6618A83D5600C9D410 /* TipTyperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipTyperTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15C21D3318A83D5500C9D410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15C21D5718A83D5500C9D410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D5D18A83D5500C9D410 /* Cocoa.framework in Frameworks */,
+				15C21D5C18A83D5500C9D410 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15C21D2D18A83D5500C9D410 = {
+			isa = PBXGroup;
+			children = (
+				15C21D3F18A83D5500C9D410 /* TipTyper */,
+				15C21D6018A83D5600C9D410 /* TipTyperTests */,
+				15C21D3818A83D5500C9D410 /* Frameworks */,
+				15C21D3718A83D5500C9D410 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15C21D3718A83D5500C9D410 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D3618A83D5500C9D410 /* TipTyper.app */,
+				15C21D5A18A83D5500C9D410 /* TipTyperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15C21D3818A83D5500C9D410 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D3918A83D5500C9D410 /* Cocoa.framework */,
+				15C21D5B18A83D5500C9D410 /* XCTest.framework */,
+				15C21D3B18A83D5500C9D410 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		15C21D3B18A83D5500C9D410 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D3C18A83D5500C9D410 /* AppKit.framework */,
+				15C21D3D18A83D5500C9D410 /* CoreData.framework */,
+				15C21D3E18A83D5500C9D410 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		15C21D3F18A83D5500C9D410 /* TipTyper */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D4B18A83D5500C9D410 /* BPDocument.h */,
+				15C21D4C18A83D5500C9D410 /* BPDocument.m */,
+				15C21D4E18A83D5500C9D410 /* BPDocument.xib */,
+				15C21D5118A83D5500C9D410 /* MainMenu.xib */,
+				15C21D5418A83D5500C9D410 /* Images.xcassets */,
+				15C21D4018A83D5500C9D410 /* Supporting Files */,
+			);
+			path = TipTyper;
+			sourceTree = "<group>";
+		};
+		15C21D4018A83D5500C9D410 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D4118A83D5500C9D410 /* TipTyper-Info.plist */,
+				15C21D4218A83D5500C9D410 /* InfoPlist.strings */,
+				15C21D4518A83D5500C9D410 /* main.m */,
+				15C21D4718A83D5500C9D410 /* TipTyper-Prefix.pch */,
+				15C21D4818A83D5500C9D410 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15C21D6018A83D5600C9D410 /* TipTyperTests */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D6618A83D5600C9D410 /* TipTyperTests.m */,
+				15C21D6118A83D5600C9D410 /* Supporting Files */,
+			);
+			path = TipTyperTests;
+			sourceTree = "<group>";
+		};
+		15C21D6118A83D5600C9D410 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				15C21D6218A83D5600C9D410 /* TipTyperTests-Info.plist */,
+				15C21D6318A83D5600C9D410 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15C21D3518A83D5500C9D410 /* TipTyper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15C21D6A18A83D5600C9D410 /* Build configuration list for PBXNativeTarget "TipTyper" */;
+			buildPhases = (
+				15C21D3218A83D5500C9D410 /* Sources */,
+				15C21D3318A83D5500C9D410 /* Frameworks */,
+				15C21D3418A83D5500C9D410 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TipTyper;
+			productName = TipTyper;
+			productReference = 15C21D3618A83D5500C9D410 /* TipTyper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		15C21D5918A83D5500C9D410 /* TipTyperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15C21D6D18A83D5600C9D410 /* Build configuration list for PBXNativeTarget "TipTyperTests" */;
+			buildPhases = (
+				15C21D5618A83D5500C9D410 /* Sources */,
+				15C21D5718A83D5500C9D410 /* Frameworks */,
+				15C21D5818A83D5500C9D410 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15C21D5F18A83D5600C9D410 /* PBXTargetDependency */,
+			);
+			name = TipTyperTests;
+			productName = TipTyperTests;
+			productReference = 15C21D5A18A83D5500C9D410 /* TipTyperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15C21D2E18A83D5500C9D410 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BP;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Bruno Philipe";
+				TargetAttributes = {
+					15C21D5918A83D5500C9D410 = {
+						TestTargetID = 15C21D3518A83D5500C9D410;
+					};
+				};
+			};
+			buildConfigurationList = 15C21D3118A83D5500C9D410 /* Build configuration list for PBXProject "TipTyper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15C21D2D18A83D5500C9D410;
+			productRefGroup = 15C21D3718A83D5500C9D410 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15C21D3518A83D5500C9D410 /* TipTyper */,
+				15C21D5918A83D5500C9D410 /* TipTyperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15C21D3418A83D5500C9D410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D4418A83D5500C9D410 /* InfoPlist.strings in Resources */,
+				15C21D5518A83D5500C9D410 /* Images.xcassets in Resources */,
+				15C21D5018A83D5500C9D410 /* BPDocument.xib in Resources */,
+				15C21D4A18A83D5500C9D410 /* Credits.rtf in Resources */,
+				15C21D5318A83D5500C9D410 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15C21D5818A83D5500C9D410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D6518A83D5600C9D410 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15C21D3218A83D5500C9D410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */,
+				15C21D4618A83D5500C9D410 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15C21D5618A83D5500C9D410 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15C21D6718A83D5600C9D410 /* TipTyperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		15C21D5F18A83D5600C9D410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15C21D3518A83D5500C9D410 /* TipTyper */;
+			targetProxy = 15C21D5E18A83D5600C9D410 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		15C21D4218A83D5500C9D410 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15C21D4318A83D5500C9D410 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		15C21D4818A83D5500C9D410 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15C21D4918A83D5500C9D410 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		15C21D4E18A83D5500C9D410 /* BPDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15C21D4F18A83D5500C9D410 /* Base */,
+			);
+			name = BPDocument.xib;
+			sourceTree = "<group>";
+		};
+		15C21D5118A83D5500C9D410 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15C21D5218A83D5500C9D410 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		15C21D6318A83D5600C9D410 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15C21D6418A83D5600C9D410 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15C21D6818A83D5600C9D410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		15C21D6918A83D5600C9D410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		15C21D6B18A83D5600C9D410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
+				INFOPLIST_FILE = "TipTyper/TipTyper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		15C21D6C18A83D5600C9D410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
+				INFOPLIST_FILE = "TipTyper/TipTyper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		15C21D6E18A83D5600C9D410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TipTyper.app/Contents/MacOS/TipTyper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TipTyperTests/TipTyperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		15C21D6F18A83D5600C9D410 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TipTyper.app/Contents/MacOS/TipTyper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
+				INFOPLIST_FILE = "TipTyperTests/TipTyperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15C21D3118A83D5500C9D410 /* Build configuration list for PBXProject "TipTyper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15C21D6818A83D5600C9D410 /* Debug */,
+				15C21D6918A83D5600C9D410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15C21D6A18A83D5600C9D410 /* Build configuration list for PBXNativeTarget "TipTyper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15C21D6B18A83D5600C9D410 /* Debug */,
+				15C21D6C18A83D5600C9D410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		15C21D6D18A83D5600C9D410 /* Build configuration list for PBXNativeTarget "TipTyperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15C21D6E18A83D5600C9D410 /* Debug */,
+				15C21D6F18A83D5600C9D410 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 15C21D2E18A83D5500C9D410 /* Project object */;
+}
