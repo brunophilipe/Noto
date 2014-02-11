@@ -10,4 +10,9 @@
 
 @interface BPDocument : NSDocument
 
+@property (strong) NSMutableData *fileData;
+
+- (void)toggleLinesCounter;
+- (void)toggleInfoView;
+
 @end

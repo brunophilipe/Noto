@@ -7,6 +7,14 @@
 //
 
 #import "BPDocument.h"
+#import "BPDocumentWindow.h"
+
+@interface BPDocument ()
+
+@property (strong) BPDocumentWindow *displayWindow;
+@property (strong) NSFileHandle *fileHandle;
+
+@end
 
 @implementation BPDocument
 
@@ -15,6 +23,7 @@
     self = [super init];
     if (self) {
 		// Add your subclass-specific initialization here.
+		self.fileData = [[NSMutableData alloc] init];
     }
     return self;
 }
@@ -30,6 +39,11 @@
 {
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
+	[self setDisplayWindow:(BPDocumentWindow*)aController.window];
+	[self.displayWindow construct];
+	[self.displayWindow setDocument:self];
+
+	[self.displayWindow updateTextViewContents];
 }
 
 + (BOOL)autosavesInPlace
@@ -37,23 +51,35 @@
     return YES;
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
-{
-	// Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-	// You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-	@throw exception;
-	return nil;
-}
+//- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
+//{
+//	// Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
+//	// You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
+//	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+//	@throw exception;
+//	return nil;
+//}
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	// Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-	// You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-	// If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-	@throw exception;
-	return YES;
+	if ([[NSFileManager defaultManager] fileExistsAtPath:[url relativePath]])
+	{
+		NSError *error;
+
+		[self setFileURL:url];
+		[self setFileHandle:[NSFileHandle fileHandleForReadingFromURL:url error:&error]];
+
+		if (error) {
+			NSAlert *alert = [NSAlert alertWithError:error];
+			[alert runModal];
+			return NO;
+		} else {
+			[self.fileData setData:[self.fileHandle readDataOfLength:10*1000000]]; //Read first 10 Megabytes
+		}
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 @end

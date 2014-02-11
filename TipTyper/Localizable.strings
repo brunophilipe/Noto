@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  TipTyper
+
+  Created by Bruno Philipe on 2/10/14.
+  Copyright (c) 2014 Bruno Philipe. All rights reserved.
+*/
+
+"BP_LABEL_WORDS" = "Words: %ld";
+"BP_LABEL_CHARS" = "Characters: %ld";
+"BP_LABEL_LINES" = "Lines: %ld";

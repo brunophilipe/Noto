@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5023"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BPDocument">
@@ -11,34 +11,226 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window" customClass="BPDocumentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="133" y="235" width="507" height="413"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
-            <value key="minSize" type="size" width="94" height="86"/>
+            <rect key="contentRect" x="456" y="196" width="600" height="480"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="400" height="180"/>
             <view key="contentView" id="gIp-Ho-8D9">
-                <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-                        <rect key="frame" x="119" y="195" width="268" height="22"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="JDq-Ah-v2f">
-                            <font key="font" metaFont="system" size="18"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                    <customView id="ZcX-Ih-faG" customClass="BPBackgroundView">
+                        <rect key="frame" x="0.0" y="20" width="600" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="g04-bm-jeK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" id="fxB-Ow-H1V">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" findStyle="bar" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="M3O-FW-PWT">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="600" height="460"/>
+                                            <size key="maxSize" width="600" height="10000000"/>
+                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="600" height="460"/>
+                                            <size key="maxSize" width="600" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="E1K-b8-RGr">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Fdm-De-7Wj">
+                                    <rect key="frame" x="584" y="0.0" width="16" height="460"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </customView>
+                    <customView id="OgU-xF-SWb" customClass="BPTopBarView">
+                        <rect key="frame" x="0.0" y="0.0" width="601" height="21"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" tag="2" id="BWk-tL-d0U">
+                                <rect key="frame" x="152" y="2" width="178" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Characters: 0" id="Zuk-dd-NP9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" tag="3" id="DBZ-do-UWP">
+                                <rect key="frame" x="333" y="2" width="134" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lines: 0" id="kmk-nm-A8O">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" tag="4" id="6qa-BO-blx">
+                                <rect key="frame" x="472" y="2" width="123" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="UTF-8" id="85B-6h-e6m">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" tag="1" id="83o-8k-gI1">
+                                <rect key="frame" x="6" y="2" width="142" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Words: 0" id="CYR-p5-WsR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </customView>
                 </subviews>
-                <constraints>
-                    <constraint firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="OG3-1c-Sd0"/>
-                    <constraint firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="s6i-b7-llN"/>
-                </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="08949A48-D483-46BE-B9E4-C253120E7F9F" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="FSk-cB-RPF">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="8Qh-hZ-Hn1"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="37w-EB-Fz6"/>
+                    <toolbarItem implicitItemIdentifier="2D6F96CC-3C50-4970-BA0A-1822B9A359A3" label="Align Text" paletteLabel="Align Text" id="6iO-D5-PF0">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="28"/>
+                        <size key="maxSize" width="100" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="uJc-8d-45l">
+                            <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="7ec-x2-utn">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="alignLeftTemplate" width="32" selected="YES">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="alignCenterTemplate" width="32" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="alignRightTemplate" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="action_switch_textAlignment:" target="xOd-HO-29H" id="OIf-Vc-Gzr"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="DD6ED568-57E6-422D-B9B5-5D18FA6D98CA" label="Editor Spacing" paletteLabel="Editor Spacing" id="0y9-S2-ukV">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="67" height="28"/>
+                        <size key="maxSize" width="67" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="gR5-7Z-XjY">
+                            <rect key="frame" x="9" y="14" width="67" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="V1a-GX-lxQ">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="marginWideTemplate" width="32" selected="YES"/>
+                                    <segment image="marginNarrowTemplate" width="32" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="action_switch_editorSpacing:" target="xOd-HO-29H" id="9zO-n0-uEp"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D09C1698-5947-4935-9469-CF5F3386FB75" label="Display Options" paletteLabel="Display Options" id="kJX-yW-0np">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="67" height="28"/>
+                        <size key="maxSize" width="67" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="Oeq-YK-g6i">
+                            <rect key="frame" x="12" y="14" width="67" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectAny" id="a8d-jC-wIb">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="linesTemplate" width="32" selected="YES"/>
+                                    <segment image="infoTemplate" width="32" selected="YES" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="action_toggle_displayOptions:" target="xOd-HO-29H" id="bSH-GC-PxJ"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="ECA23285-89F4-4FD5-A758-8C2ACBA69781" label="Settings" paletteLabel="Settings" image="NSActionTemplate" id="65x-9b-pK7">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="29" height="28"/>
+                        <size key="maxSize" width="29" height="28"/>
+                        <button key="view" verticalHuggingPriority="750" id="SJg-de-O1I">
+                            <rect key="frame" x="11" y="14" width="29" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="JBV-Pv-Feb">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="action_bt_editToolbar:" target="xOd-HO-29H" id="Vbi-60-SWX"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="312485E4-CD3C-4B23-B7C6-8B1B67C538EF" label="Print" paletteLabel="Print" image="printTemplate" id="dxg-vt-c8r">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="29" height="28"/>
+                        <size key="maxSize" width="29" height="28"/>
+                        <button key="view" verticalHuggingPriority="750" id="QoO-BE-X54">
+                            <rect key="frame" x="2" y="14" width="29" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="printTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="VAf-64-aph">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="printDocument:" target="-1" id="qmP-4y-JyH"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="6iO-D5-PF0"/>
+                    <toolbarItem reference="kJX-yW-0np"/>
+                    <toolbarItem reference="0y9-S2-ukV"/>
+                    <toolbarItem reference="37w-EB-Fz6"/>
+                    <toolbarItem reference="dxg-vt-c8r"/>
+                    <toolbarItem reference="65x-9b-pK7"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
+                <outlet property="infoView" destination="OgU-xF-SWb" id="Fqd-g2-lFV"/>
+                <outlet property="scrollView" destination="g04-bm-jeK" id="cnJ-2s-epd"/>
+                <outlet property="tb_bt_editToolbar" destination="65x-9b-pK7" id="La7-7U-VnV"/>
+                <outlet property="tb_switch_editorSpacing" destination="gR5-7Z-XjY" id="JSb-OF-8vm"/>
+                <outlet property="tb_switch_textAlignment" destination="uJc-8d-45l" id="0kp-RE-qxs"/>
+                <outlet property="tb_toggle_displayOptions" destination="Oeq-YK-g6i" id="5tg-is-I1z"/>
+                <outlet property="textView" destination="M3O-FW-PWT" id="21L-hD-zIv"/>
+                <outlet property="wrapView" destination="ZcX-Ih-faG" id="gvK-SY-ukC"/>
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="alignCenterTemplate" width="16" height="16"/>
+        <image name="alignLeftTemplate" width="16" height="16"/>
+        <image name="alignRightTemplate" width="16" height="16"/>
+        <image name="infoTemplate" width="16" height="16"/>
+        <image name="linesTemplate" width="16" height="16"/>
+        <image name="marginNarrowTemplate" width="16" height="16"/>
+        <image name="marginWideTemplate" width="16" height="16"/>
+        <image name="printTemplate" width="16" height="16"/>
+    </resources>
 </document>
