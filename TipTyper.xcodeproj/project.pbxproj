@@ -107,6 +107,7 @@
 		15C21DD318A94A5D00C9D410 /* BPBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPBackgroundView.m; path = Classes/BPBackgroundView.m; sourceTree = "<group>"; };
 		15C21DD518A94F6800C9D410 /* BPTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTopBarView.h; path = Classes/BPTopBarView.h; sourceTree = "<group>"; };
 		15C21DD618A94F6800C9D410 /* BPTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPTopBarView.m; path = Classes/BPTopBarView.m; sourceTree = "<group>"; };
+		15E4929F18A9B1FB004C4901 /* BumpBuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BumpBuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +197,7 @@
 				15C21D4718A83D5500C9D410 /* TipTyper-Prefix.pch */,
 				15C21D4818A83D5500C9D410 /* Credits.rtf */,
 				15C21DC918A933D800C9D410 /* Localizable.strings */,
+				15E4929F18A9B1FB004C4901 /* BumpBuild.sh */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,6 +287,7 @@
 				15C21D3218A83D5500C9D410 /* Sources */,
 				15C21D3318A83D5500C9D410 /* Frameworks */,
 				15C21D3418A83D5500C9D410 /* Resources */,
+				152CF4F818A9B264008D2ED8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -386,6 +389,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		152CF4F818A9B264008D2ED8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"/Users/bruno/Workspace/Release Apps/TipTyper/TipTyper/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15C21D3218A83D5500C9D410 /* Sources */ = {
@@ -621,6 +640,7 @@
 				15C21D6C18A83D5600C9D410 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15C21D6D18A83D5600C9D410 /* Build configuration list for PBXNativeTarget "TipTyperTests" */ = {
 			isa = XCConfigurationList;
@@ -629,6 +649,7 @@
 				15C21D6F18A83D5600C9D410 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -18,6 +18,7 @@ typedef enum {
 @interface BPDocumentWindow ()
 
 @property (strong) NoodleLineNumberView *lineNumberView;
+@property (strong) NSMutableString *contentString;
 
 @end
 
@@ -47,7 +48,7 @@ typedef enum {
     [self.scrollView setHasHorizontalRuler:NO];
     [self.scrollView setHasVerticalRuler:YES];
     [self.scrollView setRulersVisible:YES];
-//	[self.scrollView setPostsBoundsChangedNotifications:YES];
+	[self.scrollView setPostsBoundsChangedNotifications:YES];
 
 	[self.textView setFont:[NSFont fontWithName:@"Monaco" size:12]];
 	[self.textView setDelegate:self];
@@ -55,6 +56,23 @@ typedef enum {
 
 	[self.contentView setNeedsDisplay:YES];
 	[self.lineNumberView setNeedsDisplay:YES];
+
+	[self setContentString:[NSMutableString string]];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(scrollViewDidScroll:)
+												 name:NSViewBoundsDidChangeNotification
+											   object:self.scrollView.contentView];
+}
+
+- (void)scrollViewDidScroll:(NSNotification *)notif
+{
+	static short scroll = 0;
+	scroll++;
+	if (scroll>10) {
+		[self.scrollView setNeedsDisplay:YES];
+		scroll = 0;
+	}
 }
 
 - (void)setLinesCounterVisible:(BOOL)flag
@@ -103,7 +121,8 @@ typedef enum {
 
 - (void)updateTextViewContents
 {
-	[self.textView setString:[[NSString alloc] initWithData:self.document.fileData encoding:NSUTF8StringEncoding]];
+	[self.contentString appendString:[[NSString alloc] initWithData:self.document.fileData encoding:NSUTF8StringEncoding]];
+	[self.textView setString:self.contentString];
 	[self textDidChange:nil];
 }
 
@@ -166,6 +185,5 @@ typedef enum {
 
 - (IBAction)action_bt_editToolbar:(id)sender {
 	[self runToolbarCustomizationPalette:sender];
-//	[self.toolbar]
 }
 @end
