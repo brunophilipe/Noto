@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #  BumpBuild.sh
-#  EventDataManager
+#  TipTyper
 #
 #  Created by Bruno Philipe on 1/22/14.
 #  Copyright (c) 2014 Bruno Philipe. All rights reserved.

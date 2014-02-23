@@ -353,7 +353,11 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="gVe-5e-0Ts"/>
-                            <menuItem title="Go to Line..." keyEquivalent="L" id="qVD-Z8-9aq"/>
+                            <menuItem title="Go to Line..." keyEquivalent="g" id="qVD-Z8-9aq">
+                                <connections>
+                                    <action selector="action_showJumpToLineDialog:" target="-1" id="RTh-eF-WZX"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
