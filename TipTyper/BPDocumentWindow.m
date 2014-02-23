@@ -225,6 +225,10 @@ typedef enum {
 		[self.textView setTextColor:kBP_TIPTYPER_TXTCOLOR];
 	}
 
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
+		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
+	}
+
 	NSLog(@"Loaded style from defaults");
 }
 

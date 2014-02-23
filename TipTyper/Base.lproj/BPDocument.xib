@@ -31,7 +31,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" findStyle="bar" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="M3O-FW-PWT">
+                                        <textView importsGraphics="NO" richText="NO" findStyle="bar" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="M3O-FW-PWT" customClass="BPTextView">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,8 +101,6 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="08949A48-D483-46BE-B9E4-C253120E7F9F" explicitIdentifier="BPDocumentToolbar" displayMode="iconOnly" sizeMode="regular" id="FSk-cB-RPF">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="8Qh-hZ-Hn1"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="37w-EB-Fz6"/>
                     <toolbarItem implicitItemIdentifier="2D6F96CC-3C50-4970-BA0A-1822B9A359A3" label="Align Text" paletteLabel="Align Text" id="6iO-D5-PF0">
                         <nil key="toolTip"/>
                         <size key="minSize" width="100" height="28"/>
@@ -241,6 +239,9 @@
                             </segmentedCell>
                         </segmentedControl>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="37w-EB-Fz6"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="8Qh-hZ-Hn1"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="os4-gf-gRF"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="6iO-D5-PF0"/>

@@ -11,6 +11,7 @@
 		1502C2FA18B97AB8002EC738 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
 		1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1502C2FB18B97B70002EC738 /* dsa_pub.pem */; };
 		1502C2FF18B97EA8002EC738 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
+		1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1502C30518B9AF5D002EC738 /* BPTextView.m */; };
 		156C050C18AC7F0300D28533 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156C050B18AC7F0300D28533 /* Preferences.xib */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
@@ -87,6 +88,8 @@
 		1500F28118B056B500481A86 /* BPEncodingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEncodingTool.m; path = Classes/BPEncodingTool.m; sourceTree = "<group>"; };
 		1502C2F918B97AAD002EC738 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = TipTyper/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		1502C2FB18B97B70002EC738 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		1502C30418B9AF5D002EC738 /* BPTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTextView.h; path = Classes/BPTextView.h; sourceTree = "<group>"; };
+		1502C30518B9AF5D002EC738 /* BPTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPTextView.m; path = Classes/BPTextView.m; sourceTree = "<group>"; };
 		156C050B18AC7F0300D28533 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
 		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				15C21DD318A94A5D00C9D410 /* BPBackgroundView.m */,
 				15C21DD518A94F6800C9D410 /* BPTopBarView.h */,
 				15C21DD618A94F6800C9D410 /* BPTopBarView.m */,
+				1502C30418B9AF5D002EC738 /* BPTextView.h */,
+				1502C30518B9AF5D002EC738 /* BPTextView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				15C21DD718A94F6800C9D410 /* BPTopBarView.m in Sources */,
 				15C21DC718A8580B00C9D410 /* NoodleLineNumberMarker.m in Sources */,
 				15C21DD118A94A4E00C9D410 /* NSString+WordsCount.m in Sources */,
+				1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */,
 				15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */,
 				15C21D4618A83D5500C9D410 /* main.m in Sources */,
 				15C21D7218A83D7C00C9D410 /* BPDocumentWindow.m in Sources */,

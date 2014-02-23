@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "BPDocument.h"
-#import "Classes/BPBackgroundView.h"
+#import "BPBackgroundView.h"
+#import "BPTextView.h"
 
 @class BPDocument;
+@class BPTextView;
 
 @interface BPDocumentWindow : NSWindow <NSTextViewDelegate>
 
@@ -29,7 +31,7 @@
 
 @property (strong) IBOutlet BPBackgroundView *wrapView;
 @property (strong) IBOutlet NSScrollView *scrollView;
-@property (strong) IBOutlet NSTextView *textView;
+@property (strong) IBOutlet BPTextView *textView;
 @property (strong) IBOutlet NSView *infoView;
 @property (strong) IBOutlet NSSegmentedControl *tb_switch_textAlignment;
 @property (strong) IBOutlet NSSegmentedControl *tb_switch_editorSpacing;

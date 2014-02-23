@@ -14,7 +14,8 @@ typedef enum {
 	BP_DEFAULTS_TXTCOLOR =		(1<<2),
 	BP_DEFAULTS_BGCOLOR =		(1<<3),
 	BP_DEFAULTS_SHOWLINES =		(1<<4),
-	BP_DEFAULTS_SHOWSTATUS =	(1<<5)
+	BP_DEFAULTS_SHOWSTATUS =	(1<<5),
+	BP_DEFAULTS_INSERTTABS =	(1<<6)
 } BP_DEFAULT_TYPES;
 
 @implementation BPApplication
@@ -88,6 +89,12 @@ typedef enum {
 		[self.checkbox_showStatus setState:NSOnState];
 	}
 
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
+		[self.checkbox_insertTabs setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+	} else {
+		[self.checkbox_insertTabs setState:NSOffState];
+	}
+
 	[self.textView_example setTextColor:self.color_text];
 	[self.textView_example setBackgroundColor:self.color_bg];
 
@@ -126,11 +133,12 @@ typedef enum {
 - (IBAction)action_revertDefaults:(id)sender {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-	[defaults setObject:nil forKey:kBP_DEFAULT_BGCOLOR];
-	[defaults setObject:nil forKey:kBP_DEFAULT_TXTCOLOR];
-	[defaults setObject:nil forKey:kBP_DEFAULT_FONT];
-	[defaults setObject:nil forKey:kBP_DEFAULT_SHOWSTATUS];
-	[defaults setObject:nil forKey:kBP_DEFAULT_SHOWLINES];
+	[defaults removeObjectForKey:kBP_DEFAULT_BGCOLOR];
+	[defaults removeObjectForKey:kBP_DEFAULT_TXTCOLOR];
+	[defaults removeObjectForKey:kBP_DEFAULT_FONT];
+	[defaults removeObjectForKey:kBP_DEFAULT_SHOWSTATUS];
+	[defaults removeObjectForKey:kBP_DEFAULT_SHOWLINES];
+	[defaults removeObjectForKey:kBP_DEFAULT_INSERTTABS];
 
 	[defaults synchronize];
 
@@ -144,12 +152,10 @@ typedef enum {
 - (IBAction)action_controlChanged:(id)sender {
 	switch ([(NSControl *)sender tag]) {
 		case -1: //Show lines
-			self.pref_default_lines = [(NSButton*)sender state] == NSOnState;
 			changedAttributes |= BP_DEFAULTS_SHOWLINES;
 			break;
 
 		case -2: //Show status
-			self.pref_default_status = [(NSButton*)sender state] == NSOnState;
 			changedAttributes |= BP_DEFAULTS_SHOWSTATUS;
 			break;
 
@@ -163,6 +169,10 @@ typedef enum {
 			self.color_bg = [(NSColorWell *)sender color];
 			[self.textView_example setBackgroundColor:self.color_bg];
 			changedAttributes |= BP_DEFAULTS_BGCOLOR;
+			break;
+
+		case -5: //Insert tabs
+			changedAttributes |= BP_DEFAULTS_INSERTTABS;
 			break;
 	}
 }
@@ -184,6 +194,9 @@ typedef enum {
 	}
 	if (changedAttributes & BP_DEFAULTS_SHOWSTATUS) {
 		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showStatus state] == NSOnState)] forKey:kBP_DEFAULT_SHOWSTATUS];
+	}
+	if (changedAttributes & BP_DEFAULTS_INSERTTABS) {
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertTabs state] == NSOnState)] forKey:kBP_DEFAULT_INSERTTABS];
 	}
 
 	changedAttributes = 0;
