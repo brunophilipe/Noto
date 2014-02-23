@@ -114,6 +114,8 @@ typedef enum {
 	[self.textView_example setFont:self.currentFont];
 }
 
+#pragma mark - IBActions
+
 - (IBAction)action_changeFont:(id)sender {
 	[[NSFontManager sharedFontManager] setDelegate:self];
 
