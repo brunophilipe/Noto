@@ -16,6 +16,7 @@
 @property BOOL keyDocument_showingLines;
 @property BOOL keyDocument_showingInfo;
 @property BOOL keyDocument_isLinkedToFile;
+@property BOOL hasKeyDocument;
 
 /**
  Sets the key document. This method is called from any BPDocument when its window becomes key.

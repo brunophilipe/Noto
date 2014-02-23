@@ -399,21 +399,15 @@
                             <menuItem title="Toggle Lines Counter" keyEquivalent="l" id="UP2-gJ-Of3">
                                 <connections>
                                     <action selector="toggleLinesCounter:" target="-1" id="XeR-7S-Biy"/>
-                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingLines" id="uqS-TX-aJa">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="-3" name="enabled" keyPath="self.hasKeyDocument" id="CR4-xc-Wvh"/>
+                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingLines" id="Ta8-AF-yVB"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Toggle Info Bar" keyEquivalent="d" id="ITV-gL-msA">
                                 <connections>
                                     <action selector="toggleInfoView:" target="-1" id="edX-Db-xf9"/>
-                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingInfo" id="9wx-SH-kNI">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="-3" name="enabled" keyPath="self.hasKeyDocument" id="GPa-fg-CBE"/>
+                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingInfo" id="qLf-6i-1Fy"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>

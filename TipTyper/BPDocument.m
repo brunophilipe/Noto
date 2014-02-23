@@ -25,6 +25,7 @@
     if (self) {
 		// Add your subclass-specific initialization here.
 		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:NO];
+		[(BPApplication*)[NSApplication sharedApplication] setHasKeyDocument:YES];
 
 		self.fileData = [[NSMutableData alloc] init];
 		self.encoding = NSUTF8StringEncoding;
@@ -122,6 +123,13 @@
 	NSPrintOperation *prtOpr = [NSPrintOperation printOperationWithView:self.displayWindow.textView printInfo:prtInfo];
 	[prtOpr setJobTitle:self.displayName];
 	return prtOpr;
+}
+
+- (void)canCloseDocumentWithDelegate:(id)delegate shouldCloseSelector:(SEL)shouldCloseSelector contextInfo:(void *)contextInfo
+{
+	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:NO];
+	[(BPApplication*)[NSApplication sharedApplication] setHasKeyDocument:NO];
+	[super canCloseDocumentWithDelegate:delegate shouldCloseSelector:shouldCloseSelector contextInfo:contextInfo];
 }
 
 - (NSString*)reloadWithDifferentEncoding

@@ -65,9 +65,15 @@ typedef enum {
 
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWLINES]) && ![(NSNumber*)aux boolValue]) {
 		[self setLinesCounterVisible:NO];
+		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:NO];
+	} else {
+		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:YES];
 	}
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWSTATUS]) && ![(NSNumber*)aux boolValue]) {
 		[self setInfoViewVisible:NO];
+		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:NO];
+	} else {
+		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:YES];
 	}
 
 	[self loadStyleAttributesFromDefaults];
@@ -98,7 +104,7 @@ typedef enum {
 	[self.scrollView setRulersVisible:flag];
 	[self.tb_toggle_displayOptions setSelected:flag forSegment:0];
 
-	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:!flag];
+	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:flag];
 }
 
 - (void)setInfoViewVisible:(BOOL)flag
@@ -106,23 +112,23 @@ typedef enum {
 	CGRect frame = self.wrapView.frame;
 	CGFloat height = self.infoView.frame.size.height;
 
-	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:!flag];
+	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:flag];
 
 	if (flag) {
-		frame.size.height += height;
-		frame.origin.y -= height;
-
-		[self.infoView setHidden:YES];
-		[self.wrapView setFrame:frame];
-	} else {
 		frame.size.height -= height;
 		frame.origin.y += height;
 
 		[self.infoView setHidden:NO];
 		[self.wrapView setFrame:frame];
+	} else {
+		frame.size.height += height;
+		frame.origin.y -= height;
+
+		[self.infoView setHidden:YES];
+		[self.wrapView setFrame:frame];
 	}
 
-	[self.tb_toggle_displayOptions setSelected:!flag forSegment:1];
+	[self.tb_toggle_displayOptions setSelected:flag forSegment:1];
 }
 
 - (void)toggleLinesCounter
@@ -142,7 +148,7 @@ typedef enum {
 
 - (BOOL)isDisplayingInfo
 {
-	return [self.infoView isHidden];
+	return ![self.infoView isHidden];
 }
 
 - (void)textDidChange:(NSNotification *)notification {
