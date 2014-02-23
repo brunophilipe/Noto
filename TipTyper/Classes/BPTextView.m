@@ -26,7 +26,7 @@
 	unichar chr = '\0';
 	BOOL found = NO;
 
-	while (!found && index > 0) {
+	while (!found && (NSInteger)index >= 0) {
 		if (index < string.length)
 		{
 			chr = [string characterAtIndex:index];
