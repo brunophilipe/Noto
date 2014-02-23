@@ -114,6 +114,16 @@
 	}
 }
 
+- (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings error:(NSError **)outError {
+	NSPrintInfo *prtInfo = [self printInfo];
+
+	[prtInfo setVerticallyCentered:NO];
+
+	NSPrintOperation *prtOpr = [NSPrintOperation printOperationWithView:self.displayWindow.textView printInfo:prtInfo];
+	[prtOpr setJobTitle:self.displayName];
+	return prtOpr;
+}
+
 - (NSString*)reloadWithDifferentEncoding
 {
 	if (self.isLoadedFromFile) {

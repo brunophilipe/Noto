@@ -296,10 +296,13 @@ typedef enum {
 	alert = [NSAlert alertWithMessageText:NSLocalizedString(@"BP_MESSAGE_GOTOLINE", nil) defaultButton:NSLocalizedString(@"BP_MESSAGE_GO", nil) alternateButton:NSLocalizedString(@"BP_GENERIC_CANCEL", nil) otherButton:nil informativeTextWithFormat:@""];
 	field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 22)];
 	[alert setAccessoryView:field];
+	[alert setAlertStyle:NSInformationalAlertStyle];
 
-	if ([alert runModal] == 1) {
-		[self goToLine:MAX(1, field.integerValue)];
-	}
+	[alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
+		if (returnCode == 1) {
+			[self goToLine:MAX(1, field.integerValue)];
+		}
+	}];
 }
 
 - (IBAction)action_switch_changeFontSize:(id)sender {

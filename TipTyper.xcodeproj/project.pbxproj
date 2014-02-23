@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1500F28218B056B500481A86 /* BPEncodingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1500F28118B056B500481A86 /* BPEncodingTool.m */; };
+		1502C2FA18B97AB8002EC738 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
+		1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1502C2FB18B97B70002EC738 /* dsa_pub.pem */; };
+		1502C2FF18B97EA8002EC738 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
 		156C050C18AC7F0300D28533 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156C050B18AC7F0300D28533 /* Preferences.xib */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
@@ -66,9 +69,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1502C2FE18B97E9E002EC738 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1502C2FF18B97EA8002EC738 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1500F28018B056B500481A86 /* BPEncodingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEncodingTool.h; path = Classes/BPEncodingTool.h; sourceTree = "<group>"; };
 		1500F28118B056B500481A86 /* BPEncodingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEncodingTool.m; path = Classes/BPEncodingTool.m; sourceTree = "<group>"; };
+		1502C2F918B97AAD002EC738 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = TipTyper/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		1502C2FB18B97B70002EC738 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		156C050B18AC7F0300D28533 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
 		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
@@ -140,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */,
+				1502C2FA18B97AB8002EC738 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +196,7 @@
 		15C21D3818A83D5500C9D410 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1502C2F918B97AAD002EC738 /* Sparkle.framework */,
 				15C21D3918A83D5500C9D410 /* Cocoa.framework */,
 				15C21D5B18A83D5500C9D410 /* XCTest.framework */,
 				15C21D3B18A83D5500C9D410 /* Other Frameworks */,
@@ -204,11 +224,11 @@
 				15753F5718AC78F5009E7E9E /* BPApplication.m */,
 				15C21D4B18A83D5500C9D410 /* BPDocument.h */,
 				15C21D4C18A83D5500C9D410 /* BPDocument.m */,
+				15C21D7018A83D7C00C9D410 /* BPDocumentWindow.h */,
+				15C21D7118A83D7C00C9D410 /* BPDocumentWindow.m */,
 				15C21D4E18A83D5500C9D410 /* BPDocument.xib */,
 				156C050B18AC7F0300D28533 /* Preferences.xib */,
 				15C21D5118A83D5500C9D410 /* MainMenu.xib */,
-				15C21D7018A83D7C00C9D410 /* BPDocumentWindow.h */,
-				15C21D7118A83D7C00C9D410 /* BPDocumentWindow.m */,
 				15C21D5418A83D5500C9D410 /* Images.xcassets */,
 				15C21D4018A83D5500C9D410 /* Supporting Files */,
 			);
@@ -218,6 +238,7 @@
 		15C21D4018A83D5500C9D410 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1502C2FB18B97B70002EC738 /* dsa_pub.pem */,
 				15C21D4118A83D5500C9D410 /* TipTyper-Info.plist */,
 				15C21D4218A83D5500C9D410 /* InfoPlist.strings */,
 				15C21D4518A83D5500C9D410 /* main.m */,
@@ -325,6 +346,7 @@
 				15C21D3318A83D5500C9D410 /* Frameworks */,
 				15C21D3418A83D5500C9D410 /* Resources */,
 				152CF4F818A9B264008D2ED8 /* ShellScript */,
+				1502C2FE18B97E9E002EC738 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -417,6 +439,7 @@
 				15C21DB818A850C000C9D410 /* linesTemplate.png in Resources */,
 				15E8409A18AC604800540474 /* fontMoreTemplate@2x.png in Resources */,
 				15C21DBC18A8514900C9D410 /* infoTemplate.png in Resources */,
+				1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */,
 				15C21DAE18A8444A00C9D410 /* marginNarrowTemplate.png in Resources */,
 				156C050C18AC7F0300D28533 /* Preferences.xib in Resources */,
 				15E8409C18AC604800540474 /* fontNormalTemplate@2x.png in Resources */,
@@ -608,6 +631,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bruno/Workspace/Release\\ Apps/TipTyper/TipTyper/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
 				INFOPLIST_FILE = "TipTyper/TipTyper-Info.plist";
@@ -621,6 +648,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bruno/Workspace/Release\\ Apps/TipTyper/TipTyper/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipTyper/TipTyper-Prefix.pch";
 				INFOPLIST_FILE = "TipTyper/TipTyper-Info.plist";

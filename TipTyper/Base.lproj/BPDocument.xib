@@ -167,22 +167,6 @@
                             <action selector="action_toggle_displayOptions:" target="xOd-HO-29H" id="bSH-GC-PxJ"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ECA23285-89F4-4FD5-A758-8C2ACBA69781" explicitItemIdentifier="BPToolbarSettingsToolbarItem" label="Settings" paletteLabel="Settings" image="NSActionTemplate" id="65x-9b-pK7">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="29" height="28"/>
-                        <size key="maxSize" width="29" height="28"/>
-                        <button key="view" verticalHuggingPriority="750" id="SJg-de-O1I">
-                            <rect key="frame" x="11" y="14" width="29" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="JBV-Pv-Feb">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                        <connections>
-                            <action selector="action_bt_editToolbar:" target="xOd-HO-29H" id="Vbi-60-SWX"/>
-                        </connections>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="312485E4-CD3C-4B23-B7C6-8B1B67C538EF" explicitItemIdentifier="BPToolbarPrintToolbarItem" label="Print" paletteLabel="Print" image="printTemplate" id="dxg-vt-c8r">
                         <nil key="toolTip"/>
                         <size key="minSize" width="29" height="28"/>
@@ -197,6 +181,22 @@
                         </button>
                         <connections>
                             <action selector="printDocument:" target="-1" id="qmP-4y-JyH"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="123F0638-AFF4-4632-9AE5-44CB6B653B43" explicitItemIdentifier="BPToolbarSettingsToolbarItem" label="Settings" paletteLabel="Settings" image="NSActionTemplate" id="azi-cE-2q8">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="29" height="28"/>
+                        <size key="maxSize" width="29" height="28"/>
+                        <button key="view" verticalHuggingPriority="750" id="XqQ-Sr-aTE">
+                            <rect key="frame" x="11" y="14" width="29" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="ch2-NQ-w11">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="runToolbarCustomizationPalette:" target="-1" id="UeN-ha-GBW"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="FD454548-5CA3-48AC-AB45-784AFF34FE19" explicitItemIdentifier="BPToolbarGoToLineToolbarItem" label="Go to Line" paletteLabel="Go to Line" image="jumpToLineTemplate" id="jrB-De-zzy">
@@ -248,14 +248,13 @@
                     <toolbarItem reference="jrB-De-zzy"/>
                     <toolbarItem reference="37w-EB-Fz6"/>
                     <toolbarItem reference="dxg-vt-c8r"/>
-                    <toolbarItem reference="65x-9b-pK7"/>
+                    <toolbarItem reference="azi-cE-2q8"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
                 <outlet property="infoView" destination="OgU-xF-SWb" id="Fqd-g2-lFV"/>
                 <outlet property="scrollView" destination="g04-bm-jeK" id="cnJ-2s-epd"/>
-                <outlet property="tb_bt_editToolbar" destination="65x-9b-pK7" id="La7-7U-VnV"/>
                 <outlet property="tb_switch_editorSpacing" destination="gR5-7Z-XjY" id="JSb-OF-8vm"/>
                 <outlet property="tb_switch_textAlignment" destination="uJc-8d-45l" id="0kp-RE-qxs"/>
                 <outlet property="tb_toggle_displayOptions" destination="Oeq-YK-g6i" id="5tg-is-I1z"/>
@@ -272,7 +271,7 @@
         <image name="fontMinusTemplate" width="16" height="16"/>
         <image name="fontMoreTemplate" width="16" height="16"/>
         <image name="fontNormalTemplate" width="16" height="16"/>
-        <image name="infoTemplate" width="16" height="16"/>
+        <image name="infoTemplate" width="15" height="15"/>
         <image name="jumpToLineTemplate" width="16" height="16"/>
         <image name="linesTemplate" width="16" height="16"/>
         <image name="marginNarrowTemplate" width="16" height="16"/>
