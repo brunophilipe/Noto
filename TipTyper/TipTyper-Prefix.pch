@@ -12,4 +12,18 @@
 	#define __BP_TIPTYPER__
 
 	#define NSColorFromRGB(rgbValue) [NSColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+	#define kBP_DEFAULT_FONT @"BP_DEFAULT_FONT"
+	#define kBP_DEFAULT_TXTCOLOR @"BP_DEFAULT_TXTCOLOR"
+	#define kBP_DEFAULT_BGCOLOR @"BP_DEFAULT_BGCOLOR"
+	#define kBP_DEFAULT_SHOWLINES @"BP_DEFAULT_SHOWLINES"
+	#define kBP_DEFAULT_SHOWSTATUS @"BP_DEFAULT_SHOWSTATUS"
+
+	#define kBP_SHOULD_RELOAD_STYLE @"BP_SHOULD_RELOAD_STYLE"
+
+	#define kBP_TIPTYPER_FONT [NSFont fontWithName:@"Monaco" size:12]
+	#define kBP_TIPTYPER_BGCOLOR [NSColor whiteColor]
+	#define kBP_TIPTYPER_TXTCOLOR [NSColor blackColor]
+
+	#define NOT(b) (b) = !(b)
 #endif

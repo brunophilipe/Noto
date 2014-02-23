@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1500F28218B056B500481A86 /* BPEncodingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1500F28118B056B500481A86 /* BPEncodingTool.m */; };
+		156C050C18AC7F0300D28533 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156C050B18AC7F0300D28533 /* Preferences.xib */; };
+		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
 		15C21D4418A83D5500C9D410 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D4218A83D5500C9D410 /* InfoPlist.strings */; };
 		15C21D4618A83D5500C9D410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4518A83D5500C9D410 /* main.m */; };
@@ -43,6 +46,14 @@
 		15C21DD118A94A4E00C9D410 /* NSString+WordsCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD018A94A4E00C9D410 /* NSString+WordsCount.m */; };
 		15C21DD418A94A5D00C9D410 /* BPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD318A94A5D00C9D410 /* BPBackgroundView.m */; };
 		15C21DD718A94F6800C9D410 /* BPTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD618A94F6800C9D410 /* BPTopBarView.m */; };
+		15E8408F18AC5E5100540474 /* jumpToLineTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8408D18AC5E5100540474 /* jumpToLineTemplate.png */; };
+		15E8409018AC5E5100540474 /* jumpToLineTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8408E18AC5E5100540474 /* jumpToLineTemplate@2x.png */; };
+		15E8409718AC604800540474 /* fontMinusTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409118AC604800540474 /* fontMinusTemplate.png */; };
+		15E8409818AC604800540474 /* fontMinusTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409218AC604800540474 /* fontMinusTemplate@2x.png */; };
+		15E8409918AC604800540474 /* fontMoreTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409318AC604800540474 /* fontMoreTemplate.png */; };
+		15E8409A18AC604800540474 /* fontMoreTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409418AC604800540474 /* fontMoreTemplate@2x.png */; };
+		15E8409B18AC604800540474 /* fontNormalTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409518AC604800540474 /* fontNormalTemplate.png */; };
+		15E8409C18AC604800540474 /* fontNormalTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E8409618AC604800540474 /* fontNormalTemplate@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1500F28018B056B500481A86 /* BPEncodingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEncodingTool.h; path = Classes/BPEncodingTool.h; sourceTree = "<group>"; };
+		1500F28118B056B500481A86 /* BPEncodingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPEncodingTool.m; path = Classes/BPEncodingTool.m; sourceTree = "<group>"; };
+		156C050B18AC7F0300D28533 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
+		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
 		15C21D3618A83D5500C9D410 /* TipTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C21D3918A83D5500C9D410 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		15C21D3C18A83D5500C9D410 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -108,6 +124,14 @@
 		15C21DD518A94F6800C9D410 /* BPTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTopBarView.h; path = Classes/BPTopBarView.h; sourceTree = "<group>"; };
 		15C21DD618A94F6800C9D410 /* BPTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPTopBarView.m; path = Classes/BPTopBarView.m; sourceTree = "<group>"; };
 		15E4929F18A9B1FB004C4901 /* BumpBuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BumpBuild.sh; sourceTree = "<group>"; };
+		15E8408D18AC5E5100540474 /* jumpToLineTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpToLineTemplate.png; sourceTree = "<group>"; };
+		15E8408E18AC5E5100540474 /* jumpToLineTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jumpToLineTemplate@2x.png"; sourceTree = "<group>"; };
+		15E8409118AC604800540474 /* fontMinusTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fontMinusTemplate.png; sourceTree = "<group>"; };
+		15E8409218AC604800540474 /* fontMinusTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fontMinusTemplate@2x.png"; sourceTree = "<group>"; };
+		15E8409318AC604800540474 /* fontMoreTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fontMoreTemplate.png; sourceTree = "<group>"; };
+		15E8409418AC604800540474 /* fontMoreTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fontMoreTemplate@2x.png"; sourceTree = "<group>"; };
+		15E8409518AC604800540474 /* fontNormalTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fontNormalTemplate.png; sourceTree = "<group>"; };
+		15E8409618AC604800540474 /* fontNormalTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fontNormalTemplate@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +200,12 @@
 				15C21DCB18A9341400C9D410 /* Classes */,
 				15C21DBE18A8580B00C9D410 /* Libraries */,
 				15C21D7318A83E4E00C9D410 /* Icons */,
+				15753F5618AC78F5009E7E9E /* BPApplication.h */,
+				15753F5718AC78F5009E7E9E /* BPApplication.m */,
 				15C21D4B18A83D5500C9D410 /* BPDocument.h */,
 				15C21D4C18A83D5500C9D410 /* BPDocument.m */,
 				15C21D4E18A83D5500C9D410 /* BPDocument.xib */,
+				156C050B18AC7F0300D28533 /* Preferences.xib */,
 				15C21D5118A83D5500C9D410 /* MainMenu.xib */,
 				15C21D7018A83D7C00C9D410 /* BPDocumentWindow.h */,
 				15C21D7118A83D7C00C9D410 /* BPDocumentWindow.m */,
@@ -229,16 +256,24 @@
 				15C21DA118A843E700C9D410 /* alignLeftTemplate@2x.png */,
 				15C21DA218A843E700C9D410 /* alignRightTemplate.png */,
 				15C21DA318A843E700C9D410 /* alignRightTemplate@2x.png */,
+				15E8409118AC604800540474 /* fontMinusTemplate.png */,
+				15E8409218AC604800540474 /* fontMinusTemplate@2x.png */,
+				15E8409318AC604800540474 /* fontMoreTemplate.png */,
+				15E8409418AC604800540474 /* fontMoreTemplate@2x.png */,
+				15E8409518AC604800540474 /* fontNormalTemplate.png */,
+				15E8409618AC604800540474 /* fontNormalTemplate@2x.png */,
+				15C21DBA18A8514900C9D410 /* infoTemplate.png */,
+				15C21DBB18A8514900C9D410 /* infoTemplate@2x.png */,
+				15E8408D18AC5E5100540474 /* jumpToLineTemplate.png */,
+				15E8408E18AC5E5100540474 /* jumpToLineTemplate@2x.png */,
+				15C21DB618A850C000C9D410 /* linesTemplate.png */,
+				15C21DB718A850C000C9D410 /* linesTemplate@2x.png */,
 				15C21DAA18A8444A00C9D410 /* marginNarrowTemplate.png */,
 				15C21DAB18A8444A00C9D410 /* marginNarrowTemplate@2x.png */,
 				15C21DAC18A8444A00C9D410 /* marginWideTemplate.png */,
 				15C21DAD18A8444A00C9D410 /* marginWideTemplate@2x.png */,
 				15C21DB218A8458100C9D410 /* printTemplate.png */,
 				15C21DB318A8458100C9D410 /* printTemplate@2x.png */,
-				15C21DB618A850C000C9D410 /* linesTemplate.png */,
-				15C21DB718A850C000C9D410 /* linesTemplate@2x.png */,
-				15C21DBA18A8514900C9D410 /* infoTemplate.png */,
-				15C21DBB18A8514900C9D410 /* infoTemplate@2x.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -267,6 +302,8 @@
 		15C21DCB18A9341400C9D410 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1500F28018B056B500481A86 /* BPEncodingTool.h */,
+				1500F28118B056B500481A86 /* BPEncodingTool.m */,
 				15C21DCF18A94A4E00C9D410 /* NSString+WordsCount.h */,
 				15C21DD018A94A4E00C9D410 /* NSString+WordsCount.m */,
 				15C21DD218A94A5D00C9D410 /* BPBackgroundView.h */,
@@ -361,19 +398,28 @@
 				15C21D4418A83D5500C9D410 /* InfoPlist.strings in Resources */,
 				15C21DB918A850C000C9D410 /* linesTemplate@2x.png in Resources */,
 				15C21DA718A843E700C9D410 /* alignLeftTemplate@2x.png in Resources */,
+				15E8409B18AC604800540474 /* fontNormalTemplate.png in Resources */,
+				15E8409818AC604800540474 /* fontMinusTemplate@2x.png in Resources */,
 				15C21DA618A843E700C9D410 /* alignLeftTemplate.png in Resources */,
 				15C21DA818A843E700C9D410 /* alignRightTemplate.png in Resources */,
 				15C21D5518A83D5500C9D410 /* Images.xcassets in Resources */,
 				15C21DB518A8458100C9D410 /* printTemplate@2x.png in Resources */,
+				15E8409918AC604800540474 /* fontMoreTemplate.png in Resources */,
 				15C21DB118A8444A00C9D410 /* marginWideTemplate@2x.png in Resources */,
 				15C21DA418A843E700C9D410 /* alignCenterTemplate.png in Resources */,
 				15C21D5018A83D5500C9D410 /* BPDocument.xib in Resources */,
+				15E8408F18AC5E5100540474 /* jumpToLineTemplate.png in Resources */,
 				15C21DCA18A933D800C9D410 /* Localizable.strings in Resources */,
 				15C21D4A18A83D5500C9D410 /* Credits.rtf in Resources */,
+				15E8409718AC604800540474 /* fontMinusTemplate.png in Resources */,
 				15C21DBD18A8514900C9D410 /* infoTemplate@2x.png in Resources */,
+				15E8409018AC5E5100540474 /* jumpToLineTemplate@2x.png in Resources */,
 				15C21DB818A850C000C9D410 /* linesTemplate.png in Resources */,
+				15E8409A18AC604800540474 /* fontMoreTemplate@2x.png in Resources */,
 				15C21DBC18A8514900C9D410 /* infoTemplate.png in Resources */,
 				15C21DAE18A8444A00C9D410 /* marginNarrowTemplate.png in Resources */,
+				156C050C18AC7F0300D28533 /* Preferences.xib in Resources */,
+				15E8409C18AC604800540474 /* fontNormalTemplate@2x.png in Resources */,
 				15C21DB418A8458100C9D410 /* printTemplate.png in Resources */,
 				15C21D5318A83D5500C9D410 /* MainMenu.xib in Resources */,
 				15C21DAF18A8444A00C9D410 /* marginNarrowTemplate@2x.png in Resources */,
@@ -419,6 +465,8 @@
 				15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */,
 				15C21D4618A83D5500C9D410 /* main.m in Sources */,
 				15C21D7218A83D7C00C9D410 /* BPDocumentWindow.m in Sources */,
+				1500F28218B056B500481A86 /* BPEncodingTool.m in Sources */,
+				15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */,
 				15C21DC618A8580B00C9D410 /* MarkerLineNumberView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

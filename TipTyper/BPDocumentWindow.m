@@ -9,6 +9,7 @@
 #import "BPDocumentWindow.h"
 #import "Libraries/LineCounter/MarkerLineNumberView.h"
 #import "Classes/NSString+WordsCount.h"
+#import "BPApplication.h"
 
 typedef enum {
 	kBP_EDITORSPACING_WIDE = 1,
@@ -59,10 +60,27 @@ typedef enum {
 
 	[self setContentString:[NSMutableString string]];
 
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	id aux;
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWLINES]) && ![(NSNumber*)aux boolValue]) {
+		[self setLinesCounterVisible:NO];
+	}
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWSTATUS]) && ![(NSNumber*)aux boolValue]) {
+		[self setInfoViewVisible:NO];
+	}
+
+	[self loadStyleAttributesFromDefaults];
+
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(scrollViewDidScroll:)
 												 name:NSViewBoundsDidChangeNotification
 											   object:self.scrollView.contentView];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(loadStyleAttributesFromDefaults)
+												 name:kBP_SHOULD_RELOAD_STYLE
+											   object:nil];
 }
 
 - (void)scrollViewDidScroll:(NSNotification *)notif
@@ -79,12 +97,16 @@ typedef enum {
 {
 	[self.scrollView setRulersVisible:flag];
 	[self.tb_toggle_displayOptions setSelected:flag forSegment:0];
+
+	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:!flag];
 }
 
 - (void)setInfoViewVisible:(BOOL)flag
 {
 	CGRect frame = self.wrapView.frame;
 	CGFloat height = self.infoView.frame.size.height;
+
+	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:!flag];
 
 	if (flag) {
 		frame.size.height += height;
@@ -105,12 +127,22 @@ typedef enum {
 
 - (void)toggleLinesCounter
 {
-	[self setLinesCounterVisible:!self.scrollView.rulersVisible];
+	[self setLinesCounterVisible:!self.isDisplayingLines];
 }
 
 - (void)toggleInfoView
 {
-	[self setInfoViewVisible:![self.infoView isHidden]];
+	[self setInfoViewVisible:!self.isDisplayingInfo];
+}
+
+- (BOOL)isDisplayingLines
+{
+	return self.scrollView.rulersVisible;
+}
+
+- (BOOL)isDisplayingInfo
+{
+	return [self.infoView isHidden];
 }
 
 - (void)textDidChange:(NSNotification *)notification {
@@ -121,9 +153,79 @@ typedef enum {
 
 - (void)updateTextViewContents
 {
-	[self.contentString appendString:[[NSString alloc] initWithData:self.document.fileData encoding:NSUTF8StringEncoding]];
+	[self.contentString setString:[[NSString alloc] initWithData:self.document.fileData encoding:self.document.encoding]];
 	[self.textView setString:self.contentString];
 	[self textDidChange:nil];
+}
+
+- (void)goToLine:(NSUInteger)line
+{
+	NSString *string = [self.textView string];
+	NSRange __block range = NSMakeRange(0, 0), __block lastRange;
+	NSUInteger __block curLine = 1;
+	NSError *error;
+
+	if (line > 1) {
+		NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\n|\r)" options:NSRegularExpressionCaseInsensitive error:&error];
+
+		[regex enumerateMatchesInString:string options:0 range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+			if (result.resultType == NSTextCheckingTypeRegularExpression) {
+				if (curLine == line) {
+					range = NSMakeRange(lastRange.location+1, result.range.location-lastRange.location);
+					*stop = YES;
+				}
+				lastRange = result.range;
+				curLine++;
+			}
+		}];
+
+		if (range.location == 0 && range.length == 0)
+		{
+			NSAlert *alert = [NSAlert alertWithMessageText:@"Attention!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"There is no such line!"];
+			[alert runModal];
+			return;
+		}
+	} else {
+		NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\n|\r)" options:NSRegularExpressionCaseInsensitive error:&error];
+		range = NSMakeRange(0, [regex rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)].location+1);
+	}
+
+	[self.textView setSelectedRange:range];
+	[self.textView scrollRangeToVisible:range];
+}
+
+- (void)loadStyleAttributesFromDefaults
+{
+	NSUserDefaults	*defaults = [NSUserDefaults standardUserDefaults];
+	NSFont			*font = kBP_TIPTYPER_FONT;
+
+	id aux;
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_FONT])) {
+		font = [NSKeyedUnarchiver unarchiveObjectWithData:aux];
+	}
+	[self.textView setFont:font];
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_BGCOLOR])) {
+		NSColor *bg = [NSKeyedUnarchiver unarchiveObjectWithData:aux];
+		[self.textView setBackgroundColor:bg];
+
+		//Calculate if text inserter should be black or white using the luminance formula:
+		bg = [bg colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+		CGFloat luminance = 0.2126*bg.redComponent + 0.7152*bg.greenComponent + 0.0722*bg.blueComponent;
+		[self.textView setInsertionPointColor:(luminance<0.5 ? [NSColor lightGrayColor] : [NSColor blackColor])];
+	} else {
+		[self.textView setBackgroundColor:kBP_TIPTYPER_BGCOLOR];
+		[self.textView setInsertionPointColor:kBP_TIPTYPER_TXTCOLOR];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_TXTCOLOR])) {
+		[self.textView setTextColor:[NSKeyedUnarchiver unarchiveObjectWithData:aux]];
+	} else {
+		[self.textView setTextColor:kBP_TIPTYPER_TXTCOLOR];
+	}
+
+	NSLog(@"Loaded style from defaults");
 }
 
 #pragma mark - IBActions
@@ -153,13 +255,13 @@ typedef enum {
 	NSSegmentedControl *toggle = sender;
 	switch (toggle.selectedSegment) {
 		case 0: //Should become wide
-			frame.origin.x -= 50;
-			frame.size.width += 100;
+			frame.origin.x -= 100;
+			frame.size.width += 200;
 			break;
 
 		case 1: //Should become narrow
-			frame.origin.x += 50;
-			frame.size.width -= 100;
+			frame.origin.x += 100;
+			frame.size.width -= 200;
 			[self setLinesCounterVisible:NO];
 			break;
 	}
@@ -186,4 +288,40 @@ typedef enum {
 - (IBAction)action_bt_editToolbar:(id)sender {
 	[self runToolbarCustomizationPalette:sender];
 }
+
+- (IBAction)action_showJumpToLineDialog:(id)sender {
+	NSAlert		*alert;
+	NSTextField *field;
+	
+	alert = [NSAlert alertWithMessageText:NSLocalizedString(@"BP_MESSAGE_GOTOLINE", nil) defaultButton:NSLocalizedString(@"BP_MESSAGE_GO", nil) alternateButton:NSLocalizedString(@"BP_GENERIC_CANCEL", nil) otherButton:nil informativeTextWithFormat:@""];
+	field = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 22)];
+	[alert setAccessoryView:field];
+
+	if ([alert runModal] == 1) {
+		[self goToLine:MAX(1, field.integerValue)];
+	}
+}
+
+- (IBAction)action_switch_changeFontSize:(id)sender {
+	NSSegmentedControl *toggle = sender;
+	switch (toggle.selectedSegment) {
+		case 0: //Reduce font size
+			toggle.tag = 4;
+			[[NSFontManager sharedFontManager] modifyFont:sender];
+			break;
+
+		case 1: //Normal font size
+			
+			break;
+
+		case 2: //Increase font size
+			toggle.tag = 3;
+			[[NSFontManager sharedFontManager] modifyFont:sender];
+			break;
+
+		default:
+			break;
+	}
+}
+
 @end

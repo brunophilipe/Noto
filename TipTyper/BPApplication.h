@@ -1,0 +1,54 @@
+//
+//  BPApplication.h
+//  TipTyper
+//
+//  Created by Bruno Philipe on 10/14/13.
+//  Copyright (c) 2013 Bruno Philipe. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import "BPDocument.h"
+
+@class BPDocument;
+
+@interface BPApplication : NSApplication
+
+@property BOOL keyDocument_showingLines;
+@property BOOL keyDocument_showingInfo;
+@property BOOL keyDocument_isLinkedToFile;
+
+/**
+ Sets the key document. This method is called from any BPDocument when its window becomes key.
+ */
+- (void)setKeyDocument:(BPDocument *)keyDocument;
+
+/**
+ Sends a message to the shared application manager to open the app's website using the default browser.
+ */
+- (IBAction)openWebsite:(id)sender;
+
+/**
+ Opens (and creates if necessary) the preferences window.
+ */
+- (IBAction)showPreferences:(id)sender;
+
+#pragma mark - Preferences Window
+
+@property BOOL pref_default_lines;
+@property BOOL pref_default_status;
+
+@property (strong) NSFont *currentFont;
+@property (strong) NSColor *color_text;
+@property (strong) NSColor *color_bg;
+
+@property (strong) IBOutlet NSTextField *field_currentFont;
+@property (strong) IBOutlet NSTextField *textView_example;
+@property (strong) IBOutlet NSButton *checkbox_showLines;
+@property (strong) IBOutlet NSButton *checkbox_showStatus;
+
+- (IBAction)action_changeFont:(id)sender;
+- (IBAction)action_revertDefaults:(id)sender;
+- (IBAction)action_controlChanged:(id)sender;
+- (IBAction)action_applyChanges:(id)sender;
+
+@end

@@ -10,6 +10,8 @@
 #import "BPDocument.h"
 #import "Classes/BPBackgroundView.h"
 
+@class BPDocument;
+
 @interface BPDocumentWindow : NSWindow <NSTextViewDelegate>
 
 @property (weak) BPDocument *document;
@@ -19,6 +21,9 @@
 
 - (void)toggleLinesCounter;
 - (void)toggleInfoView;
+
+- (BOOL)isDisplayingLines;
+- (BOOL)isDisplayingInfo;
 
 #pragma mark - IBOutlets
 
@@ -37,5 +42,7 @@
 - (IBAction)action_switch_editorSpacing:(id)sender;
 - (IBAction)action_toggle_displayOptions:(id)sender;
 - (IBAction)action_bt_editToolbar:(id)sender;
+- (IBAction)action_showJumpToLineDialog:(id)sender;
+- (IBAction)action_switch_changeFontSize:(id)sender;
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5051"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BPDocument">
@@ -10,7 +10,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="BPApplication"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window" customClass="BPDocumentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="456" y="196" width="600" height="480"/>
@@ -99,7 +99,7 @@
                     </customView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="08949A48-D483-46BE-B9E4-C253120E7F9F" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="FSk-cB-RPF">
+            <toolbar key="toolbar" implicitIdentifier="08949A48-D483-46BE-B9E4-C253120E7F9F" explicitIdentifier="BPDocumentToolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="FSk-cB-RPF">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="8Qh-hZ-Hn1"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="37w-EB-Fz6"/>
@@ -131,7 +131,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="DD6ED568-57E6-422D-B9B5-5D18FA6D98CA" label="Editor Spacing" paletteLabel="Editor Spacing" id="0y9-S2-ukV">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="67" height="28"/>
+                        <size key="minSize" width="67" height="25"/>
                         <size key="maxSize" width="67" height="28"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="gR5-7Z-XjY">
                             <rect key="frame" x="9" y="14" width="67" height="25"/>
@@ -167,7 +167,7 @@
                             <action selector="action_toggle_displayOptions:" target="xOd-HO-29H" id="bSH-GC-PxJ"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ECA23285-89F4-4FD5-A758-8C2ACBA69781" label="Settings" paletteLabel="Settings" image="NSActionTemplate" id="65x-9b-pK7">
+                    <toolbarItem implicitItemIdentifier="ECA23285-89F4-4FD5-A758-8C2ACBA69781" explicitItemIdentifier="BPToolbarSettingsToolbarItem" label="Settings" paletteLabel="Settings" image="NSActionTemplate" id="65x-9b-pK7">
                         <nil key="toolTip"/>
                         <size key="minSize" width="29" height="28"/>
                         <size key="maxSize" width="29" height="28"/>
@@ -183,7 +183,7 @@
                             <action selector="action_bt_editToolbar:" target="xOd-HO-29H" id="Vbi-60-SWX"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="312485E4-CD3C-4B23-B7C6-8B1B67C538EF" label="Print" paletteLabel="Print" image="printTemplate" id="dxg-vt-c8r">
+                    <toolbarItem implicitItemIdentifier="312485E4-CD3C-4B23-B7C6-8B1B67C538EF" explicitItemIdentifier="BPToolbarPrintToolbarItem" label="Print" paletteLabel="Print" image="printTemplate" id="dxg-vt-c8r">
                         <nil key="toolTip"/>
                         <size key="minSize" width="29" height="28"/>
                         <size key="maxSize" width="29" height="28"/>
@@ -199,11 +199,53 @@
                             <action selector="printDocument:" target="-1" id="qmP-4y-JyH"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="FD454548-5CA3-48AC-AB45-784AFF34FE19" explicitItemIdentifier="BPToolbarGoToLineToolbarItem" label="Go to Line" paletteLabel="Go to Line" image="jumpToLineTemplate" id="jrB-De-zzy">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="29" height="28"/>
+                        <size key="maxSize" width="29" height="28"/>
+                        <button key="view" verticalHuggingPriority="750" id="f0I-T3-Pig">
+                            <rect key="frame" x="17" y="14" width="29" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="jumpToLineTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="Ba0-3u-uMo">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="action_showJumpToLineDialog:" target="xOd-HO-29H" id="JO2-uL-Amn"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2A1634C0-E94D-49DF-B66A-13D9AC17B802" explicitItemIdentifier="BPToolbarFontSizeToolbarItem" label="Font Size" paletteLabel="Font Size" id="qq5-MZ-IH7">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="25"/>
+                        <size key="maxSize" width="100" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="gOB-UL-rlj">
+                            <rect key="frame" x="0.0" y="14" width="100" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="CEn-yy-O6I">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="fontMinusTemplate" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="fontNormalTemplate" width="32" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="fontMoreTemplate" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                                <connections>
+                                    <action selector="action_switch_changeFontSize:" target="xOd-HO-29H" id="NXr-e2-B7U"/>
+                                </connections>
+                            </segmentedCell>
+                        </segmentedControl>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="6iO-D5-PF0"/>
                     <toolbarItem reference="kJX-yW-0np"/>
-                    <toolbarItem reference="0y9-S2-ukV"/>
+                    <toolbarItem reference="jrB-De-zzy"/>
                     <toolbarItem reference="37w-EB-Fz6"/>
                     <toolbarItem reference="dxg-vt-c8r"/>
                     <toolbarItem reference="65x-9b-pK7"/>
@@ -227,7 +269,11 @@
         <image name="alignCenterTemplate" width="16" height="16"/>
         <image name="alignLeftTemplate" width="16" height="16"/>
         <image name="alignRightTemplate" width="16" height="16"/>
+        <image name="fontMinusTemplate" width="16" height="16"/>
+        <image name="fontMoreTemplate" width="16" height="16"/>
+        <image name="fontNormalTemplate" width="16" height="16"/>
         <image name="infoTemplate" width="16" height="16"/>
+        <image name="jumpToLineTemplate" width="16" height="16"/>
         <image name="linesTemplate" width="16" height="16"/>
         <image name="marginNarrowTemplate" width="16" height="16"/>
         <image name="marginWideTemplate" width="16" height="16"/>

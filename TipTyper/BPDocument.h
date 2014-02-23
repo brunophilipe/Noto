@@ -7,12 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "BPDocumentWindow.h"
+
+@class BPDocumentWindow;
 
 @interface BPDocument : NSDocument
 
 @property (strong) NSMutableData *fileData;
+@property (strong) BPDocumentWindow *displayWindow;
 
-- (void)toggleLinesCounter;
-- (void)toggleInfoView;
+@property (getter = isLoadedFromFile) BOOL loadedFromFile;
+
+@property NSInteger encoding;
+
+- (IBAction)toggleLinesCounter:(id)sender;
+- (IBAction)toggleInfoView:(id)sender;
+
+- (IBAction)pickEncodingAndReload:(id)sender;
 
 @end

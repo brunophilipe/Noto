@@ -9,3 +9,17 @@
 "BP_LABEL_WORDS" = "Words: %ld";
 "BP_LABEL_CHARS" = "Characters: %ld";
 "BP_LABEL_LINES" = "Lines: %ld";
+
+"BP_GENERIC_OK"			= "OK";
+"BP_GENERIC_CANCEL"		= "Cancel";
+
+"BP_MESSAGE_PICKENCODING"	= "Select an encoding:";
+"BP_MESSAGE_ENCODING"		= "Select one of the displayed encodings to use while opening the file.";
+"BP_MESSAGE_REOPENING"		= "Reopening file...";
+"BP_MESSAGE_AUTOENCODING"	= "Could not detect encoding...";
+"BP_MESSAGE_GOTOLINE"		= "Go to Line:";
+"BP_MESSAGE_GO"				= "Go";
+
+"BP_ERROR_ENCODING_TITLE"	= "Encoding Error";
+"BP_ERROR_ENCODING_MSG"		= "TipTyper was not able to read the file with the selected encoding. Please, try another encoding or verify the file.";
+"BP_ERROR_ENCODING_NOFILE"	= "No file is open in TipTyper. Unexpected error. Please report this as a bug.";
