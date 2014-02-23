@@ -13,6 +13,7 @@
 @interface BPDocument ()
 
 @property (strong) NSFileHandle *fileHandle;
+
 @property BOOL loadedSuccessfully;
 
 @end
@@ -56,22 +57,44 @@
     return YES;
 }
 
-- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	NSData *data = [[self.displayWindow.textView string] dataUsingEncoding:self.encoding];
+	if ([data length] > 500 * 1000000) { //Filesize > 500MB
+		NSAlert *alert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"TipTyper doesn't support files greater than 500MB. This is a work in progress."];
+		[alert runModal];
+		return NO;
+	}
 
-	[data writeToURL:url atomically:YES];
+	NSString *string = [[NSString alloc] initWithData:data encoding:self.encoding];
 
-	return YES;
+	if (!string) {
+		string = [self reloadWithDifferentEncoding];
+	}
+
+	if (!string) {
+		NSLog(@"Could not open file");
+	} else {
+		[self.fileData setData:data];
+
+		[self setLoadedFromFile:YES];
+		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:YES];
+
+		return YES;
+	}
+
+	return NO;
 }
 
-- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+- (NSData*)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+{
+	return [[self.displayWindow.textView string] dataUsingEncoding:self.encoding];
+}
+
+- (BOOL)revertToContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
 	if ([[NSFileManager defaultManager] fileExistsAtPath:[url relativePath]])
 	{
 		NSError *error;
-
-		[self setFileURL:url];
 
 		if ([[[[NSFileManager defaultManager] attributesOfItemAtPath:[url relativePath] error:&error] objectForKey:NSFileSize] unsignedIntegerValue] > 500 * 1000000) { //Filesize > 500MB
 			NSAlert *alert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"TipTyper doesn't support files greater than 500MB. This is a work in progress."];
@@ -98,21 +121,14 @@
 
 			[self setLoadedFromFile:YES];
 			[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:YES];
-		}
 
-//		[self setFileHandle:[NSFileHandle fileHandleForReadingFromURL:url error:&error]];
-//
-//		if (error) {
-//			NSAlert *alert = [NSAlert alertWithError:error];
-//			[alert runModal];
-//			return NO;
-//		} else {
-//			[self.fileData setData:[self.fileHandle readDataOfLength:10*1000000]]; //Read first 10 Megabytes
-//		}
-		return YES;
-	} else {
-		return NO;
+			[self.displayWindow updateTextViewContents];
+
+			return YES;
+		}
 	}
+
+	return NO;
 }
 
 - (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings error:(NSError **)outError {
