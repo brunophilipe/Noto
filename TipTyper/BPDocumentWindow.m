@@ -93,7 +93,7 @@ typedef enum {
 {
 	static short scroll = 0;
 	scroll++;
-	if (scroll>10) {
+	if (scroll>3) {
 		[self.scrollView setNeedsDisplay:YES];
 		scroll = 0;
 	}
