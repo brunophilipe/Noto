@@ -196,7 +196,39 @@
 	return nil;
 }
 
-- (IBAction)pickEncodingAndReload:(id)sender
+#pragma mark - Save Panel
+
+- (NSString*)fileNameExtensionForType:(NSString *)typeName saveOperation:(NSSaveOperationType)saveOperation
+{
+	return @"txt";
+}
+
+- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel
+{
+	[savePanel setShowsTagField:YES];
+
+	NSView *view = [savePanel.accessoryView.subviews lastObject];
+
+	NSPopUpButton *button = [[view subviews] lastObject];
+	NSRect frame = [button frame];
+	frame.size.width += 120;
+	[button setFrame:frame];
+	[button selectItemAtIndex:0];
+
+	frame = view.frame;
+	frame.size.width += 120;
+	[view setFrame:frame];
+
+	[savePanel setAccessoryView:view];
+	[savePanel layoutIfNeeded];
+
+
+	return YES;
+}
+
+#pragma mark - Actions
+
+- (void)pickEncodingAndReload:(id)sender
 {
 	NSString *string = [self reloadWithDifferentEncoding];
 
@@ -212,14 +244,12 @@
 	[button setTitle:[button selectedItem].title];
 }
 
-#pragma mark - IBActions
-
-- (IBAction)toggleLinesCounter:(id)sender;
+- (void)toggleLinesCounter:(id)sender;
 {
 	[self.displayWindow toggleLinesCounter];
 }
 
-- (IBAction)toggleInfoView:(id)sender;
+- (void)toggleInfoView:(id)sender;
 {
 	[self.displayWindow toggleInfoView];
 }

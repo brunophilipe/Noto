@@ -16,7 +16,7 @@
 
 @interface BPDocumentWindow : NSWindow <NSTextViewDelegate>
 
-@property (weak) BPDocument *document;
+@property (assign) BPDocument *document;
 
 - (void)construct;
 - (void)updateTextViewContents;
