@@ -41,9 +41,12 @@
 
 @property (strong) IBOutlet NSTextField *field_currentFont;
 @property (strong) IBOutlet NSTextField *textView_example;
+@property (strong) IBOutlet NSTextField *field_tabSize;
 @property (strong) IBOutlet NSButton *checkbox_insertTabs;
+@property (strong) IBOutlet NSButton *checkbox_insertSpaces;
 @property (strong) IBOutlet NSButton *checkbox_showLines;
 @property (strong) IBOutlet NSButton *checkbox_showStatus;
+@property (strong) IBOutlet NSStepper *stepper_tabSize;
 
 - (IBAction)action_changeFont:(id)sender;
 - (IBAction)action_revertDefaults:(id)sender;

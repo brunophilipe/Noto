@@ -10,6 +10,8 @@
 
 @interface BPTextView : NSTextView
 
-@property BOOL shouldInsertTabsOnLineBreak;
+@property (nonatomic) BOOL shouldInsertTabsOnLineBreak;
+@property (nonatomic) BOOL shouldInsertSpacesInsteadOfTabs;
+@property NSUInteger tabSize;
 
 @end

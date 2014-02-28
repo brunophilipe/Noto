@@ -13,9 +13,6 @@
 @end
 
 @implementation BPTextView
-{
-	BOOL skip;
-}
 
 - (NSUInteger)locationOfPreviousNewLineFromLocation:(NSUInteger)location;
 {
@@ -43,24 +40,27 @@
 
 - (NSUInteger)countTabCharsFromLocation:(NSUInteger)location
 {
-	NSUInteger count = 0;
+	NSUInteger count = 0, spaces = 0;
 	NSString *string = self.string;
 	unichar chr = '\0';
 	BOOL finished = NO;
 
 	location++;
 
-	while (!finished && location < string.length) {
+	while (!finished && location < string.length-1) {
 		chr = [string characterAtIndex:location];
 		if (chr == '\t') {
 			count++;
+			location++;
+		} else if (chr == ' ') {
+			spaces++;
 			location++;
 		} else {
 			finished = YES;
 		}
 	}
 
-	return count;
+	return count + spaces/self.tabSize;
 }
 
 - (NSString*)buildStringWithTabsCount:(NSUInteger)count
@@ -69,7 +69,16 @@
 	for (NSUInteger i=0; i<count; i++) {
 		[str appendString:@"\t"];
 	}
-	return str;
+	return [str copy];
+}
+
+- (NSString*)buildStringWithSpacesCount:(NSUInteger)count
+{
+	NSMutableString *str = [NSMutableString stringWithCapacity:count];
+	for (NSUInteger i=0; i<count; i++) {
+		[str appendString:@" "];
+	}
+	return [str copy];
 }
 
 - (void)keyDown:(NSEvent *)theEvent
@@ -87,10 +96,23 @@
 			if (chr == '\n') {
 				location = [self locationOfPreviousNewLineFromLocation:range.location-1];
 				count = [self countTabCharsFromLocation:location];
-				skip = YES;
-				[self insertText:[self buildStringWithTabsCount:count]];
+
+				if (self.shouldInsertSpacesInsteadOfTabs) {
+					[self insertText:[self buildStringWithSpacesCount:count * self.tabSize]];
+				} else {
+					[self insertText:[self buildStringWithTabsCount:count]];
+				}
 			}
 		}
+	}
+}
+
+- (void)insertTab:(id)sender
+{
+	if (self.shouldInsertSpacesInsteadOfTabs) {
+		[self insertText:[self buildStringWithSpacesCount:self.tabSize]];
+	} else {
+		[super insertTab:sender];
 	}
 }
 

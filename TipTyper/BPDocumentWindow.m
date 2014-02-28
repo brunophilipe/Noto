@@ -43,6 +43,8 @@ typedef enum {
 
 - (void)construct
 {
+	NSParagraphStyle *paragraph = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+
 	self.lineNumberView = [[MarkerLineNumberView alloc] initWithScrollView:self.scrollView];
 
 	[self.scrollView setVerticalRulerView:self.lineNumberView];
@@ -53,6 +55,10 @@ typedef enum {
 
 	[self.textView setFont:[NSFont fontWithName:@"Monaco" size:12]];
 	[self.textView setDelegate:self];
+	[self.textView setAutomaticDashSubstitutionEnabled:NO];
+	[self.textView setAutomaticQuoteSubstitutionEnabled:NO];
+	[self.textView setDefaultParagraphStyle:paragraph];
+
 	[self textDidChange:nil];
 
 	[self.contentView setNeedsDisplay:YES];
@@ -151,10 +157,47 @@ typedef enum {
 	return ![self.infoView isHidden];
 }
 
+- (void)setTabWidthToNumberOfSpaces:(NSUInteger)spaces
+{
+	NSMutableParagraphStyle* paragraphStyle = [[self.textView defaultParagraphStyle] mutableCopy];
+
+	if (paragraphStyle == nil) {
+	paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+	}
+
+	float charWidth = [[self.textView.font screenFontWithRenderingMode:NSFontAntialiasedRenderingMode] advancementForGlyph:(NSGlyph) ' '].width;
+	[paragraphStyle setDefaultTabInterval:(charWidth * spaces)];
+	[paragraphStyle setTabStops:[NSArray array]];
+
+	[self.textView setDefaultParagraphStyle:paragraphStyle];
+
+	NSMutableDictionary* typingAttributes = [[self.textView typingAttributes] mutableCopy];
+	[typingAttributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+//	[typingAttributes setObject:scriptFont forKey:NSFontAttributeName];
+	[self.textView setTypingAttributes:typingAttributes];
+
+	NSRange rangeOfChange = NSMakeRange(0, [[self.textView string] length]);
+	[self.textView shouldChangeTextInRange:rangeOfChange replacementString:nil];
+	[[self.textView textStorage] setAttributes:typingAttributes range:rangeOfChange];
+	[self.textView didChangeText];
+}
+
 - (void)textDidChange:(NSNotification *)notification {
 	[[self.infoView viewWithTag:1] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_WORDS", nil),[self.textView.string wordsCount]]];
 	[[self.infoView viewWithTag:2] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_CHARS", nil),[self.textView.string length]]];
 	[[self.infoView viewWithTag:3] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_LINES", nil),[[self.lineNumberView lineIndices] count]]];
+}
+
+- (NSMenu *)textView:(NSTextView *)view menu:(NSMenu *)menu forEvent:(NSEvent *)event atIndex:(NSUInteger)charIndex {
+	NSUInteger i=0;
+	for (NSMenuItem *item in menu.itemArray) {
+		if ([item.title isEqualToString:@"Font"]) {
+			[menu removeItemAtIndex:i];
+			break;
+		}
+		i++;
+	}
+	return menu;
 }
 
 - (void)updateTextViewContents
@@ -233,6 +276,18 @@ typedef enum {
 
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
 		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
+		[self.textView setShouldInsertSpacesInsteadOfTabs:[aux boolValue]];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
+		[self.textView setTabSize:[aux integerValue]];
+		[self setTabWidthToNumberOfSpaces:[aux integerValue]];
+	} else {
+		[self.textView setTabSize:4];
+		[self setTabWidthToNumberOfSpaces:4];
 	}
 
 	NSLog(@"Loaded style from defaults");
@@ -316,24 +371,29 @@ typedef enum {
 }
 
 - (IBAction)action_switch_changeFontSize:(id)sender {
-	NSSegmentedControl *toggle = sender;
-	switch (toggle.selectedSegment) {
-		case 0: //Reduce font size
-			toggle.tag = 4;
-			[[NSFontManager sharedFontManager] modifyFont:sender];
-			break;
+	if ([sender isKindOfClass:[NSSegmentedControl class]]) {
+		NSSegmentedControl *toggle = sender;
 
-		case 1: //Normal font size
-			
-			break;
+		switch (toggle.selectedSegment) {
+			case 0: //Reduce font size
+				toggle.tag = 4;
+				[[NSFontManager sharedFontManager] modifyFont:sender];
+				break;
 
-		case 2: //Increase font size
-			toggle.tag = 3;
-			[[NSFontManager sharedFontManager] modifyFont:sender];
-			break;
+			case 1: //Normal font size
+				[self loadStyleAttributesFromDefaults];
+				break;
 
-		default:
-			break;
+			case 2: //Increase font size
+				toggle.tag = 3;
+				[[NSFontManager sharedFontManager] modifyFont:sender];
+				break;
+
+			default:
+				break;
+		}
+	} else if ([sender isKindOfClass:[NSMenuItem class]]) {
+		[self loadStyleAttributesFromDefaults];
 	}
 }
 

@@ -9,14 +9,18 @@
 #import "BPApplication.h"
 #import "BPDocumentWindow.h"
 
-typedef enum {
+enum {
 	BP_DEFAULTS_FONT =			(1<<1),
 	BP_DEFAULTS_TXTCOLOR =		(1<<2),
 	BP_DEFAULTS_BGCOLOR =		(1<<3),
 	BP_DEFAULTS_SHOWLINES =		(1<<4),
 	BP_DEFAULTS_SHOWSTATUS =	(1<<5),
-	BP_DEFAULTS_INSERTTABS =	(1<<6)
-} BP_DEFAULT_TYPES;
+	BP_DEFAULTS_INSERTTABS =	(1<<6),
+	BP_DEFAULTS_TABSIZE =		(1<<7),
+	BP_DEFAULTS_INSERTSPACES =	(1<<8)
+};
+
+typedef NSUInteger BP_DEFAULT_TYPES;
 
 @implementation BPApplication
 {
@@ -95,6 +99,20 @@ typedef enum {
 		[self.checkbox_insertTabs setState:NSOffState];
 	}
 
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
+		[self.checkbox_insertSpaces setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+	} else {
+		[self.checkbox_insertSpaces setState:NSOffState];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
+		[self.field_tabSize setStringValue:aux];
+		[self.stepper_tabSize setStringValue:aux];
+	} else {
+		[self.field_tabSize setIntegerValue:4];
+		[self.stepper_tabSize setIntegerValue:4];
+	}
+
 	[self.textView_example setTextColor:self.color_text];
 	[self.textView_example setBackgroundColor:self.color_bg];
 
@@ -139,6 +157,8 @@ typedef enum {
 	[defaults removeObjectForKey:kBP_DEFAULT_SHOWSTATUS];
 	[defaults removeObjectForKey:kBP_DEFAULT_SHOWLINES];
 	[defaults removeObjectForKey:kBP_DEFAULT_INSERTTABS];
+	[defaults removeObjectForKey:kBP_DEFAULT_INSERTSPACES];
+	[defaults removeObjectForKey:kBP_DEFAULT_TABSIZE];
 
 	[defaults synchronize];
 
@@ -174,6 +194,18 @@ typedef enum {
 		case -5: //Insert tabs
 			changedAttributes |= BP_DEFAULTS_INSERTTABS;
 			break;
+
+		case -6: //Tab size stepper
+		{
+			NSStepper *tabSize = sender;
+			[self.field_tabSize setIntegerValue:tabSize.integerValue];
+			changedAttributes |= BP_DEFAULTS_TABSIZE;
+		}
+			break;
+
+		case -7: //Insert spaces
+			changedAttributes |= BP_DEFAULTS_INSERTSPACES;
+			break;
 	}
 }
 
@@ -197,6 +229,12 @@ typedef enum {
 	}
 	if (changedAttributes & BP_DEFAULTS_INSERTTABS) {
 		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertTabs state] == NSOnState)] forKey:kBP_DEFAULT_INSERTTABS];
+	}
+	if (changedAttributes & BP_DEFAULTS_INSERTSPACES) {
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertSpaces state] == NSOnState)] forKey:kBP_DEFAULT_INSERTSPACES];
+	}
+	if (changedAttributes & BP_DEFAULTS_TABSIZE) {
+		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBP_DEFAULT_INSERTTABS];
 	}
 
 	changedAttributes = 0;

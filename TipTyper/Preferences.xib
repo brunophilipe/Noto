@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1090" identifier="macosx"/>
+        <deployment defaultVersion="1060" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -13,23 +13,27 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="BPApplication">
             <connections>
+                <outlet property="checkbox_insertSpaces" destination="8gH-JJ-3WL" id="i1Z-dm-0hV"/>
                 <outlet property="checkbox_insertTabs" destination="cqt-6H-yuN" id="NYJ-Mk-eUP"/>
                 <outlet property="checkbox_showLines" destination="bjR-jB-kLy" id="dmD-y0-R4s"/>
                 <outlet property="checkbox_showStatus" destination="skS-TS-rjZ" id="YFF-uX-U21"/>
                 <outlet property="field_currentFont" destination="P7V-wF-kZP" id="v5f-3o-DTJ"/>
+                <outlet property="field_tabSize" destination="KcJ-M5-Qfx" id="GKN-bx-adU"/>
+                <outlet property="stepper_tabSize" destination="BVS-HQ-qwo" id="KKH-7C-4zq"/>
                 <outlet property="textView_example" destination="QrE-2k-vb0" id="z8c-ai-6s6"/>
             </connections>
         </customObject>
         <window title="TipTyper Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="379"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="425"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="480" height="425"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="379"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="425"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" title="Editor Options" borderType="line" id="bGa-uw-YWA">
+                    <box autoresizesSubviews="NO" title="Style Options" borderType="line" id="bGa-uw-YWA">
                         <rect key="frame" x="17" y="57" width="446" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="contentView">
@@ -39,7 +43,7 @@
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" id="QrE-2k-vb0">
                                     <rect key="frame" x="150" y="39" width="276" height="66"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Lorem ipsum dolor sit amet." drawsBackground="YES" id="TYj-qy-uIR">
+                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Lorem ipsum dolor sit amet.  : ; ( ) { } ' &quot; ? / \ | - _ = + - * # $ @ % ^ &amp; [ ] &lt; > ~ `" drawsBackground="YES" id="TYj-qy-uIR">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -185,7 +189,7 @@
                         </textFieldCell>
                     </textField>
                     <button focusRingType="none" tag="-5" id="cqt-6H-yuN">
-                        <rect key="frame" x="169" y="343" width="293" height="18"/>
+                        <rect key="frame" x="169" y="389" width="293" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Insert tabs automatically" bezelStyle="regularSquare" imagePosition="left" focusRingType="none" inset="2" id="VSj-s9-EF1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -195,6 +199,59 @@
                             <action selector="action_controlChanged:" target="-3" id="Eqz-Pb-M0g"/>
                         </connections>
                     </button>
+                    <button focusRingType="none" tag="-7" id="8gH-JJ-3WL">
+                        <rect key="frame" x="169" y="369" width="241" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Insert spaces instead of tabs" bezelStyle="regularSquare" imagePosition="left" focusRingType="none" inset="2" id="gMO-Me-UVp">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="action_controlChanged:" target="-3" id="5pJ-eN-JhL"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9tA-6w-r31">
+                        <rect key="frame" x="30" y="344" width="135" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Tab Size:" id="dS1-g5-oOs">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" verticalHuggingPriority="750" id="KcJ-M5-Qfx">
+                        <rect key="frame" x="171" y="341" width="29" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" title="4" drawsBackground="YES" id="hDU-dt-b8G">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#" negativeFormat="#" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="0" maximumFractionDigits="0" id="5kW-Fb-oel">
+                                <real key="roundingIncrement" value="0.0"/>
+                                <real key="minimum" value="1"/>
+                                <real key="maximum" value="16"/>
+                                <metadata>
+                                    <bool key="localizesFormat" value="YES"/>
+                                    <real key="inspectorSampleValue" value="345"/>
+                                </metadata>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="-6" id="BVS-HQ-qwo">
+                        <rect key="frame" x="199" y="338" width="19" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" continuous="YES" focusRingType="none" alignment="left" minValue="1" maxValue="16" doubleValue="4" id="UyK-g3-THu"/>
+                        <connections>
+                            <action selector="action_controlChanged:" target="-3" id="4aC-07-dxt"/>
+                        </connections>
+                    </stepper>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="rDk-Yu-xez">
+                        <rect key="frame" x="20" y="333" width="440" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                 </subviews>
             </view>
             <connections>
