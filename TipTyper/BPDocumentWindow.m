@@ -354,6 +354,23 @@ typedef enum {
 	[self.scrollView setFrame:frame];
 }
 
+- (IBAction)action_switch_indentation:(id)sender {
+	NSSegmentedControl *toggler = sender;
+
+	switch (toggler.selectedSegment) {
+		case 0:
+			[self.textView decreaseIndentation];
+			break;
+
+		case 1:
+			[self.textView increaseIndentation];
+			break;
+
+		default:
+			break;
+	}
+}
+
 - (IBAction)action_toggle_displayOptions:(id)sender {
 	NSSegmentedControl *toggler = sender;
 

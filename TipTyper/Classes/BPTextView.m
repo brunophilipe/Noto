@@ -153,11 +153,11 @@
 			difference = 0;
 			block(location, &difference);
 			location = [self locationOfNextNewLineFromLocation:location];
-			count += difference;
+			count += difference * (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
 		}
 
-		diffRange = (count == 0 ? 0 : (count < 0 ? 1 : -1));
-		range = NSMakeRange((range.location < diffRange ? 0 : range.location - diffRange), range.length + count + diffRange);
+		diffRange = (count == 0 ? 0 : (count < 0 ? 1 : -1)) * (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
+		range = NSMakeRange(((int)range.location - (int)diffRange < 0 ? 0 : range.location - diffRange), range.length + count + diffRange);
 
 		[ranges addObject:[NSValue valueWithRange:range]];
 	}

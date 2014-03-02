@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5051"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BPDocument">
@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="BPApplication"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window" customClass="BPDocumentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="456" y="196" width="600" height="480"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="400" height="180"/>
@@ -130,10 +131,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="DD6ED568-57E6-422D-B9B5-5D18FA6D98CA" label="Editor Spacing" paletteLabel="Editor Spacing" id="0y9-S2-ukV">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="67" height="25"/>
+                        <size key="minSize" width="67" height="28"/>
                         <size key="maxSize" width="67" height="28"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="gR5-7Z-XjY">
-                            <rect key="frame" x="9" y="14" width="67" height="25"/>
+                            <rect key="frame" x="9" y="14" width="67" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="V1a-GX-lxQ">
                                 <font key="font" metaFont="system"/>
@@ -145,6 +146,29 @@
                         </segmentedControl>
                         <connections>
                             <action selector="action_switch_editorSpacing:" target="xOd-HO-29H" id="9zO-n0-uEp"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A119BD28-A8E3-4ECC-B2BE-F88D24CCCDA3" label="Indentation" paletteLabel="Indentation" id="Zc5-wC-gFw">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="67" height="28"/>
+                        <size key="maxSize" width="67" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="EXc-pY-i9E">
+                            <rect key="frame" x="1" y="14" width="67" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="SIy-ZQ-lh8">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="indentDecreaseTemplate" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="indentIncreaseTemplate" width="32" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="action_switch_indentation:" target="xOd-HO-29H" id="77M-Uo-N30"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D09C1698-5947-4935-9469-CF5F3386FB75" label="Display Options" paletteLabel="Display Options" id="kJX-yW-0np">
@@ -216,10 +240,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2A1634C0-E94D-49DF-B66A-13D9AC17B802" explicitItemIdentifier="BPToolbarFontSizeToolbarItem" label="Font Size" paletteLabel="Font Size" id="qq5-MZ-IH7">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="100" height="25"/>
+                        <size key="minSize" width="100" height="28"/>
                         <size key="maxSize" width="100" height="28"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="gOB-UL-rlj">
-                            <rect key="frame" x="0.0" y="14" width="100" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="100" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="CEn-yy-O6I">
                                 <font key="font" metaFont="system"/>
@@ -273,6 +297,8 @@
         <image name="fontMinusTemplate" width="16" height="16"/>
         <image name="fontMoreTemplate" width="16" height="16"/>
         <image name="fontNormalTemplate" width="16" height="16"/>
+        <image name="indentDecreaseTemplate" width="16" height="16"/>
+        <image name="indentIncreaseTemplate" width="16" height="16"/>
         <image name="infoTemplate" width="15" height="15"/>
         <image name="jumpToLineTemplate" width="16" height="16"/>
         <image name="linesTemplate" width="16" height="16"/>

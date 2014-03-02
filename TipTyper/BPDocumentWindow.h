@@ -42,6 +42,7 @@
 
 - (IBAction)action_switch_textAlignment:(id)sender;
 - (IBAction)action_switch_editorSpacing:(id)sender;
+- (IBAction)action_switch_indentation:(id)sender;
 - (IBAction)action_toggle_displayOptions:(id)sender;
 - (IBAction)action_bt_editToolbar:(id)sender;
 - (IBAction)action_showJumpToLineDialog:(id)sender;

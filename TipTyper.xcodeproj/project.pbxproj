@@ -14,6 +14,10 @@
 		1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1502C30518B9AF5D002EC738 /* BPTextView.m */; };
 		156C050C18AC7F0300D28533 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156C050B18AC7F0300D28533 /* Preferences.xib */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
+		15BCB21C18C2C85F0053469B /* indentDecreaseTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21818C2C85F0053469B /* indentDecreaseTemplate.png */; };
+		15BCB21D18C2C85F0053469B /* indentDecreaseTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21918C2C85F0053469B /* indentDecreaseTemplate@2x.png */; };
+		15BCB21E18C2C85F0053469B /* indentIncreaseTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21A18C2C85F0053469B /* indentIncreaseTemplate.png */; };
+		15BCB21F18C2C85F0053469B /* indentIncreaseTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21B18C2C85F0053469B /* indentIncreaseTemplate@2x.png */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
 		15C21D4418A83D5500C9D410 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15C21D4218A83D5500C9D410 /* InfoPlist.strings */; };
 		15C21D4618A83D5500C9D410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4518A83D5500C9D410 /* main.m */; };
@@ -93,6 +97,10 @@
 		156C050B18AC7F0300D28533 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
 		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
+		15BCB21818C2C85F0053469B /* indentDecreaseTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indentDecreaseTemplate.png; sourceTree = "<group>"; };
+		15BCB21918C2C85F0053469B /* indentDecreaseTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indentDecreaseTemplate@2x.png"; sourceTree = "<group>"; };
+		15BCB21A18C2C85F0053469B /* indentIncreaseTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indentIncreaseTemplate.png; sourceTree = "<group>"; };
+		15BCB21B18C2C85F0053469B /* indentIncreaseTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indentIncreaseTemplate@2x.png"; sourceTree = "<group>"; };
 		15C21D3618A83D5500C9D410 /* TipTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C21D3918A83D5500C9D410 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		15C21D3C18A83D5500C9D410 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -286,6 +294,10 @@
 				15E8409418AC604800540474 /* fontMoreTemplate@2x.png */,
 				15E8409518AC604800540474 /* fontNormalTemplate.png */,
 				15E8409618AC604800540474 /* fontNormalTemplate@2x.png */,
+				15BCB21818C2C85F0053469B /* indentDecreaseTemplate.png */,
+				15BCB21918C2C85F0053469B /* indentDecreaseTemplate@2x.png */,
+				15BCB21A18C2C85F0053469B /* indentIncreaseTemplate.png */,
+				15BCB21B18C2C85F0053469B /* indentIncreaseTemplate@2x.png */,
 				15C21DBA18A8514900C9D410 /* infoTemplate.png */,
 				15C21DBB18A8514900C9D410 /* infoTemplate@2x.png */,
 				15E8408D18AC5E5100540474 /* jumpToLineTemplate.png */,
@@ -430,6 +442,7 @@
 				15C21DA618A843E700C9D410 /* alignLeftTemplate.png in Resources */,
 				15C21DA818A843E700C9D410 /* alignRightTemplate.png in Resources */,
 				15C21D5518A83D5500C9D410 /* Images.xcassets in Resources */,
+				15BCB21C18C2C85F0053469B /* indentDecreaseTemplate.png in Resources */,
 				15C21DB518A8458100C9D410 /* printTemplate@2x.png in Resources */,
 				15E8409918AC604800540474 /* fontMoreTemplate.png in Resources */,
 				15C21DB118A8444A00C9D410 /* marginWideTemplate@2x.png in Resources */,
@@ -440,6 +453,7 @@
 				15C21D4A18A83D5500C9D410 /* Credits.rtf in Resources */,
 				15E8409718AC604800540474 /* fontMinusTemplate.png in Resources */,
 				15C21DBD18A8514900C9D410 /* infoTemplate@2x.png in Resources */,
+				15BCB21D18C2C85F0053469B /* indentDecreaseTemplate@2x.png in Resources */,
 				15E8409018AC5E5100540474 /* jumpToLineTemplate@2x.png in Resources */,
 				15C21DB818A850C000C9D410 /* linesTemplate.png in Resources */,
 				15E8409A18AC604800540474 /* fontMoreTemplate@2x.png in Resources */,
@@ -447,10 +461,12 @@
 				1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */,
 				15C21DAE18A8444A00C9D410 /* marginNarrowTemplate.png in Resources */,
 				156C050C18AC7F0300D28533 /* Preferences.xib in Resources */,
+				15BCB21F18C2C85F0053469B /* indentIncreaseTemplate@2x.png in Resources */,
 				15E8409C18AC604800540474 /* fontNormalTemplate@2x.png in Resources */,
 				15C21DB418A8458100C9D410 /* printTemplate.png in Resources */,
 				15C21D5318A83D5500C9D410 /* MainMenu.xib in Resources */,
 				15C21DAF18A8444A00C9D410 /* marginNarrowTemplate@2x.png in Resources */,
+				15BCB21E18C2C85F0053469B /* indentIncreaseTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
