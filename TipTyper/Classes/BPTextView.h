@@ -14,4 +14,7 @@
 @property (nonatomic) BOOL shouldInsertSpacesInsteadOfTabs;
 @property NSUInteger tabSize;
 
+- (void)increaseIndentation;
+- (void)decreaseIndentation;
+
 @end

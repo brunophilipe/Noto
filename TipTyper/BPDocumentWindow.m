@@ -243,6 +243,41 @@ typedef enum {
 	[self.textView scrollRangeToVisible:range];
 }
 
+- (IBAction)increaseIndentation:(id)sender
+{
+	[self.textView increaseIndentation];
+}
+
+- (IBAction)decreaseIndentation:(id)sender
+{
+	[self.textView decreaseIndentation];
+}
+
+- (void)loadTabSettingsFromDefaults
+{
+	NSUserDefaults	*defaults = [NSUserDefaults standardUserDefaults];
+
+	id aux;
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
+		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
+		[self.textView setShouldInsertSpacesInsteadOfTabs:[aux boolValue]];
+	}
+
+	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
+		[self.textView setTabSize:[aux integerValue]];
+		[self setTabWidthToNumberOfSpaces:[aux integerValue]];
+	} else {
+		[self.textView setTabSize:4];
+		[self setTabWidthToNumberOfSpaces:4];
+	}
+
+	NSLog(@"Loaded tab settings from defaults");
+}
+
 - (void)loadStyleAttributesFromDefaults
 {
 	NSUserDefaults	*defaults = [NSUserDefaults standardUserDefaults];
@@ -274,21 +309,7 @@ typedef enum {
 		[self.textView setTextColor:kBP_TIPTYPER_TXTCOLOR];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
-		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
-	}
-
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
-		[self.textView setShouldInsertSpacesInsteadOfTabs:[aux boolValue]];
-	}
-
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
-		[self.textView setTabSize:[aux integerValue]];
-		[self setTabWidthToNumberOfSpaces:[aux integerValue]];
-	} else {
-		[self.textView setTabSize:4];
-		[self setTabWidthToNumberOfSpaces:4];
-	}
+	[self loadTabSettingsFromDefaults];
 
 	NSLog(@"Loaded style from defaults");
 }
@@ -371,30 +392,63 @@ typedef enum {
 }
 
 - (IBAction)action_switch_changeFontSize:(id)sender {
-	if ([sender isKindOfClass:[NSSegmentedControl class]]) {
-		NSSegmentedControl *toggle = sender;
+	NSSegmentedControl *toggle = sender;
 
-		switch (toggle.selectedSegment) {
-			case 0: //Reduce font size
+	switch (toggle.selectedSegment) {
+		case 0: //Reduce font size
+			if (self.textView.font.pointSize > 7) {
 				toggle.tag = 4;
 				[[NSFontManager sharedFontManager] modifyFont:sender];
-				break;
+			}
+			break;
 
-			case 1: //Normal font size
-				[self loadStyleAttributesFromDefaults];
-				break;
+		case 1: //Normal font size
+			[self loadStyleAttributesFromDefaults];
+			break;
 
-			case 2: //Increase font size
-				toggle.tag = 3;
-				[[NSFontManager sharedFontManager] modifyFont:sender];
-				break;
+		case 2: //Increase font size
+			toggle.tag = 3;
+			[[NSFontManager sharedFontManager] modifyFont:sender];
+			break;
 
-			default:
-				break;
-		}
-	} else if ([sender isKindOfClass:[NSMenuItem class]]) {
-		[self loadStyleAttributesFromDefaults];
+		default:
+			break;
 	}
+
+	[self loadTabSettingsFromDefaults];
+}
+
+- (IBAction)action_menu_changeFontSize:(id)sender
+{
+	NSMenuItem *item = sender;
+	static NSControl *dummy;
+
+	if (!dummy) {
+		dummy = [[NSControl alloc] init];
+	}
+
+	switch (item.tag) {
+		case 3: //Reduce font size
+			if (self.textView.font.pointSize > 7) {
+				dummy.tag = 4;
+				[[NSFontManager sharedFontManager] modifyFont:dummy];
+			}
+			break;
+
+		case 2: //Normal font size
+			[self loadStyleAttributesFromDefaults];
+			break;
+
+		case 1: //Increase font size
+			dummy.tag = 3;
+			[[NSFontManager sharedFontManager] modifyFont:dummy];
+			break;
+
+		default:
+			break;
+	}
+
+	[self loadTabSettingsFromDefaults];
 }
 
 @end

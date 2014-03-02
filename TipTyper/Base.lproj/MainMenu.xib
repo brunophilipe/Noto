@@ -353,6 +353,17 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="I7N-cp-0fI"/>
+                            <menuItem title="Increase Indentation" keyEquivalent="]" id="kqp-aj-10x">
+                                <connections>
+                                    <action selector="increaseIndentation:" target="-1" id="DPv-M8-976"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Decrease Indentation" keyEquivalent="[" id="m9f-rk-LfW">
+                                <connections>
+                                    <action selector="decreaseIndentation:" target="-1" id="tHJ-Li-cEd"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="gVe-5e-0Ts"/>
                             <menuItem title="Go to Line..." keyEquivalent="g" id="qVD-Z8-9aq">
                                 <connections>
@@ -412,19 +423,19 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="TpV-Cb-XxQ"/>
-                            <menuItem title="Increase Font Size" tag="3" keyEquivalent="+" id="FEt-uo-gBi">
+                            <menuItem title="Increase Font Size" tag="1" keyEquivalent="+" id="FEt-uo-gBi">
                                 <connections>
-                                    <action selector="modifyFont:" target="YLy-65-1bz" id="HR7-E2-anb"/>
+                                    <action selector="action_menu_changeFontSize:" target="-1" id="taD-FD-QUe"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Reset Font Size" keyEquivalent="0" id="JU6-Hl-riX">
+                            <menuItem title="Reset Font Size" tag="2" keyEquivalent="0" id="JU6-Hl-riX">
                                 <connections>
-                                    <action selector="action_switch_changeFontSize:" target="-1" id="iKK-Pb-uJu"/>
+                                    <action selector="action_menu_changeFontSize:" target="-1" id="9Rf-ZH-XYG"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Decrease Font Size" tag="4" keyEquivalent="-" id="EWV-E3-uhU">
+                            <menuItem title="Decrease Font Size" tag="3" keyEquivalent="-" id="EWV-E3-uhU">
                                 <connections>
-                                    <action selector="modifyFont:" target="YLy-65-1bz" id="UeC-IY-Teh"/>
+                                    <action selector="action_menu_changeFontSize:" target="-1" id="c4r-K8-Vzf"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>

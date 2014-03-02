@@ -106,8 +106,8 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 	}
 
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
-		[self.field_tabSize setStringValue:aux];
-		[self.stepper_tabSize setStringValue:aux];
+		[self.field_tabSize setIntegerValue:[aux integerValue]];
+		[self.stepper_tabSize setIntegerValue:[aux integerValue]];
 	} else {
 		[self.field_tabSize setIntegerValue:4];
 		[self.stepper_tabSize setIntegerValue:4];
@@ -234,7 +234,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertSpaces state] == NSOnState)] forKey:kBP_DEFAULT_INSERTSPACES];
 	}
 	if (changedAttributes & BP_DEFAULTS_TABSIZE) {
-		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBP_DEFAULT_INSERTTABS];
+		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBP_DEFAULT_TABSIZE];
 	}
 
 	changedAttributes = 0;

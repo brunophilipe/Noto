@@ -46,5 +46,9 @@
 - (IBAction)action_bt_editToolbar:(id)sender;
 - (IBAction)action_showJumpToLineDialog:(id)sender;
 - (IBAction)action_switch_changeFontSize:(id)sender;
+- (IBAction)action_menu_changeFontSize:(id)sender;
+
+- (IBAction)increaseIndentation:(id)sender;
+- (IBAction)decreaseIndentation:(id)sender;
 
 @end
