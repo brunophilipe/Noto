@@ -57,7 +57,7 @@
 	return index+1;
 }
 
-- (NSUInteger)countTabCharsFromLocation:(NSUInteger)location
+- (NSUInteger)countTabCharsFromLocation:(NSUInteger)location spareSpaces:(NSUInteger *)spareSpaces
 {
 	NSUInteger count = 0, spaces = 0;
 	NSString *string = self.string;
@@ -75,6 +75,10 @@
 		} else {
 			finished = YES;
 		}
+	}
+
+	if (spareSpaces != NULL) {
+		*spareSpaces = spaces%self.tabSize;
 	}
 
 	return count + spaces/self.tabSize;
@@ -112,7 +116,7 @@
 			chr = [string characterAtIndex:range.location-1];
 			if (chr == '\n') {
 				location = [self locationOfPreviousNewLineFromLocation:range.location-1];
-				count = [self countTabCharsFromLocation:location+1];
+				count = [self countTabCharsFromLocation:location+1 spareSpaces:NULL];
 
 				if (self.shouldInsertSpacesInsteadOfTabs) {
 					[self insertText:[self buildStringWithSpacesCount:count * self.tabSize]];
@@ -149,7 +153,7 @@
 		range.location += previousCount;
 		location = initialLocation = [self locationOfPreviousNewLineFromLocation:range.location] + 1;
 
-		while (location < initialLocation + range.length + count + 1) {
+		while (location < initialLocation + range.length + ABS(count) + 1) {
 			difference = 0;
 			block(location, &difference);
 			location = [self locationOfNextNewLineFromLocation:location];
@@ -191,7 +195,8 @@
 
 - (BOOL)decreaseIndentationAtLocation:(NSUInteger)location
 {
-	NSUInteger count = [self countTabCharsFromLocation:location];
+	NSUInteger spareSpaces;
+	NSUInteger count = [self countTabCharsFromLocation:location spareSpaces:&spareSpaces];
 
 	if (count > 0) {
 		if (self.shouldInsertSpacesInsteadOfTabs) {
@@ -201,6 +206,8 @@
 		}
 
 		return YES;
+	} else if (spareSpaces > 0) {
+		[self insertText:@"" replacementRange:NSMakeRange(location, spareSpaces)];
 	}
 
 	return NO;
