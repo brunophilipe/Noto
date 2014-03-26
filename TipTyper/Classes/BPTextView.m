@@ -10,6 +10,8 @@
 
 #define kBP_KEYCODE_RETURN 36
 
+#define BP_IS_FIRST_CHAR (int)range.location - (int)diffRange
+
 @interface BPTextView ()
 
 @end
@@ -125,8 +127,10 @@
 		NSUInteger location = 0, count = 0;
 		unichar chr = '\0';
 
-		if (range.location-1 < string.length) {
-			chr = [string characterAtIndex:range.location-1];
+		range.location--;
+
+		if (range.location < string.length) {
+			chr = [string characterAtIndex:range.location];
 			if (chr == '\n') {
 				location = [self locationOfPreviousNewLineFromLocation:range.location];
 				count = [self countTabCharsFromLocation:location+1 spareSpaces:NULL];
@@ -168,25 +172,30 @@
 
 		do {
 			difference = 0;
-
-			block(location, &difference);
-
+			block(location, &difference); //parameter block reference execution
 			didChange = (difference != 0);
 
 			if (didChange && isFirstLine) {
 				didChangeFirstLine = YES;
+				isFirstLine = NO;
 			}
 
 			location = [self locationOfNextNewLineFromLocation:location] + 1;
 			count += difference;
-
-			isFirstLine = NO;
-		} while (location < range.location + range.length + ABS(count) + 1);
+		} while (location < range.location + range.length + count);
 
 		didChangeLastLine = didChange;
 
-		diffRange = (count == 0 ? 0 : (count < 0 ? 1 : -1)) * (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
-		range = NSMakeRange((((int)range.location - (int)diffRange < 0) && !didChangeFirstLine ? 0 : range.location - diffRange), range.length + count + diffRange);
+		if (count == 0) {
+			diffRange = 0;
+		} else {
+			diffRange = -SGN(count) * (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
+		}
+
+		range = NSMakeRange(
+			/* Location */	(BP_IS_FIRST_CHAR < 0 ? 0 : range.location - (didChangeFirstLine ? diffRange : 0)),
+			/* Length   */	range.length + count + (didChangeFirstLine ? diffRange : 0)
+							);
 
 		[ranges addObject:[NSValue valueWithRange:range]];
 	}
@@ -233,11 +242,7 @@
 	NSUInteger count = [self countTabCharsFromLocation:location spareSpaces:&spaces];
 
 	if (count > 0) {
-		if (self.shouldInsertSpacesInsteadOfTabs) {
-			[self insertText:@"" replacementRange:NSMakeRange(location, self.tabSize)];
-		} else {
-			[self insertText:@"" replacementRange:NSMakeRange(location, 1)];
-		}
+		[self insertText:@"" replacementRange:NSMakeRange(location, 1)];
 
 		return YES;
 	} else if (spaces > 0) {

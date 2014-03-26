@@ -29,4 +29,6 @@
 	#define kBP_TIPTYPER_TXTCOLOR [NSColor blackColor]
 
 	#define NOT(b) (b) = !(b)
+
+	#define SGN(x) (x>=0?1:-1)
 #endif
