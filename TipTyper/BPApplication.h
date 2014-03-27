@@ -53,4 +53,5 @@
 - (IBAction)action_controlChanged:(id)sender;
 - (IBAction)action_applyChanges:(id)sender;
 
+- (IBAction)showAboutPanel:(id)sender;
 @end

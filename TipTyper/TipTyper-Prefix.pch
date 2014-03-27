@@ -30,5 +30,7 @@
 
 	#define NOT(b) (b) = !(b)
 
+	#define kBP_TIPTYPER_WEBSITE [NSURL URLWithString:@"http://www.brunophilipe.com/software/tiptyper"]
+
 	#define SGN(x) (x>=0?1:-1)
 #endif

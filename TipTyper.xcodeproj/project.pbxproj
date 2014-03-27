@@ -14,7 +14,12 @@
 		1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1502C30518B9AF5D002EC738 /* BPTextView.m */; };
 		15408A4B18E3B24F00127DA6 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15408A4D18E3B24F00127DA6 /* Preferences.xib */; };
 		15408A5318E3B27200127DA6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15408A5518E3B27200127DA6 /* Localizable.strings */; };
+		15408A6818E3C90400127DA6 /* DCOAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15408A6518E3C90400127DA6 /* DCOAboutWindow.xib */; };
+		15408A6918E3C90400127DA6 /* DCOAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6718E3C90400127DA6 /* DCOAboutWindowController.m */; };
+		15408A6F18E3CA8B00127DA6 /* DCOTransparentScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6C18E3CA8B00127DA6 /* DCOTransparentScroller.m */; };
+		15408A7018E3CA8B00127DA6 /* DCOTransparentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
+		159B143218E3DDED00449DB3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 159B143418E3DDED00449DB3 /* Credits.rtf */; };
 		15BCB21C18C2C85F0053469B /* indentDecreaseTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21818C2C85F0053469B /* indentDecreaseTemplate.png */; };
 		15BCB21D18C2C85F0053469B /* indentDecreaseTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21918C2C85F0053469B /* indentDecreaseTemplate@2x.png */; };
 		15BCB21E18C2C85F0053469B /* indentIncreaseTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BCB21A18C2C85F0053469B /* indentIncreaseTemplate.png */; };
@@ -100,8 +105,17 @@
 		15408A5A18E3B2DA00127DA6 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		15408A5B18E3B2DA00127DA6 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		15408A5D18E3B56800127DA6 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		15408A6518E3C90400127DA6 /* DCOAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCOAboutWindow.xib; sourceTree = "<group>"; };
+		15408A6618E3C90400127DA6 /* DCOAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCOAboutWindowController.h; sourceTree = "<group>"; };
+		15408A6718E3C90400127DA6 /* DCOAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCOAboutWindowController.m; sourceTree = "<group>"; };
+		15408A6B18E3CA8B00127DA6 /* DCOTransparentScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCOTransparentScroller.h; sourceTree = "<group>"; };
+		15408A6C18E3CA8B00127DA6 /* DCOTransparentScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCOTransparentScroller.m; sourceTree = "<group>"; };
+		15408A6D18E3CA8B00127DA6 /* DCOTransparentScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCOTransparentScrollView.h; sourceTree = "<group>"; };
+		15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCOTransparentScrollView.m; sourceTree = "<group>"; };
 		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
 		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
+		159B143318E3DDED00449DB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
+		159B143518E3DDF200449DB3 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = pt; path = pt.lproj/Credits.rtf; sourceTree = "<group>"; };
 		15BCB21818C2C85F0053469B /* indentDecreaseTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indentDecreaseTemplate.png; sourceTree = "<group>"; };
 		15BCB21918C2C85F0053469B /* indentDecreaseTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indentDecreaseTemplate@2x.png"; sourceTree = "<group>"; };
 		15BCB21A18C2C85F0053469B /* indentIncreaseTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indentIncreaseTemplate.png; sourceTree = "<group>"; };
@@ -186,6 +200,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15408A6418E3C90400127DA6 /* DCOAboutWindow */ = {
+			isa = PBXGroup;
+			children = (
+				15408A6518E3C90400127DA6 /* DCOAboutWindow.xib */,
+				15408A6618E3C90400127DA6 /* DCOAboutWindowController.h */,
+				15408A6718E3C90400127DA6 /* DCOAboutWindowController.m */,
+				15408A6B18E3CA8B00127DA6 /* DCOTransparentScroller.h */,
+				15408A6C18E3CA8B00127DA6 /* DCOTransparentScroller.m */,
+				15408A6D18E3CA8B00127DA6 /* DCOTransparentScrollView.h */,
+				15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */,
+			);
+			name = DCOAboutWindow;
+			path = ../Frameworks/DCOAboutWindow;
+			sourceTree = "<group>";
+		};
 		15C21D2D18A83D5500C9D410 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +286,7 @@
 				15C21D4718A83D5500C9D410 /* TipTyper-Prefix.pch */,
 				15408A5518E3B27200127DA6 /* Localizable.strings */,
 				15E4929F18A9B1FB004C4901 /* BumpBuild.sh */,
+				159B143418E3DDED00449DB3 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,6 +346,7 @@
 		15C21DBE18A8580B00C9D410 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				15408A6418E3C90400127DA6 /* DCOAboutWindow */,
 				15C21DBF18A8580B00C9D410 /* LineCounter */,
 			);
 			path = Libraries;
@@ -438,6 +469,7 @@
 				15C21DB918A850C000C9D410 /* linesTemplate@2x.png in Resources */,
 				15C21DA718A843E700C9D410 /* alignLeftTemplate@2x.png in Resources */,
 				15E8409B18AC604800540474 /* fontNormalTemplate.png in Resources */,
+				159B143218E3DDED00449DB3 /* Credits.rtf in Resources */,
 				15E8409818AC604800540474 /* fontMinusTemplate@2x.png in Resources */,
 				15C21DA618A843E700C9D410 /* alignLeftTemplate.png in Resources */,
 				15C21DA818A843E700C9D410 /* alignRightTemplate.png in Resources */,
@@ -454,6 +486,7 @@
 				15C21DBD18A8514900C9D410 /* infoTemplate@2x.png in Resources */,
 				15BCB21D18C2C85F0053469B /* indentDecreaseTemplate@2x.png in Resources */,
 				15E8409018AC5E5100540474 /* jumpToLineTemplate@2x.png in Resources */,
+				15408A6818E3C90400127DA6 /* DCOAboutWindow.xib in Resources */,
 				15C21DB818A850C000C9D410 /* linesTemplate.png in Resources */,
 				15E8409A18AC604800540474 /* fontMoreTemplate@2x.png in Resources */,
 				15C21DBC18A8514900C9D410 /* infoTemplate.png in Resources */,
@@ -505,12 +538,15 @@
 				15C21DC718A8580B00C9D410 /* NoodleLineNumberMarker.m in Sources */,
 				15C21DD118A94A4E00C9D410 /* NSString+WordsCount.m in Sources */,
 				1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */,
+				15408A6918E3C90400127DA6 /* DCOAboutWindowController.m in Sources */,
 				15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */,
 				15C21D4618A83D5500C9D410 /* main.m in Sources */,
 				15C21D7218A83D7C00C9D410 /* BPDocumentWindow.m in Sources */,
 				1500F28218B056B500481A86 /* BPEncodingTool.m in Sources */,
+				15408A6F18E3CA8B00127DA6 /* DCOTransparentScroller.m in Sources */,
 				15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */,
 				15C21DC618A8580B00C9D410 /* MarkerLineNumberView.m in Sources */,
+				15408A7018E3CA8B00127DA6 /* DCOTransparentScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +585,15 @@
 				15408A5B18E3B2DA00127DA6 /* pt */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		159B143418E3DDED00449DB3 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159B143318E3DDED00449DB3 /* Base */,
+				159B143518E3DDF200449DB3 /* pt */,
+			);
+			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		15C21D4218A83D5500C9D410 /* InfoPlist.strings */ = {
@@ -613,7 +658,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -646,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Release;

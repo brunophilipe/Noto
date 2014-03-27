@@ -19,7 +19,7 @@
                             <menuItem title="About TipTyper" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                    <action selector="showAboutPanel:" target="-3" id="bJX-ao-J4d"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Check for Updates" id="sKj-A6-smU">

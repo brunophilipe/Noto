@@ -8,6 +8,7 @@
 
 #import "BPApplication.h"
 #import "BPDocumentWindow.h"
+#import "DCOAboutWindowController.h"
 
 enum {
 	BP_DEFAULTS_FONT =			(1<<1),
@@ -27,6 +28,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 	NSWindowController *prefWindowController;
 	NSWindow *prefWindow;
 	BP_DEFAULT_TYPES changedAttributes;
+	DCOAboutWindowController *aboutWindowController;
 }
 
 - (void)setKeyDocument:(BPDocument *)keyDocument
@@ -39,7 +41,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 - (IBAction)openWebsite:(id)sender
 {
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	[ws openURL:[NSURL URLWithString:@"http://www.brunophilipe.com/software/tiptyper"]];
+	[ws openURL:kBP_TIPTYPER_WEBSITE];
 }
 
 - (IBAction)showPreferences:(id)sender
@@ -241,6 +243,17 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 
 	[defaults synchronize];
 	[[NSNotificationCenter defaultCenter] postNotificationName:kBP_SHOULD_RELOAD_STYLE object:self];
+}
+
+- (IBAction)showAboutPanel:(id)sender {
+	if (!aboutWindowController) {
+		aboutWindowController = [[DCOAboutWindowController alloc] init];
+
+		[aboutWindowController setAppCopyright:@"Copyright Bruno Philipe 2014 – All Rights Reserved"];
+		[aboutWindowController setAppWebsiteURL:kBP_TIPTYPER_WEBSITE];
+	}
+
+	[aboutWindowController showWindow:sender];
 }
 
 @end
