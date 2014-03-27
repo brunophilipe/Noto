@@ -1,0 +1,63 @@
+
+/* Class = "NSToolbarItem"; label = "Editor Spacing"; ObjectID = "0y9-S2-ukV"; */
+"0y9-S2-ukV.label" = "Margem do Editor";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Editor Spacing"; ObjectID = "0y9-S2-ukV"; */
+"0y9-S2-ukV.paletteLabel" = "Margem Spacing";
+
+/* Class = "NSToolbarItem"; label = "Align Text"; ObjectID = "6iO-D5-PF0"; */
+"6iO-D5-PF0.label" = "Alinhar Texto";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Align Text"; ObjectID = "6iO-D5-PF0"; */
+"6iO-D5-PF0.paletteLabel" = "Alinhar Texto";
+
+/* Class = "NSTextFieldCell"; title = "UTF-8"; ObjectID = "85B-6h-e6m"; */
+"85B-6h-e6m.title" = "UTF-8";
+
+/* Class = "NSTextFieldCell"; title = "Words: 0"; ObjectID = "CYR-p5-WsR"; */
+"CYR-p5-WsR.title" = "Palavras: 0";
+
+/* Class = "NSToolbarItem"; label = "Indentation"; ObjectID = "Zc5-wC-gFw"; */
+"Zc5-wC-gFw.label" = "Indentação";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Indentation"; ObjectID = "Zc5-wC-gFw"; */
+"Zc5-wC-gFw.paletteLabel" = "Indentação";
+
+/* Class = "NSTextFieldCell"; title = "Characters: 0"; ObjectID = "Zuk-dd-NP9"; */
+"Zuk-dd-NP9.title" = "Caracteres: 0";
+
+/* Class = "NSToolbarItem"; label = "Settings"; ObjectID = "azi-cE-2q8"; */
+"azi-cE-2q8.label" = "Ajustes";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Settings"; ObjectID = "azi-cE-2q8"; */
+"azi-cE-2q8.paletteLabel" = "Ajustes";
+
+/* Class = "NSToolbarItem"; label = "Print"; ObjectID = "dxg-vt-c8r"; */
+"dxg-vt-c8r.label" = "Imprimir";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Print"; ObjectID = "dxg-vt-c8r"; */
+"dxg-vt-c8r.paletteLabel" = "Imprimir";
+
+/* Class = "NSToolbarItem"; label = "Go to Line"; ObjectID = "jrB-De-zzy"; */
+"jrB-De-zzy.label" = "Ir para Linha";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Go to Line"; ObjectID = "jrB-De-zzy"; */
+"jrB-De-zzy.paletteLabel" = "Ir para Linha";
+
+/* Class = "NSToolbarItem"; label = "Display Options"; ObjectID = "kJX-yW-0np"; */
+"kJX-yW-0np.label" = "Detalhes";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Display Options"; ObjectID = "kJX-yW-0np"; */
+"kJX-yW-0np.paletteLabel" = "Detalhes";
+
+/* Class = "NSTextFieldCell"; title = "Lines: 0"; ObjectID = "kmk-nm-A8O"; */
+"kmk-nm-A8O.title" = "Linhas: 0";
+
+/* Class = "NSToolbarItem"; label = "Font Size"; ObjectID = "qq5-MZ-IH7"; */
+"qq5-MZ-IH7.label" = "Tamanho da Fonte";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Font Size"; ObjectID = "qq5-MZ-IH7"; */
+"qq5-MZ-IH7.paletteLabel" = "Tamanho da Fonte";
+
+/* Class = "BPDocumentWindow"; title = "Window"; ObjectID = "xOd-HO-29H"; */
+"xOd-HO-29H.title" = "Janela";

@@ -1,0 +1,63 @@
+
+/* Class = "NSWindow"; title = "TipTyper Preferences"; ObjectID = "1"; */
+"1.title" = "TipTyper Preferences";
+
+/* Class = "NSTextFieldCell"; title = "Background Color:"; ObjectID = "4Jz-mI-bg1"; */
+"4Jz-mI-bg1.title" = "Background Color:";
+
+/* Class = "NSTextFieldCell"; title = "These options will be applied to all windows."; ObjectID = "6ua-eo-xYh"; */
+"6ua-eo-xYh.title" = "These options will be applied to all windows.";
+
+/* Class = "NSButtonCell"; title = "Show information bar by default"; ObjectID = "8M3-Mo-7us"; */
+"8M3-Mo-7us.title" = "Show information bar by default";
+
+/* Class = "NSTextFieldCell"; title = "Menlo Normal 12pt"; ObjectID = "BZr-pH-klp"; */
+"BZr-pH-klp.title" = "Menlo Normal 12pt";
+
+/* Class = "NSTextFieldCell"; title = "On new windows:"; ObjectID = "HU2-Za-9Vi"; */
+"HU2-Za-9Vi.title" = "On new windows:";
+
+/* Class = "NSTextFieldCell"; title = "Sets the apparent size of the tab character"; ObjectID = "JHJ-wX-s73"; */
+"JHJ-wX-s73.title" = "Sets the apparent size of the tab character";
+
+/* Class = "NSButtonCell"; title = "Change"; ObjectID = "Rn6-yU-jz1"; */
+"Rn6-yU-jz1.title" = "Change";
+
+/* Class = "NSTextFieldCell"; title = "Lorem ipsum dolor sit amet.  : ; ( ) { } ' \" ? / \\ | - _ = + - * # $ @ % ^ & [ ] < > ~ `"; ObjectID = "TYj-qy-uIR"; */
+"TYj-qy-uIR.title" = "Lorem ipsum dolor sit amet.  : ; ( ) { } ' \" ? / \\ | - _ = + - * # $ @ % ^ & [ ] < > ~ `";
+
+/* Class = "NSButtonCell"; title = "Insert tabs automatically"; ObjectID = "VSj-s9-EF1"; */
+"VSj-s9-EF1.title" = "Insert tabs automatically";
+
+/* Class = "NSTextFieldCell"; title = "Preview:"; ObjectID = "ZLK-A5-O4A"; */
+"ZLK-A5-O4A.title" = "Preview:";
+
+/* Class = "NSTextFieldCell"; title = "Font:"; ObjectID = "ad0-FF-yY6"; */
+"ad0-FF-yY6.title" = "Font:";
+
+/* Class = "NSBox"; title = "Style Options"; ObjectID = "bGa-uw-YWA"; */
+"bGa-uw-YWA.title" = "Style Options";
+
+/* Class = "NSTextFieldCell"; title = "Tab Size:"; ObjectID = "dS1-g5-oOs"; */
+"dS1-g5-oOs.title" = "Tab Size:";
+
+/* Class = "NSButtonCell"; title = "Apply"; ObjectID = "fPZ-fd-1Gq"; */
+"fPZ-fd-1Gq.title" = "Apply";
+
+/* Class = "NSButtonCell"; title = "Insert spaces instead of tabs"; ObjectID = "gMO-Me-UVp"; */
+"gMO-Me-UVp.title" = "Insert spaces instead of tabs";
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "hDU-dt-b8G"; */
+"hDU-dt-b8G.title" = "4";
+
+/* Class = "NSButtonCell"; title = "Revert to Default"; ObjectID = "hfZ-gs-ulY"; */
+"hfZ-gs-ulY.title" = "Revert to Default";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "rDk-Yu-xez"; */
+"rDk-Yu-xez.title" = "Box";
+
+/* Class = "NSButtonCell"; title = "Show lines counter by default"; ObjectID = "s5K-5m-j9G"; */
+"s5K-5m-j9G.title" = "Show lines counter by default";
+
+/* Class = "NSTextFieldCell"; title = "Font Color:"; ObjectID = "sKs-Gc-A8P"; */
+"sKs-Gc-A8P.title" = "Font Color:";

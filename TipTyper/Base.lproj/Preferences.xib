@@ -149,7 +149,7 @@
                     <button focusRingType="none" tag="-1" id="bjR-jB-kLy">
                         <rect key="frame" x="169" y="309" width="293" height="18"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show lines counter by default" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="s5K-5m-j9G">
+                        <buttonCell key="cell" type="check" title="Show lines bar by default" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="s5K-5m-j9G">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

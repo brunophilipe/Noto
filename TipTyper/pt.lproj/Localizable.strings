@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  TipTyper
+
+  Created by Bruno Philipe on 2/10/14.
+  Copyright (c) 2014 Bruno Philipe. All rights reserved.
+*/
+
+"BP_LABEL_WORDS" = "Palavras: %ld";
+"BP_LABEL_CHARS" = "Caracteres: %ld";
+"BP_LABEL_LINES" = "Linhas: %ld";
+
+"BP_GENERIC_OK"			= "OK";
+"BP_GENERIC_CANCEL"		= "Cancelar";
+
+"BP_MESSAGE_PICKENCODING"	= "Selecione uma Codificação:";
+"BP_MESSAGE_ENCODING"		= "Selecione uma das codificações abaixo para usar ao tentar abrir o arquivo.";
+"BP_MESSAGE_REOPENING"		= "Reabrindo arquivo...";
+"BP_MESSAGE_AUTOENCODING"	= "Não foi possível detectar uma codificação...";
+"BP_MESSAGE_GOTOLINE"		= "Ir para Linha:";
+"BP_MESSAGE_GO"				= "Ir";
+
+"BP_ERROR_ENCODING_TITLE"	= "Erro de Codificação!";
+"BP_ERROR_ENCODING_MSG"		= "TipTyper não conseguiu ler o arquivo com a codificação especificada. Por favor, tente outra codificação ou verifique o arquivo.";
+"BP_ERROR_ENCODING_NOFILE"	= "Nenhum arquivo está aberto no TipTyper. Erro inesperado. Por favor, reporte esse erro pois é um bug!";

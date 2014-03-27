@@ -1,0 +1,39 @@
+
+/* Class = "NSMenuItem"; title = "Sobre TipTyper"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Sobre TipTyper";
+
+/* Class = "NSMenuItem"; title = "Vistar Website"; ObjectID = "6R6-gf-DhF"; */
+"6R6-gf-DhF.title" = "Vistar Website";
+
+/* Class = "NSMenuItem"; title = "Diminuir Fonte"; ObjectID = "EWV-E3-uhU"; */
+"EWV-E3-uhU.title" = "Diminuir Fonte";
+
+/* Class = "NSMenuItem"; title = "Aumentar Fonte"; ObjectID = "FEt-uo-gBi"; */
+"FEt-uo-gBi.title" = "Aumentar Fonte";
+
+/* Class = "NSMenuItem"; title = "Exibir/Ocultar Barra Inferior"; ObjectID = "ITV-gL-msA"; */
+"ITV-gL-msA.title" = "Exibir/Ocultar Barra Inferior";
+
+/* Class = "NSMenuItem"; title = "Tamanho Normal"; ObjectID = "JU6-Hl-riX"; */
+"JU6-Hl-riX.title" = "Tamanho Normal";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Exibir/Ocultar Linhas"; ObjectID = "UP2-gJ-Of3"; */
+"UP2-gJ-Of3.title" = "Exibir/Ocultar Linhas";
+
+/* Class = "NSMenuItem"; title = "Increase Indentation"; ObjectID = "kqp-aj-10x"; */
+"kqp-aj-10x.title" = "Aumentar Indentação";
+
+/* Class = "NSMenuItem"; title = "Decrease Indentation"; ObjectID = "m9f-rk-LfW"; */
+"m9f-rk-LfW.title" = "Diminuir Indentação";
+
+/* Class = "NSMenuItem"; title = "Ir para linha..."; ObjectID = "qVD-Z8-9aq"; */
+"qVD-Z8-9aq.title" = "Ir para linha...";
+
+/* Class = "NSMenuItem"; title = "Buscar por Atualizações"; ObjectID = "sKj-A6-smU"; */
+"sKj-A6-smU.title" = "Buscar por Atualizações";
+
+/* Class = "NSMenuItem"; title = "Reopen with Encoding..."; ObjectID = "vpF-0X-QPB"; */
+"vpF-0X-QPB.title" = "Reabrir com codificação...";
