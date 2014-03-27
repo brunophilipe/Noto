@@ -96,7 +96,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
 		[self.checkbox_insertTabs setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
 	} else {
-		[self.checkbox_insertTabs setState:NSOffState];
+		[self.checkbox_insertTabs setState:NSOnState];
 	}
 
 	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {

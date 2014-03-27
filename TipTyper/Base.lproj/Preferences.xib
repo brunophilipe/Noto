@@ -191,7 +191,7 @@
                     <button focusRingType="none" tag="-5" id="cqt-6H-yuN">
                         <rect key="frame" x="169" y="389" width="293" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Insert tabs automatically" bezelStyle="regularSquare" imagePosition="left" focusRingType="none" inset="2" id="VSj-s9-EF1">
+                        <buttonCell key="cell" type="check" title="Insert tabs automatically" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="VSj-s9-EF1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
