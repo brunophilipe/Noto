@@ -10,7 +10,7 @@
 #import "BPDocumentWindow.h"
 #import "DCOAboutWindowController.h"
 
-enum {
+typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 	BP_DEFAULTS_FONT =			(1<<1),
 	BP_DEFAULTS_TXTCOLOR =		(1<<2),
 	BP_DEFAULTS_BGCOLOR =		(1<<3),
@@ -18,10 +18,23 @@ enum {
 	BP_DEFAULTS_SHOWSTATUS =	(1<<5),
 	BP_DEFAULTS_INSERTTABS =	(1<<6),
 	BP_DEFAULTS_TABSIZE =		(1<<7),
-	BP_DEFAULTS_INSERTSPACES =	(1<<8)
+	BP_DEFAULTS_INSERTSPACES =	(1<<8),
+	BP_DEFAULTS_COUNTSPACES =	(1<<9)
 };
 
-typedef NSUInteger BP_DEFAULT_TYPES;
+NSString *const kBPDefaultFont = @"BP_DEFAULT_FONT";
+NSString *const kBPDefaultTextColor = @"BP_DEFAULT_TXTCOLOR";
+NSString *const kBPDefaultBGCOLOR = @"BP_DEFAULT_BGCOLOR";
+NSString *const kBPDefaultShowLines = @"BP_DEFAULT_SHOWLINES";
+NSString *const kBPDefaultShowStatus = @"BP_DEFAULT_SHOWSTATUS";
+NSString *const kBPDefaultInsertTabs = @"BP_DEFAULT_INSERTTABS";
+NSString *const kBPDefaultInsertSpaces = @"BP_DEFAULT_INSERTSPACES";
+NSString *const kBPDefaultCountSpaces = @"BP_DEFAULT_COUNTSPACES";
+NSString *const kBPDefaultTabSize = @"BP_DEFAULT_TABSIZE";
+
+NSString *const kBP_SHOULD_RELOAD_STYLE = @"BP_SHOULD_RELOAD_STYLE";
+
+NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/tiptyper";
 
 @implementation BPApplication
 {
@@ -41,7 +54,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 - (IBAction)openWebsite:(id)sender
 {
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	[ws openURL:kBP_TIPTYPER_WEBSITE];
+	[ws openURL:kBP_TIPTYPER_WEBSITE_URL];
 }
 
 - (IBAction)showPreferences:(id)sender
@@ -65,49 +78,49 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	id aux;
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_BGCOLOR])) {
+	if ((aux = [defaults objectForKey:kBPDefaultBGCOLOR])) {
 		[self setColor_bg:[NSKeyedUnarchiver unarchiveObjectWithData:aux]];
 	} else {
 		[self setColor_bg:kBP_TIPTYPER_BGCOLOR];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_TXTCOLOR])) {
+	if ((aux = [defaults objectForKey:kBPDefaultTextColor])) {
 		[self setColor_text:[NSKeyedUnarchiver unarchiveObjectWithData:aux]];
 	} else {
 		[self setColor_text:kBP_TIPTYPER_TXTCOLOR];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_FONT])) {
+	if ((aux = [defaults objectForKey:kBPDefaultFont])) {
 		[self setCustomFont:[NSKeyedUnarchiver unarchiveObjectWithData:aux]];
 	} else {
 		[self setCustomFont:kBP_TIPTYPER_FONT];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWLINES])) {
+	if ((aux = [defaults objectForKey:kBPDefaultShowLines])) {
 		[self.checkbox_showLines setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
 	} else {
 		[self.checkbox_showLines setState:NSOnState];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWSTATUS])) {
+	if ((aux = [defaults objectForKey:kBPDefaultShowStatus])) {
 		[self.checkbox_showStatus setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
 	} else {
 		[self.checkbox_showStatus setState:NSOnState];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
+	if ((aux = [defaults objectForKey:kBPDefaultInsertTabs])) {
 		[self.checkbox_insertTabs setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
 	} else {
 		[self.checkbox_insertTabs setState:NSOnState];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
+	if ((aux = [defaults objectForKey:kBPDefaultInsertSpaces])) {
 		[self.checkbox_insertSpaces setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
 	} else {
 		[self.checkbox_insertSpaces setState:NSOffState];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
+	if ((aux = [defaults objectForKey:kBPDefaultTabSize])) {
 		[self.field_tabSize setIntegerValue:[aux integerValue]];
 		[self.stepper_tabSize setIntegerValue:[aux integerValue]];
 	} else {
@@ -153,14 +166,15 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 - (IBAction)action_revertDefaults:(id)sender {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-	[defaults removeObjectForKey:kBP_DEFAULT_BGCOLOR];
-	[defaults removeObjectForKey:kBP_DEFAULT_TXTCOLOR];
-	[defaults removeObjectForKey:kBP_DEFAULT_FONT];
-	[defaults removeObjectForKey:kBP_DEFAULT_SHOWSTATUS];
-	[defaults removeObjectForKey:kBP_DEFAULT_SHOWLINES];
-	[defaults removeObjectForKey:kBP_DEFAULT_INSERTTABS];
-	[defaults removeObjectForKey:kBP_DEFAULT_INSERTSPACES];
-	[defaults removeObjectForKey:kBP_DEFAULT_TABSIZE];
+	[defaults removeObjectForKey:kBPDefaultBGCOLOR];
+	[defaults removeObjectForKey:kBPDefaultTextColor];
+	[defaults removeObjectForKey:kBPDefaultFont];
+	[defaults removeObjectForKey:kBPDefaultShowStatus];
+	[defaults removeObjectForKey:kBPDefaultShowLines];
+	[defaults removeObjectForKey:kBPDefaultInsertTabs];
+	[defaults removeObjectForKey:kBPDefaultInsertSpaces];
+	[defaults removeObjectForKey:kBPDefaultCountSpaces];
+	[defaults removeObjectForKey:kBPDefaultTabSize];
 
 	[defaults synchronize];
 
@@ -208,6 +222,10 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 		case -7: //Insert spaces
 			changedAttributes |= BP_DEFAULTS_INSERTSPACES;
 			break;
+
+		case -8: //Count spaces as chars
+			changedAttributes |= BP_DEFAULTS_COUNTSPACES;
+			break;
 	}
 }
 
@@ -215,28 +233,31 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
 	if (changedAttributes & BP_DEFAULTS_FONT) {
-		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.currentFont] forKey:kBP_DEFAULT_FONT];
+		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.currentFont] forKey:kBPDefaultFont];
 	}
 	if (changedAttributes & BP_DEFAULTS_BGCOLOR) {
-		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.color_bg] forKey:kBP_DEFAULT_BGCOLOR];
+		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.color_bg] forKey:kBPDefaultBGCOLOR];
 	}
 	if (changedAttributes & BP_DEFAULTS_TXTCOLOR) {
-		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.color_text] forKey:kBP_DEFAULT_TXTCOLOR];
+		[defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.color_text] forKey:kBPDefaultTextColor];
 	}
 	if (changedAttributes & BP_DEFAULTS_SHOWLINES) {
-		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showLines state] == NSOnState)] forKey:kBP_DEFAULT_SHOWLINES];
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showLines state] == NSOnState)] forKey:kBPDefaultShowLines];
 	}
 	if (changedAttributes & BP_DEFAULTS_SHOWSTATUS) {
-		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showStatus state] == NSOnState)] forKey:kBP_DEFAULT_SHOWSTATUS];
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showStatus state] == NSOnState)] forKey:kBPDefaultShowStatus];
 	}
 	if (changedAttributes & BP_DEFAULTS_INSERTTABS) {
-		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertTabs state] == NSOnState)] forKey:kBP_DEFAULT_INSERTTABS];
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertTabs state] == NSOnState)] forKey:kBPDefaultInsertTabs];
 	}
 	if (changedAttributes & BP_DEFAULTS_INSERTSPACES) {
-		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertSpaces state] == NSOnState)] forKey:kBP_DEFAULT_INSERTSPACES];
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_insertSpaces state] == NSOnState)] forKey:kBPDefaultInsertSpaces];
+	}
+	if (changedAttributes & BP_DEFAULTS_COUNTSPACES) {
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_countSpaces state] == NSOnState)] forKey:kBPDefaultCountSpaces];
 	}
 	if (changedAttributes & BP_DEFAULTS_TABSIZE) {
-		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBP_DEFAULT_TABSIZE];
+		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBPDefaultTabSize];
 	}
 
 	changedAttributes = 0;
@@ -250,7 +271,7 @@ typedef NSUInteger BP_DEFAULT_TYPES;
 		aboutWindowController = [[DCOAboutWindowController alloc] init];
 
 		[aboutWindowController setAppCopyright:@"Copyright Bruno Philipe 2014 – All Rights Reserved"];
-		[aboutWindowController setAppWebsiteURL:kBP_TIPTYPER_WEBSITE];
+		[aboutWindowController setAppWebsiteURL:kBP_TIPTYPER_WEBSITE_URL];
 	}
 
 	[aboutWindowController showWindow:sender];

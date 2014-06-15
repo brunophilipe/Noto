@@ -19,27 +19,10 @@ typedef enum {
 @interface BPDocumentWindow ()
 
 @property (strong) NoodleLineNumberView *lineNumberView;
-@property (strong) NSMutableString *contentString;
 
 @end
 
 @implementation BPDocumentWindow
-
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
-{
-	self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
-	if (self) {
-	}
-	return self;
-}
-
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen
-{
-	self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag screen:screen];
-	if (self) {
-	}
-	return self;
-}
 
 - (void)construct
 {
@@ -64,18 +47,16 @@ typedef enum {
 	[self.contentView setNeedsDisplay:YES];
 	[self.lineNumberView setNeedsDisplay:YES];
 
-	[self setContentString:[NSMutableString string]];
-
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	id aux;
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWLINES]) && ![(NSNumber*)aux boolValue]) {
+	if ((aux = [defaults objectForKey:kBPDefaultShowLines]) && ![(NSNumber*)aux boolValue]) {
 		[self setLinesCounterVisible:NO];
 		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:NO];
 	} else {
 		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:YES];
 	}
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_SHOWSTATUS]) && ![(NSNumber*)aux boolValue]) {
+	if ((aux = [defaults objectForKey:kBPDefaultShowStatus]) && ![(NSNumber*)aux boolValue]) {
 		[self setInfoViewVisible:NO];
 		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:NO];
 	} else {
@@ -97,12 +78,12 @@ typedef enum {
 
 - (void)scrollViewDidScroll:(NSNotification *)notif
 {
-	static short scroll = 0;
-	scroll++;
-	if (scroll>1) {
+//	static short scroll = 0;
+//	scroll++;
+//	if (scroll>1) {
 		[self.scrollView setNeedsDisplay:YES];
-		scroll = 0;
-	}
+//		scroll = 0;
+//	}
 }
 
 - (void)setLinesCounterVisible:(BOOL)flag
@@ -184,8 +165,13 @@ typedef enum {
 
 - (void)textDidChange:(NSNotification *)notification {
 	[[self.infoView viewWithTag:1] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_WORDS", nil),[self.textView.string wordsCount]]];
-	[[self.infoView viewWithTag:2] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_CHARS", nil),[self.textView.string length]]];
 	[[self.infoView viewWithTag:3] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_LINES", nil),[[self.lineNumberView lineIndices] count]]];
+
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:kBPDefaultCountSpaces] isEqualToValue:@YES]) {
+		[[self.infoView viewWithTag:2] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_CHARS", nil),[self.textView.string length]]];
+	} else {
+		[[self.infoView viewWithTag:2] setStringValue:[NSString stringWithFormat:NSLocalizedString(@"BP_LABEL_CHARS", nil),[self.textView.string charactersCount]]];
+	}
 }
 
 - (NSMenu *)textView:(NSTextView *)view menu:(NSMenu *)menu forEvent:(NSEvent *)event atIndex:(NSUInteger)charIndex {
@@ -202,9 +188,10 @@ typedef enum {
 
 - (void)updateTextViewContents
 {
-	[self.contentString setString:[[NSString alloc] initWithData:self.document.fileData encoding:self.document.encoding]];
-	[self.textView setString:self.contentString];
+	[self.textView setString:self.document.fileString];
 	[self textDidChange:nil];
+
+	[self.undoManager removeAllActions];
 }
 
 - (void)goToLine:(NSUInteger)line
@@ -255,19 +242,21 @@ typedef enum {
 
 - (void)loadTabSettingsFromDefaults
 {
+	[self.undoManager disableUndoRegistration];
+
 	NSUserDefaults	*defaults = [NSUserDefaults standardUserDefaults];
 
 	id aux;
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTTABS])) {
+	if ((aux = [defaults objectForKey:kBPDefaultInsertTabs])) {
 		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_INSERTSPACES])) {
+	if ((aux = [defaults objectForKey:kBPDefaultInsertSpaces])) {
 		[self.textView setShouldInsertSpacesInsteadOfTabs:[aux boolValue]];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_TABSIZE])) {
+	if ((aux = [defaults objectForKey:kBPDefaultTabSize])) {
 		[self.textView setTabSize:[aux integerValue]];
 		[self setTabWidthToNumberOfSpaces:[aux integerValue]];
 	} else {
@@ -276,21 +265,25 @@ typedef enum {
 	}
 
 	NSLog(@"Loaded tab settings from defaults");
+
+	[self.undoManager enableUndoRegistration];
 }
 
 - (void)loadStyleAttributesFromDefaults
 {
+	[self.undoManager disableUndoRegistration];
+
 	NSUserDefaults	*defaults = [NSUserDefaults standardUserDefaults];
 	NSFont			*font = kBP_TIPTYPER_FONT;
 
 	id aux;
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_FONT])) {
+	if ((aux = [defaults objectForKey:kBPDefaultFont])) {
 		font = [NSKeyedUnarchiver unarchiveObjectWithData:aux];
 	}
 	[self.textView setFont:font];
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_BGCOLOR])) {
+	if ((aux = [defaults objectForKey:kBPDefaultBGCOLOR])) {
 		NSColor *bg = [NSKeyedUnarchiver unarchiveObjectWithData:aux];
 		[self.textView setBackgroundColor:bg];
 
@@ -303,7 +296,7 @@ typedef enum {
 		[self.textView setInsertionPointColor:kBP_TIPTYPER_TXTCOLOR];
 	}
 
-	if ((aux = [defaults objectForKey:kBP_DEFAULT_TXTCOLOR])) {
+	if ((aux = [defaults objectForKey:kBPDefaultTextColor])) {
 		[self.textView setTextColor:[NSKeyedUnarchiver unarchiveObjectWithData:aux]];
 	} else {
 		[self.textView setTextColor:kBP_TIPTYPER_TXTCOLOR];
@@ -312,6 +305,8 @@ typedef enum {
 	[self loadTabSettingsFromDefaults];
 
 	NSLog(@"Loaded style from defaults");
+
+	[self.undoManager enableUndoRegistration];
 }
 
 #pragma mark - IBActions

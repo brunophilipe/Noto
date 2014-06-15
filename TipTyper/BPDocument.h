@@ -13,12 +13,12 @@
 
 @interface BPDocument : NSDocument
 
-@property (strong) NSMutableData *fileData;
+@property (strong) NSString *fileString;
 @property (strong) BPDocumentWindow *displayWindow;
 
 @property (getter = isLoadedFromFile) BOOL loadedFromFile;
 
-@property NSInteger encoding;
+@property NSStringEncoding encoding;
 
 - (IBAction)toggleLinesCounter:(id)sender;
 - (IBAction)toggleInfoView:(id)sender;

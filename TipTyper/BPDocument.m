@@ -12,7 +12,7 @@
 
 @interface BPDocument ()
 
-@property (strong) NSFileHandle *fileHandle;
+//@property (strong) NSFileHandle *fileHandle;
 
 @property BOOL loadedSuccessfully;
 
@@ -28,7 +28,7 @@
 		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:NO];
 		[(BPApplication*)[NSApplication sharedApplication] setHasKeyDocument:YES];
 
-		self.fileData = [[NSMutableData alloc] init];
+		self.fileString = @"";
 		self.encoding = NSUTF8StringEncoding;
     }
     return self;
@@ -57,37 +57,27 @@
     return YES;
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	if ([data length] > 500 * 1000000) { //Filesize > 500MB
-		NSAlert *alert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"TipTyper doesn't support files greater than 500MB. This is a work in progress."];
+	NSStringEncoding usedEncoding;
+	NSError *error;
+	NSString *string = [NSString stringWithContentsOfURL:url usedEncoding:&usedEncoding error:&error];
+
+	if (string && usedEncoding > 0 && !error) {
+		[self setFileString:string];
+		[self setEncoding:usedEncoding];
+		return YES;
+	} else {
+		NSAlert *alert = [NSAlert alertWithError:error];
 		[alert runModal];
+		*outError = error;
 		return NO;
 	}
-
-	NSString *string = [[NSString alloc] initWithData:data encoding:self.encoding];
-
-	if (!string) {
-		string = [self reloadWithDifferentEncoding];
-	}
-
-	if (!string) {
-		NSLog(@"Could not open file");
-	} else {
-		[self.fileData setData:data];
-
-		[self setLoadedFromFile:YES];
-		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:YES];
-
-		return YES;
-	}
-
-	return NO;
 }
 
-- (NSData*)dataOfType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
+- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-	return [[self.displayWindow.textView string] dataUsingEncoding:self.encoding];
+	return [[self.displayWindow.textView string] writeToURL:url atomically:YES encoding:self.encoding error:outError];
 }
 
 - (BOOL)revertToContentsOfURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
@@ -106,26 +96,7 @@
 			[alert runModal];
 		}
 
-		error = nil;
-
-		NSString *string = [NSString stringWithContentsOfURL:url encoding:self.encoding error:&error];
-
-		if (!string) {
-			string = [self reloadWithDifferentEncoding];
-		}
-
-		if (!string) {
-			NSLog(@"Could not open file");
-		} else {
-			[self.fileData setData:[string dataUsingEncoding:self.encoding]];
-
-			[self setLoadedFromFile:YES];
-			[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_isLinkedToFile:YES];
-
-			[self.displayWindow updateTextViewContents];
-
-			return YES;
-		}
+		return [self readFromURL:url ofType:typeName error:outError];
 	}
 
 	return NO;
@@ -232,7 +203,7 @@
 	NSString *string = [self reloadWithDifferentEncoding];
 
 	if (string) {
-		[self.fileData setData:[string dataUsingEncoding:self.encoding]];
+		[self setFileString:string];
 		[self.displayWindow updateTextViewContents];
 	}
 }

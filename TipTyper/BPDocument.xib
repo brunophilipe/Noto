@@ -299,7 +299,7 @@
         <image name="fontNormalTemplate" width="16" height="16"/>
         <image name="indentDecreaseTemplate" width="16" height="16"/>
         <image name="indentIncreaseTemplate" width="16" height="16"/>
-        <image name="infoTemplate" width="15" height="15"/>
+        <image name="infoTemplate" width="16" height="16"/>
         <image name="jumpToLineTemplate" width="16" height="16"/>
         <image name="linesTemplate" width="16" height="16"/>
         <image name="marginNarrowTemplate" width="16" height="16"/>

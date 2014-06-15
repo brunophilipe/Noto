@@ -11,18 +11,9 @@
 #ifndef __BP_TIPTYPER__
 	#define __BP_TIPTYPER__
 
+	#import "BPApplication.h"
+
 	#define NSColorFromRGB(rgbValue) [NSColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
-	#define kBP_DEFAULT_FONT @"BP_DEFAULT_FONT"
-	#define kBP_DEFAULT_TXTCOLOR @"BP_DEFAULT_TXTCOLOR"
-	#define kBP_DEFAULT_BGCOLOR @"BP_DEFAULT_BGCOLOR"
-	#define kBP_DEFAULT_SHOWLINES @"BP_DEFAULT_SHOWLINES"
-	#define kBP_DEFAULT_SHOWSTATUS @"BP_DEFAULT_SHOWSTATUS"
-	#define kBP_DEFAULT_INSERTTABS @"BP_DEFAULT_INSERTTABS"
-	#define kBP_DEFAULT_INSERTSPACES @"BP_DEFAULT_INSERTSPACES"
-	#define kBP_DEFAULT_TABSIZE @"BP_DEFAULT_TABSIZE"
-
-	#define kBP_SHOULD_RELOAD_STYLE @"BP_SHOULD_RELOAD_STYLE"
 
 	#define kBP_TIPTYPER_FONT [NSFont fontWithName:@"Monaco" size:12]
 	#define kBP_TIPTYPER_BGCOLOR [NSColor whiteColor]
@@ -30,7 +21,7 @@
 
 	#define NOT(b) (b) = !(b)
 
-	#define kBP_TIPTYPER_WEBSITE [NSURL URLWithString:@"http://www.brunophilipe.com/software/tiptyper"]
+	#define kBP_TIPTYPER_WEBSITE_URL [NSURL URLWithString:kBP_TIPTYPER_WEBSITE]
 
 	#define SGN(x) (x>=0?1:-1)
 #endif

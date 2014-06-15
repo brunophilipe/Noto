@@ -21,4 +21,17 @@
     return [words count] - [separatorIndexes count];
 }
 
+- (NSUInteger)charactersCount
+{
+	NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+	NSUInteger __block count = 0;
+
+	[self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+		if (![separators characterIsMember:[substring UTF8String][0]])
+			count++;
+	}];
+
+	return count;
+}
+
 @end

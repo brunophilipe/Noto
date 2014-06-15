@@ -12,4 +12,6 @@
 
 - (NSUInteger)wordsCount;
 
+- (NSUInteger)charactersCount;
+
 @end
