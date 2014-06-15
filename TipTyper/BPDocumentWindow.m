@@ -20,6 +20,10 @@ typedef enum {
 
 @property (strong) NoodleLineNumberView *lineNumberView;
 
+@property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewLeftSpace;
+@property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewRightSpace;
+@property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewWidth;
+
 @end
 
 @implementation BPDocumentWindow
@@ -332,21 +336,21 @@ typedef enum {
 }
 
 - (IBAction)action_switch_editorSpacing:(id)sender {
-	NSRect frame = self.scrollView.frame;
 	NSSegmentedControl *toggle = sender;
 	switch (toggle.selectedSegment) {
 		case 0: //Should become wide
-			frame.origin.x -= 100;
-			frame.size.width += 200;
+			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultHigh];
+			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultHigh];
+			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultLow];
 			break;
 
 		case 1: //Should become narrow
-			frame.origin.x += 100;
-			frame.size.width -= 200;
+			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultLow];
+			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultLow];
+			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultHigh];
 			[self setLinesCounterVisible:NO];
 			break;
 	}
-	[self.scrollView setFrame:frame];
 }
 
 - (IBAction)action_switch_indentation:(id)sender {
