@@ -66,6 +66,7 @@
 	if (string && usedEncoding > 0 && !error) {
 		[self setFileString:string];
 		[self setEncoding:usedEncoding];
+		[self.displayWindow updateTextViewContents];
 		return YES;
 	} else {
 		NSAlert *alert = [NSAlert alertWithError:error];
@@ -95,6 +96,8 @@
 			NSAlert *alert = [NSAlert alertWithError:error];
 			[alert runModal];
 		}
+
+		*outError = nil;
 
 		return [self readFromURL:url ofType:typeName error:outError];
 	}

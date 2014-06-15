@@ -23,6 +23,7 @@ typedef enum {
 @property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewLeftSpace;
 @property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewRightSpace;
 @property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewWidth;
+@property (strong) IBOutlet NSLayoutConstraint *constraint_backgroundViewBottomSpace;
 
 @end
 
@@ -56,15 +57,10 @@ typedef enum {
 
 	if ((aux = [defaults objectForKey:kBPDefaultShowLines]) && ![(NSNumber*)aux boolValue]) {
 		[self setLinesCounterVisible:NO];
-		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:NO];
-	} else {
-		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:YES];
 	}
+
 	if ((aux = [defaults objectForKey:kBPDefaultShowStatus]) && ![(NSNumber*)aux boolValue]) {
 		[self setInfoViewVisible:NO];
-		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:NO];
-	} else {
-		[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:YES];
 	}
 
 	[self loadStyleAttributesFromDefaults];
@@ -89,32 +85,16 @@ typedef enum {
 {
 	[self.scrollView setRulersVisible:flag];
 	[self.tb_toggle_displayOptions setSelected:flag forSegment:0];
-
-	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingLines:flag];
 }
 
 - (void)setInfoViewVisible:(BOOL)flag
 {
-	CGRect frame = self.wrapView.frame;
-	CGFloat height = self.infoView.frame.size.height;
-
-	[(BPApplication*)[NSApplication sharedApplication] setKeyDocument_showingInfo:flag];
-
-	if (flag) {
-		frame.size.height -= height;
-		frame.origin.y += height;
-
-		[self.infoView setHidden:NO];
-		[self.wrapView setFrame:frame];
+	if (flag) { //Should become visible
+		[self.constraint_backgroundViewBottomSpace setConstant:20.f];
 	} else {
-		frame.size.height += height;
-		frame.origin.y -= height;
-
-		[self.infoView setHidden:YES];
-		[self.wrapView setFrame:frame];
+		[self.constraint_backgroundViewBottomSpace setConstant:0.f];
 	}
-
-	[self.tb_toggle_displayOptions setSelected:flag forSegment:1];
+	[(NSView*)self.contentView setNeedsDisplay:YES];
 }
 
 - (void)toggleLinesCounter
@@ -134,7 +114,7 @@ typedef enum {
 
 - (BOOL)isDisplayingInfo
 {
-	return ![self.infoView isHidden];
+	return [self.constraint_backgroundViewBottomSpace constant] > 0;
 }
 
 - (void)setTabWidthToNumberOfSpaces:(NSUInteger)spaces

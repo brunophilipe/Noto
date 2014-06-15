@@ -28,8 +28,6 @@ extern NSString *const kBP_TIPTYPER_WEBSITE;
 
 @interface BPApplication : NSApplication
 
-@property BOOL keyDocument_showingLines;
-@property BOOL keyDocument_showingInfo;
 @property BOOL keyDocument_isLinkedToFile;
 @property BOOL hasKeyDocument;
 

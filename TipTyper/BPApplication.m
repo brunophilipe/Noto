@@ -48,8 +48,8 @@ NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/ti
 
 - (void)setKeyDocument:(BPDocument *)keyDocument
 {
-	self.keyDocument_showingLines = [keyDocument.displayWindow isDisplayingLines];
-	self.keyDocument_showingInfo = [keyDocument.displayWindow isDisplayingInfo];
+//	self.keyDocument_showingLines = [keyDocument.displayWindow isDisplayingLines];
+//	self.keyDocument_showingInfo = [keyDocument.displayWindow isDisplayingInfo];
 //	self.keyDocument_isLinkedToFile;
 }
 

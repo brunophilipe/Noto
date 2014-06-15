@@ -394,7 +394,7 @@
                 </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                    <menu key="submenu" title="Window" systemMenu="window" showsStateColumn="NO" id="Td7-aD-5lo">
                         <items>
                             <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                 <connections>
@@ -412,14 +412,12 @@
                                 <connections>
                                     <action selector="toggleLinesCounter:" target="-1" id="XeR-7S-Biy"/>
                                     <binding destination="-3" name="enabled" keyPath="self.hasKeyDocument" id="CR4-xc-Wvh"/>
-                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingLines" id="Ta8-AF-yVB"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Toggle Info Bar" keyEquivalent="d" id="ITV-gL-msA">
                                 <connections>
                                     <action selector="toggleInfoView:" target="-1" id="edX-Db-xf9"/>
                                     <binding destination="-3" name="enabled" keyPath="self.hasKeyDocument" id="GPa-fg-CBE"/>
-                                    <binding destination="-3" name="value" keyPath="self.keyDocument_showingInfo" id="qLf-6i-1Fy"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="TpV-Cb-XxQ"/>
