@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1070" defaultVersion="1060" identifier="macosx"/>
+        <deployment version="1070" defaultVersion="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
@@ -29,7 +29,7 @@
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g04-bm-jeK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <clipView key="contentView" id="fxB-Ow-H1V">
+                                <clipView key="contentView" horizontalCompressionResistancePriority="1000" id="fxB-Ow-H1V">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="460"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -196,7 +196,7 @@
                         <size key="minSize" width="67" height="28"/>
                         <size key="maxSize" width="67" height="28"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="EXc-pY-i9E">
-                            <rect key="frame" x="1" y="14" width="67" height="28"/>
+                            <rect key="frame" x="0.0" y="14" width="67" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="SIy-ZQ-lh8">
                                 <font key="font" metaFont="system"/>
@@ -327,6 +327,7 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
                 <outlet property="infoView" destination="OgU-xF-SWb" id="Fqd-g2-lFV"/>
                 <outlet property="scrollView" destination="g04-bm-jeK" id="cnJ-2s-epd"/>
+                <outlet property="tb_bt_editToolbar" destination="azi-cE-2q8" id="g8b-x6-ygh"/>
                 <outlet property="tb_switch_editorSpacing" destination="gR5-7Z-XjY" id="JSb-OF-8vm"/>
                 <outlet property="tb_switch_textAlignment" destination="uJc-8d-45l" id="0kp-RE-qxs"/>
                 <outlet property="tb_toggle_displayOptions" destination="Oeq-YK-g6i" id="5tg-is-I1z"/>

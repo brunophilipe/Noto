@@ -19,7 +19,8 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 	BP_DEFAULTS_INSERTTABS =	(1<<6),
 	BP_DEFAULTS_TABSIZE =		(1<<7),
 	BP_DEFAULTS_INSERTSPACES =	(1<<8),
-	BP_DEFAULTS_COUNTSPACES =	(1<<9)
+	BP_DEFAULTS_COUNTSPACES =	(1<<9),
+	BP_DEFAULTS_EDITORWIDTH =	(1<<10)
 };
 
 NSString *const kBPDefaultFont = @"BP_DEFAULT_FONT";
@@ -31,6 +32,7 @@ NSString *const kBPDefaultInsertTabs = @"BP_DEFAULT_INSERTTABS";
 NSString *const kBPDefaultInsertSpaces = @"BP_DEFAULT_INSERTSPACES";
 NSString *const kBPDefaultCountSpaces = @"BP_DEFAULT_COUNTSPACES";
 NSString *const kBPDefaultTabSize = @"BP_DEFAULT_TABSIZE";
+NSString *const kBPDefaultEditorWidth = @"BP_DEFAULT_EDITOR_WIDTH";
 
 NSString *const kBP_SHOULD_RELOAD_STYLE = @"BP_SHOULD_RELOAD_STYLE";
 
@@ -120,12 +122,26 @@ NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/ti
 		[self.checkbox_insertSpaces setState:NSOffState];
 	}
 
+	if ((aux = [defaults objectForKey:kBPDefaultCountSpaces])) {
+		[self.checkbox_countSpaces setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+	} else {
+		[self.checkbox_countSpaces setState:NSOffState];
+	}
+
 	if ((aux = [defaults objectForKey:kBPDefaultTabSize])) {
 		[self.field_tabSize setIntegerValue:[aux integerValue]];
 		[self.stepper_tabSize setIntegerValue:[aux integerValue]];
 	} else {
 		[self.field_tabSize setIntegerValue:4];
 		[self.stepper_tabSize setIntegerValue:4];
+	}
+
+	if ((aux = [defaults objectForKey:kBPDefaultEditorWidth])) {
+		[self.field_editorSize setIntegerValue:[aux integerValue]];
+		[self.stepper_editorSize setIntegerValue:[aux integerValue]];
+	} else {
+		[self.field_editorSize setIntegerValue:450];
+		[self.stepper_editorSize setIntegerValue:450];
 	}
 
 	[self.textView_example setTextColor:self.color_text];
@@ -175,6 +191,7 @@ NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/ti
 	[defaults removeObjectForKey:kBPDefaultInsertSpaces];
 	[defaults removeObjectForKey:kBPDefaultCountSpaces];
 	[defaults removeObjectForKey:kBPDefaultTabSize];
+	[defaults removeObjectForKey:kBPDefaultEditorWidth];
 
 	[defaults synchronize];
 
@@ -226,6 +243,14 @@ NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/ti
 		case -8: //Count spaces as chars
 			changedAttributes |= BP_DEFAULTS_COUNTSPACES;
 			break;
+
+		case -9: //Fixed editor width stepper
+		{
+			NSStepper *editorSize = sender;
+			[self.field_editorSize setIntegerValue:editorSize.integerValue];
+			changedAttributes |= BP_DEFAULTS_EDITORWIDTH;
+		}
+			break;
 	}
 }
 
@@ -258,6 +283,9 @@ NSString *const kBP_TIPTYPER_WEBSITE = @"http://www.brunophilipe.com/software/ti
 	}
 	if (changedAttributes & BP_DEFAULTS_TABSIZE) {
 		[defaults setObject:[NSNumber numberWithInteger:[self.field_tabSize integerValue]] forKey:kBPDefaultTabSize];
+	}
+	if (changedAttributes & BP_DEFAULTS_EDITORWIDTH) {
+		[defaults setObject:[NSNumber numberWithInteger:[self.field_editorSize integerValue]] forKey:kBPDefaultEditorWidth];
 	}
 
 	changedAttributes = 0;

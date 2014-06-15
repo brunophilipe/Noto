@@ -82,12 +82,7 @@ typedef enum {
 
 - (void)scrollViewDidScroll:(NSNotification *)notif
 {
-//	static short scroll = 0;
-//	scroll++;
-//	if (scroll>1) {
-		[self.scrollView setNeedsDisplay:YES];
-//		scroll = 0;
-//	}
+	[self.scrollView setNeedsDisplay:YES];
 }
 
 - (void)setLinesCounterVisible:(BOOL)flag
@@ -306,11 +301,43 @@ typedef enum {
 		[self.textView setTextColor:kBP_TIPTYPER_TXTCOLOR];
 	}
 
+	if ([self isEditorSetToNarrow]) {
+		[self updateEditorWidthToNarrow:YES];
+	}
+
 	[self loadTabSettingsFromDefaults];
 
 	NSLog(@"Loaded style from defaults");
 
 	[self.undoManager enableUndoRegistration];
+}
+
+- (void)updateEditorWidthToNarrow:(BOOL)narrow
+{
+	switch (narrow) {
+		case NO: //Should become wide
+			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultHigh];
+			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultHigh];
+			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultLow];
+			break;
+
+		case YES: //Should become narrow
+		{
+			CGFloat width = [[NSUserDefaults standardUserDefaults] floatForKey:kBPDefaultEditorWidth];
+			if (width < 400) width = 450.f;
+			[self.constraint_scrollViewWidth setConstant:width];
+			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultLow];
+			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultLow];
+			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultHigh];
+			[self setLinesCounterVisible:NO];
+		}
+			break;
+	}
+}
+
+- (BOOL)isEditorSetToNarrow
+{
+	return [self.constraint_scrollViewWidth priority] == NSLayoutPriorityDefaultHigh;
 }
 
 #pragma mark - IBActions
@@ -337,20 +364,7 @@ typedef enum {
 
 - (IBAction)action_switch_editorSpacing:(id)sender {
 	NSSegmentedControl *toggle = sender;
-	switch (toggle.selectedSegment) {
-		case 0: //Should become wide
-			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultHigh];
-			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultHigh];
-			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultLow];
-			break;
-
-		case 1: //Should become narrow
-			[self.constraint_scrollViewLeftSpace setPriority:NSLayoutPriorityDefaultLow];
-			[self.constraint_scrollViewRightSpace setPriority:NSLayoutPriorityDefaultLow];
-			[self.constraint_scrollViewWidth setPriority:NSLayoutPriorityDefaultHigh];
-			[self setLinesCounterVisible:NO];
-			break;
-	}
+	[self updateEditorWidthToNarrow:(toggle.selectedSegment == 1)];
 }
 
 - (IBAction)action_switch_indentation:(id)sender {
@@ -385,10 +399,6 @@ typedef enum {
 		default:
 			break;
 	}
-}
-
-- (IBAction)action_bt_editToolbar:(id)sender {
-	[self runToolbarCustomizationPalette:sender];
 }
 
 - (IBAction)action_showJumpToLineDialog:(id)sender {
