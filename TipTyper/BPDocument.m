@@ -150,7 +150,7 @@
 
 - (NSString*)reloadWithDifferentEncoding
 {
-	if (self.isLoadedFromFile) {
+	if (self.isLoadedFromFile || self.fileURL) {
 		NSInteger result;
 		NSString *curEncodingName = [[BPEncodingTool sharedTool] nameForEncoding:_encoding];
 		NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"BP_MESSAGE_PICKENCODING", nil) defaultButton:NSLocalizedString(@"BP_GENERIC_OK", nil) alternateButton:NSLocalizedString(@"BP_GENERIC_CANCEL", nil) otherButton:nil informativeTextWithFormat:NSLocalizedString(@"BP_MESSAGE_ENCODING", nil)];
@@ -221,7 +221,6 @@
 
 	[savePanel setAccessoryView:view];
 	[savePanel layoutIfNeeded];
-
 
 	return YES;
 }
