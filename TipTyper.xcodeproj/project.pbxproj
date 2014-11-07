@@ -11,7 +11,7 @@
 		1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1502C2FB18B97B70002EC738 /* dsa_pub.pem */; };
 		1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1502C30518B9AF5D002EC738 /* BPTextView.m */; };
 		15041C50194D35F800E56E4F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
-		15041C51194D35FC00E56E4F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; };
+		15041C51194D35FC00E56E4F /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1502C2F918B97AAD002EC738 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		153911B218E496A9009FAB64 /* BPDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153911AC18E496A9009FAB64 /* BPDocument.xib */; };
 		153911B318E496A9009FAB64 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 153911AD18E496A9009FAB64 /* Credits.rtf */; };
 		153911B418E496A9009FAB64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153911AE18E496A9009FAB64 /* InfoPlist.strings */; };
@@ -23,6 +23,7 @@
 		15408A6F18E3CA8B00127DA6 /* DCOTransparentScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6C18E3CA8B00127DA6 /* DCOTransparentScroller.m */; };
 		15408A7018E3CA8B00127DA6 /* DCOTransparentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
+		15962E831A0C6CB200E168EC /* BPPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15962E821A0C6CB200E168EC /* BPPreferencesWindowController.m */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
 		15C21D4618A83D5500C9D410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4518A83D5500C9D410 /* main.m */; };
 		15C21D4D18A83D5500C9D410 /* BPDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21D4C18A83D5500C9D410 /* BPDocument.m */; };
@@ -84,6 +85,8 @@
 		15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCOTransparentScrollView.m; sourceTree = "<group>"; };
 		15753F5618AC78F5009E7E9E /* BPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPApplication.h; sourceTree = "<group>"; };
 		15753F5718AC78F5009E7E9E /* BPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPApplication.m; sourceTree = "<group>"; };
+		15962E811A0C6CB200E168EC /* BPPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPreferencesWindowController.h; sourceTree = "<group>"; };
+		15962E821A0C6CB200E168EC /* BPPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPreferencesWindowController.m; sourceTree = "<group>"; };
 		15C21D3618A83D5500C9D410 /* TipTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C21D3918A83D5500C9D410 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		15C21D3C18A83D5500C9D410 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -204,6 +207,8 @@
 				15C21D4C18A83D5500C9D410 /* BPDocument.m */,
 				15C21D7018A83D7C00C9D410 /* BPDocumentWindow.h */,
 				15C21D7118A83D7C00C9D410 /* BPDocumentWindow.m */,
+				15962E811A0C6CB200E168EC /* BPPreferencesWindowController.h */,
+				15962E821A0C6CB200E168EC /* BPPreferencesWindowController.m */,
 				15C21D5418A83D5500C9D410 /* Images.xcassets */,
 				153911AC18E496A9009FAB64 /* BPDocument.xib */,
 				153911B018E496A9009FAB64 /* MainMenu.xib */,
@@ -331,7 +336,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BP;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Bruno Philipe";
 				TargetAttributes = {
 					15C21D5918A83D5500C9D410 = {
@@ -417,6 +422,7 @@
 				15C21D4618A83D5500C9D410 /* main.m in Sources */,
 				15C21D7218A83D7C00C9D410 /* BPDocumentWindow.m in Sources */,
 				1500F28218B056B500481A86 /* BPEncodingTool.m in Sources */,
+				15962E831A0C6CB200E168EC /* BPPreferencesWindowController.m in Sources */,
 				15408A6F18E3CA8B00127DA6 /* DCOTransparentScroller.m in Sources */,
 				15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */,
 				15C21DC618A8580B00C9D410 /* MarkerLineNumberView.m in Sources */,
@@ -447,7 +453,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -477,7 +482,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -487,7 +492,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -521,7 +525,6 @@
 		15C21D6B18A83D5600C9D410 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -540,7 +543,6 @@
 		15C21D6C18A83D5600C9D410 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

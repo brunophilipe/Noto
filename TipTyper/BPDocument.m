@@ -174,28 +174,24 @@
 
 - (NSString*)fileNameExtensionForType:(NSString *)typeName saveOperation:(NSSaveOperationType)saveOperation
 {
-	return @"txt";
+	NSString *currentExtension = [self.fileURL pathExtension];
+	if (currentExtension) {
+		return currentExtension;
+	} else
+		return @"txt";
+}
+
+- (BOOL)shouldRunSavePanelWithAccessoryView
+{
+	return NO;
 }
 
 - (BOOL)prepareSavePanel:(NSSavePanel *)savePanel
 {
 	[savePanel setShowsTagField:YES];
-
-	NSView *view = [savePanel.accessoryView.subviews lastObject];
-
-	NSPopUpButton *button = [[view subviews] lastObject];
-	NSRect frame = [button frame];
-	frame.size.width += 120;
-	[button setFrame:frame];
-	[button selectItemAtIndex:0];
-
-	frame = view.frame;
-	frame.size.width += 120;
-	[view setFrame:frame];
-
-	[savePanel setAccessoryView:view];
-	[savePanel layoutIfNeeded];
-
+	[savePanel setAllowsOtherFileTypes:YES];
+	[savePanel setExtensionHidden:NO];
+  
 	return YES;
 }
 
