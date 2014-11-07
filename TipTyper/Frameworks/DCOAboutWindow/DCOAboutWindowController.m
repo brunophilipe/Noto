@@ -14,16 +14,16 @@
 + (NSString *)nibName;
 
 /** The info view. */
-@property (assign) IBOutlet NSView *infoView;
+@property (weak) IBOutlet NSView *infoView;
 
 /** The credits text view. */
 @property (assign) IBOutlet NSTextView *creditsTextView;
 
 /** The button that opens the app's website. */
-@property (assign) IBOutlet NSButton *visitWebsiteButton;
+@property (weak) IBOutlet NSButton *visitWebsiteButton;
 
-/** The button that opens the acknowledgements. */
-@property (assign) IBOutlet NSButton *acknowledgementsButton;
+/** The button that opens the acknowledgments. */
+@property (weak) IBOutlet NSButton *acknowledgmentsButton;
 
 @end
 
@@ -55,7 +55,7 @@
     if(!self.appVersion) {
         NSString *version = [bundleDict objectForKey:@"CFBundleVersion"];
         NSString *shortVersion = [bundleDict objectForKey:@"CFBundleShortVersionString"];
-        self.appVersion = [NSString stringWithFormat:@"Version %@ (Build %@)", shortVersion, version];
+        self.appVersion = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (Build %@)", @"Version %@ (Build %@), displayed in the about window"), shortVersion, version];
     }
     
     // Set copyright
@@ -64,11 +64,13 @@
     }
 
     // Set "visit website" caption
-    self.visitWebsiteButton.title = [NSString stringWithFormat:self.visitWebsiteButton.title, self.appName];
+    self.visitWebsiteButton.title = [NSString stringWithFormat:NSLocalizedString(@"Visit the %@ Website", @"Caption on the 'Visit the %@ Website' button in the about window"), self.appName];
+    // Set the "acknowledgements" caption
+    self.acknowledgmentsButton.title = NSLocalizedString(@"Acknowledgments", @"Caption of the 'Acknowledgments' button in the about window");
     
-    // Set acknowledgements
-    if(!self.acknowledgementsPath) {
-        self.acknowledgementsPath = [[NSBundle mainBundle] pathForResource:@"Acknowledgements" ofType:@"rtf"];
+    // Set acknowledgments
+    if(!self.acknowledgmentsPath) {
+        self.acknowledgmentsPath = [[NSBundle mainBundle] pathForResource:@"Acknowledgments" ofType:@"rtf"];
     }
 
     // Set credits
@@ -90,18 +92,19 @@
     bottomBorder.borderColor = [NSColor grayColor].CGColor;
     bottomBorder.borderWidth = 1;
     bottomBorder.frame = CGRectMake(-1.f, .0f, CGRectGetWidth(self.infoView.frame) + 2.f, CGRectGetHeight(self.infoView.frame) + 1.f);
+    bottomBorder.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     [self.infoView.layer addSublayer:bottomBorder];
 }
 
 #pragma mark - Getters/Setters
 
-- (void)setAcknowledgementsPath:(NSString *)acknowledgementsPath {
-    _acknowledgementsPath = acknowledgementsPath;
+- (void)setAcknowledgmentsPath:(NSString *)acknowledgmentsPath {
+    _acknowledgmentsPath = acknowledgmentsPath;
     
-    if(!acknowledgementsPath) {
+    if(!acknowledgmentsPath) {
         
         // Remove the button (and constraints)
-        [self.acknowledgementsButton removeFromSuperview];
+        [self.acknowledgmentsButton removeFromSuperview];
         
     }
 }
@@ -118,15 +121,15 @@
     
 }
 
-- (IBAction)showAcknowledgements:(id)sender {
+- (IBAction)showAcknowledgments:(id)sender {
     
-    if(self.acknowledgementsPath) {
+    if(self.acknowledgmentsPath) {
         
         // Load in default editor
-        [[NSWorkspace sharedWorkspace] openFile:self.acknowledgementsPath];
+        [[NSWorkspace sharedWorkspace] openFile:self.acknowledgmentsPath];
         
     } else {
-        NSLog(@"Error: couldn't load the acknowledgements file");
+        NSLog(@"Error: couldn't load the acknowledgments file");
     }
 }
 

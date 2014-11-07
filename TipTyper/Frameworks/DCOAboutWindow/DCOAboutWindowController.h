@@ -44,10 +44,10 @@
 @property (strong) NSURL *appWebsiteURL;
 
 /** 
- *  The path to the file that contains the acknowledgements. 
- *  Default: [[NSBundle mainBundle] pathForResource:@"Acknowledgements" ofType:@"rtf"];
+ *  The path to the file that contains the acknowledgments. 
+ *  Default: [[NSBundle mainBundle] pathForResource:@"Acknowledgments" ofType:@"rtf"];
  */
-@property (nonatomic, copy) NSString *acknowledgementsPath;
+@property (nonatomic, copy) NSString *acknowledgmentsPath;
 
 /**
  *  Visit the website.
@@ -57,10 +57,10 @@
 - (IBAction)visitWebsite:(id)sender;
 
 /**
- *  Show acknowledgements for libraries used etc.
+ *  Show acknowledgments for libraries used etc.
  *
  *  @param sender The object making the call.
  */
-- (IBAction)showAcknowledgements:(id)sender;
+- (IBAction)showAcknowledgments:(id)sender;
 
 @end
