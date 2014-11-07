@@ -20,9 +20,9 @@ extern NSString *const kBPDefaultCountSpaces;
 extern NSString *const kBPDefaultTabSize;
 extern NSString *const kBPDefaultEditorWidth;
 
-extern NSString *const kBP_SHOULD_RELOAD_STYLE;
+extern NSString *const kBPShouldReloadStyleNotification;
 
-extern NSString *const kBP_TIPTYPER_WEBSITE;
+extern NSString *const kBPTipTyperWebsite;
 
 @class BPDocument;
 
@@ -32,42 +32,18 @@ extern NSString *const kBP_TIPTYPER_WEBSITE;
 @property BOOL hasKeyDocument;
 
 /**
- Sets the key document. This method is called from any BPDocument when its window becomes key.
- */
-- (void)setKeyDocument:(BPDocument *)keyDocument;
-
-/**
- Sends a message to the shared application manager to open the app's website using the default browser.
+ * Sends a message to the shared application manager to open the app's website using the default browser.
  */
 - (IBAction)openWebsite:(id)sender;
 
 /**
- Opens (and creates if necessary) the preferences window.
+ *  Opens (and creates if necessary) the preferences window.
  */
 - (IBAction)showPreferences:(id)sender;
 
-#pragma mark - Preferences Window
-
-@property (strong) NSFont *currentFont;
-@property (strong) NSColor *color_text;
-@property (strong) NSColor *color_bg;
-
-@property (strong) IBOutlet NSTextField *field_currentFont;
-@property (strong) IBOutlet NSTextField *textView_example;
-@property (strong) IBOutlet NSTextField *field_tabSize;
-@property (strong) IBOutlet NSTextField *field_editorSize;
-@property (strong) IBOutlet NSButton *checkbox_insertTabs;
-@property (strong) IBOutlet NSButton *checkbox_insertSpaces;
-@property (strong) IBOutlet NSButton *checkbox_countSpaces;
-@property (strong) IBOutlet NSButton *checkbox_showLines;
-@property (strong) IBOutlet NSButton *checkbox_showStatus;
-@property (strong) IBOutlet NSStepper *stepper_tabSize;
-@property (strong) IBOutlet NSStepper *stepper_editorSize;
-
-- (IBAction)action_changeFont:(id)sender;
-- (IBAction)action_revertDefaults:(id)sender;
-- (IBAction)action_controlChanged:(id)sender;
-- (IBAction)action_applyChanges:(id)sender;
-
+/**
+ *  Opens the About panel.
+ */
 - (IBAction)showAboutPanel:(id)sender;
+
 @end

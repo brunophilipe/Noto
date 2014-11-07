@@ -72,7 +72,7 @@ typedef enum {
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(loadStyleAttributesFromDefaults)
-												 name:kBP_SHOULD_RELOAD_STYLE
+												 name:kBPShouldReloadStyleNotification
 											   object:nil];
 }
 
