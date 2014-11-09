@@ -20,9 +20,9 @@
 
 @property NSStringEncoding encoding;
 
-- (IBAction)toggleLinesCounter:(id)sender;
-- (IBAction)toggleInfoView:(id)sender;
+- (void)toggleLinesCounter:(id)sender;
+- (void)toggleInfoView:(id)sender;
 
-- (IBAction)pickEncodingAndReload:(id)sender;
+- (void)pickEncodingAndReload:(id)sender;
 
 @end
