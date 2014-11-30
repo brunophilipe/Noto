@@ -7,6 +7,7 @@
 //
 
 #import "BPTextView.h"
+#import "BPLayoutManager.h"
 
 #define kBP_KEYCODE_RETURN 36
 
@@ -17,6 +18,16 @@
 @end
 
 @implementation BPTextView
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+	self = [super initWithCoder:coder];
+	if (self) {
+		BPLayoutManager *layoutManager = [BPLayoutManager new];
+		[self.textContainer replaceLayoutManager:layoutManager];
+	}
+	return self;
+}
 
 - (NSUInteger)countTabCharsFromLocation:(NSUInteger)location spareSpaces:(NSUInteger *)spareSpaces
 {
@@ -43,7 +54,8 @@
 
 	/* If the caller sent a pointer to return the spare spaces count, set the value there. */
 	if (spareSpaces != NULL) {
-		*spareSpaces = spaces%self.tabSize;
+		*spareSpaces = spaces;
+		return count;
 	}
 
 	/* There can be a mixture of tabs and spaces in a single line. We should take everything into account. */
@@ -170,7 +182,15 @@
 				charactersRemovedFirstLine = charactersRemoved;
 		}
 
-		[ranges replaceObjectAtIndex:rangeIndex withObject:[NSValue valueWithRange:NSMakeRange(currentRange.location - charactersRemovedFirstLine, currentRange.length - (singleCharRange ? 1 : 0) - (charactersRemoved - charactersRemovedFirstLine))]];
+		NSValue *newRange = nil;
+
+		if ([substring hasPrefix:@"\t"] || [substring hasPrefix:@" "]) {
+			newRange = [NSValue valueWithRange:NSMakeRange(currentRange.location, currentRange.length - (singleCharRange ? 1 : 0) - charactersRemoved)];
+		} else {
+			newRange = [NSValue valueWithRange:NSMakeRange(currentRange.location - charactersRemovedFirstLine, currentRange.length - (singleCharRange ? 1 : 0) - (charactersRemoved - charactersRemovedFirstLine))];
+		}
+
+		[ranges replaceObjectAtIndex:rangeIndex withObject:newRange];
 
 		totalCharactersRemoved += charactersRemoved;
 	}
@@ -198,7 +218,7 @@
 		[self insertText:@"" replacementRange:NSMakeRange(location, 1)];
 		return 1;
 	} else if (spaces > 0) {
-		[self insertText:@"" replacementRange:NSMakeRange(location, spaces)];
+		[self insertText:@"" replacementRange:NSMakeRange(location, MIN(spaces, self.tabSize))];
 
 //		if (spareSpaces != NULL) {
 //			*spareSpaces = spaces;

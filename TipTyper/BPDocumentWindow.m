@@ -10,6 +10,7 @@
 #import "Libraries/LineCounter/MarkerLineNumberView.h"
 #import "Classes/NSString+WordsCount.h"
 #import "BPApplication.h"
+#import "NSColor+Luminance.h"
 
 typedef enum {
 	kBP_EDITORSPACING_WIDE = 1,
@@ -46,6 +47,9 @@ typedef enum {
 	[self.textView setAutomaticDashSubstitutionEnabled:NO];
 	[self.textView setAutomaticQuoteSubstitutionEnabled:NO];
 	[self.textView setDefaultParagraphStyle:paragraph];
+
+	NSLayoutManager *layoutManager = self.textView.layoutManager;
+	[layoutManager setShowsInvisibleCharacters:NO];
 
 	[self textDidChange:nil];
 
@@ -268,11 +272,7 @@ typedef enum {
 	if ((aux = [defaults objectForKey:kBPDefaultBGCOLOR])) {
 		NSColor *bg = [NSKeyedUnarchiver unarchiveObjectWithData:aux];
 		[self.textView setBackgroundColor:bg];
-
-		//Calculate if text inserter should be black or white using the luminance formula:
-		bg = [bg colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
-		CGFloat luminance = 0.2126*bg.redComponent + 0.7152*bg.greenComponent + 0.0722*bg.blueComponent;
-		[self.textView setInsertionPointColor:(luminance<0.5 ? [NSColor lightGrayColor] : [NSColor blackColor])];
+		[self.textView setInsertionPointColor:([bg isDarkColor] ? [NSColor lightGrayColor] : [NSColor blackColor])];
 	} else {
 		[self.textView setBackgroundColor:kBP_TIPTYPER_BGCOLOR];
 		[self.textView setInsertionPointColor:kBP_TIPTYPER_TXTCOLOR];

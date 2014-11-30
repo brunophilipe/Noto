@@ -38,6 +38,8 @@
 		15C21DD118A94A4E00C9D410 /* NSString+WordsCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD018A94A4E00C9D410 /* NSString+WordsCount.m */; };
 		15C21DD418A94A5D00C9D410 /* BPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD318A94A5D00C9D410 /* BPBackgroundView.m */; };
 		15C21DD718A94F6800C9D410 /* BPTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C21DD618A94F6800C9D410 /* BPTopBarView.m */; };
+		15D9EB021A2B89AA006EC677 /* BPLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D9EB011A2B89AA006EC677 /* BPLayoutManager.m */; };
+		15D9EB051A2BA99E006EC677 /* NSColor+Luminance.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D9EB041A2BA99E006EC677 /* NSColor+Luminance.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,10 @@
 		15C21DD318A94A5D00C9D410 /* BPBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPBackgroundView.m; path = Classes/BPBackgroundView.m; sourceTree = "<group>"; };
 		15C21DD518A94F6800C9D410 /* BPTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPTopBarView.h; path = Classes/BPTopBarView.h; sourceTree = "<group>"; };
 		15C21DD618A94F6800C9D410 /* BPTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPTopBarView.m; path = Classes/BPTopBarView.m; sourceTree = "<group>"; };
+		15D9EB001A2B89AA006EC677 /* BPLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLayoutManager.h; path = Classes/BPLayoutManager.h; sourceTree = "<group>"; };
+		15D9EB011A2B89AA006EC677 /* BPLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLayoutManager.m; path = Classes/BPLayoutManager.m; sourceTree = "<group>"; };
+		15D9EB031A2BA99E006EC677 /* NSColor+Luminance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+Luminance.h"; path = "Classes/NSColor+Luminance.h"; sourceTree = "<group>"; };
+		15D9EB041A2BA99E006EC677 /* NSColor+Luminance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+Luminance.m"; path = "Classes/NSColor+Luminance.m"; sourceTree = "<group>"; };
 		15E4929F18A9B1FB004C4901 /* BumpBuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BumpBuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,6 +291,10 @@
 				15C21DD618A94F6800C9D410 /* BPTopBarView.m */,
 				1502C30418B9AF5D002EC738 /* BPTextView.h */,
 				1502C30518B9AF5D002EC738 /* BPTextView.m */,
+				15D9EB001A2B89AA006EC677 /* BPLayoutManager.h */,
+				15D9EB011A2B89AA006EC677 /* BPLayoutManager.m */,
+				15D9EB031A2BA99E006EC677 /* NSColor+Luminance.h */,
+				15D9EB041A2BA99E006EC677 /* NSColor+Luminance.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -411,10 +421,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D9EB021A2B89AA006EC677 /* BPLayoutManager.m in Sources */,
 				15C21DD418A94A5D00C9D410 /* BPBackgroundView.m in Sources */,
 				15C21DC818A8580B00C9D410 /* NoodleLineNumberView.m in Sources */,
 				15C21DD718A94F6800C9D410 /* BPTopBarView.m in Sources */,
 				15C21DC718A8580B00C9D410 /* NoodleLineNumberMarker.m in Sources */,
+				15D9EB051A2BA99E006EC677 /* NSColor+Luminance.m in Sources */,
 				15C21DD118A94A4E00C9D410 /* NSString+WordsCount.m in Sources */,
 				1502C30618B9AF5D002EC738 /* BPTextView.m in Sources */,
 				15408A6918E3C90400127DA6 /* DCOAboutWindowController.m in Sources */,

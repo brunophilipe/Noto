@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
@@ -214,7 +214,7 @@
                         <rect key="frame" x="171" y="383" width="29" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" title="4" drawsBackground="YES" id="hDU-dt-b8G">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#" negativeFormat="#" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="5kW-Fb-oel">
-                                <real key="minimum" value="1"/>
+                                <real key="minimum" value="2"/>
                                 <real key="maximum" value="16"/>
                                 <metadata>
                                     <real key="inspectorSampleValue" value="345"/>
@@ -227,7 +227,7 @@
                     </textField>
                     <stepper focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" tag="-6" translatesAutoresizingMaskIntoConstraints="NO" id="BVS-HQ-qwo">
                         <rect key="frame" x="199" y="380" width="19" height="27"/>
-                        <stepperCell key="cell" continuous="YES" focusRingType="none" alignment="left" minValue="1" maxValue="16" doubleValue="4" id="UyK-g3-THu"/>
+                        <stepperCell key="cell" continuous="YES" focusRingType="none" alignment="left" minValue="2" maxValue="16" doubleValue="4" id="UyK-g3-THu"/>
                         <connections>
                             <action selector="action_controlChanged:" target="-2" id="aiC-xi-F0n"/>
                         </connections>
