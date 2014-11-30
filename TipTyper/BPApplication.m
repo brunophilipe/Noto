@@ -29,8 +29,9 @@ NSString *const kBPTipTyperWebsite = @"http://www.brunophilipe.com/software/tipt
 @implementation BPApplication
 {
 	BPPreferencesWindowController *prefWindowController;
-	NSWindow *prefWindow;
 	DCOAboutWindowController *aboutWindowController;
+
+	NSWindow *prefWindow;
 }
 
 - (IBAction)openWebsite:(id)sender

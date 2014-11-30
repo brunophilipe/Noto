@@ -95,6 +95,7 @@ typedef enum {
 		[self.constraint_backgroundViewBottomSpace setConstant:0.f];
 	}
 	[(NSView*)self.contentView setNeedsDisplay:YES];
+	[self.tb_toggle_displayOptions setSelected:flag forSegment:1];
 }
 
 - (void)toggleLinesCounter
