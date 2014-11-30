@@ -213,14 +213,19 @@
 	[button setTitle:[button selectedItem].title];
 }
 
-- (void)toggleLinesCounter:(id)sender;
+- (void)toggleLinesCounter:(id)sender
 {
 	[self.displayWindow toggleLinesCounter];
 }
 
-- (void)toggleInfoView:(id)sender;
+- (void)toggleInfoView:(id)sender
 {
 	[self.displayWindow toggleInfoView];
+}
+
+- (void)toggleInvisibles:(id)sender
+{
+	[self.displayWindow toggleInvisibles];
 }
 
 @end

@@ -23,6 +23,7 @@
 @property (strong) IBOutlet NSButton    *checkbox_countSpaces;
 @property (strong) IBOutlet NSButton    *checkbox_showLines;
 @property (strong) IBOutlet NSButton    *checkbox_showStatus;
+@property (strong) IBOutlet NSButton	*checkbox_showInvisibles;
 @property (strong) IBOutlet NSStepper   *stepper_tabSize;
 @property (strong) IBOutlet NSStepper   *stepper_editorSize;
 

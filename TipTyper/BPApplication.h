@@ -19,6 +19,7 @@ extern NSString *const kBPDefaultInsertSpaces;
 extern NSString *const kBPDefaultCountSpaces;
 extern NSString *const kBPDefaultTabSize;
 extern NSString *const kBPDefaultEditorWidth;
+extern NSString *const kBPDefaultShowSpecials;
 
 extern NSString *const kBPShouldReloadStyleNotification;
 

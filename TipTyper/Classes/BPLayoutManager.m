@@ -62,52 +62,55 @@ typedef enum {
 
 - (void)drawGlyphsForGlyphRange:(NSRange)glyphRange atPoint:(NSPoint)origin
 {
-	//init glyphs
-	NSString *docContents = [self.textStorage string];
-	CGFloat userFontSize = [self.textStorage font].pointSize;
-	NSString *glyph = nil;
-	NSPoint glyphPoint;
-	NSRect glyphRect;
-	NSDictionary *attr = @{NSForegroundColorAttributeName: [self.textViewForBeginningOfSelection.backgroundColor isDarkColor] ? [NSColor grayColor] : [NSColor lightGrayColor], NSFontAttributeName: [BPLayoutManager cachedInvisibleGlyphFontWithSize:userFontSize]};
+	BPDocumentWindow *window = (BPDocumentWindow*)self.textViewForBeginningOfSelection.window;
 
-	//loop thru current range, drawing glyphs
-	for (NSUInteger i = glyphRange.location; i < NSMaxRange(glyphRange); i++)
-	{
-		//look for special chars
-		switch ([docContents characterAtIndex:i])
+	if (window.isDisplayingInvisibles) {
+		NSString *docContents = [self.textStorage string];
+		CGFloat userFontSize = [self.textStorage font].pointSize;
+		NSString *glyph = nil;
+		NSPoint glyphPoint;
+		NSRect glyphRect;
+		NSDictionary *attr = @{NSForegroundColorAttributeName: [self.textViewForBeginningOfSelection.backgroundColor isDarkColor] ? [NSColor grayColor] : [NSColor lightGrayColor], NSFontAttributeName: [BPLayoutManager cachedInvisibleGlyphFontWithSize:userFontSize]};
+
+		//loop thru current range, drawing glyphs
+		for (NSUInteger i = glyphRange.location; i < NSMaxRange(glyphRange); i++)
 		{
-				//space
-			case ' ':
-				glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthSpace];
-				break;
+			//look for special chars
+			switch ([docContents characterAtIndex:i])
+			{
+					//space
+				case ' ':
+					glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthSpace];
+					break;
 
-				//tab
-			case '\t':
-				glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthTab];
-				break;
+					//tab
+				case '\t':
+					glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthTab];
+					break;
 
-				//eol
-			case 0x2028:
-			case 0x2029:
-			case '\n':
-			case '\r':
-				glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthNewLine];
-				break;
+					//eol
+				case 0x2028:
+				case 0x2029:
+				case '\n':
+				case '\r':
+					glyph = [BPLayoutManager stringForHiddenGlypth:BPHiddenGlypthNewLine];
+					break;
 
-				//do nothing
-			default:
-				glyph = nil;
-				break;
-		}
+					//do nothing
+				default:
+					glyph = nil;
+					break;
+			}
 
-		//should we draw?
-		if (glyph)
-		{
-			glyphPoint = [self locationForGlyphAtIndex:i];
-			glyphRect = [self lineFragmentRectForGlyphAtIndex:i effectiveRange:NULL];
-			glyphPoint.x += glyphRect.origin.x;
-			glyphPoint.y = glyphRect.origin.y;
-			[glyph drawAtPoint:glyphPoint withAttributes:attr];
+			//should we draw?
+			if (glyph)
+			{
+				glyphPoint = [self locationForGlyphAtIndex:i];
+				glyphRect = [self lineFragmentRectForGlyphAtIndex:i effectiveRange:NULL];
+				glyphPoint.x += glyphRect.origin.x;
+				glyphPoint.y = glyphRect.origin.y - 2;
+				[glyph drawAtPoint:glyphPoint withAttributes:attr];
+			}
 		}
 	}
 

@@ -11,16 +11,17 @@
 #import "DCOAboutWindowController.h"
 #import "BPPreferencesWindowController.h"
 
-NSString *const kBPDefaultFont = @"BP_DEFAULT_FONT";
-NSString *const kBPDefaultTextColor = @"BP_DEFAULT_TXTCOLOR";
-NSString *const kBPDefaultBGCOLOR = @"BP_DEFAULT_BGCOLOR";
-NSString *const kBPDefaultShowLines = @"BP_DEFAULT_SHOWLINES";
-NSString *const kBPDefaultShowStatus = @"BP_DEFAULT_SHOWSTATUS";
-NSString *const kBPDefaultInsertTabs = @"BP_DEFAULT_INSERTTABS";
+NSString *const kBPDefaultFont         = @"BP_DEFAULT_FONT";
+NSString *const kBPDefaultTextColor    = @"BP_DEFAULT_TXTCOLOR";
+NSString *const kBPDefaultBGCOLOR      = @"BP_DEFAULT_BGCOLOR";
+NSString *const kBPDefaultShowLines    = @"BP_DEFAULT_SHOWLINES";
+NSString *const kBPDefaultShowStatus   = @"BP_DEFAULT_SHOWSTATUS";
+NSString *const kBPDefaultInsertTabs   = @"BP_DEFAULT_INSERTTABS";
 NSString *const kBPDefaultInsertSpaces = @"BP_DEFAULT_INSERTSPACES";
-NSString *const kBPDefaultCountSpaces = @"BP_DEFAULT_COUNTSPACES";
-NSString *const kBPDefaultTabSize = @"BP_DEFAULT_TABSIZE";
-NSString *const kBPDefaultEditorWidth = @"BP_DEFAULT_EDITOR_WIDTH";
+NSString *const kBPDefaultCountSpaces  = @"BP_DEFAULT_COUNTSPACES";
+NSString *const kBPDefaultTabSize      = @"BP_DEFAULT_TABSIZE";
+NSString *const kBPDefaultEditorWidth  = @"BP_DEFAULT_EDITOR_WIDTH";
+NSString *const kBPDefaultShowSpecials = @"BP_DEFAULT_SHOWSPECIALS";
 
 NSString *const kBPShouldReloadStyleNotification = @"BP_SHOULD_RELOAD_STYLE";
 

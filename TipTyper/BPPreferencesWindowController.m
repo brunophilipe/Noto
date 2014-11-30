@@ -19,7 +19,8 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
     BP_DEFAULTS_TABSIZE      = (1<<7),
     BP_DEFAULTS_INSERTSPACES = (1<<8),
     BP_DEFAULTS_COUNTSPACES  = (1<<9),
-    BP_DEFAULTS_EDITORWIDTH  = (1<<10)
+    BP_DEFAULTS_EDITORWIDTH  = (1<<10),
+	BP_DEFAULTS_SHOWSPECIALS = (1<<11),
 };
 
 @interface BPPreferencesWindowController ()
@@ -68,6 +69,12 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 		[self.checkbox_showStatus setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_showStatus setState:NSOnState];
+	}
+
+	if ((aux = [defaults objectForKey:kBPDefaultShowSpecials])) {
+		[self.checkbox_showInvisibles setState:NSStateForNSNumber(aux)];
+	} else {
+		[self.checkbox_showInvisibles setState:NSOffState];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultInsertTabs])) {
@@ -152,6 +159,7 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 	[defaults removeObjectForKey:kBPDefaultCountSpaces];
 	[defaults removeObjectForKey:kBPDefaultTabSize];
 	[defaults removeObjectForKey:kBPDefaultEditorWidth];
+	[defaults removeObjectForKey:kBPDefaultShowSpecials];
 
 	[defaults synchronize];
 
@@ -211,6 +219,10 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 			self.changedAttributes |= BP_DEFAULTS_EDITORWIDTH;
 		}
 			break;
+
+		case -10: //Count spaces as chars
+			self.changedAttributes |= BP_DEFAULTS_SHOWSPECIALS;
+			break;
 	}
 }
 
@@ -246,6 +258,9 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 	}
 	if (self.changedAttributes & BP_DEFAULTS_EDITORWIDTH) {
 		[defaults setObject:[NSNumber numberWithInteger:[self.field_editorSize integerValue]] forKey:kBPDefaultEditorWidth];
+	}
+	if (self.changedAttributes & BP_DEFAULTS_SHOWSPECIALS) {
+		[defaults setObject:[NSNumber numberWithBool:([self.checkbox_showInvisibles state] == NSOnState)] forKey:kBPDefaultShowSpecials];
 	}
 
 	self.changedAttributes = 0;

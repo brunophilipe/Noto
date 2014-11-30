@@ -23,9 +23,11 @@
 
 - (void)toggleLinesCounter;
 - (void)toggleInfoView;
+- (void)toggleInvisibles;
 
 - (BOOL)isDisplayingLines;
 - (BOOL)isDisplayingInfo;
+- (BOOL)isDisplayingInvisibles;
 
 - (void)action_menu_changeFontSize:(id)sender;
 
@@ -34,14 +36,15 @@
 
 #pragma mark - IBOutlets
 
-@property (strong) IBOutlet BPBackgroundView *wrapView;
-@property (strong) IBOutlet NSScrollView *scrollView;
-@property (strong) IBOutlet BPTextView *textView;
-@property (strong) IBOutlet NSView *infoView;
+@property (strong) IBOutlet BPBackgroundView   *wrapView;
+@property (strong) IBOutlet NSScrollView       *scrollView;
+@property (strong) IBOutlet BPTextView         *textView;
+@property (strong) IBOutlet NSView             *infoView;
 @property (strong) IBOutlet NSSegmentedControl *tb_switch_textAlignment;
 @property (strong) IBOutlet NSSegmentedControl *tb_switch_editorSpacing;
+@property (strong) IBOutlet NSSegmentedControl *tb_switch_displayInvisibles;
 @property (strong) IBOutlet NSSegmentedControl *tb_toggle_displayOptions;
-@property (strong) IBOutlet NSToolbarItem *tb_bt_editToolbar;
+@property (strong) IBOutlet NSToolbarItem      *tb_bt_editToolbar;
 
 #pragma mark - IBActions
 
@@ -49,6 +52,7 @@
 - (IBAction)action_switch_editorSpacing:(id)sender;
 - (IBAction)action_switch_indentation:(id)sender;
 - (IBAction)action_toggle_displayOptions:(id)sender;
+- (IBAction)action_switch_displayInvisibles:(id)sender;
 - (IBAction)action_showJumpToLineDialog:(id)sender;
 - (IBAction)action_switch_changeFontSize:(id)sender;
 

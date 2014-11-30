@@ -26,6 +26,8 @@ typedef enum {
 @property (strong) IBOutlet NSLayoutConstraint *constraint_scrollViewWidth;
 @property (strong) IBOutlet NSLayoutConstraint *constraint_backgroundViewBottomSpace;
 
+@property (getter=isDisplayingInvisibles, nonatomic) BOOL displayingInvisibles;
+
 @end
 
 @implementation BPDocumentWindow
@@ -102,6 +104,13 @@ typedef enum {
 	[self.tb_toggle_displayOptions setSelected:flag forSegment:1];
 }
 
+- (void)setDisplayingInvisibles:(BOOL)displayingInvisibles
+{
+	_displayingInvisibles = displayingInvisibles;
+	[self.tb_switch_displayInvisibles setSelected:_displayingInvisibles forSegment:0];
+	[self.textView setNeedsDisplay:YES];
+}
+
 - (void)toggleLinesCounter
 {
 	[self setLinesCounterVisible:!self.isDisplayingLines];
@@ -110,6 +119,11 @@ typedef enum {
 - (void)toggleInfoView
 {
 	[self setInfoViewVisible:!self.isDisplayingInfo];
+}
+
+- (void)toggleInvisibles
+{
+	[self setDisplayingInvisibles:!self.displayingInvisibles];
 }
 
 - (BOOL)isDisplayingLines
@@ -382,6 +396,10 @@ typedef enum {
 		default:
 			break;
 	}
+}
+
+- (IBAction)action_switch_displayInvisibles:(id)sender {
+	[self toggleInvisibles];
 }
 
 - (IBAction)action_showJumpToLineDialog:(id)sender {
