@@ -59,31 +59,31 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultShowLines])) {
-		[self.checkbox_showLines setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+		[self.checkbox_showLines setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_showLines setState:NSOnState];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultShowStatus])) {
-		[self.checkbox_showStatus setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+		[self.checkbox_showStatus setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_showStatus setState:NSOnState];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultInsertTabs])) {
-		[self.checkbox_insertTabs setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+		[self.checkbox_insertTabs setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_insertTabs setState:NSOnState];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultInsertSpaces])) {
-		[self.checkbox_insertSpaces setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+		[self.checkbox_insertSpaces setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_insertSpaces setState:NSOffState];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultCountSpaces])) {
-		[self.checkbox_countSpaces setState:([(NSNumber*)aux boolValue] ? NSOnState : NSOffState)];
+		[self.checkbox_countSpaces setState:NSStateForNSNumber(aux)];
 	} else {
 		[self.checkbox_countSpaces setState:NSOffState];
 	}

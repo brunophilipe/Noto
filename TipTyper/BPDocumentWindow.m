@@ -230,6 +230,8 @@ typedef enum {
 
 	if ((aux = [defaults objectForKey:kBPDefaultInsertTabs])) {
 		[self.textView setShouldInsertTabsOnLineBreak:[aux boolValue]];
+	} else {
+		[self.textView setShouldInsertTabsOnLineBreak:YES];
 	}
 
 	if ((aux = [defaults objectForKey:kBPDefaultInsertSpaces])) {

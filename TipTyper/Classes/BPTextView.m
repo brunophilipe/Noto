@@ -18,54 +18,6 @@
 
 @implementation BPTextView
 
-- (NSUInteger)locationOfPreviousNewLineFromLocation:(NSUInteger)location;
-{
-	/* The location can be a new line, so we go back one index to avoid that. */
-	location--;
-
-	NSUInteger index = location;
-	NSString *string = self.string;
-	unichar chr = '\0';
-	BOOL found = NO;
-
-	/* The indexes are only equal to or greater than zero. */
-	while (!found && (NSInteger)index >= 0) {
-		if (index < string.length)
-		{
-			chr = [string characterAtIndex:index];
-			if (chr == '\n' || chr == '\r') {
-				found = YES;
-			} else {
-				index--;
-			}
-		}
-	}
-
-	return index;
-}
-
-- (NSUInteger)locationOfNextNewLineFromLocation:(NSUInteger)location;
-{
-	NSUInteger index = location;
-	NSString *string = self.string;
-	unichar chr = '\0';
-	BOOL found = NO;
-
-	/* Lets ignore the current character and search only from then on. */
-	index++;
-
-	while (!found && index < string.length) {
-		chr = [string characterAtIndex:index];
-		if (chr == '\n' || chr == '\r') {
-			found = YES;
-		} else {
-			index++;
-		}
-	}
-
-	return index;
-}
-
 - (NSUInteger)countTabCharsFromLocation:(NSUInteger)location spareSpaces:(NSUInteger *)spareSpaces
 {
 	NSUInteger count = 0, spaces = 0;
@@ -132,8 +84,8 @@
 		if (range.location < string.length) {
 			chr = [string characterAtIndex:range.location];
 			if (chr == '\n') {
-				location = [self locationOfPreviousNewLineFromLocation:range.location];
-				count = [self countTabCharsFromLocation:location+1 spareSpaces:NULL];
+				[string getLineStart:&location end:nil contentsEnd:nil forRange:NSMakeRange(range.location, 1)];
+				count = [self countTabCharsFromLocation:location spareSpaces:NULL];
 
 				if (self.shouldInsertSpacesInsteadOfTabs) {
 					[self insertText:[self buildStringWithSpacesCount:count * self.tabSize]];
@@ -154,86 +106,53 @@
 	}
 }
 
-- (void)iterateThroughLinesUsingBlock:(void(^)(NSUInteger location, NSInteger *difference))block
+- (void)increaseIndentation
 {
-	NSUInteger location = 0;
-	NSRange range = {0, 0};
-	NSInteger count = 0, previousCount = 0, difference = 0, diffRange = 0;
-	NSMutableArray *ranges = [NSMutableArray array];
-	BOOL isFirstLine = YES, didChange = NO, didChangeFirstLine = NO, didChangeLastLine = NO;
+	NSMutableArray *ranges = [[self selectedRanges] mutableCopy];
+	NSUInteger totalCharactersAdded = 0;
 
-	for (NSValue *rangeVal in [self selectedRanges]) {
-		previousCount += count;
-		count = 0;
+	for (NSUInteger rangeIndex = 0; rangeIndex < ranges.count; rangeIndex++) {
+		NSRange currentRange = [[ranges objectAtIndex:rangeIndex] rangeValue];
+		NSUInteger charactersAdded = 0;
 
-		range = [rangeVal rangeValue];
-		range.location += previousCount;
-		location = [self locationOfPreviousNewLineFromLocation:range.location] + 1;
+		currentRange.location += totalCharactersAdded;
 
-		do {
-			difference = 0;
-			block(location, &difference); //parameter block reference execution
-			didChange = (difference != 0);
+		NSString *text = self.string;
+		NSString *substring = [text substringWithRange:currentRange];
+		NSMutableArray *lineStarts = [NSMutableArray new];
 
-			if (didChange && isFirstLine) {
-				didChangeFirstLine = YES;
-				isFirstLine = NO;
-			}
+		[substring enumerateSubstringsInRange:NSMakeRange(0, substring.length) options:NSStringEnumerationByLines usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+			NSUInteger lineStart = 0;
+			[text getLineStart:&lineStart end:nil contentsEnd:nil forRange:NSMakeRange(currentRange.location + substringRange.location, substringRange.length)];
+			[lineStarts addObject:@(lineStart)];
+		}];
 
-			location = [self locationOfNextNewLineFromLocation:location] + 1;
-			count += difference;
-		} while (location < range.location + range.length + count);
-
-		didChangeLastLine = didChange;
-
-		if (count == 0) {
-			diffRange = 0;
-		} else {
-			diffRange = -SGN(count) * (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
+		for (NSUInteger line=0; line<lineStarts.count; line++) {
+			charactersAdded = [self increaseIndentationAtLocation:[[lineStarts objectAtIndex:line] integerValue] + charactersAdded * line];
 		}
 
-		range = NSMakeRange(
-			/* Location */	(BP_IS_FIRST_CHAR < 0 ? 0 : range.location - (didChangeFirstLine ? diffRange : 0)),
-			/* Length   */	range.length + count + (didChangeFirstLine ? diffRange : 0)
-							);
+		[ranges replaceObjectAtIndex:rangeIndex withObject:[NSValue valueWithRange:NSMakeRange(currentRange.location + charactersAdded, currentRange.length + charactersAdded * (lineStarts.count - 1))]];
 
-		[ranges addObject:[NSValue valueWithRange:range]];
+		totalCharactersAdded += charactersAdded * lineStarts.count;
 	}
 
 	[self setSelectedRanges:ranges];
 }
 
-- (void)increaseIndentation
+- (void)decreaseIndentation
 {
-	[self iterateThroughLinesUsingBlock:^(NSUInteger location, NSInteger *difference) {
-		[self increaseIndentationAtLocation:location];
-		*difference = (self.shouldInsertSpacesInsteadOfTabs ? self.tabSize : 1);
-	}];
+
 }
 
-- (void)increaseIndentationAtLocation:(NSUInteger)location
+- (NSUInteger)increaseIndentationAtLocation:(NSUInteger)location
 {
 	if (self.shouldInsertSpacesInsteadOfTabs) {
 		[self insertText:[self buildStringWithSpacesCount:self.tabSize] replacementRange:NSMakeRange(location, 0)];
+		return self.tabSize;
 	} else {
 		[self insertText:[self buildStringWithTabsCount:1] replacementRange:NSMakeRange(location, 0)];
+		return 1;
 	}
-}
-
-- (void)decreaseIndentation
-{
-	[self iterateThroughLinesUsingBlock:^(NSUInteger location, NSInteger *difference) {
-		NSUInteger spareSpaces = 0;
-		if ([self decreaseIndentationAtLocation:location spareSpaces:&spareSpaces]) { //Returns yes if did decrement
-			if (spareSpaces > 0) {
-				*difference = -spareSpaces;
-			} else {
-				*difference = -1;
-			}
-		} else {
-			*difference = 0;
-		}
-	}];
 }
 
 - (BOOL)decreaseIndentationAtLocation:(NSUInteger)location spareSpaces:(NSUInteger *)spareSpaces

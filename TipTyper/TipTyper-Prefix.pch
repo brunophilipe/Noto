@@ -23,5 +23,7 @@
 
 	#define kBP_TIPTYPER_WEBSITE_URL [NSURL URLWithString:kBP_TIPTYPER_WEBSITE]
 
+	#define NSStateForNSNumber(x) ([(NSNumber*)(x) boolValue] ? NSOnState : NSOffState)
+
 	#define SGN(x) (x>=0?1:-1)
 #endif
