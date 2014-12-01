@@ -232,12 +232,12 @@ typedef enum {
 	[self.textView scrollRangeToVisible:range];
 }
 
-- (IBAction)increaseIndentation:(id)sender
+- (void)increaseIndentation:(id)sender
 {
 	[self.textView increaseIndentation];
 }
 
-- (IBAction)decreaseIndentation:(id)sender
+- (void)decreaseIndentation:(id)sender
 {
 	[self.textView decreaseIndentation];
 }

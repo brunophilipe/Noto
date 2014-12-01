@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 @interface BPPreferencesWindowController ()
 
 @property BP_DEFAULT_TYPES changedAttributes;
+@property (strong) IBOutlet NSPopover *popover;
+
 
 @end
 
@@ -267,6 +269,18 @@ typedef NS_ENUM(NSUInteger, BP_DEFAULT_TYPES) {
 
 	[defaults synchronize];
 	[[NSNotificationCenter defaultCenter] postNotificationName:kBPShouldReloadStyleNotification object:self];
+}
+
+- (IBAction)showHelpPopover:(NSControl*)sender {
+	if (!self.popover.isShown)
+	{
+		[self.popover showRelativeToRect:sender.frame ofView:self.window.contentView preferredEdge:NSMaxXEdge];
+	}
+	else
+	{
+		[self.popover performClose:sender];
+	}
+
 }
 
 @end
