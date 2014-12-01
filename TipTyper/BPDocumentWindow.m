@@ -204,7 +204,7 @@ typedef enum {
 	NSError *error;
 
 	if (line > 1) {
-		NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\n|\r)" options:NSRegularExpressionCaseInsensitive error:&error];
+		NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\n|\r|\r\n)" options:NSRegularExpressionCaseInsensitive error:&error];
 
 		[regex enumerateMatchesInString:string options:0 range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
 			if (result.resultType == NSTextCheckingTypeRegularExpression) {
