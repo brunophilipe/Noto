@@ -17,7 +17,7 @@
     }, {
         "size": "32x32",
         "idiom": "mac",
-        "filename": "icon_64.png",
+        "filename": "icon_32@2x.png",
         "scale": "2x"
     }, {
         "size": "128x128",
