@@ -69,6 +69,10 @@ typedef enum {
 		[self setInfoViewVisible:NO];
 	}
 
+	if ((aux = [defaults objectForKey:kBPDefaultShowSpecials]) && [(NSNumber*)aux boolValue]) {
+		[self setDisplayingInvisibles:YES];
+	}
+
 	[self loadStyleAttributesFromDefaults];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self
