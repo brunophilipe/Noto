@@ -220,6 +220,8 @@ typedef enum {
 		if (range.location == 0 && range.length == 0)
 		{
 			NSAlert *alert = [NSAlert alertWithMessageText:@"Attention!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"There is no such line!"];
+			[alert setAlertStyle:NSWarningAlertStyle];
+			[alert.window setTitle:@"TipTyper"];
 			[alert runModal];
 			return;
 		}

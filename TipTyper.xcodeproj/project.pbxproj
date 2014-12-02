@@ -403,14 +403,14 @@
 /* Begin PBXShellScriptBuildPhase section */
 		152CF4F818A9B264008D2ED8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"TipTyper/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
