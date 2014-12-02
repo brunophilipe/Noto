@@ -16,12 +16,12 @@
 		153911B318E496A9009FAB64 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 153911AD18E496A9009FAB64 /* Credits.rtf */; };
 		153911B418E496A9009FAB64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153911AE18E496A9009FAB64 /* InfoPlist.strings */; };
 		153911B518E496A9009FAB64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 153911AF18E496A9009FAB64 /* Localizable.strings */; };
-		153911B618E496A9009FAB64 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153911B018E496A9009FAB64 /* MainMenu.xib */; };
 		153911B718E496A9009FAB64 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153911B118E496A9009FAB64 /* Preferences.xib */; };
 		15408A6818E3C90400127DA6 /* DCOAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15408A6518E3C90400127DA6 /* DCOAboutWindow.xib */; };
 		15408A6918E3C90400127DA6 /* DCOAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6718E3C90400127DA6 /* DCOAboutWindowController.m */; };
 		15408A6F18E3CA8B00127DA6 /* DCOTransparentScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6C18E3CA8B00127DA6 /* DCOTransparentScroller.m */; };
 		15408A7018E3CA8B00127DA6 /* DCOTransparentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15408A6E18E3CA8B00127DA6 /* DCOTransparentScrollView.m */; };
+		157528601A2D6B2A00EB002C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153911B018E496A9009FAB64 /* MainMenu.xib */; };
 		15753F5818AC78F5009E7E9E /* BPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15753F5718AC78F5009E7E9E /* BPApplication.m */; };
 		15962E831A0C6CB200E168EC /* BPPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15962E821A0C6CB200E168EC /* BPPreferencesWindowController.m */; };
 		15C21D3A18A83D5500C9D410 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C21D3918A83D5500C9D410 /* Cocoa.framework */; };
@@ -384,10 +384,10 @@
 				15C21D5518A83D5500C9D410 /* Images.xcassets in Resources */,
 				153911B718E496A9009FAB64 /* Preferences.xib in Resources */,
 				153911B218E496A9009FAB64 /* BPDocument.xib in Resources */,
+				157528601A2D6B2A00EB002C /* MainMenu.xib in Resources */,
 				153911B318E496A9009FAB64 /* Credits.rtf in Resources */,
 				15408A6818E3C90400127DA6 /* DCOAboutWindow.xib in Resources */,
 				1502C2FC18B97B70002EC738 /* dsa_pub.pem in Resources */,
-				153911B618E496A9009FAB64 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"TipTyper/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+			shellScript = "infoplist=\"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\"\n/bin/sh \"TipTyper/BumpBuild.sh\" $infoplist\nbuilddate=`date +%s`\nif [[ -n \"$builddate\" ]]; then\ndefaults write \"${infoplist%.plist}\" BuildDate \"${builddate}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

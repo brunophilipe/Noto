@@ -60,7 +60,10 @@ NSString *const kBPTipTyperWebsite = @"http://www.brunophilipe.com/software/tipt
 	if (!aboutWindowController) {
 		aboutWindowController = [[DCOAboutWindowController alloc] init];
 
-		[aboutWindowController setAppCopyright:@"Copyright Bruno Philipe 2014 – All Rights Reserved"];
+		NSTimeInterval buildDate = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BuildDate"] doubleValue];
+		NSInteger currentYear = [[NSCalendar currentCalendar] component:NSCalendarUnitYear fromDate:[NSDate dateWithTimeIntervalSince1970:buildDate]];
+		
+		[aboutWindowController setAppCopyright:[NSString stringWithFormat:@"Copyright Bruno Philipe 2013-%ld – All Rights Reserved", currentYear]];
 		[aboutWindowController setAppWebsiteURL:[NSURL URLWithString:kBPTipTyperWebsite]];
 	}
 
