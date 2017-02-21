@@ -17,6 +17,21 @@ class Document: NSDocument
 		// Add your subclass-specific initialization here.
 	}
 
+	override func makeWindowControllers()
+	{
+		super.makeWindowControllers()
+
+		window?.setupUI()
+	}
+
+	var window: DocumentWindow?
+	{
+		get
+		{
+			return windowControllers.first?.window as? DocumentWindow
+		}
+	}
+
 	override class func autosavesInPlace() -> Bool
 	{
 		return true

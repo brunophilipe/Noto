@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -13,8 +13,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingIdentifier="com.brunophilie.TipTyper.Document.Window" id="xOd-HO-29H" userLabel="Window" customClass="DocumentWindow" customModule="TipTyper" customModuleProvider="target">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="133" y="235" width="507" height="413"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
@@ -23,53 +23,70 @@
                 <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ">
-                        <rect key="frame" x="-1" y="-1" width="509" height="415"/>
-                        <clipView key="contentView" id="895-DM-yKi">
-                            <rect key="frame" x="1" y="1" width="507" height="413"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="HKp-0Q-T0H" customClass="BackgroundView" customModule="TipTyper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="412" width="507" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="up7-tf-RrW"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                <color key="value" white="0.80097113720000002" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </customView>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ">
+                        <rect key="frame" x="-1" y="-1" width="509" height="414"/>
+                        <clipView key="contentView" drawsBackground="NO" id="895-DM-yKi">
+                            <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa">
-                                    <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
+                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa" customClass="PaddedTextView" customModule="TipTyper" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="507" height="413"/>
-                                    <size key="maxSize" width="507" height="10000000"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                    <size key="minSize" width="509" height="414"/>
+                                    <size key="maxSize" width="509" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="KEg-Up-JR5">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="esY-Zs-NcM">
-                            <rect key="frame" x="492" y="1" width="16" height="413"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="esY-Zs-NcM">
+                            <rect key="frame" x="493" y="0.0" width="16" height="414"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="HKp-0Q-T0H" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" id="IOe-0R-qbF"/>
                     <constraint firstItem="yIz-sU-qFQ" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" constant="-1" id="Ie9-dY-lND"/>
                     <constraint firstAttribute="trailing" secondItem="yIz-sU-qFQ" secondAttribute="trailing" constant="-1" id="Pgo-6R-AmJ"/>
-                    <constraint firstItem="yIz-sU-qFQ" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" constant="-1" id="ZKJ-Vj-0nj"/>
+                    <constraint firstAttribute="trailing" secondItem="HKp-0Q-T0H" secondAttribute="trailing" id="adq-QW-dN0"/>
+                    <constraint firstItem="HKp-0Q-T0H" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" id="ngv-du-sXU"/>
                     <constraint firstAttribute="bottom" secondItem="yIz-sU-qFQ" secondAttribute="bottom" constant="-1" id="o5x-93-YKX"/>
+                    <constraint firstItem="yIz-sU-qFQ" firstAttribute="top" secondItem="HKp-0Q-T0H" secondAttribute="top" id="t7q-ZX-ZPz"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="small" id="5wh-ff-yRk">
+            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="small" id="5wh-ff-yRk">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="qEj-kO-OmM"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="l1h-S7-eid"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="mAk-lH-1P0"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="cJQ-gT-bQS"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="cJQ-gT-bQS"/>
                     <toolbarItem reference="mAk-lH-1P0"/>
                     <toolbarItem reference="qEj-kO-OmM"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
+                <outlet property="textView" destination="3kl-bg-vXa" id="X7k-y4-PLU"/>
             </connections>
             <point key="canvasLocation" x="138.5" y="161.5"/>
         </window>
