@@ -25,6 +25,7 @@ class Preferences: UserDefaults
 		get
 		{
 			let fontSize = double(forKey: Preferences.PreferenceEditorFontSize)
+
 			if	let fontName = string(forKey: Preferences.PreferenceEditorFontName), fontSize > 0,
 				let font = NSFont(name: fontName, size: CGFloat(fontSize))
 			{

@@ -13,6 +13,7 @@
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
+		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
@@ -27,6 +28,7 @@
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
+		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				15933C7B1E5B922E00AFF625 /* Application */,
 				15933C781E5B920D00AFF625 /* Document */,
 				15276E601E5BCCFA0032EDE4 /* Views */,
+				15276E651E5CD5050032EDE4 /* Extensions */,
 			);
 			path = TipTyper;
 			sourceTree = "<group>";
@@ -76,6 +79,14 @@
 				15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		15276E651E5CD5050032EDE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		15933C781E5B920D00AFF625 /* Document */ = {
@@ -174,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
+				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,

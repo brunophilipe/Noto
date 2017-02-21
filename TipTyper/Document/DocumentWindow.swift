@@ -42,7 +42,7 @@ class DocumentWindow: NSWindow
 
 	private func setupWindowStyle()
 	{
-		backgroundColor = NSColor.white
+		backgroundColor = NSColor(rgb: 0xFDFDFD)
 		titlebarAppearsTransparent = true
 	}
 
