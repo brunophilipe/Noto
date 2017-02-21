@@ -11,18 +11,28 @@
 			<array>
 				<string>txt</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string></string>
-			<key>CFBundleTypeName</key>
-			<string>DocumentType</string>
-			<key>CFBundleTypeOSTypes</key>
+			<key>CFBundleTypeMIMETypes</key>
 			<array>
-				<string>????</string>
+				<string>text/plain</string>
+				<string>application/x-latex</string>
 			</array>
+			<key>CFBundleTypeName</key>
+			<string>Plain Text File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+				<string>public.html</string>
+				<string>public.text</string>
+				<string>public.data</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>TipTyper.Document</string>
+			<key>NSIsRelatedItemType</key>
+			<true/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

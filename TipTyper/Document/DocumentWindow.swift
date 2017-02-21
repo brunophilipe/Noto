@@ -13,6 +13,19 @@ class DocumentWindow: NSWindow
 {
 	@IBOutlet var textView: NSTextView!
 
+	var text: String
+	{
+		get
+		{
+			return textView.string ?? ""
+		}
+
+		set
+		{
+			textView.string = newValue
+		}
+	}
+
 	func setupUI()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: NSKeyValueObservingOptions.new, context: nil)

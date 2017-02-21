@@ -10,6 +10,8 @@ import Cocoa
 
 class Document: NSDocument
 {
+	private var loadedString: String? = nil
+
 	override init()
 	{
 	    super.init()
@@ -22,6 +24,12 @@ class Document: NSDocument
 		super.makeWindowControllers()
 
 		window?.setupUI()
+
+		if let string = loadedString
+		{
+			window?.text = string
+			loadedString = nil
+		}
 	}
 
 	var window: DocumentWindow?
@@ -46,19 +54,31 @@ class Document: NSDocument
 
 	override func data(ofType typeName: String) throws -> Data
 	{
-		// Insert code here to write your document to data of the specified type. If outError != nil, ensure that you create and set an appropriate error when returning nil.
-		// You can also choose to override fileWrapperOfType:error:, writeToURL:ofType:error:, or writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
+		if let data = window?.text.data(using: .utf8)
+		{
+			return data
+		}
+
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
 
 	override func read(from data: Data, ofType typeName: String) throws
 	{
-		// Insert code here to read your document from the given data of the specified type. If outError != nil, ensure that you create and set an appropriate error when returning false.
-		// You can also choose to override readFromFileWrapper:ofType:error: or readFromURL:ofType:error: instead.
-		// If you override either of these, you should also override -isEntireFileLoaded to return false if the contents are lazily loaded.
-		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+		if supportedDocumentTypes.contains(typeName)
+		{
+			loadedString = String(data: data, encoding: .utf8) ?? ""
+		}
 	}
 
+	private var supportedDocumentTypes: [String]
+	{
+		if	let documentTypes = Bundle.main.infoDictionary?["CFBundleDocumentTypes"] as? NSArray,
+			let publicIdentifiers = (documentTypes[0] as? NSDictionary)?["LSItemContentTypes"] as? [String]
+		{
+			return publicIdentifiers
+		}
 
+		return []
+	}
 }
 

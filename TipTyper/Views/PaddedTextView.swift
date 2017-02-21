@@ -14,12 +14,6 @@ class PaddedTextView: NSTextView
 	{
 		super.awakeFromNib()
 
-		super.textContainerInset = NSSize(width: 15.0, height: 5.0)
-	}
-
-	override var textContainerOrigin: NSPoint
-	{
-		let origin = super.textContainerOrigin
-		return NSPoint(x: origin.x + 5.0, y: origin.y)
+		super.textContainerInset = NSSize(width: 10.0, height: 10.0)
 	}
 }
