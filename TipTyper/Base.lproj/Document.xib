@@ -23,24 +23,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="HKp-0Q-T0H" customClass="BackgroundView" customModule="TipTyper" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="412" width="507" height="1"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="up7-tf-RrW"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" white="0.89651150178333339" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </customView>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ">
                         <rect key="frame" x="-1" y="-1" width="509" height="414"/>
                         <clipView key="contentView" drawsBackground="NO" id="895-DM-yKi">
                             <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa" customClass="PaddedTextView" customModule="TipTyper" customModuleProvider="target">
+                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="bar" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa" customClass="EditorView" customModule="TipTyper" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -60,6 +49,17 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="HKp-0Q-T0H" customClass="BackgroundView" customModule="TipTyper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="412" width="507" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="up7-tf-RrW"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                <color key="value" white="0.89651150178333339" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HKp-0Q-T0H" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" id="IOe-0R-qbF"/>
