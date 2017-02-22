@@ -139,26 +139,33 @@ class LineCounterRulerView: NSRulerView
 
 		textColor.setStroke()
 
-		for (lineNumber, index) in lineIndexes
+		let visibleRange = layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
+		let startLine = findLineForNearestIndex(index: text.characters.index(text.startIndex, offsetBy: visibleRange.location), inText: text)
+		let endLine = findLineForNearestIndex(index: text.characters.index(text.startIndex, offsetBy: NSMaxRange(visibleRange)), inText: text)
+
+		for lineNumber in startLine ... endLine
 		{
-			let charRange = NSMakeRange(Int(text.distance(from: text.startIndex, to: index)), 0)
-			var rectCount: Int = 0
-			if let rectArray = layoutManager.rectArray(forCharacterRange: charRange,
-			                                           withinSelectedCharacterRange: nullRange,
-			                                           in: textContainer,
-			                                           rectCount: &rectCount),
-				rectCount > 0
+			if let index = lineIndexes[lineNumber]
 			{
-				let ypos = heightInset + NSMinY(rectArray[0]) - NSMinY(visibleRect);
-				let lineText = "\(lineNumber + 1)" as NSString
-				let textSize = lineText.size(withAttributes: numberTextAttributes)
+				let charRange = NSMakeRange(Int(text.distance(from: text.startIndex, to: index)), 0)
+				var rectCount: Int = 0
+				if let rectArray = layoutManager.rectArray(forCharacterRange: charRange,
+				                                           withinSelectedCharacterRange: nullRange,
+				                                           in: textContainer,
+				                                           rectCount: &rectCount),
+					rectCount > 0
+				{
+					let ypos = heightInset + NSMinY(rectArray[0]) - NSMinY(visibleRect);
+					let lineText = "\(lineNumber + 1)" as NSString
+					let textSize = lineText.size(withAttributes: numberTextAttributes)
 
-				let rect = NSRect(x: kRulerMargin,
-				                  y: ypos + (rectArray[0].height - textSize.height) / 2.0,
-				                  width: NSWidth(bounds) - kRulerMargin * 2.0,
-				                  height: rectArray[0].height)
+					let rect = NSRect(x: kRulerMargin,
+					                  y: ypos + (rectArray[0].height - textSize.height) / 2.0,
+					                  width: NSWidth(bounds) - kRulerMargin * 2.0,
+					                  height: rectArray[0].height)
 
-				lineText.draw(in: rect, withAttributes: numberTextAttributes)
+					lineText.draw(in: rect, withAttributes: numberTextAttributes)
+				}
 			}
 		}
 	}
@@ -178,6 +185,50 @@ class LineCounterRulerView: NSRulerView
 	private func setupStateObservers()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "lineCounterFont", options: .new, context: nil)
+	}
+
+	private func findLineForNearestIndex(index: String.CharacterView.Index, inText text: String) -> UInt
+	{
+		let keys = lineIndexes.keys.sorted()
+
+		// First some optimizations
+		if index == text.startIndex, let key = keys.first
+		{
+			return key
+		}
+		else if index == text.endIndex, let key = keys.last
+		{
+			return key
+		}
+
+		var left = 0
+		var right = lineIndexes.count
+		var mid = 0
+
+		while (right - left) > 1
+		{
+			mid = (right + left) / 2
+
+			if let foundIndex = lineIndexes[keys[mid]]
+			{
+				let distance = Int(text.distance(from: foundIndex, to: index))
+
+				if distance < 0
+				{
+					right = mid
+				}
+				else if distance > 0
+				{
+					left = mid
+				}
+				else
+				{
+					return keys[mid]
+				}
+			}
+		}
+
+		return keys[mid]
 	}
 
 	private var textView: NSTextView?
