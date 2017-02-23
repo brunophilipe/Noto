@@ -13,7 +13,7 @@ let kRulerMargin: CGFloat = 10.0
 class LineCounterRulerView: NSRulerView
 {
 	// Index of newline characters locations
-	private var lineIndexes: [UInt : String.CharacterView.Index] = [:]
+	private var lineIndexes: [UInt : UInt] = [:]
 
 	// MARK: - Initializers and Deinitializer
 
@@ -122,11 +122,11 @@ class LineCounterRulerView: NSRulerView
 
 	override func drawHashMarksAndLabels(in rect: NSRect)
 	{
-		guard let layoutManager	= textView?.layoutManager,
-			  let textContainer	= textView?.textContainer,
-			  let heightInset	= textView?.textContainerInset.height,
-			  let visibleRect	= scrollView?.contentView.bounds,
-			  let text			= textView?.string
+		guard let layoutManager		= textView?.layoutManager,
+			  let textContainer		= textView?.textContainer,
+			  let heightInset		= textView?.textContainerInset.height,
+			  let visibleRect		= scrollView?.contentView.bounds,
+			  let text: NSString	= textView?.string as NSString?
 		else
 		{
 			return
@@ -140,14 +140,22 @@ class LineCounterRulerView: NSRulerView
 		textColor.setStroke()
 
 		let visibleRange = layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
-		let startLine = findLineForNearestIndex(index: text.characters.index(text.startIndex, offsetBy: visibleRange.location), inText: text)
-		let endLine = findLineForNearestIndex(index: text.characters.index(text.startIndex, offsetBy: NSMaxRange(visibleRange)), inText: text)
+		var startLine = findLineForNearestIndex(index: visibleRange.location, inText: text)
+		let endLine = findLineForNearestIndex(index: NSMaxRange(visibleRange), inText: text)
+
+		let maxText = "\(endLine + 1)" as NSString
+		let maxTextSize = maxText.size(withAttributes: numberTextAttributes)
+
+		if startLine > 0
+		{
+			startLine -= 1
+		}
 
 		for lineNumber in startLine ... endLine
 		{
 			if let index = lineIndexes[lineNumber]
 			{
-				let charRange = NSMakeRange(Int(text.distance(from: text.startIndex, to: index)), 0)
+				let charRange = NSMakeRange(Int(index), 0)
 				var rectCount: Int = 0
 				if let rectArray = layoutManager.rectArray(forCharacterRange: charRange,
 				                                           withinSelectedCharacterRange: nullRange,
@@ -155,16 +163,13 @@ class LineCounterRulerView: NSRulerView
 				                                           rectCount: &rectCount),
 					rectCount > 0
 				{
-					let ypos = heightInset + NSMinY(rectArray[0]) - NSMinY(visibleRect);
-					let lineText = "\(lineNumber + 1)" as NSString
-					let textSize = lineText.size(withAttributes: numberTextAttributes)
-
+					let ypos = heightInset + NSMinY(rectArray[0]) - NSMinY(visibleRect)
 					let rect = NSRect(x: kRulerMargin,
-					                  y: ypos + (rectArray[0].height - textSize.height) / 2.0,
+					                  y: ypos + (rectArray[0].height - maxTextSize.height) / 2.0,
 					                  width: NSWidth(bounds) - kRulerMargin * 2.0,
 					                  height: rectArray[0].height)
 
-					lineText.draw(in: rect, withAttributes: numberTextAttributes)
+					"\(lineNumber + 1)".draw(in: rect, withAttributes: numberTextAttributes)
 				}
 			}
 		}
@@ -177,7 +182,7 @@ class LineCounterRulerView: NSRulerView
 		let sampleString = String(repeating: "8", count: digits) as NSString
 		let requiredThickness = sampleString.size(withAttributes: numberTextAttributes).width
 
-		return ceil(max(defaultThickness, requiredThickness + kRulerMargin * 2.0))
+		return ceil(max(defaultThickness, 8.0 + requiredThickness + kRulerMargin * 2.0))
 	}
 
 	// MARK: - Private Methods
@@ -187,16 +192,12 @@ class LineCounterRulerView: NSRulerView
 		Preferences.instance.addObserver(self, forKeyPath: "lineCounterFont", options: .new, context: nil)
 	}
 
-	private func findLineForNearestIndex(index: String.CharacterView.Index, inText text: String) -> UInt
+	private func findLineForNearestIndex(index: Int, inText text: NSString) -> UInt
 	{
 		let keys = lineIndexes.keys.sorted()
 
 		// First some optimizations
-		if index == text.startIndex, let key = keys.first
-		{
-			return key
-		}
-		else if index == text.endIndex, let key = keys.last
+		if index == 0, let key = lineIndexes[0]
 		{
 			return key
 		}
@@ -211,7 +212,7 @@ class LineCounterRulerView: NSRulerView
 
 			if let foundIndex = lineIndexes[keys[mid]]
 			{
-				let distance = Int(text.distance(from: foundIndex, to: index))
+				let distance = index - Int(foundIndex)
 
 				if distance < 0
 				{
@@ -261,23 +262,41 @@ class LineCounterRulerView: NSRulerView
 
 	private func updateLineInfos()
 	{
-		if let textView = self.textView
+		let oldDigitsCount = Int(log10(Double(max(lineIndexes.count, 1))) + 1)
+
+		lineIndexes.removeAll()
+
+		if let textView = self.textView, let text: NSString = textView.string as NSString?
 		{
-			lineIndexes.removeAll()
-
-			let text = textView.string ?? ""
-			let chars = text.characters
-			var lineNumber = UInt(0)
-
-			text.enumerateSubstrings(in: chars.startIndex ..< chars.endIndex, options: .byLines)
-			{ (_, lineRange, enclosingRange, _) in
-				self.lineIndexes[lineNumber] = enclosingRange.lowerBound
-				lineNumber += 1
-			}
-
-			if text == "" || chars[text.index(before: text.endIndex)] == "\n"
+			if text.length == 0
 			{
-				self.lineIndexes[lineNumber] = text.endIndex
+				self.lineIndexes[0] = 0
+			}
+			else
+			{
+				var lineNumber = UInt(0)
+
+				text.enumerateSubstrings(in: NSMakeRange(0, text.length), options: [.byLines, .substringNotRequired])
+				{ (_, lineRange, enclosingRange, _) in
+					self.lineIndexes[lineNumber] = UInt(enclosingRange.location)
+					lineNumber += 1
+				}
+
+				if text.character(at: text.length - 1) == unichar(0xA) // newline
+				{
+					self.lineIndexes[lineNumber] = UInt(text.length)
+				}
+			}
+		}
+
+		let newDigitsCount = Int(log10(Double(max(lineIndexes.count, 1))) + 1)
+
+		if newDigitsCount != oldDigitsCount
+		{
+			DispatchQueue.main.async
+			{
+				self.ruleThickness = self.requiredThickness
+				self.needsLayout = true
 			}
 		}
 	}
