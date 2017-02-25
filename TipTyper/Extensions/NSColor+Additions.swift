@@ -24,4 +24,20 @@ extension NSColor
 
 		self.init(red: red, green: green, blue: blue, alpha: alpha)
 	}
+	
+	var rgb: UInt
+	{
+		if colorSpace.colorSpaceModel == .RGB
+		{
+			var rgbInt = UInt(0)
+			
+			rgbInt |= UInt(redComponent   * 255) << 16
+			rgbInt |= UInt(greenComponent * 255) << 8
+			rgbInt |= UInt(blueComponent  * 255) << 0
+			
+			return rgbInt
+		}
+		
+		return 0
+	}
 }
