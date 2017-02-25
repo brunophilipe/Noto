@@ -1,0 +1,6 @@
+framework module CCNPreferencesWindowController {
+  umbrella header "CCNPreferencesWindowController-umbrella.h"
+
+  export *
+  module * { export * }
+}

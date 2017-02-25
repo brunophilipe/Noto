@@ -1,0 +1,21 @@
+PODS:
+  - CCNPreferencesWindowController (1.4.3)
+
+DEPENDENCIES:
+  - CCNPreferencesWindowController (from `https://github.com/brunophilipe/CCNPreferencesWindowController.git`)
+
+EXTERNAL SOURCES:
+  CCNPreferencesWindowController:
+    :git: https://github.com/brunophilipe/CCNPreferencesWindowController.git
+
+CHECKOUT OPTIONS:
+  CCNPreferencesWindowController:
+    :commit: ad349a56399873311e752e8a251da30c5cd08fbd
+    :git: https://github.com/brunophilipe/CCNPreferencesWindowController.git
+
+SPEC CHECKSUMS:
+  CCNPreferencesWindowController: e89fc1d448197c6d20e995a4d6488142cae529f5
+
+PODFILE CHECKSUM: 43b53dfa22d5edd7b586cb6f58f3daabb3b93239
+
+COCOAPODS: 1.2.0
