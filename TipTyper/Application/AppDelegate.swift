@@ -29,11 +29,23 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	{
 		preferencesController.centerToolbarItems = true
 		
-		var controllers: [NSViewController?] = [
-			EditorPreferencesController.make()
+		let types: [PreferencesController.Type] = [
+			EditorPreferencesController.self
 		]
 		
-		controllers = controllers.filter({ return $0 != nil })
+		let controllers: [PreferencesController] = types.reduce([])
+		{
+			(controllers, controllerType) -> [PreferencesController] in
+
+			if let controller = controllerType.make()
+			{
+				return controllers + [controller]
+			}
+			else
+			{
+				return controllers
+			}
+		}
 		
 		preferencesController.setPreferencesViewControllers(controllers)
 	}

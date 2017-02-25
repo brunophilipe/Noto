@@ -16,14 +16,14 @@ class EditorPreferencesController: NSViewController
         super.viewDidLoad()
         // Do view setup here.
     }
-	
-	static func make() -> EditorPreferencesController?
-	{
-		return EditorPreferencesController(nibName: "EditorPreferencesController", bundle: Bundle.main)
-	}
 }
 
-extension EditorPreferencesController: CCNPreferencesWindowControllerProtocol
+protocol PreferencesController: CCNPreferencesWindowControllerProtocol
+{
+	static func make() -> PreferencesController?
+}
+
+extension EditorPreferencesController: PreferencesController
 {
 	public func preferenceIdentifier() -> String!
 	{
@@ -38,5 +38,10 @@ extension EditorPreferencesController: CCNPreferencesWindowControllerProtocol
 	func preferenceIcon() -> NSImage!
 	{
 		return NSImage(named: NSImageNameFontPanel)
+	}
+
+	static func make() -> PreferencesController?
+	{
+		return EditorPreferencesController(nibName: "EditorPreferencesController", bundle: Bundle.main)
 	}
 }
