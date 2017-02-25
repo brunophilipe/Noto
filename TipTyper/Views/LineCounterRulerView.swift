@@ -125,8 +125,7 @@ class LineCounterRulerView: NSRulerView
 		guard let layoutManager		= textView?.layoutManager,
 			  let textContainer		= textView?.textContainer,
 			  let heightInset		= textView?.textContainerInset.height,
-			  let visibleRect		= scrollView?.contentView.bounds,
-			  let text: NSString	= textView?.string as NSString?
+			  let visibleRect		= scrollView?.contentView.bounds
 		else
 		{
 			return
@@ -140,8 +139,8 @@ class LineCounterRulerView: NSRulerView
 		textColor.setStroke()
 
 		let visibleRange = layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
-		var startLine = findLineForNearestIndex(index: visibleRange.location, inText: text)
-		let endLine = findLineForNearestIndex(index: NSMaxRange(visibleRange), inText: text)
+		var startLine = findLineForNearestIndex(index: visibleRange.location)
+		let endLine = findLineForNearestIndex(index: NSMaxRange(visibleRange))
 
 		let maxText = "\(endLine + 1)" as NSString
 		let maxTextSize = maxText.size(withAttributes: numberTextAttributes)
@@ -192,7 +191,7 @@ class LineCounterRulerView: NSRulerView
 		Preferences.instance.addObserver(self, forKeyPath: "lineCounterFont", options: .new, context: nil)
 	}
 
-	private func findLineForNearestIndex(index: Int, inText text: NSString) -> UInt
+	private func findLineForNearestIndex(index: Int) -> UInt
 	{
 		let keys = lineIndexes.keys.sorted()
 
