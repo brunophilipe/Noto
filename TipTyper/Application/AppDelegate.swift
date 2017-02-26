@@ -32,22 +32,25 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		let types: [PreferencesController.Type] = [
 			EditorPreferencesController.self
 		]
-		
-		let controllers: [PreferencesController] = types.reduce([])
-		{
-			(controllers, controllerType) -> [PreferencesController] in
 
-			if let controller = controllerType.make()
+		if let window = preferencesController.window
+		{
+			let controllers: [PreferencesController] = types.reduce([])
 			{
-				return controllers + [controller]
+				(controllers, controllerType) -> [PreferencesController] in
+
+				if let controller = controllerType.make(preferencesWindow: window)
+				{
+					return controllers + [controller]
+				}
+				else
+				{
+					return controllers
+				}
 			}
-			else
-			{
-				return controllers
-			}
+
+			preferencesController.setPreferencesViewControllers(controllers)
 		}
-		
-		preferencesController.setPreferencesViewControllers(controllers)
 	}
 }
 

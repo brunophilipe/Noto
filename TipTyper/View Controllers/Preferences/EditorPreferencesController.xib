@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesController" customModule="TipTyper" customModuleProvider="target">
             <connections>
+                <outlet property="chooseFontButton" destination="Bt1-9g-R6V" id="vjP-kK-oNi"/>
+                <outlet property="editorPreviewTextView" destination="zSi-Bx-N1x" id="mh8-7y-9wM"/>
+                <outlet property="editorThemePopUpButton" destination="J92-WQ-r0q" id="vq3-qg-H7U"/>
+                <outlet property="fontNameLabel" destination="vT2-88-9Cl" id="Wmq-Mk-HMy"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -23,7 +27,7 @@
                         <rect key="frame" x="1" y="1" width="338" height="133"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zSi-Bx-N1x" customClass="EditorView" customModule="TipTyper" customModuleProvider="target">
+                            <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zSi-Bx-N1x" customClass="EditorView" customModule="TipTyper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="338" height="133"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -116,6 +120,9 @@ class Hello
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="didClickChooseFont:" target="-2" id="wl1-R8-R5I"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT2-88-9Cl">
                     <rect key="frame" x="233" y="330" width="229" height="17"/>
