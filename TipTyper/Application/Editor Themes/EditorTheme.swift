@@ -149,7 +149,7 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 {
 	fileprivate init(fromSerialized dict: [String: AnyObject])
 	{
-		name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
+		_name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
 		windowBackground		= (dict[kThemeWindowBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xFDFDFD)
 		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? NSColor.black
 		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? NSColor.clear
@@ -157,7 +157,13 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 		lineCounterBackground	= (dict[kThemeLineCounterBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xF5F5F5)
 	}
 	
+	fileprivate var _name: String
+
 	var name: String
+	{
+		return _name
+	}
+
 	dynamic var windowBackground: NSColor
 	dynamic var editorForeground: NSColor
 	dynamic var editorBackground: NSColor
@@ -179,14 +185,10 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 
 class UserEditorTheme : ConcreteEditorTheme
 {
-	private var fileWriterTimer: Timer? = nil
+	fileprivate var fileWriterOldURL: URL? = nil
+	fileprivate var fileWriterTimer: Timer? = nil
 
-	var isCustomization: Bool
-	{
-		return name.hasSuffix("(Custom)")
-	}
-
-	private var fileURL: URL?
+	fileprivate var fileURL: URL?
 	{
 		if let themesDirectory = UserEditorTheme.URLForUserThemesDirectory()
 		{
@@ -204,7 +206,7 @@ class UserEditorTheme : ConcreteEditorTheme
 
 		super.init(fromSerialized: originalTheme.serialized)
 
-		name = newName
+		_name = newName
 
 		writeToFile(immediatelly: true)
 	}
@@ -228,12 +230,17 @@ class UserEditorTheme : ConcreteEditorTheme
 
 			super.init(fromSerialized: themeDictionary)
 
-			name = fileURL.deletingPathExtension().lastPathComponent
+			_name = fileURL.deletingPathExtension().lastPathComponent
 		}
 		else
 		{
 			return nil
 		}
+	}
+
+	var isCustomization: Bool
+	{
+		return name.hasSuffix("(Custom)")
 	}
 
 	override var preferenceName: String?
@@ -250,9 +257,29 @@ class UserEditorTheme : ConcreteEditorTheme
 	{
 		super.didChangeValue(forKey: key)
 
-		writeToFile(immediatelly: false)
+		if key != "name"
+		{
+			writeToFile(immediatelly: false)
+		}
 	}
 
+	func renameTheme(newName: String) -> Bool
+	{
+		if let oldUrl = fileURL
+		{
+			fileWriterOldURL = oldUrl
+
+			_name = newName
+
+			return moveThemeFile()
+		}
+
+		return false
+	}
+}
+
+extension UserEditorTheme
+{
 	func writeToFile(immediatelly: Bool)
 	{
 		if immediatelly
@@ -297,6 +324,29 @@ class UserEditorTheme : ConcreteEditorTheme
 
 			dict.write(to: url, atomically: true)
 		}
+	}
+
+	fileprivate func moveThemeFile() -> Bool
+	{
+		if let oldURL = fileWriterOldURL, let newURL = fileURL
+		{
+			do
+			{
+				try FileManager.default.moveItem(at: oldURL, to: newURL)
+
+				fileWriterOldURL = nil
+
+				return true
+			}
+			catch let error
+			{
+				NSLog("Error! Could not rename theme file! \(error)")
+
+				return false
+			}
+		}
+
+		return false
 	}
 }
 

@@ -16,6 +16,9 @@
                 <outlet property="fontNameLabel" destination="vT2-88-9Cl" id="Wmq-Mk-HMy"/>
                 <outlet property="lineCounterBackgroundColorWell" destination="hVB-gA-1KB" id="zK9-nC-bos"/>
                 <outlet property="lineCounterTextColorWell" destination="4k4-uq-8ql" id="Sd1-r4-SlN"/>
+                <outlet property="renameThemeButton" destination="oBu-wg-wb4" id="saO-pZ-tk2"/>
+                <outlet property="renameThemePopover" destination="vf2-8a-Dsf" id="PxI-fV-r4g"/>
+                <outlet property="renameThemeTextField" destination="wgH-AO-IT1" id="rPc-YG-exH"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -214,6 +217,16 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oBu-wg-wb4">
+                    <rect key="frame" x="160" y="293" width="63" height="19"/>
+                    <buttonCell key="cell" type="recessed" title="Rename" bezelStyle="recessed" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QmN-54-fGc">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="systemBold" size="12"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickRenameTheme:" target="-2" id="9QB-B6-bnQ"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="centerY" secondItem="hVB-gA-1KB" secondAttribute="centerY" id="0me-Vj-H4p"/>
@@ -224,6 +237,7 @@ class Hello
                 <constraint firstItem="mHW-ZH-nae" firstAttribute="top" secondItem="J92-WQ-r0q" secondAttribute="bottom" constant="15" id="6p1-x0-ZkG"/>
                 <constraint firstItem="NFk-EZ-28d" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="66" id="7TL-Wa-SQJ"/>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="leading" secondItem="hVB-gA-1KB" secondAttribute="trailing" constant="8" id="8du-fV-KDS"/>
+                <constraint firstItem="oBu-wg-wb4" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="trailing" constant="8" id="92X-zg-I91"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="centerY" secondItem="4rJ-dr-CVU" secondAttribute="centerY" id="CLx-s4-4x9"/>
                 <constraint firstItem="5KQ-s3-Yu2" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="trailing" constant="8" id="D5i-2Z-lpl"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="DFl-Mc-y54"/>
@@ -244,9 +258,12 @@ class Hello
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="4rJ-dr-CVU" secondAttribute="trailing" constant="8" id="fKg-c9-jfQ"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="top" secondItem="hVB-gA-1KB" secondAttribute="bottom" constant="12" id="fTu-o2-602"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="leading" id="fss-75-W2L"/>
+                <constraint firstItem="oBu-wg-wb4" firstAttribute="baseline" secondItem="NFk-EZ-28d" secondAttribute="baseline" id="h9W-6Y-HhJ"/>
                 <constraint firstItem="77Z-0a-e9b" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="trailing" constant="8" id="hOw-ee-5Wl"/>
                 <constraint firstItem="K6Q-VI-Iq0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="81" id="iwE-da-YUq"/>
+                <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="NFk-EZ-28d" secondAttribute="trailing" constant="8" id="j7v-lK-Ib9"/>
                 <constraint firstItem="A2g-1H-6Vy" firstAttribute="top" secondItem="RlH-eb-fha" secondAttribute="top" constant="11" id="kjl-6q-IXJ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oBu-wg-wb4" secondAttribute="trailing" constant="20" id="owk-sA-zei"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="top" secondItem="4k4-uq-8ql" secondAttribute="bottom" constant="5" id="qMY-NX-wRD"/>
                 <constraint firstItem="Bt1-9g-R6V" firstAttribute="leading" secondItem="K6Q-VI-Iq0" secondAttribute="trailing" constant="8" id="rKH-8c-Xsb"/>
                 <constraint firstItem="63Z-fW-c9R" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="leading" id="tkp-6q-YGE"/>
@@ -256,6 +273,53 @@ class Hello
                 <constraint firstAttribute="bottom" secondItem="RlH-eb-fha" secondAttribute="bottom" constant="20" id="zPQ-de-xXa"/>
             </constraints>
             <point key="canvasLocation" x="140" y="218"/>
+        </customView>
+        <viewController id="EAv-Oz-3rl" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="sourceItemView" destination="oBu-wg-wb4" id="e88-N1-He8"/>
+                <outlet property="view" destination="Kr4-DF-Psf" id="8AJ-Gq-F6G"/>
+            </connections>
+        </viewController>
+        <popover id="vf2-8a-Dsf">
+            <connections>
+                <outlet property="contentViewController" destination="EAv-Oz-3rl" id="dhx-ac-K8C"/>
+            </connections>
+        </popover>
+        <customView id="Kr4-DF-Psf">
+            <rect key="frame" x="0.0" y="0.0" width="266" height="42"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-AO-IT1">
+                    <rect key="frame" x="10" y="10" width="160" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="dDN-kx-hrI"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="aY0-la-1HA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hMi-eN-5RZ">
+                    <rect key="frame" x="172" y="3" width="89" height="32"/>
+                    <buttonCell key="cell" type="push" title="Rename" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mfm-2i-NZ2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickCommitNewThemeName:" target="-2" id="lo2-ke-Nat"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hMi-eN-5RZ" secondAttribute="trailing" constant="11" id="0L2-XM-UKy"/>
+                <constraint firstItem="hMi-eN-5RZ" firstAttribute="leading" secondItem="wgH-AO-IT1" secondAttribute="trailing" constant="8" symbolic="YES" id="D9G-0s-Awc"/>
+                <constraint firstItem="wgH-AO-IT1" firstAttribute="leading" secondItem="Kr4-DF-Psf" secondAttribute="leading" constant="10" id="FAi-9i-hie"/>
+                <constraint firstItem="hMi-eN-5RZ" firstAttribute="baseline" secondItem="wgH-AO-IT1" secondAttribute="baseline" id="Reg-zM-5XW"/>
+                <constraint firstItem="wgH-AO-IT1" firstAttribute="top" secondItem="Kr4-DF-Psf" secondAttribute="top" constant="10" id="m0a-ad-f5A"/>
+                <constraint firstAttribute="bottom" secondItem="wgH-AO-IT1" secondAttribute="bottom" constant="10" id="rNg-7h-p9f"/>
+            </constraints>
+            <point key="canvasLocation" x="636" y="165"/>
         </customView>
     </objects>
 </document>

@@ -13,9 +13,13 @@ class EditorPreferencesController: NSViewController
 {
 	fileprivate var preferencesWindow: NSWindow? = nil
 
+	@IBOutlet var renameThemePopover: NSPopover!
+	@IBOutlet var renameThemeTextField: NSTextField!
+
 	@IBOutlet var chooseFontButton: NSButton!
 	@IBOutlet var fontNameLabel: NSTextField!
 	@IBOutlet var editorThemePopUpButton: NSPopUpButton!
+	@IBOutlet var renameThemeButton: NSButton!
 	@IBOutlet var editorPreviewTextView: EditorView!
 
 	@IBOutlet var editorTextColorWell: NSColorWell!
@@ -118,6 +122,7 @@ class EditorPreferencesController: NSViewController
 
 		editorPreviewTextView.textColor = theme.editorForeground
 		editorPreviewTextView.backgroundColor = theme.editorBackground
+		editorPreviewTextView.needsDisplay = true
 	}
 
 	// Editor Theme
@@ -162,6 +167,8 @@ class EditorPreferencesController: NSViewController
 		editorThemePopUpButton.menu = menu
 		editorThemePopUpButton.select(selectedItem)
 
+		renameThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
+
 		updateThemeColors()
 	}
 
@@ -183,16 +190,99 @@ class EditorPreferencesController: NSViewController
 		return menuItem
 	}
 
+	private func setRenameThemeTextFieldState(error: String?)
+	{
+		if let errorMessage = error
+		{
+			renameThemeTextField.backgroundColor = NSColor(rgb: 0xFFEEEE)
+			renameThemeTextField.textColor = NSColor(rgb: 0xFF9999)
+
+			let alert = NSAlert()
+			alert.messageText = "Error"
+			alert.informativeText = "Error renaming theme: \(errorMessage)"
+			alert.addButton(withTitle: "OK")
+
+			if let window = preferencesWindow
+			{
+				alert.beginSheetModal(for: window)
+				{
+					(_) in
+
+					self.renameThemePopover.close()
+				}
+			}
+		}
+		else
+		{
+			renameThemeTextField.backgroundColor = NSColor.white
+			renameThemeTextField.textColor = NSColor.black
+		}
+	}
+
+	private func setNewPreferenceEditorTheme(theme: EditorTheme)
+	{
+		let pref = Preferences.instance
+
+		(pref.editorTheme as? ConcreteEditorTheme)?.willDeallocate = true
+		pref.editorTheme = theme
+		pref.editorThemeName =? theme.preferenceName
+	}
+
 	@objc func didChangeEditorTheme(_ sender: NSMenuItem)
 	{
 		if let theme = sender.representedObject as? EditorTheme
 		{
-			(Preferences.instance.editorTheme as? ConcreteEditorTheme)?.willDeallocate = true
-			Preferences.instance.editorTheme = theme
-			Preferences.instance.editorThemeName =? theme.preferenceName
+			setNewPreferenceEditorTheme(theme: theme)
 		}
 
+		renameThemeButton.isHidden = !(sender.representedObject is UserEditorTheme)
+
 		updateThemeColors()
+		updateFontPreviewColors()
+	}
+
+	@IBAction func didClickRenameTheme(_ sender: NSButton)
+	{
+		let theme = Preferences.instance.editorTheme
+
+		if theme is UserEditorTheme
+		{
+			renameThemeTextField.stringValue = theme.name
+			renameThemeTextField.selectText(sender)
+
+			renameThemePopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxX)
+		}
+	}
+
+	@IBAction func didClickCommitNewThemeName(_ sender: Any)
+	{
+		if let theme = Preferences.instance.editorTheme as? UserEditorTheme
+		{
+			let newName = renameThemeTextField.stringValue
+
+			if newName == ""
+			{
+				setRenameThemeTextFieldState(error: "Theme name can't be empty!")
+			}
+			else
+			{
+				if newName != theme.name
+				{
+					if !theme.renameTheme(newName: newName)
+					{
+						setRenameThemeTextFieldState(error: "Could not rename theme file...")
+					}
+					else
+					{
+						setRenameThemeTextFieldState(error: nil)
+						setNewPreferenceEditorTheme(theme: theme)
+						updateThemesMenu()
+					}
+				}
+
+				renameThemePopover.close()
+			}
+		}
 	}
 
 	@IBAction func didChangeColor(_ sender: NSColorWell)
@@ -202,10 +292,8 @@ class EditorPreferencesController: NSViewController
 		if theme is NativeEditorTheme || (theme is UserEditorTheme && !(theme as! UserEditorTheme).isCustomization)
 		{
 			theme = UserEditorTheme(customizingTheme: theme)
-			(Preferences.instance.editorTheme as? ConcreteEditorTheme)?.willDeallocate = true
-			Preferences.instance.editorTheme = theme
-			Preferences.instance.editorThemeName =? theme.preferenceName
 
+			setNewPreferenceEditorTheme(theme: theme)
 			updateThemesMenu()
 		}
 
