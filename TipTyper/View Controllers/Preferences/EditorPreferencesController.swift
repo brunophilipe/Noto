@@ -30,6 +30,7 @@ class EditorPreferencesController: NSViewController
 
 		createObservers()
 		updateFontPreview()
+		updateFontPreviewColors()
 		updateThemeColors()
 		updateThemesMenu()
 
@@ -109,6 +110,14 @@ class EditorPreferencesController: NSViewController
 
 		editorPreviewTextView.font = editorFont
 		fontNameLabel.stringValue = "\(editorFont.displayName ?? editorFont.fontName) \(Int(editorFont.pointSize))pt"
+	}
+
+	private func updateFontPreviewColors()
+	{
+		let theme = Preferences.instance.editorTheme
+
+		editorPreviewTextView.textColor = theme.editorForeground
+		editorPreviewTextView.backgroundColor = theme.editorBackground
 	}
 
 	// Editor Theme
@@ -219,6 +228,8 @@ class EditorPreferencesController: NSViewController
 		default:
 			break
 		}
+
+		updateFontPreviewColors()
 	}
 }
 

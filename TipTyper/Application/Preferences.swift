@@ -135,7 +135,7 @@ class Preferences: UserDefaults
 		}
 	}
 
-	var _editorTheme: EditorTheme? = nil
+	private var _editorTheme: EditorTheme? = nil
 	var editorTheme: EditorTheme
 	{
 		get
