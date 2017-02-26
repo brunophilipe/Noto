@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesController" customModule="TipTyper" customModuleProvider="target">
             <connections>
                 <outlet property="chooseFontButton" destination="Bt1-9g-R6V" id="vjP-kK-oNi"/>
+                <outlet property="deleteThemeButton" destination="Sdz-mJ-vDR" id="5lG-Od-eMu"/>
                 <outlet property="editorBackgroundColorWell" destination="63Z-fW-c9R" id="LHl-92-eII"/>
                 <outlet property="editorPreviewTextView" destination="zSi-Bx-N1x" id="mh8-7y-9wM"/>
                 <outlet property="editorTextColorWell" destination="mHW-ZH-nae" id="3CR-l7-BbH"/>
@@ -76,7 +77,7 @@ class Hello
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2g-1H-6Vy">
-                    <rect key="frame" x="19" y="127" width="95" height="17"/>
+                    <rect key="frame" x="19" y="132" width="95" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Editor Preview:" id="oHa-ot-Kjf">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -218,13 +219,29 @@ class Hello
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oBu-wg-wb4">
-                    <rect key="frame" x="160" y="293" width="63" height="19"/>
-                    <buttonCell key="cell" type="recessed" title="Rename" bezelStyle="recessed" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QmN-54-fGc">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                        <font key="font" metaFont="systemBold" size="12"/>
+                    <rect key="frame" x="160" y="290" width="32" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="GGa-s8-laG"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="pencil" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="QmN-54-fGc">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="didClickRenameTheme:" target="-2" id="9QB-B6-bnQ"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-mJ-vDR">
+                    <rect key="frame" x="193" y="290" width="32" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="P4o-lP-h8h"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="garbage" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="opD-Ji-jXF">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickDeleteTheme:" target="-2" id="E03-3o-mNF"/>
                     </connections>
                 </button>
             </subviews>
@@ -237,13 +254,14 @@ class Hello
                 <constraint firstItem="mHW-ZH-nae" firstAttribute="top" secondItem="J92-WQ-r0q" secondAttribute="bottom" constant="15" id="6p1-x0-ZkG"/>
                 <constraint firstItem="NFk-EZ-28d" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="66" id="7TL-Wa-SQJ"/>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="leading" secondItem="hVB-gA-1KB" secondAttribute="trailing" constant="8" id="8du-fV-KDS"/>
-                <constraint firstItem="oBu-wg-wb4" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="trailing" constant="8" id="92X-zg-I91"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sdz-mJ-vDR" secondAttribute="trailing" constant="20" id="A0g-nQ-4rj"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="centerY" secondItem="4rJ-dr-CVU" secondAttribute="centerY" id="CLx-s4-4x9"/>
                 <constraint firstItem="5KQ-s3-Yu2" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="trailing" constant="8" id="D5i-2Z-lpl"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="DFl-Mc-y54"/>
                 <constraint firstItem="Bt1-9g-R6V" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="leading" id="GDL-5Y-sGW"/>
                 <constraint firstAttribute="trailing" secondItem="RlH-eb-fha" secondAttribute="trailing" constant="20" id="JWH-Ic-un1"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="top" secondItem="63Z-fW-c9R" secondAttribute="bottom" constant="8" id="K1Q-5X-cEM"/>
+                <constraint firstItem="oBu-wg-wb4" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="trailing" constant="8" symbolic="YES" id="Sqm-mZ-s2Z"/>
                 <constraint firstItem="63Z-fW-c9R" firstAttribute="top" secondItem="mHW-ZH-nae" secondAttribute="bottom" constant="5" id="TeA-r2-ZMo"/>
                 <constraint firstItem="vVh-AS-xMa" firstAttribute="leading" secondItem="63Z-fW-c9R" secondAttribute="trailing" constant="8" id="U5g-xD-R3j"/>
                 <constraint firstItem="5KQ-s3-Yu2" firstAttribute="baseline" secondItem="gLI-XS-sCo" secondAttribute="baseline" id="VF6-ja-ZIY"/>
@@ -255,21 +273,22 @@ class Hello
                 <constraint firstItem="RlH-eb-fha" firstAttribute="leading" secondItem="A2g-1H-6Vy" secondAttribute="trailing" constant="8" id="aGs-YP-XOC"/>
                 <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="NFk-EZ-28d" secondAttribute="trailing" constant="8" id="bYd-mP-9tf"/>
                 <constraint firstItem="vT2-88-9Cl" firstAttribute="baseline" secondItem="Bt1-9g-R6V" secondAttribute="baseline" id="bhG-DZ-ce7"/>
+                <constraint firstItem="Sdz-mJ-vDR" firstAttribute="baseline" secondItem="oBu-wg-wb4" secondAttribute="baseline" id="dLC-0H-qz7"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="4rJ-dr-CVU" secondAttribute="trailing" constant="8" id="fKg-c9-jfQ"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="top" secondItem="hVB-gA-1KB" secondAttribute="bottom" constant="12" id="fTu-o2-602"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="leading" id="fss-75-W2L"/>
-                <constraint firstItem="oBu-wg-wb4" firstAttribute="baseline" secondItem="NFk-EZ-28d" secondAttribute="baseline" id="h9W-6Y-HhJ"/>
                 <constraint firstItem="77Z-0a-e9b" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="trailing" constant="8" id="hOw-ee-5Wl"/>
                 <constraint firstItem="K6Q-VI-Iq0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="81" id="iwE-da-YUq"/>
                 <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="NFk-EZ-28d" secondAttribute="trailing" constant="8" id="j7v-lK-Ib9"/>
-                <constraint firstItem="A2g-1H-6Vy" firstAttribute="top" secondItem="RlH-eb-fha" secondAttribute="top" constant="11" id="kjl-6q-IXJ"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oBu-wg-wb4" secondAttribute="trailing" constant="20" id="owk-sA-zei"/>
+                <constraint firstItem="A2g-1H-6Vy" firstAttribute="top" secondItem="RlH-eb-fha" secondAttribute="top" constant="6" id="kjl-6q-IXJ"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="top" secondItem="4k4-uq-8ql" secondAttribute="bottom" constant="5" id="qMY-NX-wRD"/>
                 <constraint firstItem="Bt1-9g-R6V" firstAttribute="leading" secondItem="K6Q-VI-Iq0" secondAttribute="trailing" constant="8" id="rKH-8c-Xsb"/>
                 <constraint firstItem="63Z-fW-c9R" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="leading" id="tkp-6q-YGE"/>
+                <constraint firstItem="oBu-wg-wb4" firstAttribute="bottom" secondItem="J92-WQ-r0q" secondAttribute="bottom" id="vAv-zC-pFq"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="63Z-fW-c9R" secondAttribute="leading" id="vcz-KR-ziM"/>
                 <constraint firstItem="Bt1-9g-R6V" firstAttribute="baseline" secondItem="K6Q-VI-Iq0" secondAttribute="baseline" id="wD1-if-Fm3"/>
                 <constraint firstItem="vVh-AS-xMa" firstAttribute="centerY" secondItem="63Z-fW-c9R" secondAttribute="centerY" id="wNp-1r-3Bd"/>
+                <constraint firstItem="Sdz-mJ-vDR" firstAttribute="leading" secondItem="oBu-wg-wb4" secondAttribute="trailing" constant="1" id="xxA-cG-elC"/>
                 <constraint firstAttribute="bottom" secondItem="RlH-eb-fha" secondAttribute="bottom" constant="20" id="zPQ-de-xXa"/>
             </constraints>
             <point key="canvasLocation" x="140" y="218"/>
@@ -280,7 +299,7 @@ class Hello
                 <outlet property="view" destination="Kr4-DF-Psf" id="8AJ-Gq-F6G"/>
             </connections>
         </viewController>
-        <popover id="vf2-8a-Dsf">
+        <popover behavior="t" id="vf2-8a-Dsf">
             <connections>
                 <outlet property="contentViewController" destination="EAv-Oz-3rl" id="dhx-ac-K8C"/>
             </connections>
@@ -322,4 +341,8 @@ class Hello
             <point key="canvasLocation" x="636" y="165"/>
         </customView>
     </objects>
+    <resources>
+        <image name="garbage" width="12" height="12"/>
+        <image name="pencil" width="12" height="12"/>
+    </resources>
 </document>

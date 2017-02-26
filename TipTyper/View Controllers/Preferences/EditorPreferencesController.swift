@@ -20,6 +20,7 @@ class EditorPreferencesController: NSViewController
 	@IBOutlet var fontNameLabel: NSTextField!
 	@IBOutlet var editorThemePopUpButton: NSPopUpButton!
 	@IBOutlet var renameThemeButton: NSButton!
+	@IBOutlet var deleteThemeButton: NSButton!
 	@IBOutlet var editorPreviewTextView: EditorView!
 
 	@IBOutlet var editorTextColorWell: NSColorWell!
@@ -36,7 +37,6 @@ class EditorPreferencesController: NSViewController
 		updateFontPreview()
 		updateFontPreviewColors()
 		updateThemeColors()
-		updateThemesMenu()
 
 		NSColorPanel.shared().showsAlpha = false
     }
@@ -44,6 +44,13 @@ class EditorPreferencesController: NSViewController
 	deinit
 	{
 		removeObservers()
+	}
+
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		updateThemesMenu()
 	}
 
 	private func createObservers()
@@ -163,13 +170,24 @@ class EditorPreferencesController: NSViewController
 
 		if selectedItem == nil
 		{
-			selectedItem = menu.items.first
+			let theme = Preferences.instance.editorTheme
+
+			if let userTheme = theme as? UserEditorTheme
+			{
+				menu.addItem(makeMenuItemForTheme(userTheme, &selectedItem))
+				userTheme.writeToFile(immediatelly: true)
+			}
+			else
+			{
+				selectedItem = menu.items.first
+			}
 		}
 
 		editorThemePopUpButton.menu = menu
 		editorThemePopUpButton.select(selectedItem)
 
 		renameThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
+		deleteThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
 
 		updateThemeColors()
 	}
@@ -197,21 +215,12 @@ class EditorPreferencesController: NSViewController
 		if let errorMessage = error
 		{
 			renameThemeTextField.backgroundColor = NSColor(rgb: 0xFFEEEE)
-			renameThemeTextField.textColor = NSColor(rgb: 0xFF9999)
+			renameThemeTextField.textColor = NSColor(rgb: 0xFF2222)
 
-			let alert = NSAlert()
-			alert.messageText = "Error"
-			alert.informativeText = "Error renaming theme: \(errorMessage)"
-			alert.addButton(withTitle: "OK")
-
-			if let window = preferencesWindow
+			showErrorAlert(errorMessage: "Error renaming theme: \(errorMessage)")
 			{
-				alert.beginSheetModal(for: window)
-				{
-					(_) in
-
-					self.renameThemePopover.close()
-				}
+				() in
+				self.renameThemePopover.close()
 			}
 		}
 		else
@@ -219,6 +228,18 @@ class EditorPreferencesController: NSViewController
 			renameThemeTextField.backgroundColor = NSColor.white
 			renameThemeTextField.textColor = NSColor.black
 		}
+	}
+
+	private func showErrorAlert(errorMessage: String, callback: ((Void) -> Void)? = nil)
+	{
+		let alert = NSAlert()
+		alert.messageText = "Error"
+		alert.informativeText = errorMessage
+		alert.addButton(withTitle: "OK")
+
+		alert.runModal()
+
+		callback?()
 	}
 
 	private func setNewPreferenceEditorTheme(theme: EditorTheme)
@@ -238,6 +259,7 @@ class EditorPreferencesController: NSViewController
 		}
 
 		renameThemeButton.isHidden = !(sender.representedObject is UserEditorTheme)
+		deleteThemeButton.isHidden = !(sender.representedObject is UserEditorTheme)
 
 		updateThemeColors()
 		updateFontPreviewColors()
@@ -252,7 +274,26 @@ class EditorPreferencesController: NSViewController
 			renameThemeTextField.stringValue = theme.name
 			renameThemeTextField.selectText(sender)
 
-			renameThemePopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxX)
+			renameThemePopover.show(relativeTo: editorThemePopUpButton.bounds, of: editorThemePopUpButton, preferredEdge: .maxX)
+		}
+	}
+
+	@IBAction func didClickDeleteTheme(_ sender: NSButton)
+	{
+		let theme = Preferences.instance.editorTheme
+
+		if let userTheme = theme as? UserEditorTheme
+		{
+			if userTheme.deleteTheme()
+			{
+				setNewPreferenceEditorTheme(theme: LightEditorTheme())
+				updateThemesMenu()
+				updateFontPreviewColors()
+			}
+			else
+			{
+				showErrorAlert(errorMessage: "Error renaming theme: Could not delete theme file!")
+			}
 		}
 	}
 
@@ -280,6 +321,10 @@ class EditorPreferencesController: NSViewController
 						setNewPreferenceEditorTheme(theme: theme)
 						updateThemesMenu()
 					}
+				}
+				else
+				{
+					setRenameThemeTextFieldState(error: nil)
 				}
 
 				renameThemePopover.close()

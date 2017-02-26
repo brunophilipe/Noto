@@ -76,10 +76,8 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="qEj-kO-OmM"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="l1h-S7-eid"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="mAk-lH-1P0"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="cJQ-gT-bQS"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="cJQ-gT-bQS"/>
                     <toolbarItem reference="mAk-lH-1P0"/>
                     <toolbarItem reference="qEj-kO-OmM"/>
                 </defaultToolbarItems>

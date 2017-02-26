@@ -254,7 +254,7 @@ class UserEditorTheme : ConcreteEditorTheme
 	{
 		super.didChangeValue(forKey: key)
 
-		if key != "name"
+		if !["name", "willDeallocate"].contains(key)
 		{
 			writeToFile(immediatelly: false)
 		}
@@ -272,6 +272,11 @@ class UserEditorTheme : ConcreteEditorTheme
 		}
 
 		return false
+	}
+
+	func deleteTheme() -> Bool
+	{
+		return deleteThemeFile()
 	}
 }
 
@@ -340,6 +345,25 @@ extension UserEditorTheme
 				NSLog("Error! Could not rename theme file! \(error)")
 
 				return false
+			}
+		}
+
+		return false
+	}
+
+	fileprivate func deleteThemeFile() -> Bool
+	{
+		if let url = fileURL
+		{
+			do
+			{
+				try FileManager.default.removeItem(at: url)
+
+				return true
+			}
+			catch let error
+			{
+				NSLog("Error! Could not delete theme file! \(error)")
 			}
 		}
 
