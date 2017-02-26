@@ -10,18 +10,20 @@
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
+		150DB9AD1E623BDC001569D7 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB9AC1E623BDC001569D7 /* EditorTheme.swift */; };
+		150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB9B01E626B49001569D7 /* AssignIf.swift */; };
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153AF9E31E5F095A00B19308 /* EditorPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E11E5F095A00B19308 /* EditorPreferencesController.swift */; };
 		153AF9E41E5F095A00B19308 /* EditorPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153AF9E21E5F095A00B19308 /* EditorPreferencesController.xib */; };
-		153AF9E61E5F1C1500B19308 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E51E5F1C1500B19308 /* EditorTheme.swift */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */; };
+		15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */; };
 		CF1A49CE9BF42C5A58BC5947 /* Pods_TipTyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,18 +33,20 @@
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150CFAC51E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		150CFAC71E2A83CF000B69E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		150DB9AC1E623BDC001569D7 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = "Application/Editor Themes/EditorTheme.swift"; sourceTree = "<group>"; };
+		150DB9B01E626B49001569D7 /* AssignIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssignIf.swift; path = Extensions/AssignIf.swift; sourceTree = "<group>"; };
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153AF9E11E5F095A00B19308 /* EditorPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorPreferencesController.swift; path = "View Controllers/Preferences/EditorPreferencesController.swift"; sourceTree = "<group>"; };
 		153AF9E21E5F095A00B19308 /* EditorPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditorPreferencesController.xib; path = "View Controllers/Preferences/EditorPreferencesController.xib"; sourceTree = "<group>"; };
-		153AF9E51E5F1C1500B19308 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineCounterRulerView.swift; path = Views/LineCounterRulerView.swift; sourceTree = "<group>"; };
+		15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileWatcher.swift; path = Application/FileWatcher.swift; sourceTree = "<group>"; };
 		5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipTyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8305FE045E64B12622FEA705 /* Pods-TipTyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.debug.xcconfig"; sourceTree = "<group>"; };
 		91224F4191845E34F99B14F6 /* Pods-TipTyper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +94,14 @@
 			path = TipTyper;
 			sourceTree = "<group>";
 		};
+		150DB9AB1E623B9F001569D7 /* Editor Themes */ = {
+			isa = PBXGroup;
+			children = (
+				150DB9AC1E623BDC001569D7 /* EditorTheme.swift */,
+			);
+			name = "Editor Themes";
+			sourceTree = "<group>";
+		};
 		15276E601E5BCCFA0032EDE4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */,
+				150DB9B01E626B49001569D7 /* AssignIf.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -139,12 +152,13 @@
 		15933C7B1E5B922E00AFF625 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				150DB9AB1E623B9F001569D7 /* Editor Themes */,
 				15933C7C1E5B924A00AFF625 /* AppDelegate.swift */,
 				15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */,
-				153AF9E51E5F1C1500B19308 /* EditorTheme.swift */,
 				150CFAC41E2A83CF000B69E5 /* MainMenu.xib */,
 				150CFAC71E2A83CF000B69E5 /* Info.plist */,
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
+				15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -292,16 +306,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
+				150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				153AF9E31E5F095A00B19308 /* EditorPreferencesController.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
+				15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
-				153AF9E61E5F1C1500B19308 /* EditorTheme.swift in Sources */,
+				150DB9AD1E623BDC001569D7 /* EditorTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

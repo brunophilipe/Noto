@@ -9,9 +9,13 @@
         <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesController" customModule="TipTyper" customModuleProvider="target">
             <connections>
                 <outlet property="chooseFontButton" destination="Bt1-9g-R6V" id="vjP-kK-oNi"/>
+                <outlet property="editorBackgroundColorWell" destination="63Z-fW-c9R" id="LHl-92-eII"/>
                 <outlet property="editorPreviewTextView" destination="zSi-Bx-N1x" id="mh8-7y-9wM"/>
+                <outlet property="editorTextColorWell" destination="mHW-ZH-nae" id="3CR-l7-BbH"/>
                 <outlet property="editorThemePopUpButton" destination="J92-WQ-r0q" id="vq3-qg-H7U"/>
                 <outlet property="fontNameLabel" destination="vT2-88-9Cl" id="Wmq-Mk-HMy"/>
+                <outlet property="lineCounterBackgroundColorWell" destination="hVB-gA-1KB" id="zK9-nC-bos"/>
+                <outlet property="lineCounterTextColorWell" destination="4k4-uq-8ql" id="Sd1-r4-SlN"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -77,7 +81,7 @@ class Hello
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-EZ-28d">
-                    <rect key="frame" x="64" y="295" width="50" height="17"/>
+                    <rect key="frame" x="64" y="296" width="50" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Theme:" id="lKc-Pp-bjv">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -101,17 +105,11 @@ class Hello
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J92-WQ-r0q">
-                    <rect key="frame" x="118" y="289" width="84" height="26"/>
-                    <popUpButtonCell key="cell" type="push" title="Light" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hNI-L0-F9Z" id="M2o-b7-m9v">
+                    <rect key="frame" x="118" y="289" width="37" height="26"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="M2o-b7-m9v">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="K9B-8b-JTG">
-                            <items>
-                                <menuItem title="Light" state="on" id="hNI-L0-F9Z"/>
-                                <menuItem title="Dark" id="zOd-1S-UZS"/>
-                                <menuItem title="Custom" id="C23-kp-jrG"/>
-                            </items>
-                        </menu>
+                        <menu key="menu" autoenablesItems="NO" id="K9B-8b-JTG"/>
                     </popUpButtonCell>
                 </popUpButton>
                 <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-9g-R6V">
@@ -132,13 +130,16 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="mHW-ZH-nae">
+                <colorWell tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="mHW-ZH-nae">
                     <rect key="frame" x="120" y="254" width="44" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="E8t-pP-lyJ"/>
                         <constraint firstAttribute="width" constant="44" id="QBD-G8-jxx"/>
                     </constraints>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeColor:" target="-2" id="x6H-Fa-Sxn"/>
+                    </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KQ-s3-Yu2">
                     <rect key="frame" x="170" y="257" width="66" height="17"/>
@@ -148,13 +149,16 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="63Z-fW-c9R">
+                <colorWell tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="63Z-fW-c9R">
                     <rect key="frame" x="120" y="226" width="44" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="J2i-0T-Kc1"/>
                         <constraint firstAttribute="height" constant="23" id="ToZ-eg-mGX"/>
                     </constraints>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeColor:" target="-2" id="eKR-UV-fK8"/>
+                    </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVh-AS-xMa">
                     <rect key="frame" x="170" y="229" width="113" height="17"/>
@@ -172,13 +176,16 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="4k4-uq-8ql">
+                <colorWell tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="4k4-uq-8ql">
                     <rect key="frame" x="120" y="195" width="44" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5lq-gf-TJZ"/>
                         <constraint firstAttribute="width" constant="44" id="SYP-4b-moa"/>
                     </constraints>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeColor:" target="-2" id="tK5-lQ-4pE"/>
+                    </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77Z-0a-e9b">
                     <rect key="frame" x="170" y="198" width="66" height="17"/>
@@ -188,13 +195,16 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="hVB-gA-1KB">
+                <colorWell tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="hVB-gA-1KB">
                     <rect key="frame" x="120" y="167" width="44" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="FAQ-gi-VPW"/>
                         <constraint firstAttribute="width" constant="44" id="msj-ba-LlE"/>
                     </constraints>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeColor:" target="-2" id="K3K-JZ-pbU"/>
+                    </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS8-MF-gjX">
                     <rect key="frame" x="170" y="170" width="113" height="17"/>

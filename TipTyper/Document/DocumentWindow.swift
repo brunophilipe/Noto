@@ -29,20 +29,49 @@ class DocumentWindow: NSWindow
 	func setupUI()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: NSKeyValueObservingOptions.new, context: nil)
 
 		setupWindowStyle()
 
-		updateEditorSettings()
+		updateEditorFont()
+		updateEditorColors()
+		setupThemeObserver()
 	}
 
 	deinit
 	{
 		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
+		Preferences.instance.removeObserver(self, forKeyPath: "editorThemeName")
+
+		removeThemeObserver()
+	}
+
+	private func setupThemeObserver()
+	{
+		let theme = Preferences.instance.editorTheme
+
+		if let themeObject = theme as? ConcreteEditorTheme
+		{
+			themeObject.addObserver(self, forKeyPath: "editorBackground", options: .new, context: nil)
+			themeObject.addObserver(self, forKeyPath: "editorForeground", options: .new, context: nil)
+			themeObject.addObserver(self, forKeyPath: "willDeallocate", options: .new, context: nil)
+		}
+	}
+
+	private func removeThemeObserver()
+	{
+		let theme = Preferences.instance.editorTheme
+
+		if let themeObject = theme as? ConcreteEditorTheme
+		{
+			themeObject.removeObserver(self, forKeyPath: "editorBackground")
+			themeObject.removeObserver(self, forKeyPath: "editorForeground")
+			themeObject.removeObserver(self, forKeyPath: "willDeallocate")
+		}
 	}
 
 	private func setupWindowStyle()
 	{
-		backgroundColor = NSColor(rgb: 0xFDFDFD)
 		titlebarAppearsTransparent = true
 	}
 
@@ -51,14 +80,48 @@ class DocumentWindow: NSWindow
 	                           change: [NSKeyValueChangeKey : Any]?,
 	                           context: UnsafeMutableRawPointer?)
 	{
-		if object is Preferences && keyPath == "editorFont"
+		if object is Preferences
 		{
-			textView.font = Preferences.instance.editorFont
+			switch keyPath
+			{
+			case .some("editorFont"):
+				updateEditorFont()
+
+			case .some("editorThemeName"):
+				updateEditorColors()
+				setupThemeObserver()
+
+			default:
+				break
+			}
+		}
+		else if object is EditorTheme
+		{
+			switch keyPath
+			{
+			case .some("willDeallocate"):
+				removeThemeObserver()
+
+			case .some(_):
+				updateEditorColors()
+
+			default:
+				break
+			}
 		}
 	}
 
-	private func updateEditorSettings()
+	private func updateEditorFont()
 	{
 		textView.font = Preferences.instance.editorFont
+	}
+
+	private func updateEditorColors()
+	{
+		let theme = Preferences.instance.editorTheme
+
+		backgroundColor = theme.windowBackground
+		textView.backgroundColor = theme.editorBackground
+		textView.textColor = theme.editorForeground
 	}
 }

@@ -300,13 +300,3 @@ class LineCounterRulerView: NSRulerView
 		}
 	}
 }
-
-infix operator ?=
-
-func ?=<T>(lho: inout T, rho: T?)
-{
-	if let newValue = rho
-	{
-		lho = newValue
-	}
-}

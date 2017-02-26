@@ -40,4 +40,9 @@ extension NSColor
 		
 		return 0
 	}
+
+	var rgba: UInt
+	{
+		return (rgb << 8) | (UInt(alphaComponent * 255) & 0x000000FF)
+	}
 }

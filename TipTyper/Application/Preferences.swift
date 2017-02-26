@@ -16,10 +16,17 @@ class Preferences: UserDefaults
 	private static let PreferenceLineCounterFontName = "PreferenceLineCounterFontName"
 	private static let PreferenceLineCounterFontSize = "PreferenceLineCounterFontSize"
 
-	private static let sharedInstance = Preferences()
+	private static let PreferenceEditorThemeName = "PreferenceEditorThemeName"
+
+	private static var sharedInstance: Preferences! = nil
 
 	static var instance: Preferences
 	{
+		if sharedInstance == nil
+		{
+			sharedInstance = Preferences()
+		}
+
 		return sharedInstance
 	}
 
@@ -104,6 +111,49 @@ class Preferences: UserDefaults
 		{
 			set(newValue.pointSize, forKey: Preferences.PreferenceLineCounterFontSize)
 			set(newValue.fontName, forKey: Preferences.PreferenceLineCounterFontName)
+		}
+	}
+
+	dynamic var editorThemeName: String
+	{
+		get
+		{
+			if let themeName = string(forKey: Preferences.PreferenceEditorThemeName)
+			{
+				return themeName
+			}
+			else
+			{
+				return LightEditorTheme().preferenceName!
+			}
+		}
+
+		set
+		{
+			set(newValue, forKey: Preferences.PreferenceEditorThemeName)
+			synchronize()
+		}
+	}
+
+	var _editorTheme: EditorTheme? = nil
+	var editorTheme: EditorTheme
+	{
+		get
+		{
+			if let theme = _editorTheme
+			{
+				return theme
+			}
+			else
+			{
+				_editorTheme = ConcreteEditorTheme.getWithPreferenceName(self.editorThemeName) ?? LightEditorTheme()
+				return _editorTheme!
+			}
+		}
+
+		set
+		{
+			_editorTheme = newValue
 		}
 	}
 }
