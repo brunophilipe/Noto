@@ -38,11 +38,22 @@ extension NSColor
 			return rgbInt
 		}
 		
-		return 0
+		return self.usingColorSpace(NSColorSpace.deviceRGB)?.rgb ?? 0
 	}
 
 	var rgba: UInt
 	{
 		return (rgb << 8) | (UInt(alphaComponent * 255) & 0x000000FF)
+	}
+
+	var isDarkColor: Bool
+	{
+		if let rgb = self.usingColorSpace(NSColorSpace.deviceRGB)
+		{
+			let luminance = 0.2126*rgb.redComponent + 0.7152*rgb.greenComponent + 0.0722*rgb.blueComponent
+			return luminance < 0.5
+		}
+
+		return false
 	}
 }

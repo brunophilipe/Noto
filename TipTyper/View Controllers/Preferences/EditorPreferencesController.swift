@@ -38,7 +38,7 @@ class EditorPreferencesController: NSViewController
 		updateThemeColors()
 		updateThemesMenu()
 
-		NSColorPanel.shared().showsAlpha = true
+		NSColorPanel.shared().showsAlpha = false
     }
 
 	deinit
@@ -122,6 +122,8 @@ class EditorPreferencesController: NSViewController
 
 		editorPreviewTextView.textColor = theme.editorForeground
 		editorPreviewTextView.backgroundColor = theme.editorBackground
+		editorPreviewTextView.lineCounterView?.textColor = theme.lineCounterForeground
+		editorPreviewTextView.lineCounterView?.backgroundColor = theme.lineCounterBackground
 		editorPreviewTextView.needsDisplay = true
 	}
 

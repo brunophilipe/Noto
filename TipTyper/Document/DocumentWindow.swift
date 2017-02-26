@@ -11,7 +11,7 @@ import Cocoa
 @IBDesignable
 class DocumentWindow: NSWindow
 {
-	@IBOutlet var textView: NSTextView!
+	@IBOutlet var textView: EditorView!
 
 	var text: String
 	{
@@ -54,6 +54,8 @@ class DocumentWindow: NSWindow
 		{
 			themeObject.addObserver(self, forKeyPath: "editorBackground", options: .new, context: nil)
 			themeObject.addObserver(self, forKeyPath: "editorForeground", options: .new, context: nil)
+			themeObject.addObserver(self, forKeyPath: "lineCounterBackground", options: .new, context: nil)
+			themeObject.addObserver(self, forKeyPath: "lineCounterForeground", options: .new, context: nil)
 			themeObject.addObserver(self, forKeyPath: "willDeallocate", options: .new, context: nil)
 		}
 	}
@@ -66,6 +68,8 @@ class DocumentWindow: NSWindow
 		{
 			themeObject.removeObserver(self, forKeyPath: "editorBackground")
 			themeObject.removeObserver(self, forKeyPath: "editorForeground")
+			themeObject.removeObserver(self, forKeyPath: "lineCounterBackground")
+			themeObject.removeObserver(self, forKeyPath: "lineCounterForeground")
 			themeObject.removeObserver(self, forKeyPath: "willDeallocate")
 		}
 	}
@@ -120,8 +124,13 @@ class DocumentWindow: NSWindow
 	{
 		let theme = Preferences.instance.editorTheme
 
-		backgroundColor = theme.windowBackground
+		appearance = theme.editorBackground.isDarkColor ? NSAppearance(named:NSAppearanceNameVibrantDark)
+														: NSAppearance(named:NSAppearanceNameVibrantLight)
+
+		backgroundColor = theme.editorBackground
 		textView.backgroundColor = theme.editorBackground
 		textView.textColor = theme.editorForeground
+		textView.lineCounterView?.textColor = theme.lineCounterForeground
+		textView.lineCounterView?.backgroundColor = theme.lineCounterBackground
 	}
 }

@@ -10,7 +10,7 @@ import Cocoa
 
 class EditorView: PaddedTextView
 {
-	private var lineCounterView: LineCounterRulerView? = nil
+	var lineCounterView: LineCounterRulerView? = nil
 
 	override func awakeFromNib()
 	{

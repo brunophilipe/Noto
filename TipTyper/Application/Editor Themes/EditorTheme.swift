@@ -12,8 +12,6 @@ protocol EditorTheme: class
 {
 	var name: String { get }
 	
-	var windowBackground: NSColor { get }
-	
 	var editorForeground: NSColor { get }
 	var editorBackground: NSColor { get }
 	
@@ -24,7 +22,6 @@ protocol EditorTheme: class
 }
 
 private let kThemeNameKey					= "name"
-private let kThemeWindowBackgroundKey		= "window_background"
 private let kThemeEditorBackgroundKey		= "editor_background"
 private let kThemeLineCounterBackgroundKey	= "lines_background"
 private let kThemeEditorForegroundKey		= "editor_foreground"
@@ -38,7 +35,6 @@ extension EditorTheme
 	fileprivate static var userThemeKeys: [String]
 	{
 		return [
-			kThemeWindowBackgroundKey,
 			kThemeEditorBackgroundKey,
 			kThemeLineCounterBackgroundKey,
 			kThemeEditorForegroundKey,
@@ -49,7 +45,6 @@ extension EditorTheme
 	{
 		return [
 			kThemeNameKey:					name as NSString,
-			kThemeWindowBackgroundKey:		windowBackground,
 			kThemeEditorBackgroundKey:		editorBackground,
 			kThemeLineCounterBackgroundKey:	lineCounterBackground,
 			kThemeEditorForegroundKey:		editorForeground,
@@ -65,7 +60,8 @@ extension EditorTheme
 	static func installedThemes() -> (native: [EditorTheme], user: [EditorTheme])
 	{
 		let nativeThemes: [EditorTheme] = [
-			LightEditorTheme()
+			LightEditorTheme(),
+			DarkEditorTheme()
 		]
 
 		var userThemes: [EditorTheme] = []
@@ -121,6 +117,9 @@ extension EditorTheme
 			case "Light":
 				return LightEditorTheme()
 
+			case "Dark":
+				return DarkEditorTheme()
+
 			default:
 				return nil
 			}
@@ -150,9 +149,8 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 	fileprivate init(fromSerialized dict: [String: AnyObject])
 	{
 		_name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
-		windowBackground		= (dict[kThemeWindowBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xFDFDFD)
 		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? NSColor.black
-		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? NSColor.clear
+		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xFDFDFD)
 		lineCounterForeground	= (dict[kThemeLineCounterForegroundKey] as? NSColor) ?? NSColor(rgb: 0x999999)
 		lineCounterBackground	= (dict[kThemeLineCounterBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xF5F5F5)
 	}
@@ -164,7 +162,6 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 		return _name
 	}
 
-	dynamic var windowBackground: NSColor
 	dynamic var editorForeground: NSColor
 	dynamic var editorBackground: NSColor
 	dynamic var lineCounterForeground: NSColor
@@ -224,7 +221,7 @@ class UserEditorTheme : ConcreteEditorTheme
 
 				if let intValue = themeDictionary[itemKey] as? UInt
 				{
-					themeDictionary[itemKey] = NSColor(rgba: intValue)
+					themeDictionary[itemKey] = NSColor(rgb: intValue)
 				}
 			}
 
@@ -318,7 +315,7 @@ extension UserEditorTheme
 			{
 				if let color = dict[settingKey] as? NSColor
 				{
-					dict.setValue(color.rgba, forKey: settingKey)
+					dict.setValue(color.rgb, forKey: settingKey)
 				}
 			}
 
@@ -350,18 +347,22 @@ extension UserEditorTheme
 	}
 }
 
-protocol NativeEditorTheme {}
+protocol NativeEditorTheme: EditorTheme
+{}
 
-class LightEditorTheme: EditorTheme, NativeEditorTheme
+extension NativeEditorTheme
+{
+	var preferenceName: String?
+	{
+		return "\(kThemeNativeNamePrefix)\(name)"
+	}
+}
+
+class LightEditorTheme: NativeEditorTheme
 {
 	var name: String
 	{
 		return "Light"
-	}
-	
-	var windowBackground: NSColor
-	{
-		return NSColor(rgb: 0xFDFDFD)
 	}
 	
 	var editorForeground: NSColor
@@ -371,7 +372,7 @@ class LightEditorTheme: EditorTheme, NativeEditorTheme
 	
 	var editorBackground: NSColor
 	{
-		return NSColor.clear
+		return NSColor(rgb: 0xFDFDFD)
 	}
 	
 	var lineCounterForeground: NSColor
@@ -383,9 +384,32 @@ class LightEditorTheme: EditorTheme, NativeEditorTheme
 	{
 		return NSColor(rgb: 0xF5F5F5)
 	}
+}
 
-	var preferenceName: String?
+class DarkEditorTheme: NativeEditorTheme
+{
+	var name: String
 	{
-		return "\(kThemeNativeNamePrefix)\(name)"
+		return "Dark"
+	}
+
+	var editorForeground: NSColor
+	{
+		return NSColor(rgba: 3688619007)
+	}
+
+	var editorBackground: NSColor
+	{
+		return NSColor(rgba: 926365695)
+	}
+
+	var lineCounterForeground: NSColor
+	{
+		return NSColor(rgba: 1953789183)
+	}
+
+	var lineCounterBackground: NSColor
+	{
+		return NSColor(rgba: 707406591)
 	}
 }

@@ -13,6 +13,11 @@ class BackgroundView: NSView
 {
 	@IBInspectable var backgroundColor: NSColor = NSColor.clear
 
+	override var isOpaque: Bool
+	{
+		return false
+	}
+
     override func draw(_ dirtyRect: NSRect)
 	{
         backgroundColor.setFill()
