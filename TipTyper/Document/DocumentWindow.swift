@@ -77,6 +77,8 @@ class DocumentWindow: NSWindow
 	private func setupWindowStyle()
 	{
 		titlebarAppearsTransparent = true
+
+		minSize = NSSize(width: 300, height: 200)
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
