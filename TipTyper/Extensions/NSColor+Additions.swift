@@ -45,15 +45,19 @@ extension NSColor
 	{
 		return (rgb << 8) | (UInt(alphaComponent * 255) & 0x000000FF)
 	}
-
-	var isDarkColor: Bool
+	
+	var luminance: CGFloat
 	{
 		if let rgb = self.usingColorSpace(NSColorSpace.deviceRGB)
 		{
-			let luminance = 0.2126*rgb.redComponent + 0.7152*rgb.greenComponent + 0.0722*rgb.blueComponent
-			return luminance < 0.5
+			return 0.2126*rgb.redComponent + 0.7152*rgb.greenComponent + 0.0722*rgb.blueComponent
 		}
+		
+		return 0
+	}
 
-		return false
+	var isDarkColor: Bool
+	{
+		return luminance < 0.5
 	}
 }
