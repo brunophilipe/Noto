@@ -23,6 +23,7 @@
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */; };
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
+		15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */; };
 		15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */; };
 		CF1A49CE9BF42C5A58BC5947 /* Pods_TipTyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineCounterRulerView.swift; path = Views/LineCounterRulerView.swift; sourceTree = "<group>"; };
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
+		15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvisiblesLayoutManager.swift; path = Application/InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileWatcher.swift; path = Application/FileWatcher.swift; sourceTree = "<group>"; };
 		5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipTyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8305FE045E64B12622FEA705 /* Pods-TipTyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				150CFAC71E2A83CF000B69E5 /* Info.plist */,
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
 				15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */,
+				15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				153AF9E31E5F095A00B19308 /* EditorPreferencesController.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
 				15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */,
+				15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,

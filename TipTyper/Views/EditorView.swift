@@ -11,10 +11,13 @@ import Cocoa
 class EditorView: PaddedTextView
 {
 	var lineCounterView: LineCounterRulerView? = nil
+	let invisiblesLayoutManager = InvisiblesLayoutManager()
 
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
+
+		self.textContainer?.replaceLayoutManager(invisiblesLayoutManager)
 
 		if let scrollView = self.enclosingScrollView
 		{
