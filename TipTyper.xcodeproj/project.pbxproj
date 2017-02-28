@@ -15,8 +15,8 @@
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
-		153AF9E31E5F095A00B19308 /* EditorPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E11E5F095A00B19308 /* EditorPreferencesController.swift */; };
-		153AF9E41E5F095A00B19308 /* EditorPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153AF9E21E5F095A00B19308 /* EditorPreferencesController.xib */; };
+		153AF9E31E5F095A00B19308 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */; };
+		153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
@@ -39,8 +39,8 @@
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
-		153AF9E11E5F095A00B19308 /* EditorPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorPreferencesController.swift; path = "View Controllers/Preferences/EditorPreferencesController.swift"; sourceTree = "<group>"; };
-		153AF9E21E5F095A00B19308 /* EditorPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditorPreferencesController.xib; path = "View Controllers/Preferences/EditorPreferencesController.xib"; sourceTree = "<group>"; };
+		153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
+		153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThemePreferencesController.xib; path = "View Controllers/Preferences/ThemePreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 		153AF9DF1E5F08E700B19308 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				153AF9E11E5F095A00B19308 /* EditorPreferencesController.swift */,
-				153AF9E21E5F095A00B19308 /* EditorPreferencesController.xib */,
+				153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */,
+				153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
-				153AF9E41E5F095A00B19308 /* EditorPreferencesController.xib in Resources */,
+				153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
 			);
@@ -304,7 +304,7 @@
 				150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
-				153AF9E31E5F095A00B19308 /* EditorPreferencesController.swift in Sources */,
+				153AF9E31E5F095A00B19308 /* ThemePreferencesController.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
 				15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */,
 				15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */,

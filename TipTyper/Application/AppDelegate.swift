@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		preferencesController.centerToolbarItems = true
 		
 		let types: [PreferencesController.Type] = [
-			EditorPreferencesController.self
+			ThemePreferencesController.self
 		]
 
 		if let window = preferencesController.window

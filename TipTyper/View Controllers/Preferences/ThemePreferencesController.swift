@@ -1,5 +1,5 @@
 //
-//  EditorPreferencesController.swift
+//  ThemePreferencesController.swift
 //  TipTyper
 //
 //  Created by Bruno Philipe on 23/02/2017.
@@ -9,7 +9,7 @@
 import Cocoa
 import CCNPreferencesWindowController
 
-class EditorPreferencesController: NSViewController
+class ThemePreferencesController: NSViewController
 {
 	fileprivate var preferencesWindow: NSWindow? = nil
 
@@ -203,7 +203,7 @@ class EditorPreferencesController: NSViewController
 	{
 		let pref = Preferences.instance
 		let menuItem = NSMenuItem(title: theme.name,
-		                          action: #selector(EditorPreferencesController.didChangeEditorTheme(_:)),
+		                          action: #selector(ThemePreferencesController.didChangeEditorTheme(_:)),
 		                          keyEquivalent: "")
 
 		menuItem.target = self
@@ -380,26 +380,26 @@ protocol PreferencesController: CCNPreferencesWindowControllerProtocol
 	static func make(preferencesWindow: NSWindow) -> PreferencesController?
 }
 
-extension EditorPreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol
+extension ThemePreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol
 {
 	public func preferenceIdentifier() -> String!
 	{
-		return "editor"
+		return "theme"
 	}
 	
 	func preferenceTitle() -> String!
 	{
-		return "Editor"
+		return "Theme"
 	}
 
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImageNameFontPanel)
+		return NSImage(named: NSImageNameColorPanel)
 	}
 
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = EditorPreferencesController(nibName: "EditorPreferencesController", bundle: Bundle.main)
+		let controller = ThemePreferencesController(nibName: "ThemePreferencesController", bundle: Bundle.main)
 		controller?.preferencesWindow = window
 		return controller
 	}
