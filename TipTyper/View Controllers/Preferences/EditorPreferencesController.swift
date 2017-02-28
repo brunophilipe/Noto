@@ -52,6 +52,13 @@ class EditorPreferencesController: NSViewController
 
 		updateThemesMenu()
 	}
+	
+	override func viewDidDisappear()
+	{
+		super.viewDidDisappear()
+		
+		NSFontPanel.shared().close()
+	}
 
 	private func createObservers()
 	{
