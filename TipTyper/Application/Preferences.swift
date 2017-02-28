@@ -60,8 +60,8 @@ class Preferences: UserDefaults
 				}
 
 				// NO FONTS FOUND??
-				NSLog("Fatal error: could not find any default fonts!")
-				abort()
+				NSLog("error: could not find any default fonts!")
+				return NSFont.monospacedDigitSystemFont(ofSize: 14.0, weight: 400)
 			}
 		}
 
