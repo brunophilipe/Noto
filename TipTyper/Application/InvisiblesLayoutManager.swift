@@ -64,9 +64,8 @@ class InvisiblesLayoutManager: NSLayoutManager
 
 	override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: NSPoint)
 	{
-		let isDark = self.textViewForBeginningOfSelection?.backgroundColor.isDarkColor ?? false
 		let invisiblesAttributes: [String : Any] = [
-			NSForegroundColorAttributeName: isDark ? NSColor.gray : NSColor.lightGray,
+			NSForegroundColorAttributeName: (Preferences.instance.editorTheme.editorForeground).withAlphaComponent(0.6),
 			NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
 		]
 
