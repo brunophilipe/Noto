@@ -36,6 +36,7 @@ class LineCounterRulerView: NSRulerView
 		clientView = nil
 		NotificationCenter.default.removeObserver(self)
 		Preferences.instance.removeObserver(self, forKeyPath: "lineCounterFont")
+		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
 	}
 
 	var font = Preferences.instance.lineCounterFont
@@ -69,9 +70,18 @@ class LineCounterRulerView: NSRulerView
 	                           change: [NSKeyValueChangeKey : Any]?,
 	                           context: UnsafeMutableRawPointer?)
 	{
-		if keyPath == "lineCounterFont" && object is Preferences
+		if let keyPath = keyPath, ["lineCounterFont", "editorFont"].contains(keyPath) && object is Preferences
 		{
-			font = Preferences.instance.lineCounterFont
+			let pref = Preferences.instance
+			var font = pref.lineCounterFont
+			
+			if font.pointSize > pref.editorFont.pointSize,
+				let smallerFont = NSFont(descriptor: font.fontDescriptor, size: pref.editorFont.pointSize)
+			{
+				font = smallerFont
+			}
+			
+			self.font = font
 		}
 	}
 
@@ -189,6 +199,7 @@ class LineCounterRulerView: NSRulerView
 	private func setupStateObservers()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "lineCounterFont", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
 	}
 
 	private func findLineForNearestIndex(index: Int) -> UInt
