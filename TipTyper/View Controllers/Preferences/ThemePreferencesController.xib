@@ -8,13 +8,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesController" customModule="TipTyper" customModuleProvider="target">
             <connections>
-                <outlet property="chooseFontButton" destination="Bt1-9g-R6V" id="vjP-kK-oNi"/>
                 <outlet property="deleteThemeButton" destination="Sdz-mJ-vDR" id="5lG-Od-eMu"/>
                 <outlet property="editorBackgroundColorWell" destination="63Z-fW-c9R" id="LHl-92-eII"/>
                 <outlet property="editorPreviewTextView" destination="zSi-Bx-N1x" id="mh8-7y-9wM"/>
                 <outlet property="editorTextColorWell" destination="mHW-ZH-nae" id="3CR-l7-BbH"/>
                 <outlet property="editorThemePopUpButton" destination="J92-WQ-r0q" id="vq3-qg-H7U"/>
-                <outlet property="fontNameLabel" destination="vT2-88-9Cl" id="Wmq-Mk-HMy"/>
                 <outlet property="lineCounterBackgroundColorWell" destination="hVB-gA-1KB" id="zK9-nC-bos"/>
                 <outlet property="lineCounterTextColorWell" destination="4k4-uq-8ql" id="Sd1-r4-SlN"/>
                 <outlet property="renameThemeButton" destination="oBu-wg-wb4" id="saO-pZ-tk2"/>
@@ -26,7 +24,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="368"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eb-fha">
@@ -92,14 +90,6 @@ class Hello
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6Q-VI-Iq0">
-                    <rect key="frame" x="79" y="330" width="35" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Font:" id="g1z-8S-QzN">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-XS-sCo">
                     <rect key="frame" x="70" y="257" width="44" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Editor:" id="wrp-cM-gfe">
@@ -116,24 +106,6 @@ class Hello
                         <menu key="menu" autoenablesItems="NO" id="K9B-8b-JTG"/>
                     </popUpButtonCell>
                 </popUpButton>
-                <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-9g-R6V">
-                    <rect key="frame" x="114" y="320" width="117" height="32"/>
-                    <buttonCell key="cell" type="push" title="Choose Font" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tW5-2g-6AR">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="didClickChooseFont:" target="-2" id="wl1-R8-R5I"/>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT2-88-9Cl">
-                    <rect key="frame" x="233" y="330" width="229" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="R2b-PY-vew">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <colorWell tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="mHW-ZH-nae">
                     <rect key="frame" x="120" y="254" width="44" height="23"/>
                     <constraints>
@@ -248,9 +220,6 @@ class Hello
             <constraints>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="centerY" secondItem="hVB-gA-1KB" secondAttribute="centerY" id="0me-Vj-H4p"/>
                 <constraint firstItem="mHW-ZH-nae" firstAttribute="centerY" secondItem="gLI-XS-sCo" secondAttribute="centerY" id="3GS-YB-kZk"/>
-                <constraint firstItem="J92-WQ-r0q" firstAttribute="top" secondItem="Bt1-9g-R6V" secondAttribute="bottom" constant="14" id="3l8-0h-NT8"/>
-                <constraint firstAttribute="trailing" secondItem="vT2-88-9Cl" secondAttribute="trailing" constant="20" id="4f9-WQ-IIR"/>
-                <constraint firstItem="mHW-ZH-nae" firstAttribute="leading" secondItem="Bt1-9g-R6V" secondAttribute="leading" id="6QT-7V-2ds"/>
                 <constraint firstItem="mHW-ZH-nae" firstAttribute="top" secondItem="J92-WQ-r0q" secondAttribute="bottom" constant="15" id="6p1-x0-ZkG"/>
                 <constraint firstItem="NFk-EZ-28d" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="66" id="7TL-Wa-SQJ"/>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="leading" secondItem="hVB-gA-1KB" secondAttribute="trailing" constant="8" id="8du-fV-KDS"/>
@@ -258,7 +227,6 @@ class Hello
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="centerY" secondItem="4rJ-dr-CVU" secondAttribute="centerY" id="CLx-s4-4x9"/>
                 <constraint firstItem="5KQ-s3-Yu2" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="trailing" constant="8" id="D5i-2Z-lpl"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="DFl-Mc-y54"/>
-                <constraint firstItem="Bt1-9g-R6V" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="leading" id="GDL-5Y-sGW"/>
                 <constraint firstAttribute="trailing" secondItem="RlH-eb-fha" secondAttribute="trailing" constant="20" id="JWH-Ic-un1"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="top" secondItem="63Z-fW-c9R" secondAttribute="bottom" constant="8" id="K1Q-5X-cEM"/>
                 <constraint firstItem="oBu-wg-wb4" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="trailing" constant="8" symbolic="YES" id="Sqm-mZ-s2Z"/>
@@ -266,27 +234,23 @@ class Hello
                 <constraint firstItem="vVh-AS-xMa" firstAttribute="leading" secondItem="63Z-fW-c9R" secondAttribute="trailing" constant="8" id="U5g-xD-R3j"/>
                 <constraint firstItem="5KQ-s3-Yu2" firstAttribute="baseline" secondItem="gLI-XS-sCo" secondAttribute="baseline" id="VF6-ja-ZIY"/>
                 <constraint firstItem="J92-WQ-r0q" firstAttribute="baseline" secondItem="NFk-EZ-28d" secondAttribute="baseline" id="WYC-il-8Fk"/>
-                <constraint firstItem="Bt1-9g-R6V" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="Xlz-nV-a8D"/>
                 <constraint firstItem="mHW-ZH-nae" firstAttribute="leading" secondItem="gLI-XS-sCo" secondAttribute="trailing" constant="8" id="Xmf-tP-aHc"/>
-                <constraint firstItem="vT2-88-9Cl" firstAttribute="leading" secondItem="Bt1-9g-R6V" secondAttribute="trailing" constant="10" id="Ydf-Z2-6UM"/>
                 <constraint firstItem="77Z-0a-e9b" firstAttribute="baseline" secondItem="4rJ-dr-CVU" secondAttribute="baseline" id="Yez-9u-juS"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="leading" secondItem="A2g-1H-6Vy" secondAttribute="trailing" constant="8" id="aGs-YP-XOC"/>
+                <constraint firstItem="mHW-ZH-nae" firstAttribute="leading" secondItem="J92-WQ-r0q" secondAttribute="leading" id="aUc-9F-Lum"/>
                 <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="NFk-EZ-28d" secondAttribute="trailing" constant="8" id="bYd-mP-9tf"/>
-                <constraint firstItem="vT2-88-9Cl" firstAttribute="baseline" secondItem="Bt1-9g-R6V" secondAttribute="baseline" id="bhG-DZ-ce7"/>
+                <constraint firstItem="J92-WQ-r0q" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="cGz-P4-GtF"/>
                 <constraint firstItem="Sdz-mJ-vDR" firstAttribute="baseline" secondItem="oBu-wg-wb4" secondAttribute="baseline" id="dLC-0H-qz7"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="4rJ-dr-CVU" secondAttribute="trailing" constant="8" id="fKg-c9-jfQ"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="top" secondItem="hVB-gA-1KB" secondAttribute="bottom" constant="12" id="fTu-o2-602"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="leading" id="fss-75-W2L"/>
                 <constraint firstItem="77Z-0a-e9b" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="trailing" constant="8" id="hOw-ee-5Wl"/>
-                <constraint firstItem="K6Q-VI-Iq0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="81" id="iwE-da-YUq"/>
-                <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="NFk-EZ-28d" secondAttribute="trailing" constant="8" id="j7v-lK-Ib9"/>
                 <constraint firstItem="A2g-1H-6Vy" firstAttribute="top" secondItem="RlH-eb-fha" secondAttribute="top" constant="6" id="kjl-6q-IXJ"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="top" secondItem="4k4-uq-8ql" secondAttribute="bottom" constant="5" id="qMY-NX-wRD"/>
-                <constraint firstItem="Bt1-9g-R6V" firstAttribute="leading" secondItem="K6Q-VI-Iq0" secondAttribute="trailing" constant="8" id="rKH-8c-Xsb"/>
                 <constraint firstItem="63Z-fW-c9R" firstAttribute="leading" secondItem="mHW-ZH-nae" secondAttribute="leading" id="tkp-6q-YGE"/>
+                <constraint firstItem="J92-WQ-r0q" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="uzy-lG-l0J"/>
                 <constraint firstItem="oBu-wg-wb4" firstAttribute="bottom" secondItem="J92-WQ-r0q" secondAttribute="bottom" id="vAv-zC-pFq"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="63Z-fW-c9R" secondAttribute="leading" id="vcz-KR-ziM"/>
-                <constraint firstItem="Bt1-9g-R6V" firstAttribute="baseline" secondItem="K6Q-VI-Iq0" secondAttribute="baseline" id="wD1-if-Fm3"/>
                 <constraint firstItem="vVh-AS-xMa" firstAttribute="centerY" secondItem="63Z-fW-c9R" secondAttribute="centerY" id="wNp-1r-3Bd"/>
                 <constraint firstItem="Sdz-mJ-vDR" firstAttribute="leading" secondItem="oBu-wg-wb4" secondAttribute="trailing" constant="1" id="xxA-cG-elC"/>
                 <constraint firstAttribute="bottom" secondItem="RlH-eb-fha" secondAttribute="bottom" constant="20" id="zPQ-de-xXa"/>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1501FBBB1E65944F00AEB80E /* EditorPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1501FBB91E65944F00AEB80E /* EditorPreferencesViewController.swift */; };
+		1501FBBC1E65944F00AEB80E /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1501FBBA1E65944F00AEB80E /* EditorPreferencesViewController.xib */; };
+		1501FBBE1E65948600AEB80E /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1501FBBD1E65948600AEB80E /* PreferencesController.swift */; };
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1501FBB91E65944F00AEB80E /* EditorPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorPreferencesViewController.swift; path = "View Controllers/Preferences/EditorPreferencesViewController.swift"; sourceTree = "<group>"; };
+		1501FBBA1E65944F00AEB80E /* EditorPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditorPreferencesViewController.xib; path = "View Controllers/Preferences/EditorPreferencesViewController.xib"; sourceTree = "<group>"; };
+		1501FBBD1E65948600AEB80E /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesController.swift; path = "View Controllers/Preferences/PreferencesController.swift"; sourceTree = "<group>"; };
 		150CFAB81E2A83CF000B69E5 /* TipTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		150CFAC01E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,8 +125,11 @@
 		153AF9DF1E5F08E700B19308 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				1501FBBD1E65948600AEB80E /* PreferencesController.swift */,
 				153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */,
 				153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */,
+				1501FBB91E65944F00AEB80E /* EditorPreferencesViewController.swift */,
+				1501FBBA1E65944F00AEB80E /* EditorPreferencesViewController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -241,6 +250,7 @@
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
 				153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
+				1501FBBC1E65944F00AEB80E /* EditorPreferencesViewController.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +320,9 @@
 				15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
+				1501FBBB1E65944F00AEB80E /* EditorPreferencesViewController.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
+				1501FBBE1E65948600AEB80E /* PreferencesController.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,

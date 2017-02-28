@@ -16,8 +16,6 @@ class ThemePreferencesController: NSViewController
 	@IBOutlet var renameThemePopover: NSPopover!
 	@IBOutlet var renameThemeTextField: NSTextField!
 
-	@IBOutlet var chooseFontButton: NSButton!
-	@IBOutlet var fontNameLabel: NSTextField!
 	@IBOutlet var editorThemePopUpButton: NSPopUpButton!
 	@IBOutlet var renameThemeButton: NSButton!
 	@IBOutlet var deleteThemeButton: NSButton!
@@ -51,13 +49,6 @@ class ThemePreferencesController: NSViewController
 		super.viewWillAppear()
 
 		updateThemesMenu()
-	}
-	
-	override func viewDidDisappear()
-	{
-		super.viewDidDisappear()
-		
-		NSFontPanel.shared().close()
 	}
 
 	private func createObservers()
@@ -127,7 +118,6 @@ class ThemePreferencesController: NSViewController
 		let editorFont = pref.editorFont
 
 		editorPreviewTextView.font = editorFont
-		fontNameLabel.stringValue = "\(editorFont.displayName ?? editorFont.fontName) \(Int(editorFont.pointSize))pt"
 	}
 
 	private func updateFontPreviewColors()
@@ -373,11 +363,6 @@ class ThemePreferencesController: NSViewController
 
 		updateFontPreviewColors()
 	}
-}
-
-protocol PreferencesController: CCNPreferencesWindowControllerProtocol
-{
-	static func make(preferencesWindow: NSWindow) -> PreferencesController?
 }
 
 extension ThemePreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol
