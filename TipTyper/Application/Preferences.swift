@@ -17,6 +17,11 @@ class Preferences: UserDefaults
 	private static let PreferenceLineCounterFontSize = "PreferenceLineCounterFontSize"
 
 	private static let PreferenceEditorThemeName = "PreferenceEditorThemeName"
+	
+	private static let PreferenceEditorSmartSubstitutions	= "PreferenceEditorSmartSubstitutions"
+	private static let PreferenceEditorSpellingChecker		= "PreferenceEditorSpellingChecker"
+	private static let PreferenceEditorUseSpacesForTabs		= "PreferenceEditorUseSpacesForTabs"
+	private static let PreferenceEditorTabSize				= "PreferenceEditorTabSize"
 
 	private static var sharedInstance: Preferences! = nil
 
@@ -155,5 +160,29 @@ class Preferences: UserDefaults
 		{
 			_editorTheme = newValue
 		}
+	}
+	
+	dynamic var smartSubstitutionsOn: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorSmartSubstitutions) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorSmartSubstitutions) }
+	}
+	
+	dynamic var spellingCheckerOn: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorSpellingChecker) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorSpellingChecker) }
+	}
+	
+	dynamic var useSpacesForTabs: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
+	}
+	
+	dynamic var tabSize: Int
+		{
+		get { return (value(forKey: Preferences.PreferenceEditorTabSize) as? Int) ?? 4 }
+		set { set(newValue, forKey: Preferences.PreferenceEditorTabSize) }
 	}
 }

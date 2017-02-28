@@ -30,11 +30,15 @@ class DocumentWindow: NSWindow
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: NSKeyValueObservingOptions.new, context: nil)
 
 		setupWindowStyle()
 
 		updateEditorFont()
 		updateEditorColors()
+		updateEditorSubstitutions()
+		updateEditorSpellingCheck()
 		setupThemeObserver()
 	}
 
@@ -42,6 +46,8 @@ class DocumentWindow: NSWindow
 	{
 		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
 		Preferences.instance.removeObserver(self, forKeyPath: "editorThemeName")
+		Preferences.instance.removeObserver(self, forKeyPath: "smartSubstitutionsOn")
+		Preferences.instance.removeObserver(self, forKeyPath: "spellingCheckerOn")
 
 		removeThemeObserver()
 	}
@@ -96,7 +102,13 @@ class DocumentWindow: NSWindow
 			case .some("editorThemeName"):
 				updateEditorColors()
 				setupThemeObserver()
-
+				
+			case .some("smartSubstitutionsOn"):
+				updateEditorSubstitutions()
+				
+			case .some("spellingCheckerOn"):
+				updateEditorSpellingCheck()
+				
 			default:
 				break
 			}
@@ -134,5 +146,22 @@ class DocumentWindow: NSWindow
 		textView.textColor = theme.editorForeground
 		textView.lineCounterView?.textColor = theme.lineCounterForeground
 		textView.lineCounterView?.backgroundColor = theme.lineCounterBackground
+	}
+	
+	private func updateEditorSubstitutions()
+	{
+		let enabled = Preferences.instance.smartSubstitutionsOn
+		
+		textView.isAutomaticDashSubstitutionEnabled = enabled
+		textView.isAutomaticQuoteSubstitutionEnabled = enabled
+		textView.smartInsertDeleteEnabled = enabled
+	}
+	
+	private func updateEditorSpellingCheck()
+	{
+		let enabled = Preferences.instance.spellingCheckerOn
+		
+		textView.isContinuousSpellCheckingEnabled = enabled
+		textView.isAutomaticSpellingCorrectionEnabled = enabled
 	}
 }

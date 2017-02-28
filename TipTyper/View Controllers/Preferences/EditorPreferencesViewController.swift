@@ -16,6 +16,18 @@ class EditorPreferencesViewController: NSViewController
 	@IBOutlet var chooseFontButton: NSButton!
 	@IBOutlet var fontNameLabel: NSTextField!
 	
+	var smartSubstitutionsOn: Bool
+	{
+		get { return Preferences.instance.smartSubstitutionsOn }
+		set { Preferences.instance.smartSubstitutionsOn = newValue }
+	}
+	
+	var spellingCheckerOn: Bool
+		{
+		get { return Preferences.instance.spellingCheckerOn }
+		set { Preferences.instance.spellingCheckerOn = newValue }
+	}
+	
 	override func viewDidLoad()
 	{
         super.viewDidLoad()
