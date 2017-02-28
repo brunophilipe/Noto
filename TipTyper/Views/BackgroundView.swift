@@ -23,5 +23,4 @@ class BackgroundView: NSView
         backgroundColor.setFill()
 		NSRectFill(dirtyRect)
     }
-    
 }

@@ -47,5 +47,31 @@ class EditorView: PaddedTextView
 			scrollView.verticalRulerView = nil
 		}
 	}
+
+	// Has to be updated when font size changes
+	func setTabWidth(_ width: UInt)
+	{
+		// Update paragraph style
+		let paragraphStyle = (defaultParagraphStyle ?? NSParagraphStyle.default()).mutableCopy() as! NSMutableParagraphStyle
+		let characterWidth = (font ?? NSFont.systemFont(ofSize: 14)).screenFont(with: .antialiasedRenderingMode).advancement(forGlyph: NSGlyph(" "))
+
+		paragraphStyle.defaultTabInterval = CGFloat(width) * characterWidth.width
+		paragraphStyle.tabStops = []
+
+		defaultParagraphStyle = paragraphStyle
+
+		// Re-render current text with new typing attributes
+		var typingAttributes = self.typingAttributes
+		typingAttributes[NSParagraphStyleAttributeName] = paragraphStyle
+		self.typingAttributes = typingAttributes
+
+		if let textString: NSString = self.string as NSString?
+		{
+			let textRange = NSMakeRange(0, textString.length)
+			shouldChangeText(in: textRange, replacementString: nil)
+			textStorage?.setAttributes(typingAttributes, range: textRange)
+			didChangeText()
+		}
+	}
     
 }

@@ -23,9 +23,15 @@ class EditorPreferencesViewController: NSViewController
 	}
 	
 	var spellingCheckerOn: Bool
-		{
+	{
 		get { return Preferences.instance.spellingCheckerOn }
 		set { Preferences.instance.spellingCheckerOn = newValue }
+	}
+
+	var tabSize: NSNumber
+	{
+		get { return NSNumber(value: Preferences.instance.tabSize) }
+		set { Preferences.instance.tabSize = newValue.uintValue }
 	}
 	
 	override func viewDidLoad()

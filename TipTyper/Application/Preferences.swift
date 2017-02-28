@@ -180,9 +180,9 @@ class Preferences: UserDefaults
 		set { set(newValue, forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
 	}
 	
-	dynamic var tabSize: Int
+	dynamic var tabSize: UInt
 		{
-		get { return (value(forKey: Preferences.PreferenceEditorTabSize) as? Int) ?? 4 }
+		get { return (value(forKey: Preferences.PreferenceEditorTabSize) as? UInt) ?? 4 }
 		set { set(newValue, forKey: Preferences.PreferenceEditorTabSize) }
 	}
 }

@@ -32,6 +32,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: NSKeyValueObservingOptions.new, context: nil)
 
 		setupWindowStyle()
 
@@ -39,6 +40,7 @@ class DocumentWindow: NSWindow
 		updateEditorColors()
 		updateEditorSubstitutions()
 		updateEditorSpellingCheck()
+		updateEditorTabSize()
 		setupThemeObserver()
 	}
 
@@ -48,6 +50,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.removeObserver(self, forKeyPath: "editorThemeName")
 		Preferences.instance.removeObserver(self, forKeyPath: "smartSubstitutionsOn")
 		Preferences.instance.removeObserver(self, forKeyPath: "spellingCheckerOn")
+		Preferences.instance.removeObserver(self, forKeyPath: "tabSize")
 
 		removeThemeObserver()
 	}
@@ -108,7 +111,10 @@ class DocumentWindow: NSWindow
 				
 			case .some("spellingCheckerOn"):
 				updateEditorSpellingCheck()
-				
+
+			case .some("tabSize"):
+				updateEditorTabSize()
+
 			default:
 				break
 			}
@@ -163,5 +169,10 @@ class DocumentWindow: NSWindow
 		
 		textView.isContinuousSpellCheckingEnabled = enabled
 		textView.isAutomaticSpellingCorrectionEnabled = enabled
+	}
+
+	private func updateEditorTabSize()
+	{
+		textView.setTabWidth(Preferences.instance.tabSize)
 	}
 }

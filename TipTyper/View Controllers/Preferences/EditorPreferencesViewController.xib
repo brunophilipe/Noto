@@ -49,8 +49,8 @@
                     <rect key="frame" x="20" y="156" width="440" height="5"/>
                 </box>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-1y-otm">
-                    <rect key="frame" x="88" y="52" width="186" height="18"/>
-                    <buttonCell key="cell" type="check" title="Use spaces instead of tabs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0w1-gB-xwB">
+                    <rect key="frame" x="88" y="52" width="198" height="18"/>
+                    <buttonCell key="cell" type="check" title="Insert spaces instead of tabs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0w1-gB-xwB">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -103,17 +103,32 @@
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="4" drawsBackground="YES" id="XO4-2p-OF1">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="bht-6I-eOD">
-                            <real key="minimum" value="0.0"/>
-                            <real key="maximum" value="120"/>
+                            <real key="minimum" value="1"/>
+                            <real key="maximum" value="32"/>
                         </numberFormatter>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.tabSize" id="Ra4-Mj-GoC">
+                            <dictionary key="options">
+                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                <integer key="NSNotApplicablePlaceholder" value="4"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kyn-3V-iMY">
                     <rect key="frame" x="129" y="18" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="UDj-Db-8h0"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="32" doubleValue="4" valueWraps="YES" id="UDj-Db-8h0"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.tabSize" id="KUp-fU-cfK">
+                            <dictionary key="options">
+                                <integer key="NSNotApplicablePlaceholder" value="4"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </stepper>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-9k-DPp">
                     <rect key="frame" x="153" y="23" width="47" height="17"/>
