@@ -33,6 +33,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: NSKeyValueObservingOptions.new, context: nil)
 
 		setupWindowStyle()
 
@@ -41,6 +42,7 @@ class DocumentWindow: NSWindow
 		updateEditorSubstitutions()
 		updateEditorSpellingCheck()
 		updateEditorTabSize()
+		updateEditorSpacesForTabsOption()
 		setupThemeObserver()
 	}
 
@@ -51,6 +53,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.removeObserver(self, forKeyPath: "smartSubstitutionsOn")
 		Preferences.instance.removeObserver(self, forKeyPath: "spellingCheckerOn")
 		Preferences.instance.removeObserver(self, forKeyPath: "tabSize")
+		Preferences.instance.removeObserver(self, forKeyPath: "useSpacesForTabs")
 
 		removeThemeObserver()
 	}
@@ -115,6 +118,9 @@ class DocumentWindow: NSWindow
 			case .some("tabSize"):
 				updateEditorTabSize()
 
+			case .some("useSpacesForTabs"):
+				updateEditorSpacesForTabsOption()
+
 			default:
 				break
 			}
@@ -174,5 +180,10 @@ class DocumentWindow: NSWindow
 	private func updateEditorTabSize()
 	{
 		textView.setTabWidth(Preferences.instance.tabSize)
+	}
+
+	private func updateEditorSpacesForTabsOption()
+	{
+		textView.usesSpacesForTabs = Preferences.instance.useSpacesForTabs
 	}
 }

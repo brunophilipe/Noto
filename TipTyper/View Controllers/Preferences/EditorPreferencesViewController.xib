@@ -54,6 +54,13 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.useSpacesForTabs" id="LgS-x6-r2Q">
+                            <dictionary key="options">
+                                <integer key="NSNoSelectionPlaceholder" value="0"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="O7x-gl-Tmr">
                     <rect key="frame" x="88" y="130" width="252" height="18"/>

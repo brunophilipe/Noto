@@ -10,8 +10,11 @@ import Cocoa
 
 class EditorView: PaddedTextView
 {
+	private let invisiblesLayoutManager = InvisiblesLayoutManager()
+	private var tabSize: UInt = 4
+
 	var lineCounterView: LineCounterRulerView? = nil
-	let invisiblesLayoutManager = InvisiblesLayoutManager()
+	var usesSpacesForTabs: Bool = false
 
 	override func awakeFromNib()
 	{
@@ -45,6 +48,18 @@ class EditorView: PaddedTextView
 			scrollView.rulersVisible = false
 			scrollView.hasVerticalRuler = false
 			scrollView.verticalRulerView = nil
+		}
+	}
+
+	override func insertTab(_ sender: Any?)
+	{
+		if usesSpacesForTabs
+		{
+			insertText(String.init(repeating: " ", count: Int(tabSize)), replacementRange: NSRange(location: NSNotFound, length: 0))
+		}
+		else
+		{
+			super.insertTab(sender)
 		}
 	}
 

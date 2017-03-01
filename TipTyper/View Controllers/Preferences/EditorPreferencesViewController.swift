@@ -16,16 +16,22 @@ class EditorPreferencesViewController: NSViewController
 	@IBOutlet var chooseFontButton: NSButton!
 	@IBOutlet var fontNameLabel: NSTextField!
 	
-	var smartSubstitutionsOn: Bool
+	var smartSubstitutionsOn: NSNumber
 	{
-		get { return Preferences.instance.smartSubstitutionsOn }
-		set { Preferences.instance.smartSubstitutionsOn = newValue }
+		get { return NSNumber(booleanLiteral: Preferences.instance.smartSubstitutionsOn) }
+		set { Preferences.instance.smartSubstitutionsOn = newValue.boolValue }
 	}
 	
-	var spellingCheckerOn: Bool
+	var spellingCheckerOn: NSNumber
 	{
-		get { return Preferences.instance.spellingCheckerOn }
-		set { Preferences.instance.spellingCheckerOn = newValue }
+		get { return NSNumber(booleanLiteral: Preferences.instance.spellingCheckerOn) }
+		set { Preferences.instance.spellingCheckerOn = newValue.boolValue }
+	}
+
+	var useSpacesForTabs: NSNumber
+	{
+		get { return NSNumber(booleanLiteral: Preferences.instance.useSpacesForTabs) }
+		set { Preferences.instance.useSpacesForTabs = newValue.boolValue }
 	}
 
 	var tabSize: NSNumber
