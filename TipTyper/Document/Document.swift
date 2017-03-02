@@ -10,7 +10,7 @@ import Cocoa
 
 class Document: NSDocument
 {
-	private var loadedString: String? = nil
+	private var loadedData: (string: String, encoding: String.Encoding)? = nil
 
 	override init()
 	{
@@ -25,10 +25,10 @@ class Document: NSDocument
 
 		window?.setupUI()
 
-		if let string = loadedString
+		if let string = loadedData?.string
 		{
 			window?.text = string
-			loadedString = nil
+			loadedData = nil
 		}
 	}
 
@@ -62,23 +62,21 @@ class Document: NSDocument
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
 
+//	override func revert(toContentsOf url: URL, ofType typeName: String) throws
+//	{
+//		try super.revert(toContentsOf: url, ofType: typeName)
+//	}
+
 	override func read(from data: Data, ofType typeName: String) throws
 	{
-		if supportedDocumentTypes.contains(typeName)
+		if let loadedData = EncodingTool.loadStringFromData(data)
 		{
-			loadedString = String(data: data, encoding: .utf8) ?? ""
+			self.loadedData = loadedData
 		}
-	}
-
-	private var supportedDocumentTypes: [String]
-	{
-		if	let documentTypes = Bundle.main.infoDictionary?["CFBundleDocumentTypes"] as? NSArray,
-			let publicIdentifiers = (documentTypes[0] as? NSDictionary)?["LSItemContentTypes"] as? [String]
+		else
 		{
-			return publicIdentifiers
+			throw NSError(domain: "com.brunophilipe.TipTyper", code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
 		}
-
-		return []
 	}
 }
 

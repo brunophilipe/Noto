@@ -28,6 +28,7 @@
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */; };
 		15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */; };
+		3D7A680C75BCECB5BA2B9257 /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6C0A027D106C80C687DC /* EncodingTool.swift */; };
 		CF1A49CE9BF42C5A58BC5947 /* Pods_TipTyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
 		15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvisiblesLayoutManager.swift; path = Application/InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileWatcher.swift; path = Application/FileWatcher.swift; sourceTree = "<group>"; };
+		3D7A6C0A027D106C80C687DC /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTool.swift; path = Application/EncodingTool.swift; sourceTree = "<group>"; };
 		5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipTyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8305FE045E64B12622FEA705 /* Pods-TipTyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.debug.xcconfig"; sourceTree = "<group>"; };
 		91224F4191845E34F99B14F6 /* Pods-TipTyper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
 				15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */,
 				15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */,
+				3D7A6C0A027D106C80C687DC /* EncodingTool.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
+				3D7A680C75BCECB5BA2B9257 /* EncodingTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
