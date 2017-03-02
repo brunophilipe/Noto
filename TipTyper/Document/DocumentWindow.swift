@@ -44,6 +44,8 @@ class DocumentWindow: NSWindow
 		updateEditorTabSize()
 		updateEditorSpacesForTabsOption()
 		setupThemeObserver()
+
+		textView.undoManager?.removeAllActions()
 	}
 
 	deinit
@@ -98,6 +100,8 @@ class DocumentWindow: NSWindow
 	                           change: [NSKeyValueChangeKey : Any]?,
 	                           context: UnsafeMutableRawPointer?)
 	{
+		textView.undoManager?.disableUndoRegistration()
+
 		if object is Preferences
 		{
 			switch keyPath
@@ -139,6 +143,8 @@ class DocumentWindow: NSWindow
 				break
 			}
 		}
+
+		textView.undoManager?.enableUndoRegistration()
 	}
 
 	private func updateEditorFont()
