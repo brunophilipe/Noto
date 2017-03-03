@@ -7,30 +7,42 @@ import Cocoa
 
 class EncodingTool
 {
-	private static let supportedEncodings: [(encoding: String.Encoding, name: String)] = [
-			(encoding: .utf8, name: "UTF-8"),
-			(encoding: .ascii, name: "ASCII"),
-			(encoding: .isoLatin1, name: "ISO Latin-1"),
-			(encoding: .isoLatin2, name: "ISO Latin-2"),
-			(encoding: .macOSRoman, name: "Mac OS Roman"),
-			(encoding: .windowsCP1251, name: "Windows-1251"),
-			(encoding: .windowsCP1252, name: "Windows-1252"),
-			(encoding: .windowsCP1253, name: "Windows-1253"),
-			(encoding: .windowsCP1254, name: "Windows-1254"),
-			(encoding: .windowsCP1250, name: "Windows-1250"),
-			(encoding: .utf16, name: "UTF-16"),
-			(encoding: .utf16BigEndian, name: "UTF-16 BE"),
-			(encoding: .utf16LittleEndian, name: "UTF-16 LE"),
-			(encoding: .utf32, name: "UTF-32"),
-			(encoding: .utf32BigEndian, name: "UTF-32 BE"),
-			(encoding: .utf32LittleEndian, name: "UTF-32 LE"),
-			(encoding: .nextstep, name: "NeXT"),
-			(encoding: .symbol, name: "Symbol"),
-			(encoding: .iso2022JP, name: "ISO-2022 JP"),
-			(encoding: .japaneseEUC, name: "Japanese EUC"),
-			(encoding: .nonLossyASCII, name: "Lossy ASCII"),
-			(encoding: .shiftJIS, name: "Shift JIS")
-	]
+	private static let supportedEncodings: [String.Encoding] =
+	{
+		var encodings: [String.Encoding] = [
+			.ascii,
+			.utf8,
+			.isoLatin1,
+			.isoLatin2,
+			.macOSRoman,
+			.windowsCP1251,
+			.windowsCP1252,
+			.windowsCP1253,
+			.windowsCP1254,
+			.windowsCP1250,
+			.utf16,
+			.utf16BigEndian,
+			.utf16LittleEndian,
+			.utf32,
+			.utf32BigEndian,
+			.utf32LittleEndian,
+			.nextstep,
+			.symbol,
+			.iso2022JP,
+			.japaneseEUC,
+			.nonLossyASCII,
+			.shiftJIS,
+		]
+
+		encodings.sort()
+		{
+			(left, right) -> Bool in
+
+			return left.description.compare(right.description) == .orderedAscending
+		}
+
+		return encodings
+	}()
 
 	static func loadStringFromURL(_ url: URL) -> (String, String.Encoding)?
 	{
@@ -78,7 +90,7 @@ class EncodingTool
 		return ("", .utf8)
 	}
 
-	private static func showEncodingPicker() -> String.Encoding?
+	static func showEncodingPicker() -> String.Encoding?
 	{
 		let alert = NSAlert()
 		alert.messageText = "Please select an encoding for the file:"
@@ -86,14 +98,13 @@ class EncodingTool
 		alert.addButton(withTitle: "Cancel")
 		alert.window.title = "Could not detect encoding automatically"
 
-		let encodingPopUpButton = NSPopUpButton(frame: NSRect(x: 0, y: 0, width: 160, height: 40), pullsDown: true)
+		let encodingPopUpButton = NSPopUpButton(frame: NSRect(x: 0, y: 0, width: 190, height: 40), pullsDown: false)
 		let menu = NSMenu()
-		supportedEncodings.forEach()
-		{
-			encodingTuple in
 
-			let menuItem = NSMenuItem(title: encodingTuple.name, action: nil, keyEquivalent: "")
-			menuItem.representedObject = encodingTuple.encoding
+		for encoding in EncodingTool.supportedEncodings
+		{
+			let menuItem = NSMenuItem(title: encoding.description, action: nil, keyEquivalent: "")
+			menuItem.representedObject = encoding
 
 			menu.addItem(menuItem)
 		}
@@ -101,8 +112,6 @@ class EncodingTool
 		encodingPopUpButton.menu = menu
 		encodingPopUpButton.target = self
 		encodingPopUpButton.action = #selector(EncodingTool.didChangeEncodingPopUpButton(_:))
-		encodingPopUpButton.title = supportedEncodings.first!.name
-		encodingPopUpButton.selectItem(at: 0)
 
 		alert.accessoryView = encodingPopUpButton
 

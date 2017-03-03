@@ -13,6 +13,8 @@ class Document: NSDocument
 	private var loadedString: String? = nil
 	private var usedEncoding: String.Encoding = .utf8
 
+	private var savePanelMessage: String? = nil
+
 	override init()
 	{
 	    super.init()
@@ -48,6 +50,27 @@ class Document: NSDocument
 		return "Document"
 	}
 
+	override var shouldRunSavePanelWithAccessoryView: Bool
+	{
+		return false
+	}
+
+	override func prepareSavePanel(_ savePanel: NSSavePanel) -> Bool
+	{
+		if let message = self.savePanelMessage
+		{
+			let label = NSTextField(string: message)
+			label.allowsEditingTextAttributes = false
+			label.isSelectable = false
+			label.isBordered = false
+			label.drawsBackground = false
+
+			savePanel.accessoryView = label
+		}
+
+		return super.prepareSavePanel(savePanel)
+	}
+
 	override func data(ofType typeName: String) throws -> Data
 	{
 		if let data = window?.text.data(using: usedEncoding)
@@ -63,8 +86,8 @@ class Document: NSDocument
 		if url.isFileURL
 		{
 			try read(from: url, ofType: typeName)
-			updateChangeCount(.changeCleared)
 			sendDataToWindow()
+			updateChangeCount(.changeCleared)
 		}
 		else
 		{
@@ -97,5 +120,55 @@ class Document: NSDocument
 
 		undoManager?.enableUndoRegistration()
 	}
+
+	fileprivate func reopenFileAskingForEncoding()
+	{
+		if let fileURL = self.fileURL
+		{
+			repeat
+			{
+				if let newEncoding = EncodingTool.showEncodingPicker(),
+				   let newString = try? String(contentsOf: fileURL, encoding: newEncoding)
+				{
+					self.loadedString = newString
+					self.usedEncoding = newEncoding
+
+					sendDataToWindow()
+					updateChangeCount(.changeCleared)
+				}
+				else
+				{
+					// User clicked cancel
+					return
+				}
+			}
+			while true
+		}
+	}
+
+	fileprivate func saveFileAskingForEncoding(_ sender: Any?)
+	{
+		if let newEncoding = EncodingTool.showEncodingPicker()
+		{
+			self.usedEncoding = newEncoding
+			self.savePanelMessage = "Saving file with new encoding: \(newEncoding.description)"
+
+			saveAs(sender)
+
+			self.savePanelMessage = nil
+		}
+	}
 }
 
+extension Document
+{
+	@IBAction func reopenWithEncoding(_ sender: Any?)
+	{
+		reopenFileAskingForEncoding()
+	}
+
+	@IBAction func saveAsWithEncoding(_ sender: Any?)
+	{
+		saveFileAskingForEncoding(sender)
+	}
+}

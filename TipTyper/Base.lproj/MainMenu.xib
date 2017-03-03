@@ -91,6 +91,13 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Reopen with Encoding…" id="EHx-gV-JXU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reopenWithEncoding:" target="-1" id="O3q-Bw-Mam"/>
+                                    <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.keyDocumentCanReopen" id="NTk-w1-MPH"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
@@ -105,6 +112,12 @@
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
                                 <connections>
                                     <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save As with Encoding…" id="jvI-Fe-bcb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="saveAsWithEncoding:" target="-1" id="DIE-hX-9Bo"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Revert to Saved" keyEquivalent="r" id="KaW-ft-85H">

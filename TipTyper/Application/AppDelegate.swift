@@ -15,6 +15,11 @@ let kTipTyperErrorDomain = "com.brunophilipe.TipTyper"
 class AppDelegate: NSObject, NSApplicationDelegate
 {
 	let preferencesController = CCNPreferencesWindowController()
+
+	var keyDocumentCanReopen: NSNumber
+	{
+		return NSNumber.init(value: NSDocumentController.shared().currentDocument?.fileURL != nil)
+	}
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification)
 	{
