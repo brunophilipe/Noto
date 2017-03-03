@@ -26,7 +26,7 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-	func setupUI()
+	func setup()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: NSKeyValueObservingOptions.new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: NSKeyValueObservingOptions.new, context: nil)

@@ -10,7 +10,8 @@ import Cocoa
 
 class Document: NSDocument
 {
-	private var loadedData: (string: String, encoding: String.Encoding)? = nil
+	private var loadedString: String? = nil
+	private var usedEncoding: String.Encoding = .utf8
 
 	override init()
 	{
@@ -23,13 +24,8 @@ class Document: NSDocument
 	{
 		super.makeWindowControllers()
 
-		window?.setupUI()
-
-		if let string = loadedData?.string
-		{
-			window?.text = string
-			loadedData = nil
-		}
+		window?.setup()
+		sendDataToWindow()
 	}
 
 	var window: DocumentWindow?
@@ -54,7 +50,7 @@ class Document: NSDocument
 
 	override func data(ofType typeName: String) throws -> Data
 	{
-		if let data = window?.text.data(using: .utf8)
+		if let data = window?.text.data(using: usedEncoding)
 		{
 			return data
 		}
@@ -62,21 +58,44 @@ class Document: NSDocument
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
 
-//	override func revert(toContentsOf url: URL, ofType typeName: String) throws
-//	{
-//		try super.revert(toContentsOf: url, ofType: typeName)
-//	}
-
-	override func read(from data: Data, ofType typeName: String) throws
+	override func revert(toContentsOf url: URL, ofType typeName: String) throws
 	{
-		if let loadedData = EncodingTool.loadStringFromData(data)
+		if url.isFileURL
 		{
-			self.loadedData = loadedData
+			try read(from: url, ofType: typeName)
+			updateChangeCount(.changeCleared)
+			sendDataToWindow()
 		}
 		else
 		{
-			throw NSError(domain: "com.brunophilipe.TipTyper", code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
+			throw NSError(domain: kTipTyperErrorDomain, code: 1020, userInfo: [NSLocalizedDescriptionKey: "Could not restore file"])
 		}
+	}
+
+	override func read(from url: URL, ofType typeName: String) throws
+	{
+		if let (loadedString, usedEncoding) = EncodingTool.loadStringFromURL(url)
+		{
+			self.loadedString = loadedString
+			self.usedEncoding = usedEncoding
+		}
+		else
+		{
+			throw NSError(domain: kTipTyperErrorDomain, code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
+		}
+	}
+
+	private func sendDataToWindow()
+	{
+		undoManager?.disableUndoRegistration()
+
+		if let string = loadedString
+		{
+			window?.text = string
+			loadedString = nil
+		}
+
+		undoManager?.enableUndoRegistration()
 	}
 }
 

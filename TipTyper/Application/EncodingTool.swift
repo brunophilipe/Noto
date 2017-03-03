@@ -46,8 +46,7 @@ class EncodingTool
 			// We attempt utf8 first, since it is very common (and supports ascii), and then isoLatin2.
 			// If both fail, we ask the user for the encoding
 
-			var loadedString: String? = nil
-			let autoAttempt: [String.Encoding] = [.utf8, .isoLatin2]
+			let autoAttempt: [String.Encoding] = [.utf8, .utf16]
 
 			for encoding in autoAttempt
 			{
@@ -69,6 +68,7 @@ class EncodingTool
 				}
 				else
 				{
+					// user has hit cancel
 					return nil
 				}
 			}
@@ -76,44 +76,6 @@ class EncodingTool
 		}
 
 		return ("", .utf8)
-	}
-
-	static func loadStringFromData(_ data: Data) -> (String, String.Encoding)?
-	{
-		if data.count > 0
-		{
-			// We attempt utf8 first, since it is very common (and supports ascii),
-			// and if it fails we ask the user for the encoding
-
-			let autoAttempt: [String.Encoding] = [.utf8]
-
-			for encoding in autoAttempt
-			{
-				if let attempt: String = String(data: data, encoding: encoding)
-				{
-					return (attempt, encoding)
-				}
-			}
-
-			repeat
-			{
-				if let encoding = showEncodingPicker()
-				{
-					if let attempt: String = String(data: data, encoding: encoding)
-					{
-						return (attempt, encoding)
-					}
-					// else try again until user hits cancel
-				}
-				else
-				{
-					return nil
-				}
-			}
-			while true
-		}
-
-	    return ("", .utf8)
 	}
 
 	private static func showEncodingPicker() -> String.Encoding?

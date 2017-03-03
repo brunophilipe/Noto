@@ -9,6 +9,8 @@
 import Cocoa
 import CCNPreferencesWindowController
 
+let kTipTyperErrorDomain = "com.brunophilipe.TipTyper"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate
 {
