@@ -39,6 +39,12 @@ class EditorPreferencesViewController: NSViewController
 		get { return NSNumber(value: Preferences.instance.tabSize) }
 		set { Preferences.instance.tabSize = newValue.uintValue }
 	}
+
+	var infoBarMode: NSNumber
+	{
+		get { return  NSNumber(value: Preferences.instance.infoBarMode.rawValue) }
+		set { Preferences.instance.infoBarMode = Preferences.InfoBarMode(rawValue: newValue.intValue) ?? .hud }
+	}
 	
 	override func viewDidLoad()
 	{

@@ -20,6 +20,9 @@
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153AF9E31E5F095A00B19308 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */; };
 		153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */; };
+		1592024D1E6BB3CE003F4B91 /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592024C1E6BB3CE003F4B91 /* InfoBar.swift */; };
+		159202501E6BB441003F4B91 /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */; };
+		159202511E6BB441003F4B91 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
@@ -48,6 +51,9 @@
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThemePreferencesController.xib; path = "View Controllers/Preferences/ThemePreferencesController.xib"; sourceTree = "<group>"; };
+		1592024C1E6BB3CE003F4B91 /* InfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
+		1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDInfoBarController.swift; sourceTree = "<group>"; };
+		1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDInfoBarController.xib; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
@@ -139,9 +145,21 @@
 		153AF9E01E5F092100B19308 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1592024B1E6BB3AC003F4B91 /* Info Bar */,
 				153AF9DF1E5F08E700B19308 /* Preferences */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1592024B1E6BB3AC003F4B91 /* Info Bar */ = {
+			isa = PBXGroup;
+			children = (
+				1592024C1E6BB3CE003F4B91 /* InfoBar.swift */,
+				1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */,
+				1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */,
+			);
+			name = "Info Bar";
+			path = "View Controllers/Info Bar";
 			sourceTree = "<group>";
 		};
 		15933C781E5B920D00AFF625 /* Document */ = {
@@ -255,6 +273,7 @@
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
 				1501FBBC1E65944F00AEB80E /* EditorPreferencesViewController.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
+				159202511E6BB441003F4B91 /* HUDInfoBarController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +343,8 @@
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				1501FBBB1E65944F00AEB80E /* EditorPreferencesViewController.swift in Sources */,
+				1592024D1E6BB3CE003F4B91 /* InfoBar.swift in Sources */,
+				159202501E6BB441003F4B91 /* HUDInfoBarController.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				1501FBBE1E65948600AEB80E /* PreferencesController.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,

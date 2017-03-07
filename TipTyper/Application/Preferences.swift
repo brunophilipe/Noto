@@ -17,6 +17,7 @@ class Preferences: UserDefaults
 	private static let PreferenceLineCounterFontSize = "PreferenceLineCounterFontSize"
 
 	private static let PreferenceEditorThemeName = "PreferenceEditorThemeName"
+	private static let PreferenceEditorInfoBarMode = "PreferenceEditorInfoBarMode"
 	
 	private static let PreferenceEditorSmartSubstitutions	= "PreferenceEditorSmartSubstitutions"
 	private static let PreferenceEditorSpellingChecker		= "PreferenceEditorSpellingChecker"
@@ -33,6 +34,14 @@ class Preferences: UserDefaults
 		}
 
 		return sharedInstance
+	}
+
+	@objc
+	enum InfoBarMode: Int
+	{
+		case none = 0
+		case hud = 1
+		case status = 2
 	}
 
 	dynamic var editorFont: NSFont
@@ -181,8 +190,14 @@ class Preferences: UserDefaults
 	}
 	
 	dynamic var tabSize: UInt
-		{
+	{
 		get { return (value(forKey: Preferences.PreferenceEditorTabSize) as? UInt) ?? 4 }
 		set { set(newValue, forKey: Preferences.PreferenceEditorTabSize) }
+	}
+
+	dynamic var infoBarMode: InfoBarMode
+	{
+		get { return InfoBarMode(rawValue: value(forKey: Preferences.PreferenceEditorInfoBarMode) as? Int ?? 1) ?? .hud }
+		set { set(newValue.rawValue, forKey: Preferences.PreferenceEditorInfoBarMode) }
 	}
 }

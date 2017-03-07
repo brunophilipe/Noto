@@ -11,6 +11,9 @@ import Cocoa
 @IBDesignable
 class DocumentWindow: NSWindow
 {
+	private var infoBarController: InfoBar? = nil
+	private var infoBarConstraints: [NSLayoutConstraint]? = nil
+
 	@IBOutlet var textView: EditorView!
 
 	var text: String
@@ -28,14 +31,16 @@ class DocumentWindow: NSWindow
 
 	func setup()
 	{
-		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: NSKeyValueObservingOptions.new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: NSKeyValueObservingOptions.new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: NSKeyValueObservingOptions.new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: NSKeyValueObservingOptions.new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: NSKeyValueObservingOptions.new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: NSKeyValueObservingOptions.new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "infoBarMode", options: .new, context: nil)
 
 		setupWindowStyle()
+		setupInfoBar()
 
 		updateEditorFont()
 		updateEditorColors()
@@ -56,6 +61,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.removeObserver(self, forKeyPath: "spellingCheckerOn")
 		Preferences.instance.removeObserver(self, forKeyPath: "tabSize")
 		Preferences.instance.removeObserver(self, forKeyPath: "useSpacesForTabs")
+		Preferences.instance.removeObserver(self, forKeyPath: "infoBarMode")
 
 		removeThemeObserver()
 	}
@@ -95,6 +101,58 @@ class DocumentWindow: NSWindow
 		minSize = NSSize(width: 300, height: 200)
 	}
 
+	private func setupInfoBar()
+	{
+		if let infoBarConstraints = self.infoBarConstraints
+		{
+			NSLayoutConstraint.deactivate(infoBarConstraints)
+		}
+
+		if let viewController = infoBarController as? NSViewController
+		{
+			viewController.view.removeFromSuperview()
+		}
+
+		switch Preferences.instance.infoBarMode
+		{
+		case .hud:
+			let infoBarController = HUDInfoBarController.make()
+			let infoBar = infoBarController.view
+
+			if let contentView = self.contentView
+			{
+				infoBar.translatesAutoresizingMaskIntoConstraints = false
+				contentView.addSubview(infoBar)
+
+				var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[infoBar]-8-|",
+																 metrics: nil,
+																 views: ["infoBar": infoBar])
+
+				constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-(>=20)-[infoBar]-(>=20)-|",
+																			  metrics: nil,
+																			  views: ["infoBar": infoBar]))
+
+				constraints.append(NSLayoutConstraint(item: contentView,
+													  attribute: .centerX,
+													  relatedBy: .equal,
+													  toItem: infoBar,
+													  attribute: .centerX,
+													  multiplier: 1.0,
+													  constant: 0.0))
+
+				infoBarConstraints = constraints
+
+				NSLayoutConstraint.activate(constraints)
+
+				self.infoBarController = infoBarController
+			}
+
+		default:
+			break
+		}
+
+	}
+
 	override func observeValue(forKeyPath keyPath: String?,
 	                           of object: Any?,
 	                           change: [NSKeyValueChangeKey : Any]?,
@@ -124,6 +182,9 @@ class DocumentWindow: NSWindow
 
 			case .some("useSpacesForTabs"):
 				updateEditorSpacesForTabsOption()
+
+			case .some("infoBarMode"):
+				setupInfoBar()
 
 			default:
 				break
