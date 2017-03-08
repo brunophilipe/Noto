@@ -8,12 +8,19 @@
 
 import Cocoa
 
+internal protocol DocumentDelegate
+{
+	func encodingDidChange(document: Document, newEncoding: String.Encoding)
+}
+
 class Document: NSDocument
 {
 	private var loadedString: String? = nil
 	private var usedEncoding: String.Encoding = .utf8
 
-	private var savePanelMessage: String? = nil
+	private var pendingOperations = [PendingOperation]()
+
+	var delegate: DocumentDelegate? = nil
 
 	override init()
 	{
@@ -26,7 +33,7 @@ class Document: NSDocument
 	{
 		super.makeWindowControllers()
 
-		window?.setup()
+		window?.setup(self)
 		sendDataToWindow()
 	}
 
@@ -38,6 +45,11 @@ class Document: NSDocument
 		}
 	}
 
+	var encoding: String.Encoding
+	{
+		return usedEncoding
+	}
+
 	override class func autosavesInPlace() -> Bool
 	{
 		return true
@@ -46,7 +58,8 @@ class Document: NSDocument
 	override var windowNibName: String?
 	{
 		// Returns the nib file name of the document
-		// If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this property and override -makeWindowControllers instead.
+		// If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers,
+		// you should remove this property and override -makeWindowControllers instead.
 		return "Document"
 	}
 
@@ -57,9 +70,9 @@ class Document: NSDocument
 
 	override func prepareSavePanel(_ savePanel: NSSavePanel) -> Bool
 	{
-		if let message = self.savePanelMessage
+		if let operation = popFirstPendingOperationOf(type: SavePanelMessageOperation.self)
 		{
-			let label = NSTextField(string: message)
+			let label = NSTextField(string: operation.message)
 			label.allowsEditingTextAttributes = false
 			label.isSelectable = false
 			label.isBordered = false
@@ -79,6 +92,32 @@ class Document: NSDocument
 		}
 
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+	}
+
+	override func write(to url: URL, ofType typeName: String) throws
+	{
+		let oldEncoding = self.usedEncoding
+
+		do
+		{
+			if let operation = popFirstPendingOperationOf(type: ChangeEncodingNotificationOperation.self)
+			{
+				self.usedEncoding = operation.encoding
+
+				try data(ofType: typeName).write(to: url)
+
+				self.delegate?.encodingDidChange(document: self, newEncoding: usedEncoding)
+			}
+			else
+			{
+				try data(ofType: typeName).write(to: url)
+			}
+		}
+		catch let error
+		{
+			self.usedEncoding = oldEncoding
+			throw error
+		}
 	}
 
 	override func revert(toContentsOf url: URL, ofType typeName: String) throws
@@ -127,14 +166,17 @@ class Document: NSDocument
 		{
 			repeat
 			{
-				if let newEncoding = EncodingTool.showEncodingPicker(),
-				   let newString = try? String(contentsOf: fileURL, encoding: newEncoding)
+				if let newEncoding = EncodingTool.showEncodingPicker()
 				{
-					self.loadedString = newString
-					self.usedEncoding = newEncoding
+					if let newString = try? String(contentsOf: fileURL, encoding: newEncoding)
+					{
+						self.loadedString = newString
+						self.usedEncoding = newEncoding
 
-					sendDataToWindow()
-					updateChangeCount(.changeCleared)
+						sendDataToWindow()
+						updateChangeCount(.changeCleared)
+						return
+					}
 				}
 				else
 				{
@@ -150,13 +192,23 @@ class Document: NSDocument
 	{
 		if let newEncoding = EncodingTool.showEncodingPicker()
 		{
-			self.usedEncoding = newEncoding
-			self.savePanelMessage = "Saving file with new encoding: \(newEncoding.description)"
+			self.pendingOperations.append(SavePanelMessageOperation(message: "Saving file with new encoding: \(newEncoding.description)"))
+			self.pendingOperations.append(ChangeEncodingNotificationOperation(encoding: newEncoding))
 
 			saveAs(sender)
-
-			self.savePanelMessage = nil
 		}
+	}
+
+	private func popFirstPendingOperationOf<T: PendingOperation>(type: T.Type) -> T?
+	{
+		if let index = pendingOperations.index(where: { stored in stored is T })
+		{
+			let operation = pendingOperations[index]
+			pendingOperations.remove(at: index)
+			return operation as? T
+		}
+
+		return nil
 	}
 }
 
@@ -171,4 +223,16 @@ extension Document
 	{
 		saveFileAskingForEncoding(sender)
 	}
+}
+
+private protocol PendingOperation {}
+
+private struct SavePanelMessageOperation: PendingOperation
+{
+	var message: String
+}
+
+private struct ChangeEncodingNotificationOperation: PendingOperation
+{
+	var encoding: String.Encoding
 }

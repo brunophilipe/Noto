@@ -22,24 +22,24 @@ class HUDInfoBarController: NSViewController, InfoBar
 		self.view.layer?.cornerRadius = 10
 	}
 
-	func setLinesCount(_: String)
+	func setLinesCount(_ string: String)
 	{
-
+		labelLines.stringValue = string
 	}
 
-	func setWordsCount(_: String)
+	func setWordsCount(_ string: String)
 	{
-
+		labelWords.stringValue = string
 	}
 
-	func setCharactersCount(_: String)
+	func setCharactersCount(_ string: String)
 	{
-
+		labelCharacters.stringValue = string
 	}
 
-	func setEncoding(_: String)
+	func setEncoding(_ string: String)
 	{
-
+		labelEncoding.stringValue = string
 	}
 
 	static func make() -> HUDInfoBarController

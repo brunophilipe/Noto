@@ -11,6 +11,7 @@ import Cocoa
 @IBDesignable
 class DocumentWindow: NSWindow
 {
+	private weak var document: Document? = nil
 	private var infoBarController: InfoBar? = nil
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 
@@ -26,10 +27,11 @@ class DocumentWindow: NSWindow
 		set
 		{
 			textView.string = newValue
+			updateInfoBar()
 		}
 	}
 
-	func setup()
+	func setup(_ document: Document)
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: .new, context: nil)
@@ -38,6 +40,9 @@ class DocumentWindow: NSWindow
 		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "infoBarMode", options: .new, context: nil)
+
+		self.document = document
+		document.delegate = self
 
 		setupWindowStyle()
 		setupInfoBar()
@@ -55,6 +60,8 @@ class DocumentWindow: NSWindow
 
 	deinit
 	{
+		document?.delegate = nil
+
 		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
 		Preferences.instance.removeObserver(self, forKeyPath: "editorThemeName")
 		Preferences.instance.removeObserver(self, forKeyPath: "smartSubstitutionsOn")
@@ -106,11 +113,13 @@ class DocumentWindow: NSWindow
 		if let infoBarConstraints = self.infoBarConstraints
 		{
 			NSLayoutConstraint.deactivate(infoBarConstraints)
+			self.infoBarConstraints = nil
 		}
 
 		if let viewController = infoBarController as? NSViewController
 		{
 			viewController.view.removeFromSuperview()
+			self.infoBarController = nil
 		}
 
 		switch Preferences.instance.infoBarMode
@@ -124,11 +133,11 @@ class DocumentWindow: NSWindow
 				infoBar.translatesAutoresizingMaskIntoConstraints = false
 				contentView.addSubview(infoBar)
 
-				var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[infoBar]-8-|",
+				var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[infoBar]-16-|",
 																 metrics: nil,
 																 views: ["infoBar": infoBar])
 
-				constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-(>=20)-[infoBar]-(>=20)-|",
+				constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-(>=30)-[infoBar]-(>=20)-|",
 																			  metrics: nil,
 																			  views: ["infoBar": infoBar]))
 
@@ -145,12 +154,39 @@ class DocumentWindow: NSWindow
 				NSLayoutConstraint.activate(constraints)
 
 				self.infoBarController = infoBarController
+
+				textView.delegate = self
 			}
 
 		default:
+			textView.delegate = nil
 			break
 		}
+	}
 
+	func updateInfoBar()
+	{
+		if let infoBar = self.infoBarController, let string = self.textView.string
+		{
+			let characterCount = string.characters.count
+			var wordsCount = Int(0)
+			var linesCount = Int(0)
+
+			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords)
+			{
+				_ in wordsCount += 1
+			}
+
+			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
+			{
+				_ in linesCount += 1
+			}
+
+			infoBar.setCharactersCount("c: \(characterCount)")
+			infoBar.setWordsCount("t: \(wordsCount)")
+			infoBar.setLinesCount("l: \(linesCount)")
+			infoBar.setEncoding(document?.encoding.description ?? "<error>")
+		}
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
@@ -253,4 +289,21 @@ class DocumentWindow: NSWindow
 	{
 		textView.usesSpacesForTabs = Preferences.instance.useSpacesForTabs
 	}
+}
+
+extension DocumentWindow: NSTextViewDelegate
+{
+	func textDidChange(_ notification: Notification)
+	{
+		self.updateInfoBar()
+	}
+}
+
+extension DocumentWindow: DocumentDelegate
+{
+	func encodingDidChange(document: Document, newEncoding: String.Encoding)
+	{
+		self.updateInfoBar()
+	}
+
 }
