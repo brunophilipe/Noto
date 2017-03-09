@@ -252,9 +252,15 @@ class DocumentWindow: NSWindow
 	private func updateEditorColors()
 	{
 		let theme = Preferences.instance.editorTheme
+		let isDark = theme.editorBackground.isDarkColor
 
-		appearance = theme.editorBackground.isDarkColor ? NSAppearance(named:NSAppearanceNameVibrantDark)
-														: NSAppearance(named:NSAppearanceNameVibrantLight)
+		appearance = isDark ? NSAppearance(named:NSAppearanceNameVibrantDark)
+							: NSAppearance(named:NSAppearanceNameVibrantLight)
+
+		if let hudController = infoBarController as? HUDInfoBarController
+		{
+			hudController.setDarkMode(!isDark)
+		}
 
 		backgroundColor = theme.editorBackground
 		textView.backgroundColor = theme.editorBackground

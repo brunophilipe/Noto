@@ -20,6 +20,22 @@ class HUDInfoBarController: NSViewController, InfoBar
 		super.viewDidLoad()
 
 		self.view.layer?.cornerRadius = 10
+
+		setDarkMode(false)
+	}
+
+	func setDarkMode(_ isDark: Bool)
+	{
+		let textColor = isDark ? NSColor.white : NSColor.black
+
+		labelCharacters.textColor = textColor
+		labelWords.textColor = textColor
+		labelLines.textColor = textColor
+		labelEncoding.textColor = textColor
+
+		let backgroundColor = isDark ? NSColor.darkGray : NSColor.white
+
+		self.view.layer?.backgroundColor = backgroundColor.withAlphaComponent(0.45).cgColor
 	}
 
 	func setLinesCount(_ string: String)

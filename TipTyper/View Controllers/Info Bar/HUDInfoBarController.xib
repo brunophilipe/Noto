@@ -17,11 +17,17 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" blendingMode="withinWindow" material="light" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-Wl-a2y">
+        <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-Wl-a2y">
             <rect key="frame" x="0.0" y="0.0" width="235" height="32"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-ue-JOq">
                     <rect key="frame" x="8" y="8" width="27" height="17"/>
+                    <ciFilter key="compositingFilter" name="CISourceOverCompositing">
+                        <configuration>
+                            <null key="inputBackgroundImage"/>
+                            <null key="inputImage"/>
+                        </configuration>
+                    </ciFilter>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="c: 0" id="kn5-fb-9vA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -30,25 +36,43 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-tM-DTi">
                     <rect key="frame" x="43" y="8" width="30" height="17"/>
+                    <ciFilter key="compositingFilter" name="CISourceOverCompositing">
+                        <configuration>
+                            <null key="inputBackgroundImage"/>
+                            <null key="inputImage"/>
+                        </configuration>
+                    </ciFilter>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="w: 0" id="r8o-hF-z6y">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
+                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
                     <rect key="frame" x="81" y="8" width="23" height="17"/>
+                    <ciFilter key="compositingFilter" name="CISourceOverCompositing">
+                        <configuration>
+                            <null key="inputBackgroundImage"/>
+                            <null key="inputImage"/>
+                        </configuration>
+                    </ciFilter>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="l: 0" id="bl7-lB-s5p">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofg-Sf-FxU">
+                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofg-Sf-FxU">
                     <rect key="frame" x="120" y="8" width="107" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="U3b-d5-oSA"/>
                     </constraints>
+                    <ciFilter key="compositingFilter" name="CISourceOverCompositing">
+                        <configuration>
+                            <null key="inputBackgroundImage"/>
+                            <null key="inputImage"/>
+                        </configuration>
+                    </ciFilter>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unicode (UTF-8)" id="ZWt-L6-yBb">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +92,15 @@
                 <constraint firstItem="ofg-Sf-FxU" firstAttribute="leading" secondItem="Jvo-A7-ZBL" secondAttribute="trailing" constant="20" id="kjc-ER-oYE"/>
                 <constraint firstItem="hCt-ue-JOq" firstAttribute="leading" secondItem="GGC-Wl-a2y" secondAttribute="leading" constant="10" id="sFu-yZ-GeO"/>
             </constraints>
+            <backgroundFilters>
+                <ciFilter name="CIGaussianBlur">
+                    <configuration>
+                        <null key="inputImage"/>
+                        <real key="inputRadius" value="24"/>
+                    </configuration>
+                </ciFilter>
+            </backgroundFilters>
             <point key="canvasLocation" x="15.5" y="123.5"/>
-        </visualEffectView>
+        </customView>
     </objects>
 </document>
