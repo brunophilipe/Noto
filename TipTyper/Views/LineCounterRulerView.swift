@@ -52,6 +52,7 @@ class LineCounterRulerView: NSRulerView
 		didSet
 		{
 			invalidateHashMarks()
+			needsDisplay = true
 		}
 	}
 
@@ -60,6 +61,7 @@ class LineCounterRulerView: NSRulerView
 		didSet
 		{
 			invalidateHashMarks()
+			needsDisplay = true
 		}
 	}
 
