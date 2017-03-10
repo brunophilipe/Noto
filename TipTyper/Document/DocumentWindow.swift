@@ -199,7 +199,7 @@ class DocumentWindow: NSWindow
 		{
 			let characterCount = string.characters.count
 			var wordsCount = Int(0)
-			var linesCount = Int(0)
+			var linesCount = Int(1)
 
 			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords)
 			{
@@ -211,9 +211,9 @@ class DocumentWindow: NSWindow
 				_ in linesCount += 1
 			}
 
-			infoBar.setCharactersCount("c: \(characterCount)")
-			infoBar.setWordsCount("t: \(wordsCount)")
-			infoBar.setLinesCount("l: \(linesCount)")
+			infoBar.setCharactersCount("\(characterCount) Character\(characterCount == 1 ? "" : "s")")
+			infoBar.setWordsCount("\(wordsCount) Word\(wordsCount == 1 ? "" : "s")")
+			infoBar.setLinesCount("\(linesCount) Line\(linesCount == 1 ? "" : "s")")
 			infoBar.setEncoding(document?.encoding.description ?? "<error>")
 		}
 	}
