@@ -23,6 +23,7 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorSpellingChecker		= "PreferenceEditorSpellingChecker"
 	private static let PreferenceEditorUseSpacesForTabs		= "PreferenceEditorUseSpacesForTabs"
 	private static let PreferenceEditorTabSize				= "PreferenceEditorTabSize"
+	private static let PreferenceEditorCountsWhitespaces	= "PreferenceEditorCountsWhitespaces"
 
 	private static var sharedInstance: Preferences! = nil
 
@@ -199,5 +200,11 @@ class Preferences: UserDefaults
 	{
 		get { return InfoBarMode(rawValue: value(forKey: Preferences.PreferenceEditorInfoBarMode) as? Int ?? 1) ?? .hud }
 		set { set(newValue.rawValue, forKey: Preferences.PreferenceEditorInfoBarMode) }
+	}
+
+	dynamic var countWhitespacesInTotalCharacters: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorCountsWhitespaces) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorCountsWhitespaces) }
 	}
 }

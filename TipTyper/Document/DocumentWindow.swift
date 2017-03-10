@@ -41,6 +41,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "infoBarMode", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "countWhitespacesInTotalCharacters", options: .new, context: nil)
 
 		self.document = document
 		document.delegate = self
@@ -70,6 +71,7 @@ class DocumentWindow: NSWindow
 		Preferences.instance.removeObserver(self, forKeyPath: "tabSize")
 		Preferences.instance.removeObserver(self, forKeyPath: "useSpacesForTabs")
 		Preferences.instance.removeObserver(self, forKeyPath: "infoBarMode")
+		Preferences.instance.removeObserver(self, forKeyPath: "countWhitespacesInTotalCharacters")
 
 		removeThemeObserver()
 	}
@@ -189,27 +191,43 @@ class DocumentWindow: NSWindow
 
 		default:
 			textView.delegate = nil
+			textEditorBottomConstraint.constant = 0
 			break
 		}
+
+		updateEditorColors()
+		updateInfoBar()
 	}
 
-	func updateInfoBar()
+	fileprivate func updateInfoBar()
 	{
 		if let infoBar = self.infoBarController, let string = self.textView.string
 		{
-			let characterCount = string.characters.count
+			var characterCount = Int(0)
 			var wordsCount = Int(0)
 			var linesCount = Int(1)
 
-			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords)
+			if Preferences.instance.countWhitespacesInTotalCharacters
 			{
-				_ in wordsCount += 1
+				characterCount = string.characters.count
+			}
+			else
+			{
+				let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
+
+				string.characters.forEach
+				{
+					character in
+
+					if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
+					{
+						characterCount += 1
+					}
+				}
 			}
 
-			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
-			{
-				_ in linesCount += 1
-			}
+			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords, { _ in wordsCount += 1 })
+			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines, { _ in linesCount += 1 })
 
 			infoBar.setCharactersCount("\(characterCount) Character\(characterCount == 1 ? "" : "s")")
 			infoBar.setWordsCount("\(wordsCount) Word\(wordsCount == 1 ? "" : "s")")
@@ -235,10 +253,10 @@ class DocumentWindow: NSWindow
 			case .some("editorThemeName"):
 				updateEditorColors()
 				setupThemeObserver()
-				
+
 			case .some("smartSubstitutionsOn"):
 				updateEditorSubstitutions()
-				
+
 			case .some("spellingCheckerOn"):
 				updateEditorSpellingCheck()
 
@@ -250,6 +268,9 @@ class DocumentWindow: NSWindow
 
 			case .some("infoBarMode"):
 				setupInfoBar()
+
+			case .some("countWhitespacesInTotalCharacters"):
+				updateInfoBar()
 
 			default:
 				break

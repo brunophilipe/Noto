@@ -45,6 +45,12 @@ class EditorPreferencesViewController: NSViewController
 		get { return  NSNumber(value: Preferences.instance.infoBarMode.rawValue) }
 		set { Preferences.instance.infoBarMode = Preferences.InfoBarMode(rawValue: newValue.intValue) ?? .hud }
 	}
+
+	var countsWhitespaces: NSNumber
+	{
+		get { return NSNumber(booleanLiteral: Preferences.instance.countWhitespacesInTotalCharacters) }
+		set { Preferences.instance.countWhitespacesInTotalCharacters = newValue.boolValue }
+	}
 	
 	override func viewDidLoad()
 	{
