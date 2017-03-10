@@ -23,6 +23,8 @@ class InvisiblesLayoutManager: NSLayoutManager
 	private var lastInvisibleFont: NSFont? = nil
 	private var lastInvisibleFontSize: CGFloat? = nil
 
+	var isResizing: Bool = false
+
 	required init?(coder: NSCoder)
 	{
 		super.init(coder: coder)
@@ -69,40 +71,43 @@ class InvisiblesLayoutManager: NSLayoutManager
 			NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
 		]
 
-		for glyphIndex in glyphsToShow.location ..< NSMaxRange(glyphsToShow)
+		if !isResizing
 		{
-			if let storageString: NSString = textStorage?.string as NSString?
+			for glyphIndex in glyphsToShow.location ..< NSMaxRange(glyphsToShow)
 			{
-				var glyph: NSString? = nil
-
-				switch storageString.character(at: glyphIndex)
+				if let storageString: NSString = textStorage?.string as NSString?
 				{
-				// eol
-				case 0x2028, 0x2029, 0x000A, 0x000D:
-					glyph = kVisibleGlyphForNewLine
+					var glyph: NSString? = nil
 
-				// space
-				case 0x0020:
-					glyph = kVisibleGlyphForBlank
+					switch storageString.character(at: glyphIndex)
+					{
+					// eol
+					case 0x2028, 0x2029, 0x000A, 0x000D:
+						glyph = kVisibleGlyphForNewLine
 
-				// tab
-				case 0x0009:
-					glyph = kVisibleGlyphForTab
+					// space
+					case 0x0020:
+						glyph = kVisibleGlyphForBlank
 
-				// do nothing
-				default:
-					break
-				}
+					// tab
+					case 0x0009:
+						glyph = kVisibleGlyphForTab
 
-				if let glyph = glyph
-				{
-					var point = location(forGlyphAt: glyphIndex)
-					let rect = lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil, withoutAdditionalLayout: true)
+					// do nothing
+					default:
+						break
+					}
 
-					point.x += rect.origin.x + textInset.width
-					point.y  = rect.origin.y + rect.height * pow((14.0 / max(fontPointSize, 1)), 0.5)
+					if let glyph = glyph
+					{
+						var point = location(forGlyphAt: glyphIndex)
+						let rect = lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil, withoutAdditionalLayout: true)
 
-					glyph.draw(at: point, withAttributes: invisiblesAttributes)
+						point.x += rect.origin.x + textInset.width
+						point.y  = rect.origin.y + rect.height * pow((14.0 / max(fontPointSize, 1)), 0.5)
+
+						glyph.draw(at: point, withAttributes: invisiblesAttributes)
+					}
 				}
 			}
 		}

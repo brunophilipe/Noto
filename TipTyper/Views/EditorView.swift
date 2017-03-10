@@ -51,6 +51,20 @@ class EditorView: PaddedTextView
 		}
 	}
 
+	override func viewWillStartLiveResize()
+	{
+		super.viewWillStartLiveResize()
+
+		invisiblesLayoutManager.isResizing = true
+	}
+
+	override func viewDidEndLiveResize()
+	{
+		super.viewDidEndLiveResize()
+
+		invisiblesLayoutManager.isResizing = false
+	}
+
 	override func insertTab(_ sender: Any?)
 	{
 		if usesSpacesForTabs
