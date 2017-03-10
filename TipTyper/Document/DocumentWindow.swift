@@ -18,6 +18,15 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textView: EditorView!
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 
+	private let observedPreferences = [
+		"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn",
+		"tabSize", "useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters"
+	]
+
+	private let observedThemeSettings = [
+		"editorBackground", "editorForeground", "lineCounterBackground", "lineCounterForeground", "willDeallocate"
+	]
+
 	var text: String
 	{
 		get
@@ -34,14 +43,10 @@ class DocumentWindow: NSWindow
 
 	func setup(_ document: Document)
 	{
-		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "editorThemeName", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "smartSubstitutionsOn", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "spellingCheckerOn", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "tabSize", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "useSpacesForTabs", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "infoBarMode", options: .new, context: nil)
-		Preferences.instance.addObserver(self, forKeyPath: "countWhitespacesInTotalCharacters", options: .new, context: nil)
+		for observedPreference in observedPreferences
+		{
+			Preferences.instance.addObserver(self, forKeyPath: observedPreference, options: .new, context: nil)
+		}
 
 		self.document = document
 		document.delegate = self
@@ -64,14 +69,10 @@ class DocumentWindow: NSWindow
 	{
 		document?.delegate = nil
 
-		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
-		Preferences.instance.removeObserver(self, forKeyPath: "editorThemeName")
-		Preferences.instance.removeObserver(self, forKeyPath: "smartSubstitutionsOn")
-		Preferences.instance.removeObserver(self, forKeyPath: "spellingCheckerOn")
-		Preferences.instance.removeObserver(self, forKeyPath: "tabSize")
-		Preferences.instance.removeObserver(self, forKeyPath: "useSpacesForTabs")
-		Preferences.instance.removeObserver(self, forKeyPath: "infoBarMode")
-		Preferences.instance.removeObserver(self, forKeyPath: "countWhitespacesInTotalCharacters")
+		for observedPreference in observedPreferences
+		{
+			Preferences.instance.removeObserver(self, forKeyPath: observedPreference)
+		}
 
 		removeThemeObserver()
 	}
@@ -82,11 +83,10 @@ class DocumentWindow: NSWindow
 
 		if let themeObject = theme as? ConcreteEditorTheme
 		{
-			themeObject.addObserver(self, forKeyPath: "editorBackground", options: .new, context: nil)
-			themeObject.addObserver(self, forKeyPath: "editorForeground", options: .new, context: nil)
-			themeObject.addObserver(self, forKeyPath: "lineCounterBackground", options: .new, context: nil)
-			themeObject.addObserver(self, forKeyPath: "lineCounterForeground", options: .new, context: nil)
-			themeObject.addObserver(self, forKeyPath: "willDeallocate", options: .new, context: nil)
+			for themeSetting in observedThemeSettings
+			{
+				themeObject.addObserver(self, forKeyPath: themeSetting, options: .new, context: nil)
+			}
 		}
 	}
 
@@ -96,11 +96,10 @@ class DocumentWindow: NSWindow
 
 		if let themeObject = theme as? ConcreteEditorTheme
 		{
-			themeObject.removeObserver(self, forKeyPath: "editorBackground")
-			themeObject.removeObserver(self, forKeyPath: "editorForeground")
-			themeObject.removeObserver(self, forKeyPath: "lineCounterBackground")
-			themeObject.removeObserver(self, forKeyPath: "lineCounterForeground")
-			themeObject.removeObserver(self, forKeyPath: "willDeallocate")
+			for themeSetting in observedThemeSettings
+			{
+				themeObject.removeObserver(self, forKeyPath: themeSetting)
+			}
 		}
 	}
 
