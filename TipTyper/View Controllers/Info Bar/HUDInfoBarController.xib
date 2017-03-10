@@ -20,7 +20,7 @@
         <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-Wl-a2y">
             <rect key="frame" x="0.0" y="0.0" width="235" height="32"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-ue-JOq">
+                <textField toolTip="Characters Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-ue-JOq">
                     <rect key="frame" x="8" y="8" width="27" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>
@@ -33,8 +33,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Characters Count" help="The total number of characters in the document"/>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-tM-DTi">
+                <textField toolTip="Words Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-tM-DTi">
                     <rect key="frame" x="43" y="8" width="30" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>
@@ -47,8 +48,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Words Count" help="The total number of words in the document"/>
                 </textField>
-                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
+                <textField toolTip="Lines Count" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
                     <rect key="frame" x="81" y="8" width="23" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>
@@ -61,8 +63,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Lines Count" help="The total number of lines in the document"/>
                 </textField>
-                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofg-Sf-FxU">
+                <textField toolTip="Document Encoding" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofg-Sf-FxU">
                     <rect key="frame" x="120" y="8" width="107" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="U3b-d5-oSA"/>
@@ -78,6 +81,7 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Current Document Encoding" help="The current encoding used to read and write the document to disk."/>
                 </textField>
             </subviews>
             <constraints>

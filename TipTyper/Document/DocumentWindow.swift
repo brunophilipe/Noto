@@ -16,6 +16,7 @@ class DocumentWindow: NSWindow
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 
 	@IBOutlet var textView: EditorView!
+	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 
 	var text: String
 	{
@@ -156,6 +157,34 @@ class DocumentWindow: NSWindow
 				self.infoBarController = infoBarController
 
 				textView.delegate = self
+				textEditorBottomConstraint.constant = 0
+			}
+
+		case .status:
+			let infoBarController = StatusInfoBarController.make()
+			let infoBar = infoBarController.view
+
+			if let contentView = self.contentView
+			{
+				infoBar.translatesAutoresizingMaskIntoConstraints = false
+				contentView.addSubview(infoBar)
+
+				var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[infoBar]-0-|",
+																 metrics: nil,
+																 views: ["infoBar": infoBar])
+
+				constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[infoBar]-0-|",
+																			  metrics: nil,
+																			  views: ["infoBar": infoBar]))
+
+				infoBarConstraints = constraints
+
+				NSLayoutConstraint.activate(constraints)
+
+				self.infoBarController = infoBarController
+
+				textView.delegate = self
+				textEditorBottomConstraint.constant = infoBar.bounds.height
 			}
 
 		default:
@@ -260,6 +289,11 @@ class DocumentWindow: NSWindow
 		if let hudController = infoBarController as? HUDInfoBarController
 		{
 			hudController.setDarkMode(!isDark)
+		}
+		else if let statusController = infoBarController as? StatusInfoBarController
+		{
+			statusController.setTextColor(theme.lineCounterForeground)
+			statusController.setBackgroundColor(theme.lineCounterBackground)
 		}
 
 		backgroundColor = theme.editorBackground

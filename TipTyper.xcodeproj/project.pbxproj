@@ -20,6 +20,8 @@
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153AF9E31E5F095A00B19308 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */; };
 		153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */; };
+		156AF3111E721BFE00F6F3EF /* StatusInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156AF30F1E721BFE00F6F3EF /* StatusInfoBarController.swift */; };
+		156AF3121E721BFE00F6F3EF /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156AF3101E721BFE00F6F3EF /* StatusInfoBarController.xib */; };
 		1592024D1E6BB3CE003F4B91 /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592024C1E6BB3CE003F4B91 /* InfoBar.swift */; };
 		159202501E6BB441003F4B91 /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */; };
 		159202511E6BB441003F4B91 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */; };
@@ -52,6 +54,8 @@
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153AF9E11E5F095A00B19308 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		153AF9E21E5F095A00B19308 /* ThemePreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThemePreferencesController.xib; path = "View Controllers/Preferences/ThemePreferencesController.xib"; sourceTree = "<group>"; };
+		156AF30F1E721BFE00F6F3EF /* StatusInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusInfoBarController.swift; sourceTree = "<group>"; };
+		156AF3101E721BFE00F6F3EF /* StatusInfoBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusInfoBarController.xib; sourceTree = "<group>"; };
 		1592024C1E6BB3CE003F4B91 /* InfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
 		1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDInfoBarController.swift; sourceTree = "<group>"; };
 		1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDInfoBarController.xib; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 				1592024C1E6BB3CE003F4B91 /* InfoBar.swift */,
 				1592024E1E6BB441003F4B91 /* HUDInfoBarController.swift */,
 				1592024F1E6BB441003F4B91 /* HUDInfoBarController.xib */,
+				156AF30F1E721BFE00F6F3EF /* StatusInfoBarController.swift */,
+				156AF3101E721BFE00F6F3EF /* StatusInfoBarController.xib */,
 			);
 			name = "Info Bar";
 			path = "View Controllers/Info Bar";
@@ -271,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				156AF3121E721BFE00F6F3EF /* StatusInfoBarController.xib in Resources */,
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
 				153AF9E41E5F095A00B19308 /* ThemePreferencesController.xib in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
@@ -348,6 +355,7 @@
 				1501FBBB1E65944F00AEB80E /* EditorPreferencesViewController.swift in Sources */,
 				1592024D1E6BB3CE003F4B91 /* InfoBar.swift in Sources */,
 				159202501E6BB441003F4B91 /* HUDInfoBarController.swift in Sources */,
+				156AF3111E721BFE00F6F3EF /* StatusInfoBarController.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				1501FBBE1E65948600AEB80E /* PreferencesController.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,

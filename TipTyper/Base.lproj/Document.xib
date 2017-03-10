@@ -84,6 +84,7 @@
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
+                <outlet property="textEditorBottomConstraint" destination="o5x-93-YKX" id="Q8N-Ke-9a5"/>
                 <outlet property="textView" destination="3kl-bg-vXa" id="X7k-y4-PLU"/>
             </connections>
             <point key="canvasLocation" x="138.5" y="161.5"/>
