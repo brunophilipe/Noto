@@ -63,6 +63,33 @@ class EditorView: PaddedTextView
 		}
 	}
 
+	func jumpToLine(lineNumber: Int) -> Bool
+	{
+		var success = false
+
+		if let string = self.string as NSString?
+		{
+			var iteratedLines = 1
+
+			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
+			{
+				(substring, range, enclosingRange, stop: UnsafeMutablePointer<ObjCBool>) in
+
+				if lineNumber == iteratedLines
+				{
+					self.setSelectedRange(range)
+					self.scrollRangeToVisible(range)
+					stop.pointee = ObjCBool(true)
+					success = true
+				}
+
+				iteratedLines += 1
+			}
+		}
+
+		return success
+	}
+
 	// Has to be updated when font size changes
 	func setTabWidth(_ width: UInt)
 	{

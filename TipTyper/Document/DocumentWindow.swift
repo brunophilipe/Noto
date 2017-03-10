@@ -77,6 +77,39 @@ class DocumentWindow: NSWindow
 		removeThemeObserver()
 	}
 
+	@IBAction func jumpToALine(_ sender: Any)
+	{
+		let alert = NSAlert()
+		alert.alertStyle = .informational
+		alert.messageText = "Go to line:"
+		alert.addButton(withTitle: "Go")
+		alert.addButton(withTitle: "Cancel")
+
+		let textField = NSTextField()
+		textField.frame = NSMakeRect(0, 0, 90, 22)
+		alert.accessoryView = textField
+
+		alert.beginSheetModal(for: self)
+		{
+			response in
+
+			if response == NSAlertFirstButtonReturn
+			{
+				if !self.textView.jumpToLine(lineNumber: textField.integerValue)
+				{
+					let warning = NSAlert()
+					warning.alertStyle = .warning
+					warning.messageText = "No such line “\(textField.stringValue)”."
+					warning.addButton(withTitle: "OK")
+
+					warning.beginSheetModal(for: self)
+				}
+			}
+		}
+
+		alert.window.makeFirstResponder(textField)
+	}
+
 	private func setupThemeObserver()
 	{
 		let theme = Preferences.instance.editorTheme
@@ -365,5 +398,4 @@ extension DocumentWindow: DocumentDelegate
 	{
 		self.updateInfoBar()
 	}
-
 }

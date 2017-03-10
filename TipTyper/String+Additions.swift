@@ -12,3 +12,11 @@ extension String
 		return startIndex..<endIndex
 	}
 }
+
+extension NSString
+{
+	var fullStringRange: NSRange
+	{
+		return NSMakeRange(0, length)
+	}
+}

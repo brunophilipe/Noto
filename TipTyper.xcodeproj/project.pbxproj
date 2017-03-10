@@ -31,10 +31,10 @@
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */; };
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
-		15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */; };
-		15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */; };
+		3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
+		3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */; };
 		3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66639631E5934C625045 /* String+Additions.swift */; };
-		3D7A680C75BCECB5BA2B9257 /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6C0A027D106C80C687DC /* EncodingTool.swift */; };
+		3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */; };
 		CF1A49CE9BF42C5A58BC5947 /* Pods_TipTyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,10 +65,10 @@
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineCounterRulerView.swift; path = Views/LineCounterRulerView.swift; sourceTree = "<group>"; };
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
-		15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvisiblesLayoutManager.swift; path = Application/InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
-		15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileWatcher.swift; path = Application/FileWatcher.swift; sourceTree = "<group>"; };
+		3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWatcher.swift; sourceTree = "<group>"; };
+		3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingTool.swift; sourceTree = "<group>"; };
 		3D7A66639631E5934C625045 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
-		3D7A6C0A027D106C80C687DC /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncodingTool.swift; path = Application/EncodingTool.swift; sourceTree = "<group>"; };
+		3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		5CB1CAF82C9CF4B28564B21E /* Pods_TipTyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipTyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8305FE045E64B12622FEA705 /* Pods-TipTyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.debug.xcconfig"; sourceTree = "<group>"; };
 		91224F4191845E34F99B14F6 /* Pods-TipTyper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TipTyper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TipTyper/Pods-TipTyper.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +112,7 @@
 				15276E601E5BCCFA0032EDE4 /* Views */,
 				153AF9E01E5F092100B19308 /* View Controllers */,
 				15276E651E5CD5050032EDE4 /* Extensions */,
+				3D7A65D621A92EA3DF2A986D /* Misc */,
 			);
 			path = TipTyper;
 			sourceTree = "<group>";
@@ -190,11 +191,18 @@
 				150CFAC41E2A83CF000B69E5 /* MainMenu.xib */,
 				150CFAC71E2A83CF000B69E5 /* Info.plist */,
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
-				15DB0F7F1E6270AB009813E3 /* FileWatcher.swift */,
-				15DB0BEA1E64FDEF00170795 /* InvisiblesLayoutManager.swift */,
-				3D7A6C0A027D106C80C687DC /* EncodingTool.swift */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		3D7A65D621A92EA3DF2A986D /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */,
+				3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */,
+				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		5C714300CE77464A75A3EFE4 /* Frameworks */ = {
@@ -348,8 +356,6 @@
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				153AF9E31E5F095A00B19308 /* ThemePreferencesController.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
-				15DB0F801E6270AB009813E3 /* FileWatcher.swift in Sources */,
-				15DB0BEB1E64FDEF00170795 /* InvisiblesLayoutManager.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				1501FBBB1E65944F00AEB80E /* EditorPreferencesViewController.swift in Sources */,
@@ -361,8 +367,10 @@
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
-				3D7A680C75BCECB5BA2B9257 /* EncodingTool.swift in Sources */,
 				3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */,
+				3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */,
+				3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */,
+				3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
