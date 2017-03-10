@@ -114,7 +114,7 @@
                                     <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save As with Encoding…" id="jvI-Fe-bcb">
+                            <menuItem title="Save with Encoding…" id="jvI-Fe-bcb">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="saveAsWithEncoding:" target="-1" id="DIE-hX-9Bo"/>
