@@ -71,15 +71,88 @@
                     <constraint firstItem="yIz-sU-qFQ" firstAttribute="top" secondItem="HKp-0Q-T0H" secondAttribute="top" id="t7q-ZX-ZPz"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="small" id="5wh-ff-yRk">
+            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="5wh-ff-yRk">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="qEj-kO-OmM"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="l1h-S7-eid"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="mAk-lH-1P0"/>
+                    <toolbarItem implicitItemIdentifier="08E9989B-B4CC-4B3A-99FE-611EBDC3F837" label="Invisibles" paletteLabel="Invisibles" id="Fjt-53-Qx5">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="32" height="22"/>
+                        <size key="maxSize" width="36" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="gVY-Wb-hHm">
+                            <rect key="frame" x="12" y="14" width="32" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="dnB-eJ-wVY">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="eyeTemplate" width="30"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="toggleShowInvisibles:" target="-1" id="WG1-Ih-DbL"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8FE0EB31-FD59-4F66-8EB8-E30A21C5C168" label="Print" paletteLabel="Print" id="WJe-Rx-Doy">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="32" height="22"/>
+                        <size key="maxSize" width="36" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="eW5-PS-0st">
+                            <rect key="frame" x="0.0" y="14" width="32" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="Xvl-Oa-xCu">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="printTemplate" width="30"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="printDocument:" target="-1" id="ydU-wL-fE5"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="BF150447-B06B-4F80-9DB4-517A2DC1A18D" label="Go to Line" paletteLabel="Go to Line" id="Gfm-Dd-VNZ">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="22"/>
+                        <size key="maxSize" width="36" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="cga-bm-wgK">
+                            <rect key="frame" x="14" y="14" width="34" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="4iv-iT-0bs">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="jumpToLineTemplate" width="32"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="jumpToALine:" target="-1" id="bSV-uD-OIg"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="6DDAD4B6-B58C-477B-A224-A134E4C527FA" label="Indentation" paletteLabel="Indentation" id="42a-LL-ZaC">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="67" height="28"/>
+                        <size key="maxSize" width="100" height="28"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="Lgp-bw-POp">
+                            <rect key="frame" x="0.0" y="14" width="67" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="WmP-gk-zlU">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="indentDecreaseTemplate" width="32"/>
+                                    <segment image="indentIncreaseTemplate" width="32" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="42a-LL-ZaC"/>
+                    <toolbarItem reference="l1h-S7-eid"/>
+                    <toolbarItem reference="Fjt-53-Qx5"/>
+                    <toolbarItem reference="Gfm-Dd-VNZ"/>
                     <toolbarItem reference="mAk-lH-1P0"/>
-                    <toolbarItem reference="qEj-kO-OmM"/>
+                    <toolbarItem reference="WJe-Rx-Doy"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -89,5 +162,13 @@
             </connections>
             <point key="canvasLocation" x="138.5" y="161.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="9JT-h4-3i6"/>
     </objects>
+    <resources>
+        <image name="eyeTemplate" width="16" height="16"/>
+        <image name="indentDecreaseTemplate" width="16" height="16"/>
+        <image name="indentIncreaseTemplate" width="16" height="16"/>
+        <image name="jumpToLineTemplate" width="16" height="16"/>
+        <image name="printTemplate" width="16" height="16"/>
+    </resources>
 </document>

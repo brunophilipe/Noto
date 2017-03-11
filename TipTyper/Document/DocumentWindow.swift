@@ -19,8 +19,8 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 
 	private let observedPreferences = [
-		"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn",
-		"tabSize", "useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters"
+		"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize",
+		"useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles"
 	]
 
 	private let observedThemeSettings = [
@@ -58,6 +58,7 @@ class DocumentWindow: NSWindow
 		updateEditorColors()
 		updateEditorSubstitutions()
 		updateEditorSpellingCheck()
+		updateEditorInvisibles()
 		updateEditorTabSize()
 		updateEditorSpacesForTabsOption()
 		setupThemeObserver()
@@ -77,7 +78,7 @@ class DocumentWindow: NSWindow
 		removeThemeObserver()
 	}
 
-	@IBAction func jumpToALine(_ sender: Any)
+	@IBAction func jumpToALine(_ sender: Any?)
 	{
 		let alert = NSAlert()
 		alert.alertStyle = .informational
@@ -108,6 +109,11 @@ class DocumentWindow: NSWindow
 		}
 
 		alert.window.makeFirstResponder(textField)
+	}
+
+	@IBAction func toggleShowInvisibles(_ sender: Any?)
+	{
+		Preferences.instance.showsInvisibles.flip()
 	}
 
 	private func setupThemeObserver()
@@ -304,6 +310,9 @@ class DocumentWindow: NSWindow
 			case .some("countWhitespacesInTotalCharacters"):
 				updateInfoBar()
 
+			case .some("showsInvisibles"):
+				updateEditorInvisibles()
+
 			default:
 				break
 			}
@@ -371,6 +380,13 @@ class DocumentWindow: NSWindow
 		
 		textView.isContinuousSpellCheckingEnabled = enabled
 		textView.isAutomaticSpellingCorrectionEnabled = enabled
+	}
+
+	private func updateEditorInvisibles()
+	{
+		let enabled = Preferences.instance.showsInvisibles
+
+		textView.showsInvisibleCharacters = enabled
 	}
 
 	private func updateEditorTabSize()

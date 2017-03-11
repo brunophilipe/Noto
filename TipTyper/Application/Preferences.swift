@@ -24,6 +24,7 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorUseSpacesForTabs		= "PreferenceEditorUseSpacesForTabs"
 	private static let PreferenceEditorTabSize				= "PreferenceEditorTabSize"
 	private static let PreferenceEditorCountsWhitespaces	= "PreferenceEditorCountsWhitespaces"
+	private static let PreferenceEditorShowsInvisibles		= "PreferenceEditorShowsInvisibles"
 
 	private static var sharedInstance: Preferences! = nil
 
@@ -206,5 +207,11 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorCountsWhitespaces) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorCountsWhitespaces) }
+	}
+
+	dynamic var showsInvisibles: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorShowsInvisibles) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorShowsInvisibles) }
 	}
 }

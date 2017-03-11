@@ -13,6 +13,9 @@ class InvisiblesLayoutManager: NSLayoutManager
 	var displayInvisibles: Bool = true
 	var textInset = NSSize(width: 10, height: 10)
 
+	// We override this to hide the implementation-default rendering which is not like what we want
+	private var _showsInvisibleCharacters: Bool = false
+
 	private let kVisibleGlyphForNewLine: NSString	= "↩︎"
 	private let kVisibleGlyphForBlank: NSString		= "⎵"
 	private let kVisibleGlyphForTab: NSString		= "⇥"
@@ -37,6 +40,12 @@ class InvisiblesLayoutManager: NSLayoutManager
 		super.init()
 
 		updateInvalidatables()
+	}
+
+	override var showsInvisibleCharacters: Bool
+	{
+		get { return _showsInvisibleCharacters }
+		set { _showsInvisibleCharacters = newValue }
 	}
 
 	private func invisiblesFontWithSize(size: CGFloat) -> NSFont
@@ -71,7 +80,7 @@ class InvisiblesLayoutManager: NSLayoutManager
 			NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
 		]
 
-		if !isResizing
+		if !isResizing && _showsInvisibleCharacters
 		{
 			for glyphIndex in glyphsToShow.location ..< NSMaxRange(glyphsToShow)
 			{

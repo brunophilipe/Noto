@@ -16,6 +16,16 @@ class EditorView: PaddedTextView
 	var lineCounterView: LineCounterRulerView? = nil
 	var usesSpacesForTabs: Bool = false
 
+	var showsInvisibleCharacters: Bool
+	{
+		get { return invisiblesLayoutManager.showsInvisibleCharacters }
+		set
+		{
+			invisiblesLayoutManager.showsInvisibleCharacters = newValue
+			needsDisplay = true
+		}
+	}
+
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
@@ -63,6 +73,7 @@ class EditorView: PaddedTextView
 		super.viewDidEndLiveResize()
 
 		invisiblesLayoutManager.isResizing = false
+		needsDisplay = true
 	}
 
 	override func insertTab(_ sender: Any?)
