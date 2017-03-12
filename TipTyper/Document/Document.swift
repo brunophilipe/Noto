@@ -147,6 +147,26 @@ class Document: NSDocument
 		}
 	}
 
+	override func printOperation(withSettings printSettings: [String: Any]) throws -> NSPrintOperation
+	{
+		if let window = self.window
+		{
+			let printInfo = self.printInfo
+			printInfo.isVerticallyCentered = false
+
+			let printOperation = NSPrintOperation(view: window.textView, printInfo: printInfo)
+			printOperation.jobTitle = self.displayName
+
+			return printOperation
+		}
+		else
+		{
+			throw NSError(domain: kTipTyperErrorDomain,
+						  code: 2001,
+						  userInfo: [NSLocalizedDescriptionKey: "Could not retrieve data to print"])
+		}
+	}
+
 	private func sendDataToWindow()
 	{
 		undoManager?.disableUndoRegistration()
