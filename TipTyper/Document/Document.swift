@@ -151,12 +151,45 @@ class Document: NSDocument
 	{
 		if let window = self.window
 		{
-			let printInfo = self.printInfo
-			printInfo.isVerticallyCentered = false
+			let printInfo = self.printInfo.copy() as! NSPrintInfo
+			printInfo.dictionary().addEntries(from: printSettings)
 
-			let printOperation = NSPrintOperation(view: window.textView, printInfo: printInfo)
-			printOperation.jobTitle = self.displayName
+			let printView = PrintingTextView()
+			if let layoutManager = printView.textContainer?.layoutManager
+			{
+				layoutManager.textStorage?.removeLayoutManager(layoutManager)
+				window.textView.textStorage?.addLayoutManager(layoutManager)
+			}
 
+			printView.setLayoutOrientation(window.textView.layoutOrientation)
+
+			let accessoryContoller = PrintAccessoryViewController.make()
+			let printOperation = NSPrintOperation(view: printView, printInfo: printInfo)
+			printOperation.showsPrintPanel = true
+			printOperation.showsProgressPanel = true
+			printOperation.jobTitle = window.textView.printJobTitle
+
+			printView.originalSize = window.textView.frame.size
+			printView.printPanelAccessoryController = accessoryContoller
+
+			let printPanel = printOperation.printPanel
+			printPanel.options = [
+					printPanel.options,
+					NSPrintPanelOptions.showsPaperSize,
+					NSPrintPanelOptions.showsOrientation,
+					NSPrintPanelOptions.showsScaling
+			]
+
+
+			printPanel.addAccessoryController(accessoryContoller)
+
+//			printInfo.isVerticallyCentered = false
+//
+//			let printOperation = NSPrintOperation(view: window.textView, printInfo: printInfo)
+//			printOperation.jobTitle = self.displayName
+//
+//			printOperation.printPanel.addAccessoryController(PrintAccessoryViewController.make())
+//
 			return printOperation
 		}
 		else

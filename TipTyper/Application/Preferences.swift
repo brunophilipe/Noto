@@ -26,6 +26,12 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorCountsWhitespaces	= "PreferenceEditorCountsWhitespaces"
 	private static let PreferenceEditorShowsInvisibles		= "PreferenceEditorShowsInvisibles"
 
+	private static let PreferencePrintWrapContents		= "PreferencePrintWrapContents"
+	private static let PreferencePrintShowDate			= "PreferencePrintShowDate"
+	private static let PreferencePrintShowFileName		= "PreferencePrintShowFileName"
+	private static let PreferencePrintShowPageNumber	= "PreferencePrintShowPageNumber"
+	private static let PreferencePrintHideLineNumbers	= "PreferencePrintHideLineNumbers"
+
 	private static var sharedInstance: Preferences! = nil
 
 	static var instance: Preferences
@@ -213,5 +219,37 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorShowsInvisibles) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorShowsInvisibles) }
+	}
+
+	// Printing Options
+
+	dynamic var printWrapContents: Bool
+	{
+		get { return !bool(forKey: Preferences.PreferencePrintWrapContents) }
+		set { set(!newValue, forKey: Preferences.PreferencePrintWrapContents) }
+	}
+
+	dynamic var printShowDate: Bool
+	{
+		get { return bool(forKey: Preferences.PreferencePrintShowDate) }
+		set { set(newValue, forKey: Preferences.PreferencePrintShowDate) }
+	}
+
+	dynamic var printShowFileName: Bool
+	{
+		get { return bool(forKey: Preferences.PreferencePrintShowFileName) }
+		set { set(newValue, forKey: Preferences.PreferencePrintShowFileName) }
+	}
+
+	dynamic var printShowPageNumber: Bool
+	{
+		get { return bool(forKey: Preferences.PreferencePrintShowPageNumber) }
+		set { set(newValue, forKey: Preferences.PreferencePrintShowPageNumber) }
+	}
+
+	dynamic var printHideLineNumbers: Bool
+	{
+		get { return bool(forKey: Preferences.PreferencePrintHideLineNumbers) }
+		set { set(newValue, forKey: Preferences.PreferencePrintHideLineNumbers) }
 	}
 }

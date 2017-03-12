@@ -152,7 +152,10 @@ class ThemePreferencesController: NSViewController
 
 		for theme in themes.native
 		{
-			menu.addItem(makeMenuItemForTheme(theme, &selectedItem))
+			menu.addItem(NSMenuItem.itemForEditorTheme(theme,
+													   &selectedItem,
+													   target: self,
+													   #selector(ThemePreferencesController.didChangeEditorTheme(_:))))
 		}
 
 		if themes.user.count > 0
@@ -161,7 +164,10 @@ class ThemePreferencesController: NSViewController
 
 			for theme in themes.user
 			{
-				menu.addItem(makeMenuItemForTheme(theme, &selectedItem))
+				menu.addItem(NSMenuItem.itemForEditorTheme(theme,
+														   &selectedItem,
+														   target: self,
+														   #selector(ThemePreferencesController.didChangeEditorTheme(_:))))
 			}
 		}
 
@@ -171,7 +177,10 @@ class ThemePreferencesController: NSViewController
 
 			if let userTheme = theme as? UserEditorTheme
 			{
-				menu.addItem(makeMenuItemForTheme(userTheme, &selectedItem))
+				menu.addItem(NSMenuItem.itemForEditorTheme(userTheme,
+														   &selectedItem,
+														   target: self,
+														   #selector(ThemePreferencesController.didChangeEditorTheme(_:))))
 				userTheme.writeToFile(immediatelly: true)
 			}
 			else
@@ -187,24 +196,6 @@ class ThemePreferencesController: NSViewController
 		deleteThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
 
 		updateThemeColors()
-	}
-
-	private func makeMenuItemForTheme(_ theme: EditorTheme, _ selectedItem: inout NSMenuItem?) -> NSMenuItem
-	{
-		let pref = Preferences.instance
-		let menuItem = NSMenuItem(title: theme.name,
-		                          action: #selector(ThemePreferencesController.didChangeEditorTheme(_:)),
-		                          keyEquivalent: "")
-
-		menuItem.target = self
-		menuItem.representedObject = theme
-
-		if selectedItem == nil && theme.preferenceName == pref.editorThemeName
-		{
-			selectedItem = menuItem
-		}
-
-		return menuItem
 	}
 
 	private func setRenameThemeTextFieldState(error: String?)
