@@ -154,14 +154,16 @@ class Document: NSDocument
 			let printInfo = self.printInfo.copy() as! NSPrintInfo
 			printInfo.dictionary().addEntries(from: printSettings)
 
-			let printView = PrintingTextView()
-			if let layoutManager = printView.textContainer?.layoutManager
+			let printView = PrintingView(printInfo: printInfo)
+			if let textStorage = window.textView.textStorage
 			{
-				layoutManager.textStorage?.removeLayoutManager(layoutManager)
-				window.textView.textStorage?.addLayoutManager(layoutManager)
+				printView.textView.layoutManager?.replaceTextStorage(textStorage)
 			}
-
-			printView.setLayoutOrientation(window.textView.layoutOrientation)
+			
+			// TODO: Colors should differ from actual text editor
+			printView.textView.font = Preferences.instance.editorFont
+			printView.textView.lineCounterView?.font = Preferences.instance.lineCounterFont
+			printView.textView.setLayoutOrientation(window.textView.layoutOrientation)
 
 			let accessoryContoller = PrintAccessoryViewController.make()
 			let printOperation = NSPrintOperation(view: printView, printInfo: printInfo)
@@ -169,17 +171,23 @@ class Document: NSDocument
 			printOperation.showsProgressPanel = true
 			printOperation.jobTitle = window.textView.printJobTitle
 
-			printView.originalSize = window.textView.frame.size
+			var originalSize = window.textView.frame.size
+
+			if window.textView.enclosingScrollView?.rulersVisible == true, let lineCounterView = window.textView.lineCounterView
+			{
+				originalSize.width += lineCounterView.frame.width
+			}
+
+			printView.originalSize = originalSize
 			printView.printPanelAccessoryController = accessoryContoller
 
 			let printPanel = printOperation.printPanel
 			printPanel.options = [
-					printPanel.options,
-					NSPrintPanelOptions.showsPaperSize,
-					NSPrintPanelOptions.showsOrientation,
-					NSPrintPanelOptions.showsScaling
+				printPanel.options,
+				.showsPaperSize,
+				.showsOrientation,
+				.showsScaling
 			]
-
 
 			printPanel.addAccessoryController(accessoryContoller)
 

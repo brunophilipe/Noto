@@ -5,33 +5,92 @@
 
 import Cocoa
 
-class PrintingTextView: NSTextView
+class PrintingView: NSScrollView
 {
-	var printPanelAccessoryController: PrintAccessoryViewController? = nil
-	var originalSize: NSSize = NSMakeSize(0, 0)
+	public var printPanelAccessoryController: PrintAccessoryViewController? = nil
+	public var originalSize: NSSize = NSMakeSize(0, 0)
+	public var textView: EditorView
 
-	private var previousValueOfDocumentSizeInPage: NSSize = NSMakeSize(0, 0)
+	private var previousValueOfDocumentWidthInPage: CGFloat = 0
 	private var previousValueOfRewrapContents: Bool = false
+	private var previousValueOfRulersVisible: Bool = false
+	
+	init(printInfo: NSPrintInfo)
+	{
+		let rect = NSRect(origin: CGPoint(x: 0, y: 0), size: documentSizeForPrintInfo(printInfo: printInfo))
+
+		textView = EditorView(frame: rect)
+
+		super.init(frame: rect)
+		
+		self.documentView = textView
+		
+		textView.awakeFromNib()
+	}
+	
+	required init?(coder: NSCoder)
+	{
+		textView = EditorView()
+		
+		super.init(coder: coder)
+		
+		self.documentView = textView
+		
+		textView.awakeFromNib()
+	}
 
 	override func knowsPageRange(_ range: NSRangePointer) -> Bool
 	{
 		if let printInfo = printPanelAccessoryController?.representedObject as? NSPrintInfo,
-		   let rewrapContents = printPanelAccessoryController?.rewrapContents.boolValue
+		   let rewrapContents = printPanelAccessoryController?.rewrapContents.boolValue,
+		   let rulersVisible = printPanelAccessoryController?.showLineNumbers.boolValue
 		{
-			let documentSizeInPage = documentSizeForPrintInfo(printInfo: printInfo)
+			let documentWidthInPage = documentSizeForPrintInfo(printInfo: printInfo).width
 
-			if !NSEqualSizes(previousValueOfDocumentSizeInPage, documentSizeInPage) || previousValueOfRewrapContents != rewrapContents
+			if previousValueOfDocumentWidthInPage != documentWidthInPage
+					   || previousValueOfRewrapContents != rewrapContents
+					   || previousValueOfRulersVisible != rulersVisible
 			{
-				previousValueOfDocumentSizeInPage = documentSizeInPage
+				previousValueOfDocumentWidthInPage = documentWidthInPage
 				previousValueOfRewrapContents = rewrapContents
+				previousValueOfRulersVisible = rulersVisible
 
-				let size = rewrapContents ? documentSizeInPage : originalSize
-				self.frame = NSMakeRect(0, 0, size.width, size.height)
+				self.rulersVisible = rulersVisible
 
-				printInfo.scalingFactor = rewrapContents ? 1.0 : documentSizeInPage.width / originalSize.width
+				let width = rewrapContents ? documentWidthInPage : originalSize.width
+				let height = rewrapContents ? textView.frame.height : originalSize.height
+				var size = NSSize(width: width, height: height)
 
-				self.textContainer?.layoutManager?.defaultAttachmentScaling = rewrapContents ? .scaleProportionallyUpOrDown : .scaleNone
-				self.forceLayoutToCharacterIndex(Int.max)
+				if rulersVisible, let lineCounterView = textView.lineCounterView
+				{
+					lineCounterView.reindexLinesForPrinting()
+				}
+
+				setFrameSize(size)
+
+				if rulersVisible, let lineCounterView = textView.lineCounterView
+				{
+					textView.setFrameSize(NSSize(width: size.width - lineCounterView.requiredThickness, height: 20))
+				}
+				else
+				{
+					textView.setFrameSize(NSSize(width: size.width, height: 20))
+				}
+
+				/* After setting the size of the parent, we need to layout the text to make sure all is visible */
+				textView.sizeToFit()
+
+				/* Now we update the scroll view size, to make sure the entire text view is visible */
+				size.height = textView.frame.height
+				setFrameSize(size)
+
+				needsDisplay = true
+
+				printInfo.scalingFactor = rewrapContents ? 1.0 : roundPercentage(documentWidthInPage / originalSize.width)
+
+				textView.textContainer?.layoutManager?.defaultAttachmentScaling = rewrapContents ? .scaleProportionallyUpOrDown
+																								 : .scaleNone
+				textView.forceLayoutToCharacterIndex(Int.max)
 			}
 		}
 
@@ -52,3 +111,8 @@ private var defaultTextPadding: CGFloat =
 	let container = NSTextContainer()
 	return container.lineFragmentPadding
 }()
+
+private func roundPercentage(_ input: CGFloat) -> CGFloat
+{
+	return (floor(input * 100.0) * 0.01)
+}

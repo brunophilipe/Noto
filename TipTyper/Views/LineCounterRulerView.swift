@@ -99,6 +99,11 @@ class LineCounterRulerView: NSRulerView
 		needsDisplay = true
 	}
 
+	func reindexLinesForPrinting()
+	{
+		updateLineInfos()
+	}
+
 	// MARK: - Override Methods
 
 	override var clientView: NSView?
