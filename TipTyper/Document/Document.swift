@@ -155,12 +155,13 @@ class Document: NSDocument
 			printInfo.dictionary().addEntries(from: printSettings)
 
 			let printView = PrintingView(printInfo: printInfo)
-			if let textStorage = window.textView.textStorage
+			if let storage = window.textView.textStorage?.string
 			{
+				let textStorage = NSTextStorage(string: storage)
 				printView.textView.layoutManager?.replaceTextStorage(textStorage)
 			}
-			
-			// TODO: Colors should differ from actual text editor
+
+			printView.textView.textColor = NSColor.black
 			printView.textView.font = Preferences.instance.editorFont
 			printView.textView.lineCounterView?.font = Preferences.instance.lineCounterFont
 			printView.textView.setLayoutOrientation(window.textView.layoutOrientation)
