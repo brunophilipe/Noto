@@ -192,13 +192,6 @@ class Document: NSDocument
 
 			printPanel.addAccessoryController(accessoryContoller)
 
-//			printInfo.isVerticallyCentered = false
-//
-//			let printOperation = NSPrintOperation(view: window.textView, printInfo: printInfo)
-//			printOperation.jobTitle = self.displayName
-//
-//			printOperation.printPanel.addAccessoryController(PrintAccessoryViewController.make())
-//
 			return printOperation
 		}
 		else
