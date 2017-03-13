@@ -165,6 +165,12 @@ class Document: NSDocument
 			printView.textView.font = Preferences.instance.editorFont
 			printView.textView.lineCounterView?.font = Preferences.instance.lineCounterFont
 			printView.textView.setLayoutOrientation(window.textView.layoutOrientation)
+			
+			if let lineCounterView = printView.textView.lineCounterView
+			{
+				lineCounterView.backgroundColor = NSColor.white
+				lineCounterView.textColor = NSColor.black
+			}
 
 			let accessoryContoller = PrintAccessoryViewController.make()
 			let printOperation = NSPrintOperation(view: printView, printInfo: printInfo)
