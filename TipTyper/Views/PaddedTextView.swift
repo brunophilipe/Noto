@@ -14,6 +14,6 @@ class PaddedTextView: NSTextView
 	{
 		super.awakeFromNib()
 
-		super.textContainerInset = NSSize(width: 10.0, height: 10.0)
+		textContainerInset = NSSize(width: 10.0, height: 10.0)
 	}
 }

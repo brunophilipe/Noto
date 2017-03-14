@@ -19,11 +19,11 @@
             <rect key="contentRect" x="133" y="235" width="507" height="413"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="94" height="86"/>
-            <view key="contentView" wantsLayer="YES" id="gIp-Ho-8D9">
+            <view key="contentView" wantsLayer="YES" id="gIp-Ho-8D9" customClass="PullableContentView" customModule="TipTyper" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ">
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ" customClass="NoClippingScrollView" customModule="TipTyper" customModuleProvider="target">
                         <rect key="frame" x="-1" y="-1" width="509" height="414"/>
                         <clipView key="contentView" drawsBackground="NO" id="895-DM-yKi">
                             <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
@@ -158,7 +158,9 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
                 <outlet property="textEditorBottomConstraint" destination="o5x-93-YKX" id="Q8N-Ke-9a5"/>
+                <outlet property="textEditorTopConstraint" destination="ngv-du-sXU" id="tV3-sZ-ian"/>
                 <outlet property="textView" destination="3kl-bg-vXa" id="X7k-y4-PLU"/>
+                <outlet property="titleBarSeparatorView" destination="HKp-0Q-T0H" id="abC-cl-YoY"/>
             </connections>
             <point key="canvasLocation" x="138.5" y="161.5"/>
         </window>

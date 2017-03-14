@@ -8,10 +8,9 @@
 
 import Cocoa
 
-@IBDesignable
 class BackgroundView: NSView
 {
-	@IBInspectable var backgroundColor: NSColor = NSColor.clear
+	var backgroundColor: NSColor = NSColor.clear
 
 	override var isOpaque: Bool
 	{

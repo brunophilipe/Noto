@@ -14,9 +14,13 @@ class DocumentWindow: NSWindow
 	private weak var document: Document? = nil
 	private var infoBarController: InfoBar? = nil
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
+	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
+	private var customTopThemeConstraint: NSLayoutConstraint? = nil
 
 	@IBOutlet var textView: EditorView!
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
+	@IBOutlet var titleBarSeparatorView: BackgroundView!
+	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
 
 	private let observedPreferences = [
 		"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize",
@@ -52,18 +56,19 @@ class DocumentWindow: NSWindow
 		document.delegate = self
 
 		setupWindowStyle()
-		setupInfoBar()
 
-		updateEditorFont()
-		updateEditorColors()
-		updateEditorSubstitutions()
-		updateEditorSpellingCheck()
-		updateEditorInvisibles()
-		updateEditorTabSize()
-		updateEditorSpacesForTabsOption()
-		setupThemeObserver()
+		self.setupInfoBar()
 
-		textView.undoManager?.removeAllActions()
+		self.updateEditorFont()
+		self.updateEditorColors()
+		self.updateEditorSubstitutions()
+		self.updateEditorSpellingCheck()
+		self.updateEditorInvisibles()
+		self.updateEditorTabSize()
+		self.updateEditorSpacesForTabsOption()
+		self.setupThemeObserver()
+
+		self.textView.undoManager?.removeAllActions()
 	}
 
 	deinit
@@ -76,6 +81,25 @@ class DocumentWindow: NSWindow
 		}
 
 		removeThemeObserver()
+	}
+	
+	override func toggleToolbarShown(_ sender: Any?)
+	{
+		let hidden = (toolbar?.isVisible ?? false)
+
+		if let contentView = self.contentView as? PullableContentView
+		{
+			contentView.pullsContent = hidden
+		}
+
+		textView.textContainerInset.height += hidden ? 20 : -20
+
+		super.toggleToolbarShown(sender)
+
+		titleBarSeparatorView.isHidden = hidden
+
+		textView.needsLayout = true
+		textView.needsDisplay = true
 	}
 
 	@IBAction func jumpToALine(_ sender: Any?)
