@@ -92,7 +92,7 @@ class DocumentWindow: NSWindow
 			contentView.pullsContent = hidden
 		}
 
-		textView.textContainerInset.height += hidden ? 20 : -20
+		textView.textContainerInset = NSSize(width: textView.textContainerInset.width, height: hidden ? 32 : 10)
 
 		super.toggleToolbarShown(sender)
 

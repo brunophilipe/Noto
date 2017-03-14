@@ -7,22 +7,12 @@ import AppKit
 
 class PullableContentView: NSView
 {
-	var pullsContent: Bool = true
+	var pullsContent: Bool = false
 
-	override func alignmentRect(forFrame frame: NSRect) -> NSRect
+	override func setFrameSize(_ newSize: NSSize)
 	{
-		return NSRect(x: frame.origin.x,
-		              y: frame.origin.y,
-		              width: frame.size.width,
-		              height: frame.size.height + (pullsContent ? 22 : 0))
-	}
-
-	override func frame(forAlignmentRect alignmentRect: NSRect) -> NSRect
-	{
-		return NSRect(x: alignmentRect.origin.x,
-		              y: alignmentRect.origin.y,
-		              width: alignmentRect.size.width,
-		              height: alignmentRect.size.height)
+		// hehehehe 😈
+		super.setFrameSize(NSSize(width: newSize.width, height: newSize.height + (pullsContent ? 22 : 0)))
 	}
 
 	override var wantsDefaultClipping: Bool

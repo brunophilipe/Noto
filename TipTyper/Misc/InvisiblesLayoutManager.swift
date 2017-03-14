@@ -113,7 +113,7 @@ class InvisiblesLayoutManager: NSLayoutManager
 						let rect = lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil, withoutAdditionalLayout: true)
 
 						point.x += rect.origin.x + textInset.width
-						point.y  = rect.origin.y + rect.height * pow((14.0 / max(fontPointSize, 1)), 0.5)
+						point.y  = rect.origin.y + rect.height * pow((14.0 / max(fontPointSize, 1)), 0.5) + (textInset.height - 10.0)
 
 						glyph.draw(at: point, withAttributes: invisiblesAttributes)
 					}

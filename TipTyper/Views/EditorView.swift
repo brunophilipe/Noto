@@ -16,6 +16,14 @@ class EditorView: PaddedTextView
 	var lineCounterView: LineCounterRulerView? = nil
 	var usesSpacesForTabs: Bool = false
 
+	override var textContainerInset: NSSize
+	{
+		didSet
+		{
+			invisiblesLayoutManager.textInset = textContainerInset
+		}
+	}
+
 	var showsInvisibleCharacters: Bool
 	{
 		get { return invisiblesLayoutManager.showsInvisibleCharacters }
