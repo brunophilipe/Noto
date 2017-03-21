@@ -35,6 +35,7 @@
 		3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66639631E5934C625045 /* String+Additions.swift */; };
 		3D7A65F66F76DBF98501636A /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66032F185ECFD2FE5BE2 /* Bool+Additions.swift */; };
 		3D7A67FFA65969A7EFD1DF63 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */; };
+		3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
 		3D7A695561A245288374A532 /* EditorPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */; };
 		3D7A6A516AB3B8A74FD70D23 /* StatusInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */; };
 		3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A616C708C4C55E455C552 /* NSTextView+Additions.swift */; };
@@ -79,6 +80,7 @@
 		3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintAccessoryViewController.swift; path = "View Controllers/Printing/PrintAccessoryViewController.swift"; sourceTree = "<group>"; };
+		3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedToolbar.swift; sourceTree = "<group>"; };
 		3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDInfoBarController.swift; sourceTree = "<group>"; };
 		3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorPreferencesViewController.swift; path = "View Controllers/Preferences/EditorPreferencesViewController.swift"; sourceTree = "<group>"; };
 		3D7A6E3061FBFB220A90F833 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */,
 				3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */,
 				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
+				3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				3D7A60252112750E492B652E /* PrintingTextView.swift in Sources */,
 				3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */,
 				3D7A6290E3AC56D0F5166DBC /* PullableContentView.swift in Sources */,
+				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

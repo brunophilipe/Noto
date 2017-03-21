@@ -23,12 +23,12 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
 
 	private let observedPreferences = [
-		"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize",
-		"useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles"
+			"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize",
+			"useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles"
 	]
 
 	private let observedThemeSettings = [
-		"editorBackground", "editorForeground", "lineCounterBackground", "lineCounterForeground", "willDeallocate"
+			"editorBackground", "editorForeground", "lineCounterBackground", "lineCounterForeground", "willDeallocate"
 	]
 
 	var text: String
@@ -44,6 +44,26 @@ class DocumentWindow: NSWindow
 			updateInfoBar()
 		}
 	}
+
+	override var toolbar: NSToolbar?
+	{
+		willSet
+		{
+			if let toolbar = self.toolbar
+			{
+				toolbar.removeObserver(self, forKeyPath: "dynamicIsVisible")
+			}
+		}
+
+		didSet
+		{
+			if let toolbar = self.toolbar
+			{
+				toolbar.addObserver(self, forKeyPath: "dynamicIsVisible", options: .new, context: nil)
+			}
+		}
+	}
+
 
 	func setup(_ document: Document)
 	{
@@ -75,31 +95,17 @@ class DocumentWindow: NSWindow
 	{
 		document?.delegate = nil
 
+		if let toolbar = self.toolbar
+		{
+			toolbar.removeObserver(self, forKeyPath: "dynamicIsVisible")
+		}
+
 		for observedPreference in observedPreferences
 		{
 			Preferences.instance.removeObserver(self, forKeyPath: observedPreference)
 		}
 
 		removeThemeObserver()
-	}
-	
-	override func toggleToolbarShown(_ sender: Any?)
-	{
-		let hidden = (toolbar?.isVisible ?? false)
-
-		if let contentView = self.contentView as? PullableContentView
-		{
-			contentView.pullsContent = hidden
-		}
-
-		textView.textContainerInset = NSSize(width: textView.textContainerInset.width, height: hidden ? 32 : 10)
-
-		super.toggleToolbarShown(sender)
-
-		titleBarSeparatorView.isHidden = hidden
-
-		textView.needsLayout = true
-		textView.needsDisplay = true
 	}
 
 	@IBAction func jumpToALine(_ sender: Any?)
@@ -169,6 +175,8 @@ class DocumentWindow: NSWindow
 	private func setupWindowStyle()
 	{
 		titlebarAppearsTransparent = true
+
+		updateWindowToolbarStyle()
 
 		minSize = NSSize(width: 300, height: 200)
 	}
@@ -299,9 +307,9 @@ class DocumentWindow: NSWindow
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
-	                           of object: Any?,
-	                           change: [NSKeyValueChangeKey : Any]?,
-	                           context: UnsafeMutableRawPointer?)
+							   of object: Any?,
+							   change: [NSKeyValueChangeKey: Any]?,
+							   context: UnsafeMutableRawPointer?)
 	{
 		textView.undoManager?.disableUndoRegistration()
 
@@ -355,8 +363,39 @@ class DocumentWindow: NSWindow
 				break
 			}
 		}
+		else if object is NSToolbar
+		{
+			switch keyPath
+			{
+			case .some("dynamicIsVisible"):
+				updateWindowToolbarStyle()
+
+			default:
+				break
+			}
+		}
 
 		textView.undoManager?.enableUndoRegistration()
+	}
+
+	private func updateWindowToolbarStyle()
+	{
+		let visible = (toolbar?.isVisible ?? false)
+
+		if let contentView = self.contentView as? PullableContentView
+		{
+			contentView.pullsContent = !visible
+		}
+
+		textView.textContainerInset = NSSize(width: textView.textContainerInset.width, height: visible ? 10 : 32)
+
+		titleBarSeparatorView.isHidden = !visible
+
+		if let contentView = self.contentView
+		{
+			contentView.setFrameSize(NSSize(width: contentView.frame.size.width,
+											height: contentView.frame.size.height - (visible ? 22.0 : 0.0)))
+		}
 	}
 
 	private func updateEditorFont()
