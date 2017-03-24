@@ -146,6 +146,14 @@ class DocumentWindow: NSWindow
 		Preferences.instance.showsInvisibles.flip()
 	}
 
+	@IBAction func toggleLinesCounter(_ sender: Any?)
+	{
+		if let scrollView = textView.enclosingScrollView
+		{
+			scrollView.rulersVisible.flip()
+		}
+	}
+
 	private func setupThemeObserver()
 	{
 		let theme = Preferences.instance.editorTheme

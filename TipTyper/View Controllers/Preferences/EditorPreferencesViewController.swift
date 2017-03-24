@@ -15,6 +15,7 @@ class EditorPreferencesViewController: NSViewController
 	
 	@IBOutlet var chooseFontButton: NSButton!
 	@IBOutlet var fontNameLabel: NSTextField!
+	@IBOutlet var infoBarModeSegmentedControl: NSSegmentedControl!
 	
 	var smartSubstitutionsOn: NSNumber
 	{
@@ -77,6 +78,7 @@ class EditorPreferencesViewController: NSViewController
 		let pref = Preferences.instance
 		
 		pref.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
+		pref.addObserver(self, forKeyPath: "infoBarMode", options: .new, context: nil)
 	}
 	
 	private func removeObservers()
@@ -84,6 +86,7 @@ class EditorPreferencesViewController: NSViewController
 		let pref = Preferences.instance
 		
 		pref.removeObserver(self, forKeyPath: "editorFont")
+		pref.removeObserver(self, forKeyPath: "infoBarMode")
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?,
@@ -97,7 +100,10 @@ class EditorPreferencesViewController: NSViewController
 			{
 			case .some("editorFont"):
 				updateFontPreview()
-				
+
+			case .some("infoBarMode"):
+				infoBarModeSegmentedControl.selectedSegment = infoBarMode.intValue
+
 			default:
 				break
 			}

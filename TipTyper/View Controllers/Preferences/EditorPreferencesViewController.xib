@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="chooseFontButton" destination="i4c-cf-BBU" id="31V-iN-u8v"/>
                 <outlet property="fontNameLabel" destination="jow-eT-zZI" id="jgr-oG-eiq"/>
+                <outlet property="infoBarModeSegmentedControl" destination="Rb9-49-6aF" id="SxH-FY-G8R"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -158,7 +159,7 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="GKH-5z-mvj">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="Off" width="122" selected="YES"/>
+                            <segment label="Disabled" width="122" selected="YES"/>
                             <segment label="HUD" width="122" tag="1"/>
                             <segment label="Status Bar" width="122"/>
                         </segments>
