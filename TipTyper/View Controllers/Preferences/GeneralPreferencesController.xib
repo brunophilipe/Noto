@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesController" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesController" customModule="TipTyper" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -12,8 +14,35 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="159"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="QYS-DU-BbX">
+                    <rect key="frame" x="88" y="123" width="365" height="18"/>
+                    <buttonCell key="cell" type="check" title="Require pressing Escape twice to leave full-screen mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ARe-2l-7nS">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="doubleEscToLeaveFullScreen" id="kle-W1-fCE"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-AG-iRa">
+                    <rect key="frame" x="28" y="124" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Options:" id="UBo-os-nGQ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="ke1-AG-iRa" secondAttribute="trailing" constant="8" id="QNU-oa-rQA"/>
+                <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="90" id="ooh-Bw-L25"/>
+                <constraint firstItem="QYS-DU-BbX" firstAttribute="baseline" secondItem="ke1-AG-iRa" secondAttribute="baseline" id="uLM-SO-qeR"/>
+                <constraint firstItem="QYS-DU-BbX" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="yhQ-4X-9L9"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="111.5"/>
         </customView>
     </objects>
 </document>

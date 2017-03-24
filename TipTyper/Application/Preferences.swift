@@ -10,6 +10,8 @@ import Cocoa
 
 class Preferences: UserDefaults
 {
+	private static let PreferenceGeneralDoubleEscToLeaveFullScreen = "PreferenceGeneralDoubleEscToLeaveFullScreen"
+
 	private static let PreferenceEditorFontName = "PreferenceEditorFontName"
 	private static let PreferenceEditorFontSize = "PreferenceEditorFontSize"
 
@@ -219,6 +221,14 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorShowsInvisibles) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorShowsInvisibles) }
+	}
+
+	// General Settings
+
+	dynamic var doubleEscToLeaveFullScreen: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceGeneralDoubleEscToLeaveFullScreen) }
+		set { set(newValue, forKey: Preferences.PreferenceGeneralDoubleEscToLeaveFullScreen) }
 	}
 
 	// Printing Options

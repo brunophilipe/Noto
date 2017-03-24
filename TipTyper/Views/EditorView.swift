@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Carbon
 
 class EditorView: PaddedTextView
 {
@@ -15,6 +16,8 @@ class EditorView: PaddedTextView
 
 	var lineCounterView: LineCounterRulerView? = nil
 	var usesSpacesForTabs: Bool = false
+
+	var escToLeaveFullScreenMode: WaitStatus = .none
 
 	override var textContainerInset: NSSize
 	{
@@ -126,6 +129,30 @@ class EditorView: PaddedTextView
 		return success
 	}
 
+	override func keyDown(with event: NSEvent)
+	{
+		if event.keyCode == UInt16(kVK_Escape) && Preferences.instance.doubleEscToLeaveFullScreen
+		{
+			switch escToLeaveFullScreenMode
+			{
+			case .none:
+				escToLeaveFullScreenMode = .waiting(timeout: Date().addingTimeInterval(1).timeIntervalSince1970)
+
+			case .waiting(let timeout):
+				if Date().timeIntervalSince1970 < timeout
+				{
+					super.keyDown(with: event)
+				}
+
+				escToLeaveFullScreenMode = .none
+			}
+		}
+		else
+		{
+			super.keyDown(with: event)
+		}
+	}
+
 	// Has to be updated when font size changes
 	func setTabWidth(_ width: UInt)
 	{
@@ -151,5 +178,13 @@ class EditorView: PaddedTextView
 			didChangeText()
 		}
 	}
-    
+}
+
+extension EditorView
+{
+	enum WaitStatus
+	{
+		case none
+		case waiting(timeout: TimeInterval)
+	}
 }
