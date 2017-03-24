@@ -72,6 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		preferencesController.centerToolbarItems = true
 		
 		let types: [PreferencesController.Type] = [
+			GeneralPreferencesController.self,
 			EditorPreferencesViewController.self,
 			ThemePreferencesController.self
 		]

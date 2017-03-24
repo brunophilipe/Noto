@@ -16,6 +16,8 @@
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
+		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
+		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
@@ -59,6 +61,8 @@
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
+		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
+		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */,
 				3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */,
 				3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */,
+				158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */,
+				158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */,
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
@@ -389,6 +396,7 @@
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
 				150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */,
+				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
