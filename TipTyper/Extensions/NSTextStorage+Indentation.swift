@@ -18,12 +18,21 @@ extension NSTextStorage: ModifiableIndentation
 {
 	func increaseIndentForSelectedRanges(_ ranges: [NSRange])
 	{
-		insert(NSAttributedString.init(string: "\t"), at: findLineStartFromLocation(ranges[0].location))
+		let string = self.string as NSString
+		let enclosingRange = string.lineRange(for: ranges[0])
+
+		self.replaceCharacters(in: NSMakeRange(enclosingRange.location, 0), with: "\t")
 	}
 
 	func decreaseIndentForSelectedRanges(_ ranges: [NSRange])
 	{
-		replaceCharacters(in: NSMakeRange(findLineStartFromLocation(ranges[0].location), 1), with: "")
+		let string = self.string as NSString
+		let enclosingRange = string.lineRange(for: ranges[0])
+
+		if string.character(at: enclosingRange.location).isTab()
+		{
+			self.replaceCharacters(in: NSMakeRange(enclosingRange.location, 1), with: "")
+		}
 	}
 
 	func findLineStartFromLocation(_ location: Int) -> NSInteger
@@ -32,32 +41,16 @@ extension NSTextStorage: ModifiableIndentation
 		{
 			return 0
 		}
-		else
-		{
-			let string = self.string as NSString
-			let totalLength = string.length
-			var current = min(location, totalLength) - 1
 
-			repeat
-			{
-				if string.character(at: current).isNewLine()
-				{
-					return min(current + 1, totalLength - 1)
-				}
-
-				current = max(0, current - 1)
-			}
-			while (current > 0)
-
-			return current
-		}
+		let string = self.string as NSString
+		return string.lineRange(for: NSMakeRange(min(location, string.length - 1), 0)).location
 	}
 }
 
-private extension unichar
+extension unichar
 {
-	func isNewLine() -> Bool
+	func isTab() -> Bool
 	{
-		return [0xA, 0xD].contains(self)
+		return self == 0x9
 	}
 }

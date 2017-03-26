@@ -76,7 +76,7 @@ class ModifiableIndentationTest: XCTestCase
 		XCTAssertEqual(0, textStorage.findLineStartFromLocation(-1))
 	}
 
-	func testNewLineFInderOnlyNewLines()
+	func testNewLineFinderOnlyNewLines()
 	{
 		let textStorage = NSTextStorage(string: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
