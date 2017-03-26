@@ -69,6 +69,8 @@ class ModifiableIndentationTest: XCTestCase
 		}
 
 		XCTAssertEqual(19, textStorage.findLineStartFromLocation(19))
+		XCTAssertEqual(19, textStorage.findLineStartFromLocation(20))
+		XCTAssertEqual(19, textStorage.findLineStartFromLocation(21))
 
 
 		XCTAssertEqual(0, textStorage.findLineStartFromLocation(-1))
@@ -82,6 +84,9 @@ class ModifiableIndentationTest: XCTestCase
 		{
 			XCTAssertEqual(index, textStorage.findLineStartFromLocation(index))
 		}
+
+		XCTAssertEqual(0, textStorage.findLineStartFromLocation(-1))
+		XCTAssertEqual(14, textStorage.findLineStartFromLocation(15))
 	}
 
 	func testSingleRangeZeroLength()

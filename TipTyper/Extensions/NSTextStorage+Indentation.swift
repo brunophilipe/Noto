@@ -35,13 +35,14 @@ extension NSTextStorage: ModifiableIndentation
 		else
 		{
 			let string = self.string as NSString
-			var current = min(location, string.length) - 1
+			let totalLength = string.length
+			var current = min(location, totalLength) - 1
 
 			repeat
 			{
 				if string.character(at: current).isNewLine()
 				{
-					return current + 1
+					return min(current + 1, totalLength - 1)
 				}
 
 				current = max(0, current - 1)
