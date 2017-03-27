@@ -161,9 +161,27 @@ class ModifiableIndentationTest: XCTestCase
 		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(8, 0)])
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 
-		// Attempt un-indent by placing acrent in the EOF
+		// Attempt un-indent by placing caret in the EOF
 		let length = textStorage.length
 		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(length, 0)])
+		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
+	}
+
+	func testMultipleRangesZeroLength()
+	{
+		// Even though the text editor doesn't currently support multiple zero-length ranges, we will test the algorithm anyway
+		let textStorage = NSTextStorage(string: "Hold it\nWait a minute...\nI can't read my writing, my own writing!")
+
+		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0), NSMakeRange(8, 0)])
+		XCTAssertEqual("\tHold it\n\tWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
+
+		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 0), NSMakeRange(9, 0)])
+		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
+
+		textStorage.increaseIndentForSelectedRanges([NSMakeRange(18, 0), NSMakeRange(52, 0)])
+		XCTAssertEqual("Hold it\n\tWait a minute...\n\tI can't read my writing, my own writing!", textStorage.string)
+
+		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(19, 0), NSMakeRange(53, 0)])
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 	}
 }

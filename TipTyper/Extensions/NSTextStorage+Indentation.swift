@@ -19,19 +19,32 @@ extension NSTextStorage: ModifiableIndentation
 	func increaseIndentForSelectedRanges(_ ranges: [NSRange])
 	{
 		let string = self.string as NSString
-		let enclosingRange = string.lineRange(for: ranges[0])
+		var insertedCharacters = 0
 
-		self.replaceCharacters(in: NSMakeRange(enclosingRange.location, 0), with: "\t")
+		for range in ranges
+		{
+			let enclosingRange = string.lineRange(for: NSMakeRange(range.location, range.length))
+			self.replaceCharacters(in: NSMakeRange(enclosingRange.location + insertedCharacters, 0), with: "\t")
+
+			insertedCharacters += 1
+		}
 	}
 
 	func decreaseIndentForSelectedRanges(_ ranges: [NSRange])
 	{
 		let string = self.string as NSString
-		let enclosingRange = string.lineRange(for: ranges[0])
+		var removedChracters = 0
 
-		if string.character(at: enclosingRange.location).isTab()
+		for range in ranges
 		{
-			self.replaceCharacters(in: NSMakeRange(enclosingRange.location, 1), with: "")
+			let enclosingRange = string.lineRange(for: range)
+
+			if string.character(at: enclosingRange.location).isTab()
+			{
+				self.replaceCharacters(in: NSMakeRange(enclosingRange.location - removedChracters, 1), with: "")
+
+				removedChracters += 1
+			}
 		}
 	}
 
