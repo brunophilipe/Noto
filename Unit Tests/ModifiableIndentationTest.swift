@@ -153,6 +153,29 @@ class ModifiableIndentationTest: XCTestCase
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 	}
 
+	func testSingleRangeNonZeroLength()
+	{
+		let textStorage = NSTextStorage(string: "The test string")
+
+		// Try simple indent
+		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 5)])
+		XCTAssertEqual("\tThe test string", textStorage.string)
+
+		// Try simple unindent
+		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 5)])
+		XCTAssertEqual("The test string", textStorage.string)
+
+		// Try two consecutive simple indents
+		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 7)])
+		textStorage.increaseIndentForSelectedRanges([NSMakeRange(1, 7)])
+		XCTAssertEqual("\t\tThe test string", textStorage.string)
+
+		// Try two consecutive simple unindents
+		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(2, 7)])
+		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 7)])
+		XCTAssertEqual("The test string", textStorage.string)
+	}
+
 	func testIndentEdgeCases()
 	{
 		let textStorage = NSTextStorage(string: "Hold it\nWait a minute...\nI can't read my writing, my own writing!")
