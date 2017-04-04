@@ -153,6 +153,22 @@ class EditorView: PaddedTextView
 		}
 	}
 
+	func increaseIndentation()
+	{
+		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue })
+		{
+			selectedRanges = ranges.map { return NSValue(range: $0) }
+		}
+	}
+
+	func decreaseIndentation()
+	{
+		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue })
+		{
+			selectedRanges = ranges.map { return NSValue(range: $0) }
+		}
+	}
+
 	// Has to be updated when font size changes
 	func setTabWidth(_ width: UInt)
 	{

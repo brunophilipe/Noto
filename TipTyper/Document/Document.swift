@@ -285,6 +285,31 @@ extension Document
 	{
 		saveFileAskingForEncoding(sender)
 	}
+
+	@IBAction func increaseIndentation(_ sender: Any?)
+	{
+		window?.textView.increaseIndentation()
+	}
+
+	@IBAction func decreaseIndentation(_ sender: Any?)
+	{
+		window?.textView.decreaseIndentation()
+	}
+
+	@IBAction func changeIndentationWithSegmentedControl(_ sender: NSSegmentedControl?)
+	{
+		switch sender?.selectedSegment
+		{
+		case .some(0):
+			window?.textView.decreaseIndentation()
+
+		case .some(1):
+			window?.textView.increaseIndentation()
+
+		default:
+			break
+		}
+	}
 }
 
 private protocol PendingOperation {}
