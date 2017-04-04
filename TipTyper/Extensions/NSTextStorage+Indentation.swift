@@ -10,15 +10,16 @@ import AppKit
 
 protocol ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange])
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange])
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
 }
 
 extension NSTextStorage: ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange])
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
 	{
 		let string = self.string as NSString
+		var updatedRanges = [NSRange]()
 		var insertedCharacters = 0
 
 		for range in ranges
@@ -27,12 +28,18 @@ extension NSTextStorage: ModifiableIndentation
 			self.replaceCharacters(in: NSMakeRange(enclosingRange.location + insertedCharacters, 0), with: "\t")
 
 			insertedCharacters += 1
+
+			// The new range is always guaranteed to be valid, as long as `range` was valid already.
+			updatedRanges.append(NSMakeRange(range.location + insertedCharacters, range.length))
 		}
+
+		return updatedRanges
 	}
 
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange])
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
 	{
 		let string = self.string as NSString
+		var updatedRanges = [NSRange]()
 		var removedChracters = 0
 
 		for range in ranges
@@ -45,7 +52,11 @@ extension NSTextStorage: ModifiableIndentation
 
 				removedChracters += 1
 			}
+
+			updatedRanges.append(NSMakeRange(max(range.location - removedChracters, 0), range.length))
 		}
+
+		return updatedRanges
 	}
 
 	func findLineStartFromLocation(_ location: Int) -> NSInteger

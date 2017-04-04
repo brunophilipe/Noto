@@ -94,21 +94,21 @@ class ModifiableIndentationTest: XCTestCase
 		let textStorage = NSTextStorage(string: "The test string")
 
 		// Try simple indent
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 0)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
 		XCTAssertEqual("\tThe test string", textStorage.string)
 
 		// Try simple unindent
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 0)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
 		XCTAssertEqual("The test string", textStorage.string)
 
 		// Try two consecutive simple indents
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 0)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 0)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
 		XCTAssertEqual("\t\tThe test string", textStorage.string)
 
 		// Try two consecutive simple unindents
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 0)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 0)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 0)])))
 		XCTAssertEqual("The test string", textStorage.string)
 
 		// Add a new line of text
@@ -117,39 +117,49 @@ class ModifiableIndentationTest: XCTestCase
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 
 		// Try indenting second line only
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 1, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 2, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 1, 0)])))
 		XCTAssertEqual("The test string\n\tAnother test string", textStorage.string)
 
 		// Try unindenting second line only
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 1, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 1, 0)])))
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 
 		// Try indenting second line only by placing caret in middle of the line
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 6, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 7, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 6, 0)])))
 		XCTAssertEqual("The test string\n\tAnother test string", textStorage.string)
 
 		// Try unindenting second line only by placing caret in middle of the line
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 6, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])))
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 
 		// Try indenting second line only by placing caret in middle of the line
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 6, 0)])
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 7, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 6, 0)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 8, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])))
 		XCTAssertEqual("The test string\n\t\tAnother test string", textStorage.string)
 
 		// Try unindenting second line only by placing caret in middle of the line
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 8, 0)])
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 7, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 8, 0)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 6, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 7, 0)])))
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 
 		// Try simple indent by placing caret in end of the line
 		lineLength = textStorage.length
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 1, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(lineLength, 0)])))
 		XCTAssertEqual("The test string\n\tAnother test string", textStorage.string)
 
 		// Try simple unindent by placing caret in end of the line
 		lineLength = textStorage.length
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength - 1, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength, 0)])))
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 	}
 
@@ -158,21 +168,21 @@ class ModifiableIndentationTest: XCTestCase
 		let textStorage = NSTextStorage(string: "The test string")
 
 		// Try simple indent
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 5)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 5)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 5)])))
 		XCTAssertEqual("\tThe test string", textStorage.string)
 
 		// Try simple unindent
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 5)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 5)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 5)])))
 		XCTAssertEqual("The test string", textStorage.string)
 
 		// Try two consecutive simple indents
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 7)])
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(1, 7)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 7)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 7)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(2, 7)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(1, 7)])))
 		XCTAssertEqual("\t\tThe test string", textStorage.string)
 
 		// Try two consecutive simple unindents
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(2, 7)])
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 7)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 7)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(2, 7)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 7)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 7)])))
 		XCTAssertEqual("The test string", textStorage.string)
 	}
 
@@ -181,12 +191,12 @@ class ModifiableIndentationTest: XCTestCase
 		let textStorage = NSTextStorage(string: "Hold it\nWait a minute...\nI can't read my writing, my own writing!")
 
 		// Atempt to un-indent non-indented line
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(8, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(8, 0)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(8, 0)])))
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 
 		// Attempt un-indent by placing caret in the EOF
 		let length = textStorage.length
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(length, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(length, 0)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(length, 0)])))
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 	}
 
@@ -195,16 +205,25 @@ class ModifiableIndentationTest: XCTestCase
 		// Even though the text editor doesn't currently support multiple zero-length ranges, we will test the algorithm anyway
 		let textStorage = NSTextStorage(string: "Hold it\nWait a minute...\nI can't read my writing, my own writing!")
 
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0), NSMakeRange(8, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, 0), NSMakeRange(10, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 0), NSMakeRange(8, 0)])))
 		XCTAssertEqual("\tHold it\n\tWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 0), NSMakeRange(9, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 0), NSMakeRange(8, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 0), NSMakeRange(10, 0)])))
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 
-		textStorage.increaseIndentForSelectedRanges([NSMakeRange(18, 0), NSMakeRange(52, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(19, 0), NSMakeRange(54, 0)],
+		                           textStorage.increaseIndentForSelectedRanges([NSMakeRange(18, 0), NSMakeRange(52, 0)])))
 		XCTAssertEqual("Hold it\n\tWait a minute...\n\tI can't read my writing, my own writing!", textStorage.string)
 
-		textStorage.decreaseIndentForSelectedRanges([NSMakeRange(19, 0), NSMakeRange(53, 0)])
+		XCTAssert(rangeArraysEqual([NSMakeRange(18, 0), NSMakeRange(52, 0)],
+		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(19, 0), NSMakeRange(54, 0)])))
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 	}
+}
+
+func rangeArraysEqual(_ first: [NSRange], _ second: [NSRange]) -> Bool
+{
+	return first.elementsEqual(second) { return NSEqualRanges($0, $1) }
 }
