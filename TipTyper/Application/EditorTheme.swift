@@ -1,6 +1,6 @@
 //
 //  EditorTheme.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 23/02/2017.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.
@@ -89,7 +89,7 @@ extension EditorTheme
 	{
 		if let appSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last
 		{
-			let themeDirectory = appSupportDirectory.appendingPathComponent("TipTyper/Themes/")
+			let themeDirectory = appSupportDirectory.appendingPathComponent("Noto/Themes/")
 
 			do
 			{

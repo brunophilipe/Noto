@@ -1,6 +1,6 @@
 //
 //  PrintAccessoryViewController.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 12/3/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.
@@ -59,7 +59,7 @@ class PrintAccessoryViewController: NSViewController
 
 	override func awakeFromNib()
 	{
-		title = "TipTyper"
+		title = "Noto"
 	}
 
     override func viewDidLoad()

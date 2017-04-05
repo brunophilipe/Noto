@@ -1,6 +1,6 @@
 //
 //  Document.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 14/1/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.
@@ -130,7 +130,7 @@ class Document: NSDocument
 		}
 		else
 		{
-			throw NSError(domain: kTipTyperErrorDomain, code: 1020, userInfo: [NSLocalizedDescriptionKey: "Could not restore file"])
+			throw NSError(domain: kNotoErrorDomain, code: 1020, userInfo: [NSLocalizedDescriptionKey: "Could not restore file"])
 		}
 	}
 
@@ -143,7 +143,7 @@ class Document: NSDocument
 		}
 		else
 		{
-			throw NSError(domain: kTipTyperErrorDomain, code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
+			throw NSError(domain: kNotoErrorDomain, code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
 		}
 	}
 
@@ -203,7 +203,7 @@ class Document: NSDocument
 		}
 		else
 		{
-			throw NSError(domain: kTipTyperErrorDomain,
+			throw NSError(domain: kNotoErrorDomain,
 						  code: 2001,
 						  userInfo: [NSLocalizedDescriptionKey: "Could not retrieve data to print"])
 		}

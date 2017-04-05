@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 14/1/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.
@@ -9,7 +9,7 @@
 import Cocoa
 import CCNPreferencesWindowController
 
-let kTipTyperErrorDomain = "com.brunophilipe.TipTyper"
+let kNotoErrorDomain = "com.brunophilipe.Noto"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate

@@ -1,6 +1,6 @@
 //
 //  BackgroundView.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 21/2/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.

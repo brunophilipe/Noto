@@ -1,6 +1,6 @@
 //
 //  EditorPreferencesViewController.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 28/02/2017.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.

@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09747727490BC7110324BC12659F7FE8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
 		35C8ACF64ED508861C0D1C4B7E2F532B /* CCNPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25D15B57C967ADFB5E2FFE09617BB92 /* CCNPreferencesWindowController.m */; };
 		3D3796739C63901297772B173C1F394A /* CCNPreferencesWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 58AC1DDFBE947944D80A763F305F01F5 /* CCNPreferencesWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		462463168F2C3CF037F24039B91627EE /* CCNPreferencesWindowController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7887944B190FBD70B9E0ADB46E85DBD /* CCNPreferencesWindowController-dummy.m */; };
-		60109BACC990FF6F9267CC59E7BF4E9A /* Pods-TipTyper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D1FCFA716CD3B669817720C8475E0B1B /* Pods-TipTyper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		480C9468BB5E105246777C25D821217E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
 		7629AC5FD8104E00E3DF3692C384E8AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		876E5079141F631D3D997DD31FF58AAE /* Pods-Noto-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 637C6D0D6EA0886741507DC27958C3C7 /* Pods-Noto-dummy.m */; };
 		99AE6821B0630876EE3D57ABF077CFA7 /* CCNPreferencesWindowController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8945244A118849271B0971D4066EAB /* CCNPreferencesWindowController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF7227A9B5173ADD7B599EF5BD914717 /* Pods-TipTyper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA1F8671AD509194B6E013568AB45FC /* Pods-TipTyper-dummy.m */; };
+		CAF88B7C49CAC125AC6DB9DC553003F8 /* Pods-Noto-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9D08301AF9D1BE69AA96FFA9C537B1 /* Pods-Noto-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE0BA1FC20B1F2C9D0C49455D3C4E11C /* CCNPreferencesWindowControllerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B40147787DA82C6DB38CD9F41D3977 /* CCNPreferencesWindowControllerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7157ADB288D129DF0955366B5273F37C /* PBXContainerItemProxy */ = {
+		71F5C29D1EC993894E6C993BCE85DF3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -29,37 +29,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0832B375F22C5DE746AF9D674CFC4AA3 /* Pods-Noto-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Noto-acknowledgements.markdown"; sourceTree = "<group>"; };
 		13B40147787DA82C6DB38CD9F41D3977 /* CCNPreferencesWindowControllerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCNPreferencesWindowControllerProtocol.h; path = CCNPreferencesWindowController/CCNPreferencesWindowControllerProtocol.h; sourceTree = "<group>"; };
+		1C9D08301AF9D1BE69AA96FFA9C537B1 /* Pods-Noto-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Noto-umbrella.h"; sourceTree = "<group>"; };
 		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		42E18CDC02E802B72A35C59B8BC59DFD /* Pods-TipTyper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TipTyper-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4B624F6AE51044375EFD4B56A6AC378C /* Pods_TipTyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TipTyper.framework; path = "Pods-TipTyper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		505A0A26810EF9BAAA62C9CB48787091 /* Pods-TipTyper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TipTyper.modulemap"; sourceTree = "<group>"; };
+		47D97F92ACD01BD9A3F265D1B137556A /* Pods-Noto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Noto.release.xcconfig"; sourceTree = "<group>"; };
+		4CEDC29170E46AC02AE5682F9E39C10C /* Pods-Noto-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Noto-resources.sh"; sourceTree = "<group>"; };
 		58AC1DDFBE947944D80A763F305F01F5 /* CCNPreferencesWindowController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CCNPreferencesWindowController.h; path = CCNPreferencesWindowController/CCNPreferencesWindowController.h; sourceTree = "<group>"; };
+		637C6D0D6EA0886741507DC27958C3C7 /* Pods-Noto-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Noto-dummy.m"; sourceTree = "<group>"; };
+		666F49065B431DD39DB3042B48D98111 /* Pods-Noto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Noto.modulemap"; sourceTree = "<group>"; };
 		6E8945244A118849271B0971D4066EAB /* CCNPreferencesWindowController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CCNPreferencesWindowController-umbrella.h"; sourceTree = "<group>"; };
+		71A9A6BCA139C0E3B3AC0ABC20753E7C /* Pods-Noto-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Noto-frameworks.sh"; sourceTree = "<group>"; };
+		805892C030CE8D3E8CAEA915924BEB3D /* CCNPreferencesWindowController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CCNPreferencesWindowController.framework; path = CCNPreferencesWindowController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97F98061F0E8C8418FDA8C08694B9BC7 /* Pods-Noto-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Noto-acknowledgements.plist"; sourceTree = "<group>"; };
 		9B09E1D793A760A9100659246C049923 /* CCNPreferencesWindowController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CCNPreferencesWindowController-prefix.pch"; sourceTree = "<group>"; };
-		9D8359DD85EE17F53915A18E18E7D0D9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FF11255E2C4C2D8EF4A45F816495CA7 /* Pods-TipTyper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TipTyper-acknowledgements.plist"; sourceTree = "<group>"; };
 		A25D15B57C967ADFB5E2FFE09617BB92 /* CCNPreferencesWindowController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CCNPreferencesWindowController.m; path = CCNPreferencesWindowController/CCNPreferencesWindowController.m; sourceTree = "<group>"; };
-		A2BE1719ACF1FD1B12178AC535F36E1A /* CCNPreferencesWindowController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CCNPreferencesWindowController.framework; path = CCNPreferencesWindowController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A37F38C51D459C2F23B3531A22DB903D /* Pods-TipTyper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TipTyper-frameworks.sh"; sourceTree = "<group>"; };
 		B67B1DEF2D82B347308C51BF108C76FD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6E7D4766B6C3179BFCB14DC72763E5B /* Pods-TipTyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TipTyper.debug.xcconfig"; sourceTree = "<group>"; };
-		C16AA42A2FDA3BE6B0B896D8AD877D68 /* Pods-TipTyper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TipTyper.release.xcconfig"; sourceTree = "<group>"; };
 		C653330A61EE8C7D6833923D47F53145 /* CCNPreferencesWindowController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CCNPreferencesWindowController.modulemap; sourceTree = "<group>"; };
-		D1F2B940ABFB7418ADD9F758F02D6E41 /* Pods-TipTyper-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TipTyper-resources.sh"; sourceTree = "<group>"; };
-		D1FCFA716CD3B669817720C8475E0B1B /* Pods-TipTyper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TipTyper-umbrella.h"; sourceTree = "<group>"; };
 		DBFEADCAB6CEEBEE4A133BEA3E9CE150 /* CCNPreferencesWindowController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CCNPreferencesWindowController.xcconfig; sourceTree = "<group>"; };
+		E21C44D744EE64C5B3B83B56726FE0B5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7887944B190FBD70B9E0ADB46E85DBD /* CCNPreferencesWindowController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CCNPreferencesWindowController-dummy.m"; sourceTree = "<group>"; };
-		ECA1F8671AD509194B6E013568AB45FC /* Pods-TipTyper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TipTyper-dummy.m"; sourceTree = "<group>"; };
+		E96638BC93F89B78DE296BE659DB6E18 /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
+		F06F80A96759DFC604ED3B124EEA93C0 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Noto.framework; path = "Pods-Noto.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		34DCFF528AE31758E2BD736F0EC78812 /* Frameworks */ = {
+		5F251C2C9B7A94D046751874771C4A0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09747727490BC7110324BC12659F7FE8 /* Cocoa.framework in Frameworks */,
+				480C9468BB5E105246777C25D821217E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,22 +82,31 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
-		254DF4231C461F1161E4DC037C700D5D /* Pods-TipTyper */ = {
+		04D80879E7B15033F7B942728347BE54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D8359DD85EE17F53915A18E18E7D0D9 /* Info.plist */,
-				505A0A26810EF9BAAA62C9CB48787091 /* Pods-TipTyper.modulemap */,
-				42E18CDC02E802B72A35C59B8BC59DFD /* Pods-TipTyper-acknowledgements.markdown */,
-				9FF11255E2C4C2D8EF4A45F816495CA7 /* Pods-TipTyper-acknowledgements.plist */,
-				ECA1F8671AD509194B6E013568AB45FC /* Pods-TipTyper-dummy.m */,
-				A37F38C51D459C2F23B3531A22DB903D /* Pods-TipTyper-frameworks.sh */,
-				D1F2B940ABFB7418ADD9F758F02D6E41 /* Pods-TipTyper-resources.sh */,
-				D1FCFA716CD3B669817720C8475E0B1B /* Pods-TipTyper-umbrella.h */,
-				B6E7D4766B6C3179BFCB14DC72763E5B /* Pods-TipTyper.debug.xcconfig */,
-				C16AA42A2FDA3BE6B0B896D8AD877D68 /* Pods-TipTyper.release.xcconfig */,
+				805892C030CE8D3E8CAEA915924BEB3D /* CCNPreferencesWindowController.framework */,
+				F06F80A96759DFC604ED3B124EEA93C0 /* Pods_Noto.framework */,
 			);
-			name = "Pods-TipTyper";
-			path = "Target Support Files/Pods-TipTyper";
+			name = Products;
+			sourceTree = "<group>";
+		};
+		270133BCCBE114053AC4E93336FA7A1D /* Pods-Noto */ = {
+			isa = PBXGroup;
+			children = (
+				E21C44D744EE64C5B3B83B56726FE0B5 /* Info.plist */,
+				666F49065B431DD39DB3042B48D98111 /* Pods-Noto.modulemap */,
+				0832B375F22C5DE746AF9D674CFC4AA3 /* Pods-Noto-acknowledgements.markdown */,
+				97F98061F0E8C8418FDA8C08694B9BC7 /* Pods-Noto-acknowledgements.plist */,
+				637C6D0D6EA0886741507DC27958C3C7 /* Pods-Noto-dummy.m */,
+				71A9A6BCA139C0E3B3AC0ABC20753E7C /* Pods-Noto-frameworks.sh */,
+				4CEDC29170E46AC02AE5682F9E39C10C /* Pods-Noto-resources.sh */,
+				1C9D08301AF9D1BE69AA96FFA9C537B1 /* Pods-Noto-umbrella.h */,
+				E96638BC93F89B78DE296BE659DB6E18 /* Pods-Noto.debug.xcconfig */,
+				47D97F92ACD01BD9A3F265D1B137556A /* Pods-Noto.release.xcconfig */,
+			);
+			name = "Pods-Noto";
+			path = "Target Support Files/Pods-Noto";
 			sourceTree = "<group>";
 		};
 		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
@@ -122,32 +131,23 @@
 			path = "../Target Support Files/CCNPreferencesWindowController";
 			sourceTree = "<group>";
 		};
+		5BB6AEFD9F0E72471F097BB6B6E35BC8 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				270133BCCBE114053AC4E93336FA7A1D /* Pods-Noto */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
 				A0478853DB2D9416C00E753C82775EF5 /* Pods */,
-				7E36F8D52BC86ED4AE7291C6143CB540 /* Products */,
-				9BC08506A94BE8813F145BDB63669127 /* Targets Support Files */,
+				04D80879E7B15033F7B942728347BE54 /* Products */,
+				5BB6AEFD9F0E72471F097BB6B6E35BC8 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		7E36F8D52BC86ED4AE7291C6143CB540 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A2BE1719ACF1FD1B12178AC535F36E1A /* CCNPreferencesWindowController.framework */,
-				4B624F6AE51044375EFD4B56A6AC378C /* Pods_TipTyper.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9BC08506A94BE8813F145BDB63669127 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				254DF4231C461F1161E4DC037C700D5D /* Pods-TipTyper */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		A0478853DB2D9416C00E753C82775EF5 /* Pods */ = {
@@ -173,11 +173,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0EC64C3BFC9C4D78594B768BFE2D782B /* Headers */ = {
+		AD755AC98903E1F7368C58636CAD1FBF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60109BACC990FF6F9267CC59E7BF4E9A /* Pods-TipTyper-umbrella.h in Headers */,
+				CAF88B7C49CAC125AC6DB9DC553003F8 /* Pods-Noto-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,24 +194,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5B1A603DE19A19C70EEAE2A3A5E0E978 /* Pods-TipTyper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 178FDB9737CFF26EF3161CF5737153BC /* Build configuration list for PBXNativeTarget "Pods-TipTyper" */;
-			buildPhases = (
-				7AA10F05A34A6DB77C66AF43DB1B3CA5 /* Sources */,
-				34DCFF528AE31758E2BD736F0EC78812 /* Frameworks */,
-				0EC64C3BFC9C4D78594B768BFE2D782B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A3C0107E704A210A3EFBF880EF54BD9 /* PBXTargetDependency */,
-			);
-			name = "Pods-TipTyper";
-			productName = "Pods-TipTyper";
-			productReference = 4B624F6AE51044375EFD4B56A6AC378C /* Pods_TipTyper.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		9CDC41D33B2D46235F90A266C18865D3 /* CCNPreferencesWindowController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBD3682E9A601F52CD96B08E04DA2CE0 /* Build configuration list for PBXNativeTarget "CCNPreferencesWindowController" */;
@@ -226,7 +208,25 @@
 			);
 			name = CCNPreferencesWindowController;
 			productName = CCNPreferencesWindowController;
-			productReference = A2BE1719ACF1FD1B12178AC535F36E1A /* CCNPreferencesWindowController.framework */;
+			productReference = 805892C030CE8D3E8CAEA915924BEB3D /* CCNPreferencesWindowController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A9B9303FCA7A1012875C09EBCDD1DB90 /* Pods-Noto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7083E4FD9E02709DE1B10F6C1016D3AF /* Build configuration list for PBXNativeTarget "Pods-Noto" */;
+			buildPhases = (
+				1E5159E49FC022BF5328E69D891D8AD0 /* Sources */,
+				5F251C2C9B7A94D046751874771C4A0B /* Frameworks */,
+				AD755AC98903E1F7368C58636CAD1FBF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E54D26769FB1A0D3992FE86FBD88BE9 /* PBXTargetDependency */,
+			);
+			name = "Pods-Noto";
+			productName = "Pods-Noto";
+			productReference = F06F80A96759DFC604ED3B124EEA93C0 /* Pods_Noto.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -246,17 +246,25 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 7E36F8D52BC86ED4AE7291C6143CB540 /* Products */;
+			productRefGroup = 04D80879E7B15033F7B942728347BE54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9CDC41D33B2D46235F90A266C18865D3 /* CCNPreferencesWindowController */,
-				5B1A603DE19A19C70EEAE2A3A5E0E978 /* Pods-TipTyper */,
+				A9B9303FCA7A1012875C09EBCDD1DB90 /* Pods-Noto */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E5159E49FC022BF5328E69D891D8AD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876E5079141F631D3D997DD31FF58AAE /* Pods-Noto-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EE07AB0641A97CB900F4F6CDFD53936 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,22 +274,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AA10F05A34A6DB77C66AF43DB1B3CA5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF7227A9B5173ADD7B599EF5BD914717 /* Pods-TipTyper-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A3C0107E704A210A3EFBF880EF54BD9 /* PBXTargetDependency */ = {
+		9E54D26769FB1A0D3992FE86FBD88BE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CCNPreferencesWindowController;
 			target = 9CDC41D33B2D46235F90A266C18865D3 /* CCNPreferencesWindowController */;
-			targetProxy = 7157ADB288D129DF0955366B5273F37C /* PBXContainerItemProxy */;
+			targetProxy = 71F5C29D1EC993894E6C993BCE85DF3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -330,9 +330,9 @@
 			};
 			name = Debug;
 		};
-		5D0ACA3FAFCDBCACC07073D99CF9F3F5 /* Release */ = {
+		401177067C67495168F2B78C4ED8DAF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C16AA42A2FDA3BE6B0B896D8AD877D68 /* Pods-TipTyper.release.xcconfig */;
+			baseConfigurationReference = E96638BC93F89B78DE296BE659DB6E18 /* Pods-Noto.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -340,7 +340,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -348,24 +348,24 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TipTyper/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Noto/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MODULEMAP_FILE = "Target Support Files/Pods-TipTyper/Pods-TipTyper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MODULEMAP_FILE = "Target Support Files/Pods-Noto/Pods-Noto.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TipTyper;
+				PRODUCT_NAME = Pods_Noto;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		832EB744C0B98597406FD388A7A4C142 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -401,9 +401,9 @@
 			};
 			name = Release;
 		};
-		E90907010789C71A8D9C32576833879A /* Debug */ = {
+		93F87FBBEBD8B5FBC7628D72393FFDF5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6E7D4766B6C3179BFCB14DC72763E5B /* Pods-TipTyper.debug.xcconfig */;
+			baseConfigurationReference = 47D97F92ACD01BD9A3F265D1B137556A /* Pods-Noto.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -411,7 +411,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -419,24 +419,24 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TipTyper/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Noto/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MODULEMAP_FILE = "Target Support Files/Pods-TipTyper/Pods-TipTyper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MODULEMAP_FILE = "Target Support Files/Pods-Noto/Pods-Noto.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TipTyper;
+				PRODUCT_NAME = Pods_Noto;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		F2595FDD7F5AC0905AE23FC2BA952710 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -515,20 +515,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		178FDB9737CFF26EF3161CF5737153BC /* Build configuration list for PBXNativeTarget "Pods-TipTyper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E90907010789C71A8D9C32576833879A /* Debug */,
-				5D0ACA3FAFCDBCACC07073D99CF9F3F5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34342BBF37D3A9ED85FF2EB654934920 /* Debug */,
 				F6FC88CB717F413199C282718D2DC09F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7083E4FD9E02709DE1B10F6C1016D3AF /* Build configuration list for PBXNativeTarget "Pods-Noto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				401177067C67495168F2B78C4ED8DAF7 /* Debug */,
+				93F87FBBEBD8B5FBC7628D72393FFDF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

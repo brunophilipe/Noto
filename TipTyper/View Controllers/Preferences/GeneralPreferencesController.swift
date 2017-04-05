@@ -1,6 +1,6 @@
 //
 //  GeneralPreferencesController.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 24/3/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.

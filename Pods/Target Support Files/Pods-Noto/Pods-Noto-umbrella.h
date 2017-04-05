@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_TipTyperVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_TipTyperVersionString[];
+FOUNDATION_EXPORT double Pods_NotoVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_NotoVersionString[];
 

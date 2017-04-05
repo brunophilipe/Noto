@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B1A603DE19A19C70EEAE2A3A5E0E978"
-               BuildableName = "Pods_TipTyper.framework"
-               BlueprintName = "Pods-TipTyper"
+               BlueprintIdentifier = "A9B9303FCA7A1012875C09EBCDD1DB90"
+               BuildableName = "Pods_Noto.framework"
+               BlueprintName = "Pods-Noto"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5B1A603DE19A19C70EEAE2A3A5E0E978"
-            BuildableName = "Pods_TipTyper.framework"
-            BlueprintName = "Pods-TipTyper"
+            BlueprintIdentifier = "A9B9303FCA7A1012875C09EBCDD1DB90"
+            BuildableName = "Pods_Noto.framework"
+            BlueprintName = "Pods-Noto"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

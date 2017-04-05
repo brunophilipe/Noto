@@ -1,6 +1,6 @@
 //
 //  StatusInfoBarController.swift
-//  TipTyper
+//  Noto
 //
 //  Created by Bruno Philipe on 10/3/17.
 //  Copyright © 2017 Bruno Philipe. All rights reserved.
