@@ -122,7 +122,7 @@ class ModifiableIndentationTest: XCTestCase
 		XCTAssertEqual("The test string\n\tAnother test string", textStorage.string)
 
 		// Try unindenting second line only
-		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength, 0)],
+		XCTAssert(rangeArraysEqual([NSMakeRange(lineLength + 1, 0)],
 		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(lineLength + 1, 0)])))
 		XCTAssertEqual("The test string\nAnother test string", textStorage.string)
 

@@ -45,15 +45,24 @@ extension NSTextStorage: ModifiableIndentation
 		for range in ranges
 		{
 			let enclosingRange = string.lineRange(for: range)
+			var offset = 0
 
 			if string.character(at: enclosingRange.location).isTab()
 			{
 				self.replaceCharacters(in: NSMakeRange(enclosingRange.location - removedChracters, 1), with: "")
 
 				removedChracters += 1
+
+				if enclosingRange.location >= range.location
+				{
+					// If the removed character comes *AFTER* the caret, then we need to add one to the offset to cancel the default left 
+					// shift applied to the selection range after the indentation decrease
+					offset = 1
+				}
 			}
 
-			updatedRanges.append(NSMakeRange(max(range.location - removedChracters, 0), range.length))
+			updatedRanges.append(NSMakeRange(max(max(range.location, enclosingRange.location) - removedChracters + offset, 0),
+			                                 range.length))
 		}
 
 		return updatedRanges
