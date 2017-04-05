@@ -24,13 +24,33 @@ extension NSTextStorage: ModifiableIndentation
 
 		for range in ranges
 		{
-			let enclosingRange = string.lineRange(for: NSMakeRange(range.location, range.length))
-			self.replaceCharacters(in: NSMakeRange(enclosingRange.location + insertedCharacters, 0), with: "\t")
+			var insertedCharactersForRange = 0
+			let lineRange = string.lineRange(for: NSMakeRange(range.location, range.length))
 
-			insertedCharacters += 1
+			string.enumerateSubstrings(in: lineRange, options: .byLines)
+			{
+				(_, lineRange, enclosingRange, _) in
 
-			// The new range is always guaranteed to be valid, as long as `range` was valid already.
-			updatedRanges.append(NSMakeRange(range.location + insertedCharacters, range.length))
+				self.replaceCharacters(in: NSMakeRange(enclosingRange.location + insertedCharacters + insertedCharactersForRange, 0),
+				                       with: "\t")
+
+				insertedCharactersForRange += 1
+			}
+
+			if range.length == 0
+			{
+				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + insertedCharactersForRange, range.length))
+			}
+			else if insertedCharactersForRange > 0
+			{
+				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + 1, range.length + (insertedCharactersForRange - 1)))
+			}
+			else
+			{
+				updatedRanges.append(NSMakeRange(range.location + insertedCharacters, range.length))
+			}
+
+			insertedCharacters += insertedCharactersForRange
 		}
 
 		return updatedRanges
@@ -40,29 +60,50 @@ extension NSTextStorage: ModifiableIndentation
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
-		var removedChracters = 0
+		var removedCharacters = 0
 
 		for range in ranges
 		{
-			let enclosingRange = string.lineRange(for: range)
+			let lineRange = string.lineRange(for: range)
+			var removedCharactersForRange = 0
 			var offset = 0
 
-			if string.character(at: enclosingRange.location).isTab()
+			string.enumerateSubstrings(in: lineRange, options: .byLines)
 			{
-				self.replaceCharacters(in: NSMakeRange(enclosingRange.location - removedChracters, 1), with: "")
+				(_, _, enclosingRange, _) in
 
-				removedChracters += 1
-
-				if enclosingRange.location >= range.location
+				if string.character(at: enclosingRange.location).isTab()
 				{
-					// If the removed character comes *AFTER* the caret, then we need to add one to the offset to cancel the default left 
-					// shift applied to the selection range after the indentation decrease
-					offset = 1
+					self.replaceCharacters(in: NSMakeRange(enclosingRange.location - removedCharacters - removedCharactersForRange, 1),
+					                       with: "")
+
+					removedCharactersForRange += 1
+
+					if lineRange.location == range.location
+					{
+						// If the removed character comes *AFTER* the caret, then we need to add one to the offset to cancel the default left
+						// shift applied to the selection range after the indentation decrease
+						offset = 1
+					}
 				}
 			}
 
-			updatedRanges.append(NSMakeRange(max(max(range.location, enclosingRange.location) - removedChracters + offset, 0),
-			                                 range.length))
+			let shiftedRangeLocation = max(max(range.location, lineRange.location) - removedCharacters + offset, 0)
+
+			if range.length == 0
+			{
+				updatedRanges.append(NSMakeRange(shiftedRangeLocation - removedCharactersForRange, range.length))
+			}
+			else if removedCharactersForRange > 0
+			{
+				updatedRanges.append(NSMakeRange(shiftedRangeLocation - 1, range.length - (removedCharactersForRange - 1)))
+			}
+			else
+			{
+				updatedRanges.append(NSMakeRange(shiftedRangeLocation, range.length))
+			}
+
+			removedCharacters += removedCharactersForRange
 		}
 
 		return updatedRanges

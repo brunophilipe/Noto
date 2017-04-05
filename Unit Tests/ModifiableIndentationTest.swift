@@ -184,6 +184,16 @@ class ModifiableIndentationTest: XCTestCase
 		XCTAssert(rangeArraysEqual([NSMakeRange(1, 7)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(2, 7)])))
 		XCTAssert(rangeArraysEqual([NSMakeRange(0, 7)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, 7)])))
 		XCTAssertEqual("The test string", textStorage.string)
+
+		textStorage.append(NSAttributedString.init(string: "\nHold it\nWait a minute...\nI can't read my writing, my own writing!"))
+		XCTAssertEqual("The test string\nHold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
+
+		// Test indent all lines in entire text
+		let length = textStorage.length
+		XCTAssert(rangeArraysEqual([NSMakeRange(1, length + 3)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, length)])))
+
+		// Test unindent all lines in entire text
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, length)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, length + 3)])))
 	}
 
 	func testIndentEdgeCases()
