@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PrintAccessoryViewController" customModule="TipTyper" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PrintAccessoryViewController" customModule="Noto" customModuleProvider="target">
             <connections>
                 <outlet property="checkboxRewrapContents" destination="Dwo-Hn-3F8" id="4HT-AO-rt8"/>
                 <outlet property="checkboxShowDate" destination="5TG-bo-zdI" id="ftF-6V-rBy"/>

@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HUDInfoBarController" customModule="TipTyper" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HUDInfoBarController" customModule="Noto" customModuleProvider="target">
             <connections>
                 <outlet property="labelCharacters" destination="hCt-ue-JOq" id="AUp-gI-cad"/>
                 <outlet property="labelEncoding" destination="ofg-Sf-FxU" id="xnK-wG-v3j"/>

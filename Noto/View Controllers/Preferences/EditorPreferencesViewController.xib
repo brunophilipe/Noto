@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesViewController" customModule="TipTyper" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesViewController" customModule="Noto" customModuleProvider="target">
             <connections>
                 <outlet property="chooseFontButton" destination="i4c-cf-BBU" id="31V-iN-u8v"/>
                 <outlet property="fontNameLabel" destination="jow-eT-zZI" id="jgr-oG-eiq"/>

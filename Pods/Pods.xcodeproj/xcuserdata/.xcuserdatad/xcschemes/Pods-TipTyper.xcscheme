@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = 'primary'
                BlueprintIdentifier = '5B1A603DE19A19C70EEAE2A3A5E0E978'
-               BlueprintName = 'Pods-TipTyper'
+               BlueprintName = 'Pods-Noto'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-TipTyper.framework'>
+               BuildableName = 'Pods-Noto.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
