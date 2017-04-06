@@ -165,7 +165,7 @@ class ModifiableIndentationTest: XCTestCase
 
 	func testSingleRangeNonZeroLength()
 	{
-		let textStorage = NSTextStorage(string: "The test string")
+		var textStorage = NSTextStorage(string: "The test string")
 
 		// Try simple indent
 		XCTAssert(rangeArraysEqual([NSMakeRange(1, 5)], textStorage.increaseIndentForSelectedRanges([NSMakeRange(0, 5)])))
@@ -194,6 +194,10 @@ class ModifiableIndentationTest: XCTestCase
 
 		// Test unindent all lines in entire text
 		XCTAssert(rangeArraysEqual([NSMakeRange(0, length)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(1, length + 3)])))
+
+		textStorage = NSTextStorage(string: "extension EditorView\n{\n\tenum WaitStatus\n\t{\n\t\tcase none\n\t\tcase waiting(timeout: TimeInterval)\n\t}\n}\n\n\n\n\n")
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 92)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 97)])))
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 90)], textStorage.decreaseIndentForSelectedRanges([NSMakeRange(0, 92)])))
 	}
 
 	func testIndentEdgeCases()

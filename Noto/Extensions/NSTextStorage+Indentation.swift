@@ -66,7 +66,6 @@ extension NSTextStorage: ModifiableIndentation
 		{
 			let lineRange = string.lineRange(for: range)
 			var removedCharactersForRange = 0
-			var offset = 0
 
 			string.enumerateSubstrings(in: lineRange, options: .byLines)
 			{
@@ -78,29 +77,33 @@ extension NSTextStorage: ModifiableIndentation
 					                       with: "")
 
 					removedCharactersForRange += 1
-
-					if lineRange.location == range.location
-					{
-						// If the removed character comes *AFTER* the caret, then we need to add one to the offset to cancel the default left
-						// shift applied to the selection range after the indentation decrease
-						offset = 1
-					}
 				}
 			}
 
-			let shiftedRangeLocation = max(max(range.location, lineRange.location) - removedCharacters + offset, 0)
+			let rangeStart = range.location - removedCharacters
 
 			if range.length == 0
 			{
-				updatedRanges.append(NSMakeRange(shiftedRangeLocation - removedCharactersForRange, range.length))
+				updatedRanges.append(NSMakeRange(max(rangeStart - removedCharactersForRange, lineRange.location - removedCharacters),
+				                                 range.length))
 			}
 			else if removedCharactersForRange > 0
 			{
-				updatedRanges.append(NSMakeRange(shiftedRangeLocation - 1, range.length - (removedCharactersForRange - 1)))
+				if rangeStart - 1 < lineRange.location - removedCharacters
+				{
+					updatedRanges.append(NSMakeRange(lineRange.location - removedCharacters,
+					                                 range.length - removedCharactersForRange))
+				}
+				else
+				{
+					updatedRanges.append(NSMakeRange(rangeStart - 1,
+					                                 range.length - removedCharactersForRange + 1))
+				}
 			}
 			else
 			{
-				updatedRanges.append(NSMakeRange(shiftedRangeLocation, range.length))
+				updatedRanges.append(NSMakeRange(max(rangeStart, lineRange.location - removedCharacters),
+				                                 range.length))
 			}
 
 			removedCharacters += removedCharactersForRange
