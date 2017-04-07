@@ -409,6 +409,8 @@ class DocumentWindow: NSWindow
 	private func updateEditorFont()
 	{
 		textView.font = Preferences.instance.editorFont
+
+		updateEditorTabSize()
 	}
 
 	private func updateEditorColors()

@@ -30,6 +30,14 @@ class EditorView: PaddedTextView
 		}
 	}
 
+	override var font: NSFont?
+	{
+		didSet
+		{
+			invisiblesLayoutManager.updateFontInformation()
+		}
+	}
+
 	var showsInvisibleCharacters: Bool
 	{
 		get { return invisiblesLayoutManager.showsInvisibleCharacters }

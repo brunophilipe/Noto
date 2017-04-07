@@ -32,14 +32,14 @@ class InvisiblesLayoutManager: NSLayoutManager
 	{
 		super.init(coder: coder)
 
-		updateInvalidatables()
+		updateFontInformation()
 	}
 
 	override init()
 	{
 		super.init()
 
-		updateInvalidatables()
+		updateFontInformation()
 	}
 
 	override var showsInvisibleCharacters: Bool
@@ -60,28 +60,21 @@ class InvisiblesLayoutManager: NSLayoutManager
 		return lastInvisibleFont ?? NSFont.systemFont(ofSize: size)
 	}
 
-	private func updateInvalidatables()
+	func updateFontInformation()
 	{
 		pointScale = self.firstTextView?.window?.backingScaleFactor ?? 1.0
 		fontPointSize = self.textStorage?.font?.pointSize ?? 14.0
 	}
 
-	override func invalidateDisplay(forGlyphRange glyphRange: NSRange)
-	{
-		updateInvalidatables()
-
-		super.invalidateDisplay(forGlyphRange: glyphRange)
-	}
-
 	override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: NSPoint)
 	{
-		let invisiblesAttributes: [String : Any] = [
-			NSForegroundColorAttributeName: (Preferences.instance.editorTheme.editorForeground).withAlphaComponent(0.6),
-			NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
-		]
-
 		if !isResizing && _showsInvisibleCharacters
 		{
+			let invisiblesAttributes: [String : Any] = [
+				NSForegroundColorAttributeName: (Preferences.instance.editorTheme.editorForeground).withAlphaComponent(0.6),
+				NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
+			]
+
 			for glyphIndex in glyphsToShow.location ..< NSMaxRange(glyphsToShow)
 			{
 				if let storageString: NSString = textStorage?.string as NSString?
