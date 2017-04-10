@@ -159,7 +159,7 @@
                 </defaultToolbarItems>
             </toolbar>
             <connections>
-                <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
+                <outlet property="delegate" destination="-2" id="hW4-81-y5o"/>
                 <outlet property="textEditorBottomConstraint" destination="o5x-93-YKX" id="Q8N-Ke-9a5"/>
                 <outlet property="textEditorTopConstraint" destination="ngv-du-sXU" id="tV3-sZ-ian"/>
                 <outlet property="textView" destination="3kl-bg-vXa" id="X7k-y4-PLU"/>

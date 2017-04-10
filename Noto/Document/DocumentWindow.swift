@@ -11,7 +11,6 @@ import Cocoa
 @IBDesignable
 class DocumentWindow: NSWindow
 {
-	private weak var document: Document? = nil
 	private var infoBarController: InfoBar? = nil
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
@@ -64,16 +63,12 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-
 	func setup(_ document: Document)
 	{
 		for observedPreference in observedPreferences
 		{
 			Preferences.instance.addObserver(self, forKeyPath: observedPreference, options: .new, context: nil)
 		}
-
-		self.document = document
-		document.delegate = self
 
 		setupWindowStyle()
 
@@ -93,8 +88,6 @@ class DocumentWindow: NSWindow
 
 	deinit
 	{
-		document?.delegate = nil
-
 		if let toolbar = self.toolbar
 		{
 			toolbar.removeObserver(self, forKeyPath: "dynamicIsVisible")
@@ -310,7 +303,7 @@ class DocumentWindow: NSWindow
 			infoBar.setCharactersCount("\(characterCount) Character\(characterCount == 1 ? "" : "s")")
 			infoBar.setWordsCount("\(wordsCount) Word\(wordsCount == 1 ? "" : "s")")
 			infoBar.setLinesCount("\(linesCount) Line\(linesCount == 1 ? "" : "s")")
-			infoBar.setEncoding(document?.encoding.description ?? "<error>")
+			infoBar.setEncoding((delegate as? Document)?.encoding.description ?? "<error>")
 		}
 	}
 
@@ -481,7 +474,7 @@ extension DocumentWindow: NSTextViewDelegate
 	}
 }
 
-extension DocumentWindow: DocumentDelegate
+extension DocumentWindow
 {
 	func encodingDidChange(document: Document, newEncoding: String.Encoding)
 	{

@@ -8,19 +8,12 @@
 
 import Cocoa
 
-internal protocol DocumentDelegate
-{
-	func encodingDidChange(document: Document, newEncoding: String.Encoding)
-}
-
 class Document: NSDocument
 {
 	private var loadedString: String? = nil
 	private var usedEncoding: String.Encoding = .utf8
 
 	private var pendingOperations = [PendingOperation]()
-
-	var delegate: DocumentDelegate? = nil
 
 	override init()
 	{
@@ -57,9 +50,6 @@ class Document: NSDocument
 
 	override var windowNibName: String?
 	{
-		// Returns the nib file name of the document
-		// If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers,
-		// you should remove this property and override -makeWindowControllers instead.
 		return "Document"
 	}
 
@@ -106,7 +96,7 @@ class Document: NSDocument
 
 				try data(ofType: typeName).write(to: url)
 
-				self.delegate?.encodingDidChange(document: self, newEncoding: usedEncoding)
+				self.window?.encodingDidChange(document: self, newEncoding: usedEncoding)
 			}
 			else
 			{
