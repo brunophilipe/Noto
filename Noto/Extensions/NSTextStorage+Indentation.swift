@@ -10,17 +10,19 @@ import AppKit
 
 protocol ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?) -> [NSRange]
 }
 
 extension NSTextStorage: ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
 		var insertedCharacters = 0
+
+		undoManager?.beginUndoGrouping()
 
 		for range in ranges
 		{
@@ -31,8 +33,18 @@ extension NSTextStorage: ModifiableIndentation
 			{
 				(_, lineRange, enclosingRange, _) in
 
-				self.replaceCharacters(in: NSMakeRange(enclosingRange.location + insertedCharacters + insertedCharactersForRange, 0),
-				                       with: "\t")
+				let replacementRange = NSMakeRange(enclosingRange.location + insertedCharacters + insertedCharactersForRange, 0)
+				let previousContents = self.attributedSubstring(from: replacementRange)
+				let undoRange = NSMakeRange(replacementRange.location, 1)
+
+				self.replaceCharacters(in: replacementRange, with: "\t")
+
+				undoManager?.registerUndo(withTarget: self)
+				{
+					(target) in
+
+					target.replaceCharacters(in: undoRange, with: previousContents)
+				}
 
 				insertedCharactersForRange += 1
 			}
@@ -53,14 +65,18 @@ extension NSTextStorage: ModifiableIndentation
 			insertedCharacters += insertedCharactersForRange
 		}
 
+		undoManager?.endUndoGrouping()
+
 		return updatedRanges
 	}
 
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange]) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
 		var removedCharacters = 0
+
+		undoManager?.beginUndoGrouping()
 
 		for range in ranges
 		{
@@ -73,8 +89,18 @@ extension NSTextStorage: ModifiableIndentation
 
 				if string.character(at: enclosingRange.location).isTab()
 				{
-					self.replaceCharacters(in: NSMakeRange(enclosingRange.location - removedCharacters - removedCharactersForRange, 1),
-					                       with: "")
+					let replacementRange = NSMakeRange(enclosingRange.location - removedCharacters - removedCharactersForRange, 1)
+					let previousContents = self.attributedSubstring(from: replacementRange)
+					let undoRange = NSMakeRange(replacementRange.location, 0)
+
+					self.replaceCharacters(in: replacementRange, with: "")
+
+					undoManager?.registerUndo(withTarget: self)
+					{
+						(target) in
+
+						target.replaceCharacters(in: undoRange, with: previousContents)
+					}
 
 					removedCharactersForRange += 1
 				}
@@ -108,6 +134,8 @@ extension NSTextStorage: ModifiableIndentation
 
 			removedCharacters += removedCharactersForRange
 		}
+
+		undoManager?.endUndoGrouping()
 
 		return updatedRanges
 	}

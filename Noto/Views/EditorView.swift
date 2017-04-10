@@ -163,28 +163,18 @@ class EditorView: PaddedTextView
 
 	func increaseIndentation()
 	{
-		if let textStorage = self.textStorage
+		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue },
+		                                                             usingUndoManager: self.undoManager)
 		{
-			let ranges = textStorage.increaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue })
-
-			undoManager?.registerUndo(withTarget: textStorage,
-			                          selector: #selector(NSTextStorage.decreaseIndentForSelectedRanges(_:)),
-			                          object: ranges)
-
 			selectedRanges = ranges.map { return NSValue(range: $0) }
 		}
 	}
 
 	func decreaseIndentation()
 	{
-		if let textStorage = self.textStorage
+		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue },
+		                                                             usingUndoManager: self.undoManager)
 		{
-			let ranges = textStorage.decreaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue })
-
-			undoManager?.registerUndo(withTarget: textStorage,
-			                          selector: #selector(NSTextStorage.increaseIndentForSelectedRanges(_:)),
-			                          object: ranges)
-
 			selectedRanges = ranges.map { return NSValue(range: $0) }
 		}
 	}
