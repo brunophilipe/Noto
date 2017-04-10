@@ -76,7 +76,7 @@ extension NSTextStorage: ModifiableIndentation
 		var updatedRanges = [NSRange]()
 		var removedCharacters = 0
 
-		undoManager?.beginUndoGrouping()
+		var hasBegunUndoGrouping = false
 
 		for range in ranges
 		{
@@ -94,6 +94,15 @@ extension NSTextStorage: ModifiableIndentation
 					let undoRange = NSMakeRange(replacementRange.location, 0)
 
 					self.replaceCharacters(in: replacementRange, with: "")
+
+					// We only begin grouping undos if we are actually going to register one or more undo events, otherwise Cocoa will 
+					// register an "empty" undo operation for each non-productive key stroke (nothing to unindent),
+					// and that would produce an unintuitive UX where pressing Cmd+Z doesn't seem to do anything.
+					if !hasBegunUndoGrouping
+					{
+						undoManager?.beginUndoGrouping()
+						hasBegunUndoGrouping = true
+					}
 
 					undoManager?.registerUndo(withTarget: self)
 					{
@@ -135,7 +144,10 @@ extension NSTextStorage: ModifiableIndentation
 			removedCharacters += removedCharactersForRange
 		}
 
-		undoManager?.endUndoGrouping()
+		if hasBegunUndoGrouping
+		{
+			undoManager?.endUndoGrouping()
+		}
 
 		return updatedRanges
 	}
