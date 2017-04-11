@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,11 +17,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="245"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjU-Db-OdI">
-                    <rect key="frame" x="49" y="207" width="35" height="17"/>
+                    <rect key="frame" x="49" y="234" width="35" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Font:" id="RfN-hO-L0e">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -29,7 +29,7 @@
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-cf-BBU">
-                    <rect key="frame" x="84" y="197" width="117" height="32"/>
+                    <rect key="frame" x="84" y="224" width="117" height="32"/>
                     <buttonCell key="cell" type="push" title="Choose Font" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wlw-dL-zJa">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jow-eT-zZI">
-                    <rect key="frame" x="203" y="207" width="259" height="17"/>
+                    <rect key="frame" x="203" y="234" width="259" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7wA-yW-DXc">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -47,10 +47,10 @@
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="WVc-rO-Y4T">
-                    <rect key="frame" x="20" y="189" width="440" height="5"/>
+                    <rect key="frame" x="20" y="216" width="440" height="5"/>
                 </box>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-1y-otm">
-                    <rect key="frame" x="88" y="111" width="198" height="18"/>
+                    <rect key="frame" x="88" y="138" width="198" height="18"/>
                     <buttonCell key="cell" type="check" title="Insert spaces instead of tabs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0w1-gB-xwB">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -64,7 +64,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="O7x-gl-Tmr">
-                    <rect key="frame" x="88" y="163" width="252" height="18"/>
+                    <rect key="frame" x="88" y="190" width="252" height="18"/>
                     <buttonCell key="cell" type="check" title="Disable smart substitutions by default" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0OQ-tC-asT">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-oG-mm0">
-                    <rect key="frame" x="28" y="164" width="56" height="17"/>
+                    <rect key="frame" x="28" y="191" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Options:" id="WA3-BG-KKE">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -140,7 +140,7 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="EIh-Aq-p7E">
-                    <rect key="frame" x="88" y="137" width="297" height="18"/>
+                    <rect key="frame" x="88" y="164" width="297" height="18"/>
                     <buttonCell key="cell" type="check" title="Disable automatic spelling checker by default" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hgH-05-anW">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -184,7 +184,7 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="If enabled also counts spaces, tabs, and new-lines as characters, along letters, punctuations, and numbers." translatesAutoresizingMaskIntoConstraints="NO" id="dLy-vd-QMT">
-                    <rect key="frame" x="88" y="86" width="264" height="17"/>
+                    <rect key="frame" x="88" y="112" width="264" height="18"/>
                     <buttonCell key="cell" type="check" title="Counts white-spaces in total characters" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WSF-dL-YTe">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -200,19 +200,37 @@
                         </binding>
                     </connections>
                 </button>
+                <button toolTip="If enabled also counts spaces, tabs, and new-lines as characters, along letters, punctuations, and numbers." translatesAutoresizingMaskIntoConstraints="NO" id="eJt-cb-Tyu">
+                    <rect key="frame" x="88" y="86" width="203" height="18"/>
+                    <buttonCell key="cell" type="check" title="Keep indentation on new lines" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8M1-Bn-LTY">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility>
+                        <string key="help">Enable this option to count all characters in the total number of characters shows. If this option is disabled, only non-empty characters (letters, numbers) will count.</string>
+                    </accessibility>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.keepIndentation" id="2jB-f2-yTj">
+                            <dictionary key="options">
+                                <integer key="NSNoSelectionPlaceholder" value="0"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="kyh-pX-JAT" firstAttribute="leading" secondItem="Ymv-1y-otm" secondAttribute="leading" id="0UX-V9-eyt"/>
                 <constraint firstItem="i4c-cf-BBU" firstAttribute="baseline" secondItem="zjU-Db-OdI" secondAttribute="baseline" id="0Vi-dW-Upf"/>
                 <constraint firstItem="Rb9-49-6aF" firstAttribute="leading" secondItem="kyh-pX-JAT" secondAttribute="leading" id="3sg-hf-qBk"/>
                 <constraint firstAttribute="trailing" secondItem="jow-eT-zZI" secondAttribute="trailing" constant="20" id="3vW-Wi-JXG"/>
-                <constraint firstItem="kyh-pX-JAT" firstAttribute="top" secondItem="Ymv-1y-otm" secondAttribute="bottom" constant="38" id="6oM-T5-xfe"/>
                 <constraint firstAttribute="trailing" secondItem="Rb9-49-6aF" secondAttribute="trailing" constant="20" id="7Qt-Fm-cAc"/>
+                <constraint firstItem="eJt-cb-Tyu" firstAttribute="top" secondItem="dLy-vd-QMT" secondAttribute="bottom" constant="12" id="9R4-vB-9R1"/>
                 <constraint firstItem="i4c-cf-BBU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="90" id="9ja-ng-BZa"/>
                 <constraint firstItem="WVc-rO-Y4T" firstAttribute="top" secondItem="i4c-cf-BBU" secondAttribute="bottom" constant="12" id="DWW-bd-vge"/>
                 <constraint firstItem="kyn-3V-iMY" firstAttribute="centerY" secondItem="kyh-pX-JAT" secondAttribute="centerY" id="FWG-M3-5EW"/>
                 <constraint firstItem="dLy-vd-QMT" firstAttribute="leading" secondItem="Ymv-1y-otm" secondAttribute="leading" id="LGq-m1-fAk"/>
                 <constraint firstItem="i4c-cf-BBU" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="Md7-bf-8sc"/>
+                <constraint firstItem="kyn-3V-iMY" firstAttribute="top" secondItem="eJt-cb-Tyu" secondAttribute="bottom" constant="12" id="OhQ-dq-0lm"/>
                 <constraint firstItem="jow-eT-zZI" firstAttribute="leading" secondItem="i4c-cf-BBU" secondAttribute="trailing" constant="10" id="RgM-pL-ZDo"/>
                 <constraint firstAttribute="trailing" secondItem="WVc-rO-Y4T" secondAttribute="trailing" constant="20" id="X3G-pO-l3W"/>
                 <constraint firstItem="jow-eT-zZI" firstAttribute="baseline" secondItem="i4c-cf-BBU" secondAttribute="baseline" id="XfW-8f-Mks"/>
@@ -222,12 +240,12 @@
                 <constraint firstItem="dLy-vd-QMT" firstAttribute="top" secondItem="Ymv-1y-otm" secondAttribute="bottom" constant="12" id="dOL-sS-VnG"/>
                 <constraint firstItem="KDH-9k-DPp" firstAttribute="leading" secondItem="kyn-3V-iMY" secondAttribute="trailing" constant="10" id="deG-eY-Skg"/>
                 <constraint firstItem="Ymv-1y-otm" firstAttribute="top" secondItem="EIh-Aq-p7E" secondAttribute="bottom" constant="12" id="eq3-dc-gYj"/>
+                <constraint firstItem="eJt-cb-Tyu" firstAttribute="leading" secondItem="dLy-vd-QMT" secondAttribute="leading" id="i9q-Ld-EAC"/>
                 <constraint firstItem="O7x-gl-Tmr" firstAttribute="baseline" secondItem="cpD-oG-mm0" secondAttribute="baseline" id="iAS-Ll-ZZe"/>
                 <constraint firstItem="cpD-oG-mm0" firstAttribute="trailing" secondItem="zjU-Db-OdI" secondAttribute="trailing" id="iSK-eS-oiJ"/>
                 <constraint firstItem="VI5-ru-jP3" firstAttribute="trailing" secondItem="cpD-oG-mm0" secondAttribute="trailing" id="itc-Rw-8Ss"/>
                 <constraint firstItem="i4c-cf-BBU" firstAttribute="leading" secondItem="zjU-Db-OdI" secondAttribute="trailing" constant="8" id="jjE-6F-ynY"/>
                 <constraint firstItem="Rb9-49-6aF" firstAttribute="baseline" secondItem="Amf-WS-aEK" secondAttribute="baseline" id="kGc-oU-hSE"/>
-                <constraint firstItem="kyn-3V-iMY" firstAttribute="top" secondItem="dLy-vd-QMT" secondAttribute="bottom" constant="12" id="kXE-K0-m64"/>
                 <constraint firstAttribute="bottom" secondItem="Rb9-49-6aF" secondAttribute="bottom" constant="20" id="mRs-aB-kW7"/>
                 <constraint firstItem="O7x-gl-Tmr" firstAttribute="top" secondItem="WVc-rO-Y4T" secondAttribute="bottom" constant="12" id="o96-3y-y9V"/>
                 <constraint firstItem="kyh-pX-JAT" firstAttribute="baseline" secondItem="VI5-ru-jP3" secondAttribute="baseline" id="oSC-Bh-2PQ"/>

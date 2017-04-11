@@ -16,5 +16,4 @@ class ManagedToolbar: NSToolbar
 			dynamicIsVisible = isVisible
 		}
 	}
-
 }

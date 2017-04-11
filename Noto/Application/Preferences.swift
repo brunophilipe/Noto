@@ -27,6 +27,7 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorTabSize				= "PreferenceEditorTabSize"
 	private static let PreferenceEditorCountsWhitespaces	= "PreferenceEditorCountsWhitespaces"
 	private static let PreferenceEditorShowsInvisibles		= "PreferenceEditorShowsInvisibles"
+	private static let PreferenceEditorKeepIndentOnNewLines	= "PreferenceEditorKeepIndentOnNewLines"
 
 	private static let PreferencePrintWrapContents		= "PreferencePrintWrapContents"
 	private static let PreferencePrintShowDate			= "PreferencePrintShowDate"
@@ -53,6 +54,8 @@ class Preferences: UserDefaults
 		case hud = 1
 		case status = 2
 	}
+
+	// Editor Settings
 
 	dynamic var editorFont: NSFont
 	{
@@ -221,6 +224,12 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorShowsInvisibles) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorShowsInvisibles) }
+	}
+
+	dynamic var keepIndentationOnNewLines: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
 	}
 
 	// General Settings

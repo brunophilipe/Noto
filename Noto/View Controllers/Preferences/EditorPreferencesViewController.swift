@@ -52,6 +52,12 @@ class EditorPreferencesViewController: NSViewController
 		get { return NSNumber(booleanLiteral: Preferences.instance.countWhitespacesInTotalCharacters) }
 		set { Preferences.instance.countWhitespacesInTotalCharacters = newValue.boolValue }
 	}
+
+	var keepIndentation: NSNumber
+	{
+		get { return NSNumber(booleanLiteral: Preferences.instance.keepIndentationOnNewLines) }
+		set { Preferences.instance.keepIndentationOnNewLines = newValue.boolValue }
+	}
 	
 	override func viewDidLoad()
 	{

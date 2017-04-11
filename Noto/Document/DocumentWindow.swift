@@ -22,8 +22,8 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
 
 	private let observedPreferences = [
-			"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize",
-			"useSpacesForTabs", "infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles"
+			"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize", "useSpacesForTabs",
+			"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines"
 	]
 
 	private let observedThemeSettings = [
@@ -81,6 +81,7 @@ class DocumentWindow: NSWindow
 		self.updateEditorInvisibles()
 		self.updateEditorTabSize()
 		self.updateEditorSpacesForTabsOption()
+		self.updateEditorKeepIndentsSetting()
 		self.setupThemeObserver()
 
 		self.textView.undoManager?.removeAllActions()
@@ -346,6 +347,9 @@ class DocumentWindow: NSWindow
 			case .some("showsInvisibles"):
 				updateEditorInvisibles()
 
+			case .some("keepIndentationOnNewLines"):
+				updateEditorKeepIndentsSetting()
+
 			default:
 				break
 			}
@@ -463,6 +467,11 @@ class DocumentWindow: NSWindow
 	private func updateEditorSpacesForTabsOption()
 	{
 		textView.usesSpacesForTabs = Preferences.instance.useSpacesForTabs
+	}
+
+	private func updateEditorKeepIndentsSetting()
+	{
+		textView.keepsIndentationOnNewLines = Preferences.instance.keepIndentationOnNewLines
 	}
 }
 

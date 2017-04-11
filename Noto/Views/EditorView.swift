@@ -16,6 +16,7 @@ class EditorView: PaddedTextView
 
 	var lineCounterView: LineCounterRulerView? = nil
 	var usesSpacesForTabs: Bool = false
+	var keepsIndentationOnNewLines: Bool = false
 
 	var escToLeaveFullScreenMode: WaitStatus = .none
 
@@ -159,6 +160,21 @@ class EditorView: PaddedTextView
 		{
 			super.keyDown(with: event)
 		}
+
+		if keepsIndentationOnNewLines && (event.keyCode == UInt16(kVK_Return) || event.keyCode == UInt16(kVK_ANSI_KeypadEnter))
+		{
+			var newRanges = [NSValue]()
+			var insertedChacacters = 0
+
+			for range in selectedRanges.map({ return $0.rangeValue })
+			{
+				insertedChacacters += insertIndentationMatchingPreviousLineFromLocation(range.location + insertedChacacters)
+
+				newRanges.append(NSValue(range: NSMakeRange(range.location + insertedChacacters, range.length)))
+			}
+
+			selectedRanges = newRanges
+		}
 	}
 
 	func increaseIndentation()
@@ -177,6 +193,41 @@ class EditorView: PaddedTextView
 		{
 			selectedRanges = ranges.map { return NSValue(range: $0) }
 		}
+	}
+
+	private func insertIndentationMatchingPreviousLineFromLocation(_ location: Int) -> Int
+	{
+		if let textStorage = self.textStorage
+		{
+			let string: NSString = textStorage.string as NSString
+			let currentLineRange = string.lineRange(for: NSMakeRange(location, 0))
+
+			if currentLineRange.location > 0
+			{
+				let previousLineRange = string.lineRange(for: NSMakeRange(currentLineRange.location - 1, 0))
+
+				var tabCount = 0
+
+				for i in previousLineRange.location ..< (previousLineRange.location + previousLineRange.length)
+				{
+					if string.character(at: i).isTab()
+					{
+						tabCount += 1
+					}
+					else
+					{
+						break
+					}
+				}
+
+				textStorage.replaceCharacters(in: NSMakeRange(currentLineRange.location, 0),
+				                              with: String(repeating: "\t", count: tabCount))
+
+				return tabCount
+			}
+		}
+
+		return 0
 	}
 
 	// Has to be updated when font size changes
