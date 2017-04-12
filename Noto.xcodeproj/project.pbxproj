@@ -29,7 +29,7 @@
 		15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
 		15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
 		1852DE2DE7333AE950A7808F /* Pods_Noto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F004DD282AB058A760B143 /* Pods_Noto.framework */; };
-		3D7A60252112750E492B652E /* PrintingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingTextView.swift */; };
+		3D7A60252112750E492B652E /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		3D7A60593288B574BD1DE5EB /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
 		3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
@@ -90,7 +90,7 @@
 		15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifiableIndentationTest.swift; sourceTree = "<group>"; };
 		22F004DD282AB058A760B143 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
-		3D7A61399A1E660FC68C7C1F /* PrintingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingTextView.swift; path = "View Controllers/Printing/PrintingTextView.swift"; sourceTree = "<group>"; };
+		3D7A61399A1E660FC68C7C1F /* PrintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingView.swift; path = "View Controllers/Printing/PrintingView.swift"; sourceTree = "<group>"; };
 		3D7A616C708C4C55E455C552 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Additions.swift"; sourceTree = "<group>"; };
 		3D7A61885F941C02FEDEE2AA /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullableContentView.swift; sourceTree = "<group>"; };
 		3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusInfoBarController.xib; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			children = (
 				3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */,
 				3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */,
-				3D7A61399A1E660FC68C7C1F /* PrintingTextView.swift */,
+				3D7A61399A1E660FC68C7C1F /* PrintingView.swift */,
 			);
 			name = Printing;
 			sourceTree = "<group>";
@@ -491,7 +491,7 @@
 				3D7A695561A245288374A532 /* EditorPreferencesViewController.swift in Sources */,
 				15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
-				3D7A60252112750E492B652E /* PrintingTextView.swift in Sources */,
+				3D7A60252112750E492B652E /* PrintingView.swift in Sources */,
 				3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */,
 				3D7A6290E3AC56D0F5166DBC /* PullableContentView.swift in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,

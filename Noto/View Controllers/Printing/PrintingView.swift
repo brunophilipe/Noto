@@ -1,6 +1,9 @@
 //
-// Created by Bruno Philipe on 12/3/17.
-// Copyright (c) 2017 Bruno Philipe. All rights reserved.
+//  PrintingView.swift
+//  Noto
+//
+//  Created by Bruno Philipe on 12/3/17.
+//  Copyright © 2017 Bruno Philipe. All rights reserved.
 //
 
 import Cocoa
