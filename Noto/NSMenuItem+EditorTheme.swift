@@ -10,9 +10,9 @@ extension NSMenuItem
 	static func itemForEditorTheme(_ theme: EditorTheme,
 								   _ selectedItem: inout NSMenuItem?,
 								   target: AnyObject,
-								   _ selector: Selector) -> NSMenuItem
+								   _ selector: Selector,
+								   selectedThemeName: String = Preferences.instance.editorThemeName) -> NSMenuItem
 	{
-		let pref = Preferences.instance
 		let menuItem = NSMenuItem(title: theme.name,
 								  action: selector,
 								  keyEquivalent: "")
@@ -20,7 +20,7 @@ extension NSMenuItem
 		menuItem.target = target
 		menuItem.representedObject = theme
 
-		if selectedItem == nil && theme.preferenceName == pref.editorThemeName
+		if selectedItem == nil && theme.preferenceName == selectedThemeName
 		{
 			selectedItem = menuItem
 		}

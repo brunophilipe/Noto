@@ -17,13 +17,15 @@ class PrintingView: NSScrollView
 	private var previousValueOfDocumentWidthInPage: CGFloat = 0
 	private var previousValueOfRewrapContents: Bool = false
 	private var previousValueOfRulersVisible: Bool = false
+	private var previousValueOfUsesCustomTheme: Bool = false
+	private var previousValueOfCustomThemeName: String = LightEditorTheme().preferenceName!
 
-	private let printInfo: NSPrintInfo?
 	private let jobTitle: String
+
+	weak var printPanel: NSPrintPanel? = nil
 	
 	init(printInfo: NSPrintInfo, jobTitle: String)
 	{
-		self.printInfo = printInfo
 		self.jobTitle = jobTitle
 
 		let rect = NSRect(origin: CGPoint(x: 0, y: 0), size: documentSizeForPrintInfo(printInfo: printInfo))
@@ -46,7 +48,6 @@ class PrintingView: NSScrollView
 	
 	required init?(coder: NSCoder)
 	{
-		printInfo = nil
 		textView = EditorView()
 
 		jobTitle = (coder.decodeObject(forKey: "PrintingViewJobTitle") as? String) ?? "Untitled"
@@ -62,8 +63,10 @@ class PrintingView: NSScrollView
 	{
 		var paperWidth = textView.frame.width
 
-		if let printInfo = self.printInfo
+		if let printPanel = self.printPanel
 		{
+			let printInfo = printPanel.printInfo
+
 			paperWidth = printInfo.paperSize.width - printInfo.rightMargin
 		}
 
@@ -114,23 +117,38 @@ class PrintingView: NSScrollView
 	{
 		if let printInfo = printPanelAccessoryController?.representedObject as? NSPrintInfo,
 		   let rewrapContents = printPanelAccessoryController?.rewrapContents.boolValue,
-		   let rulersVisible = printPanelAccessoryController?.showLineNumbers.boolValue
+		   let rulersVisible = printPanelAccessoryController?.showLineNumbers.boolValue,
+		   let usesCustomTheme = printPanelAccessoryController?.usesTheme.boolValue,
+		   let customThemeName = printPanelAccessoryController?.themeName
 		{
 			let documentWidthInPage = documentSizeForPrintInfo(printInfo: printInfo).width
 
 			if previousValueOfDocumentWidthInPage != documentWidthInPage
-					   || previousValueOfRewrapContents != rewrapContents
-					   || previousValueOfRulersVisible != rulersVisible
+						|| previousValueOfRewrapContents != rewrapContents
+						|| previousValueOfRulersVisible != rulersVisible
+						|| previousValueOfUsesCustomTheme != usesCustomTheme
+						|| previousValueOfCustomThemeName != customThemeName
 			{
 				previousValueOfDocumentWidthInPage = documentWidthInPage
 				previousValueOfRewrapContents = rewrapContents
 				previousValueOfRulersVisible = rulersVisible
+				previousValueOfUsesCustomTheme = usesCustomTheme
+				previousValueOfCustomThemeName = customThemeName
 
 				self.rulersVisible = rulersVisible
 
 				let width = rewrapContents ? documentWidthInPage : originalSize.width
 				let height = rewrapContents ? textView.frame.height : originalSize.height
 				var size = NSSize(width: width, height: height)
+
+				if usesCustomTheme, let theme = ConcreteEditorTheme.getWithPreferenceName(customThemeName)
+				{
+					textView.setColorsFromTheme(theme: theme)
+				}
+				else
+				{
+					textView.setColorsFromTheme(theme: LightEditorTheme())
+				}
 
 				if rulersVisible, let lineCounterView = textView.lineCounterView
 				{

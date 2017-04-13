@@ -429,10 +429,7 @@ class DocumentWindow: NSWindow
 		}
 
 		backgroundColor = theme.editorBackground
-		textView.backgroundColor = theme.editorBackground
-		textView.textColor = theme.editorForeground
-		textView.lineCounterView?.textColor = theme.lineCounterForeground
-		textView.lineCounterView?.backgroundColor = theme.lineCounterBackground
+		textView.setColorsFromTheme(theme: theme)
 	}
 	
 	private func updateEditorSubstitutions()

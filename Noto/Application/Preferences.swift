@@ -34,6 +34,8 @@ class Preferences: UserDefaults
 	private static let PreferencePrintShowFileName		= "PreferencePrintShowFileName"
 	private static let PreferencePrintShowPageNumber	= "PreferencePrintShowPageNumber"
 	private static let PreferencePrintHideLineNumbers	= "PreferencePrintHideLineNumbers"
+	private static let PreferencePrintUseCustomTheme	= "PreferencePrintUseCustomTheme"
+	private static let PreferencePrintThemeName			= "PreferencePrintThemeName"
 
 	private static var sharedInstance: Preferences! = nil
 
@@ -270,5 +272,32 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferencePrintHideLineNumbers) }
 		set { set(newValue, forKey: Preferences.PreferencePrintHideLineNumbers) }
+	}
+
+	dynamic var printUseCustomTheme: Bool
+	{
+		get { return bool(forKey: Preferences.PreferencePrintUseCustomTheme) }
+		set { set(newValue, forKey: Preferences.PreferencePrintUseCustomTheme) }
+	}
+
+	dynamic var printThemeName: String
+	{
+		get
+		{
+			if let themeName = string(forKey: Preferences.PreferencePrintThemeName)
+			{
+				return themeName
+			}
+			else
+			{
+				return LightEditorTheme().preferenceName!
+			}
+		}
+
+		set
+		{
+			set(newValue, forKey: Preferences.PreferencePrintThemeName)
+			synchronize()
+		}
 	}
 }

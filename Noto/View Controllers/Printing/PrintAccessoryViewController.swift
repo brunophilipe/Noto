@@ -49,12 +49,26 @@ class PrintAccessoryViewController: NSViewController
 		set { Preferences.instance.printHideLineNumbers = newValue.boolValue }
 	}
 
+	dynamic var usesTheme: NSNumber
+	{
+		get { return NSNumber(booleanLiteral: Preferences.instance.printUseCustomTheme) }
+		set { Preferences.instance.printUseCustomTheme = newValue.boolValue }
+	}
+
+	dynamic var themeName: String
+	{
+		get { return Preferences.instance.printThemeName }
+		set { Preferences.instance.printThemeName = newValue }
+	}
+
 	fileprivate let observedProperties = [
 		"rewrapContents",
 		"showFileName",
 		"showDate",
 		"showPageNumber",
-		"showLineNumbers"
+		"showLineNumbers",
+		"usesTheme",
+		"themeName"
 	]
 
 	override func awakeFromNib()
@@ -68,6 +82,12 @@ class PrintAccessoryViewController: NSViewController
         // Do view setup here.
 
 		updateThemesMenu()
+
+		let usesCustomTheme = Preferences.instance.printUseCustomTheme
+		radioButtonNoTheme.state = usesCustomTheme ? 0 : 1
+		radioButtonUseTheme.state = usesCustomTheme ? 1 : 0
+
+		popUpButtonThemes.isEnabled = usesCustomTheme
     }
 
 	override var representedObject: Any?
@@ -112,7 +132,8 @@ class PrintAccessoryViewController: NSViewController
 			menu.addItem(NSMenuItem.itemForEditorTheme(theme,
 													   &selectedItem,
 													   target: self,
-													   #selector(PrintAccessoryViewController.didChangeEditorTheme(_:))))
+													   #selector(PrintAccessoryViewController.didChangeEditorTheme(_:)),
+													   selectedThemeName: themeName))
 		}
 
 		if themes.user.count > 0
@@ -124,7 +145,8 @@ class PrintAccessoryViewController: NSViewController
 				menu.addItem(NSMenuItem.itemForEditorTheme(theme,
 														   &selectedItem,
 														   target: self,
-														   #selector(PrintAccessoryViewController.didChangeEditorTheme(_:))))
+														   #selector(PrintAccessoryViewController.didChangeEditorTheme(_:)),
+														   selectedThemeName: themeName))
 			}
 		}
 
@@ -145,9 +167,11 @@ extension PrintAccessoryViewController // IBActions
 		switch sender.tag
 		{
 		case 1:
+			self.usesTheme = false
 			popUpButtonThemes.isEnabled = false
 
 		case 2:
+			self.usesTheme = true
 			popUpButtonThemes.isEnabled = true
 
 		default:
@@ -157,7 +181,14 @@ extension PrintAccessoryViewController // IBActions
 
 	@IBAction func didChangeEditorTheme(_ sender: NSMenuItem?)
 	{
-
+		if let theme = sender?.representedObject as? EditorTheme, let themeName = theme.preferenceName
+		{
+			self.themeName = themeName
+		}
+		else
+		{
+			self.themeName = LightEditorTheme().preferenceName!
+		}
 	}
 }
 

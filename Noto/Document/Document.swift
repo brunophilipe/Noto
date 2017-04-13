@@ -188,6 +188,8 @@ class Document: NSDocument
 				.showsScaling
 			]
 
+			printView.printPanel = printPanel
+
 			printPanel.addAccessoryController(accessoryContoller)
 
 			return printOperation

@@ -28,3 +28,14 @@ extension NSTextView
 		}
 	}
 }
+
+extension EditorView
+{
+	func setColorsFromTheme(theme: EditorTheme)
+	{
+		backgroundColor = theme.editorBackground
+		textColor = theme.editorForeground
+		lineCounterView?.textColor = theme.lineCounterForeground
+		lineCounterView?.backgroundColor = theme.lineCounterBackground
+	}
+}
