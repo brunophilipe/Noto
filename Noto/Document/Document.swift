@@ -141,11 +141,12 @@ class Document: NSDocument
 	{
 		if let window = self.window
 		{
+			let jobTitle = fileURL?.lastPathComponent ?? window.textView.printJobTitle
 			let printInfo = self.printInfo.copy() as! NSPrintInfo
 			printInfo.isVerticallyCentered = false
 			printInfo.dictionary().addEntries(from: printSettings)
 
-			let printView = PrintingView(printInfo: printInfo)
+			let printView = PrintingView(printInfo: printInfo, jobTitle: jobTitle)
 			if let storage = window.textView.textStorage?.string
 			{
 				let textStorage = NSTextStorage(string: storage)
@@ -167,7 +168,7 @@ class Document: NSDocument
 			let printOperation = NSPrintOperation(view: printView, printInfo: printInfo)
 			printOperation.showsPrintPanel = true
 			printOperation.showsProgressPanel = true
-			printOperation.jobTitle = window.textView.printJobTitle
+			printOperation.jobTitle = jobTitle
 
 			var originalSize = window.textView.frame.size
 

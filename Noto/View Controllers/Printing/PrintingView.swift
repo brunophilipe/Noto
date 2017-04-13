@@ -17,9 +17,15 @@ class PrintingView: NSScrollView
 	private var previousValueOfDocumentWidthInPage: CGFloat = 0
 	private var previousValueOfRewrapContents: Bool = false
 	private var previousValueOfRulersVisible: Bool = false
+
+	private let printInfo: NSPrintInfo?
+	private let jobTitle: String
 	
-	init(printInfo: NSPrintInfo)
+	init(printInfo: NSPrintInfo, jobTitle: String)
 	{
+		self.printInfo = printInfo
+		self.jobTitle = jobTitle
+
 		let rect = NSRect(origin: CGPoint(x: 0, y: 0), size: documentSizeForPrintInfo(printInfo: printInfo))
 
 		textView = EditorView(frame: rect)
@@ -27,19 +33,79 @@ class PrintingView: NSScrollView
 		super.init(frame: rect)
 		
 		self.documentView = textView
+
+		let userDefaults = UserDefaults.standard
+
+		if !userDefaults.bool(forKey: NSPrintHeaderAndFooter)
+		{
+			userDefaults.set(true, forKey: NSPrintHeaderAndFooter)
+		}
 		
 		textView.awakeFromNib()
 	}
 	
 	required init?(coder: NSCoder)
 	{
+		printInfo = nil
 		textView = EditorView()
+
+		jobTitle = (coder.decodeObject(forKey: "PrintingViewJobTitle") as? String) ?? "Untitled"
 		
 		super.init(coder: coder)
 		
 		self.documentView = textView
 		
 		textView.awakeFromNib()
+	}
+
+	override var pageHeader: NSAttributedString
+	{
+		var paperWidth = textView.frame.width
+
+		if let printInfo = self.printInfo
+		{
+			paperWidth = printInfo.paperSize.width - printInfo.rightMargin
+		}
+
+		let headerString = NSMutableAttributedString.init(string: "")
+
+		// Adds filename text aligned to center
+		if printPanelAccessoryController?.showFileName == true
+		{
+			let titleParagraphStyle = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+			titleParagraphStyle.tabStops = [NSTextTab.init(textAlignment: .center, location: paperWidth / 2.0, options: [:])]
+
+			headerString.append(NSAttributedString(string: "\t" + jobTitle,
+			                                       attributes: [NSParagraphStyleAttributeName: titleParagraphStyle]))
+		}
+
+		// Adds print date text aligned to right
+		if printPanelAccessoryController?.showDate == true
+		{
+			let dateParagraphStyle = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+			dateParagraphStyle.tabStops = [NSTextTab.init(textAlignment: .right, location: paperWidth, options: [:])]
+
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateStyle = .short
+			dateFormatter.timeStyle = .short
+
+			headerString.append(NSAttributedString(string: "\t" + dateFormatter.string(from: Date()),
+			                                       attributes: [NSParagraphStyleAttributeName: dateParagraphStyle]))
+		}
+
+		return headerString
+	}
+
+	override var pageFooter: NSAttributedString
+	{
+		if printPanelAccessoryController?.showPageNumber == true
+		{
+			return super.pageFooter
+		}
+		else
+		{
+			return NSAttributedString()
+		}
 	}
 
 	override func knowsPageRange(_ range: NSRangePointer) -> Bool

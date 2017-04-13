@@ -15,6 +15,7 @@
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
+		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
 		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
 		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
@@ -29,7 +30,6 @@
 		15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
 		15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
 		1852DE2DE7333AE950A7808F /* Pods_Noto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F004DD282AB058A760B143 /* Pods_Noto.framework */; };
-		3D7A60252112750E492B652E /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		3D7A60593288B574BD1DE5EB /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
 		3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
@@ -471,6 +471,7 @@
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
+				153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */,
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
@@ -491,7 +492,6 @@
 				3D7A695561A245288374A532 /* EditorPreferencesViewController.swift in Sources */,
 				15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
-				3D7A60252112750E492B652E /* PrintingView.swift in Sources */,
 				3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */,
 				3D7A6290E3AC56D0F5166DBC /* PullableContentView.swift in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
