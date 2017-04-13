@@ -98,6 +98,8 @@ class PrintingView: NSScrollView
 
 	override var pageFooter: NSAttributedString
 	{
+		// This is not the most elegant way of doing this, but I don't currently know how to tell which page is 
+		// the current one being rendered
 		if printPanelAccessoryController?.showPageNumber == true
 		{
 			return super.pageFooter
