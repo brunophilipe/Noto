@@ -21,8 +21,6 @@ class PrintingView: NSScrollView
 	private var previousValueOfCustomThemeName: String = LightEditorTheme().preferenceName!
 
 	private let jobTitle: String
-
-	weak var printPanel: NSPrintPanel? = nil
 	
 	init(printInfo: NSPrintInfo, jobTitle: String)
 	{
@@ -63,10 +61,8 @@ class PrintingView: NSScrollView
 	{
 		var paperWidth = textView.frame.width
 
-		if let printPanel = self.printPanel
+		if let printInfo = printPanelAccessoryController?.representedObject as? NSPrintInfo
 		{
-			let printInfo = printPanel.printInfo
-
 			paperWidth = printInfo.paperSize.width - printInfo.rightMargin
 		}
 
