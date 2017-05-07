@@ -28,6 +28,10 @@ Planned features to be implemented:
 
 Noto is still under (slow) development. I am expecting to fix some bugs and finish some features before I make the first public release. Please feel free to fork/clone the project and compile if you wish to contribute to development.
 
+## More Screenshots
+
+![Screenshot showing multiple themes, and the theme settings window](http://i.imgur.com/SXh8o7n.png)
+
 ## License
 
 ```
