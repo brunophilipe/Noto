@@ -71,7 +71,7 @@
                     <constraint firstItem="yIz-sU-qFQ" firstAttribute="top" secondItem="HKp-0Q-T0H" secondAttribute="top" id="t7q-ZX-ZPz"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="5wh-ff-yRk" customClass="ManagedToolbar" customModule="Noto" customModuleProvider="target">
+            <toolbar key="toolbar" implicitIdentifier="0E9221FB-8EA3-4363-A00B-039AD1C253B8" explicitIdentifier="Document.Toolbar" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="5wh-ff-yRk" customClass="ManagedToolbar" customModule="Noto" customModuleProvider="target">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="l1h-S7-eid"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="mAk-lH-1P0"/>
