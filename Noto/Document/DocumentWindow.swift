@@ -97,6 +97,7 @@ class DocumentWindow: NSWindow
 		self.updateEditorKeepIndentsSetting()
 		self.setupThemeObserver()
 
+		self.textView.enclosingScrollView?.rulersVisible = Preferences.instance.autoshowLineNumbers
 		self.textView.undoManager?.removeAllActions()
 	}
 
@@ -158,6 +159,8 @@ class DocumentWindow: NSWindow
 		if let scrollView = textView.enclosingScrollView
 		{
 			scrollView.rulersVisible.flip()
+
+			Preferences.instance.autoshowLineNumbers = scrollView.rulersVisible
 		}
 	}
 
