@@ -33,8 +33,6 @@ class HUDInfoBarController: NSViewController, InfoBar
 		super.viewDidLoad()
 
 		self.view.layer?.cornerRadius = 10
-
-		setDarkMode(false)
 	}
 
 	func setDarkMode(_ isDark: Bool)
