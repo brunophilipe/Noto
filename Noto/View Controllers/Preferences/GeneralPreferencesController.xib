@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesController" customModule="Noto" customModuleProvider="target">
             <connections>
+                <outlet property="buttonRequireDoubleEsc" destination="QYS-DU-BbX" id="BHw-3U-AFA"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="159"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="QYS-DU-BbX">
-                    <rect key="frame" x="88" y="123" width="365" height="18"/>
+                    <rect key="frame" x="88" y="64" width="365" height="18"/>
                     <buttonCell key="cell" type="check" title="Require pressing Escape twice to leave full-screen mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ARe-2l-7nS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -28,21 +29,40 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-AG-iRa">
-                    <rect key="frame" x="28" y="124" width="56" height="17"/>
+                    <rect key="frame" x="28" y="65" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Options:" id="UBo-os-nGQ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-iQ-GRb">
+                    <rect key="frame" x="12" y="51" width="456" height="5"/>
+                </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrZ-U1-aMJ">
+                    <rect key="frame" x="84" y="13" width="214" height="32"/>
+                    <buttonCell key="cell" type="push" title="Reset to Default Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GYz-BB-39v">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="didClickResetPreferences:" target="-2" id="PkG-Mf-e6m"/>
+                        </connections>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="iIz-iQ-GRb" secondAttribute="trailing" constant="12" id="KnH-BI-jVq"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="ke1-AG-iRa" secondAttribute="trailing" constant="8" id="QNU-oa-rQA"/>
+                <constraint firstItem="rrZ-U1-aMJ" firstAttribute="leading" secondItem="QYS-DU-BbX" secondAttribute="leading" id="RFD-nw-Fri"/>
+                <constraint firstItem="iIz-iQ-GRb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="VUo-w7-A5v"/>
+                <constraint firstItem="iIz-iQ-GRb" firstAttribute="top" secondItem="QYS-DU-BbX" secondAttribute="bottom" constant="12" id="XIq-QB-5Rs"/>
+                <constraint firstAttribute="bottom" secondItem="rrZ-U1-aMJ" secondAttribute="bottom" constant="20" id="ddG-7i-0CR"/>
+                <constraint firstItem="rrZ-U1-aMJ" firstAttribute="top" secondItem="iIz-iQ-GRb" secondAttribute="bottom" constant="12" id="gQ5-Ka-lx8"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="90" id="ooh-Bw-L25"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="baseline" secondItem="ke1-AG-iRa" secondAttribute="baseline" id="uLM-SO-qeR"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="yhQ-4X-9L9"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="111.5"/>
+            <point key="canvasLocation" x="139" y="82"/>
         </customView>
     </objects>
 </document>

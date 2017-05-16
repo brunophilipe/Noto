@@ -53,6 +53,22 @@ class Preferences: UserDefaults
 
 	private static var sharedInstance: Preferences! = nil
 
+	private static let allPreferences = [
+		PreferenceGeneralDoubleEscToLeaveFullScreen, PreferenceEditorFontName, PreferenceEditorFontSize, PreferenceLineCounterFontName,
+		PreferenceLineCounterFontSize, PreferenceEditorThemeName, PreferenceEditorInfoBarMode, PreferenceEditorShowLineNumbers,
+		PreferenceEditorSmartSubstitutions, PreferenceEditorSpellingChecker, PreferenceEditorUseSpacesForTabs, PreferenceEditorTabSize,
+		PreferenceEditorCountsWhitespaces, PreferenceEditorShowsInvisibles, PreferenceEditorKeepIndentOnNewLines,
+		PreferencePrintWrapContents, PreferencePrintShowDate, PreferencePrintShowFileName, PreferencePrintShowPageNumber,
+		PreferencePrintHideLineNumbers, PreferencePrintUseCustomTheme, PreferencePrintThemeName
+	]
+
+	private static let allDynamicProperties = [
+		"editorFont", "lineCounterFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "useSpacesForTabs", "tabSize",
+		"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines", "autoshowLineNumbers",
+		"doubleEscToLeaveFullScreen", "printWrapContents", "printShowDate", "printShowFileName", "printShowPageNumber",
+		"printHideLineNumbers", "printUseCustomTheme", "printThemeName"
+	]
+
 	static var instance: Preferences
 	{
 		if sharedInstance == nil
@@ -69,6 +85,18 @@ class Preferences: UserDefaults
 		case none = 0
 		case hud = 1
 		case status = 2
+	}
+
+	func resetToDefault()
+	{
+		Preferences.allDynamicProperties.forEach({ willChangeValue(forKey: $0) })
+
+		(_editorTheme as? ConcreteEditorTheme)?.willDeallocate = true
+		_editorTheme = nil
+
+		Preferences.allPreferences.forEach({ removeObject(forKey: $0) })
+
+		Preferences.allDynamicProperties.forEach({ didChangeValue(forKey: $0) })
 	}
 
 	// Editor Settings

@@ -69,6 +69,7 @@ class ThemePreferencesController: NSViewController
 		let pref = Preferences.instance
 
 		pref.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
+		pref.addObserver(self, forKeyPath: "editorThemeName", options: .new, context: nil)
 	}
 
 	private func removeObservers()
@@ -76,6 +77,7 @@ class ThemePreferencesController: NSViewController
 		let pref = Preferences.instance
 
 		pref.removeObserver(self, forKeyPath: "editorFont")
+		pref.removeObserver(self, forKeyPath: "editorThemeName")
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
@@ -89,6 +91,10 @@ class ThemePreferencesController: NSViewController
 			{
 			case .some("editorFont"):
 				updateFontPreview()
+
+			case .some("editorThemeName"):
+				updateFontPreviewColors()
+				updateThemeColors()
 
 			default:
 				break

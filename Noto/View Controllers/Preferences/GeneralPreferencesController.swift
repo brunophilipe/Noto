@@ -24,6 +24,8 @@ import CCNPreferencesWindowController
 
 class GeneralPreferencesController: NSViewController
 {
+	@IBOutlet var buttonRequireDoubleEsc: NSButton!
+
 	fileprivate var preferencesWindow: NSWindow? = nil
 
 	var doubleEscToLeaveFullScreen: NSNumber
@@ -32,11 +34,14 @@ class GeneralPreferencesController: NSViewController
 		set { Preferences.instance.doubleEscToLeaveFullScreen = newValue.boolValue }
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
-    
+	@IBAction func didClickResetPreferences(_ sender: Any)
+	{
+		willChangeValue(forKey: "doubleEscToLeaveFullScreen")
+
+		Preferences.instance.resetToDefault()
+
+		didChangeValue(forKey: "doubleEscToLeaveFullScreen")
+	}
 }
 
 extension GeneralPreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol
