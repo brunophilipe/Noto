@@ -97,6 +97,7 @@ class DocumentWindow: NSWindow
 		self.updateEditorKeepIndentsSetting()
 		self.setupThemeObserver()
 
+		self.textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
 		self.textView.undoManager?.removeAllActions()
 	}
 
@@ -113,6 +114,16 @@ class DocumentWindow: NSWindow
 		}
 
 		removeThemeObserver()
+	}
+
+	override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool
+	{
+		if menuItem.action == #selector(DocumentWindow.toggleLineNumbers(_:))
+		{
+			menuItem.title = textView.lineNumbersVisible ? "Hide Line Numbers" : "Show Line Numbers"
+		}
+
+		return super.validateMenuItem(menuItem)
 	}
 
 	@IBAction func jumpToALine(_ sender: Any?)
@@ -153,12 +164,11 @@ class DocumentWindow: NSWindow
 		Preferences.instance.showsInvisibles.flip()
 	}
 
-	@IBAction func toggleLinesCounter(_ sender: Any?)
+	@IBAction func toggleLineNumbers(_ sender: Any?)
 	{
-		if let scrollView = textView.enclosingScrollView
-		{
-			scrollView.rulersVisible.flip()
-		}
+		textView.lineNumbersVisible.flip()
+
+		Preferences.instance.autoshowLineNumbers = textView.lineNumbersVisible
 	}
 
 	private func setupThemeObserver()

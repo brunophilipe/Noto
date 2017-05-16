@@ -387,10 +387,10 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="UXA-Ec-Xod"/>
-                            <menuItem title="Toggle Lines Counter" keyEquivalent="l" id="LCX-3H-2BV">
+                            <menuItem title="Show Line Numbers" keyEquivalent="l" id="LCX-3H-2BV">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="toggleLinesCounter:" target="-1" id="Wm5-uE-uyt"/>
+                                    <action selector="toggleLineNumbers:" target="-1" id="Wm5-uE-uyt"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Info Bar" id="1Vo-rd-tOa">

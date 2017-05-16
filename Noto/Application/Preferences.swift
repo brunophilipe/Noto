@@ -33,6 +33,7 @@ class Preferences: UserDefaults
 
 	private static let PreferenceEditorThemeName = "PreferenceEditorThemeName"
 	private static let PreferenceEditorInfoBarMode = "PreferenceEditorInfoBarMode"
+	private static let PreferenceEditorShowLineNumbers = "PreferenceEditorShowLineNumbers"
 	
 	private static let PreferenceEditorSmartSubstitutions	= "PreferenceEditorSmartSubstitutions"
 	private static let PreferenceEditorSpellingChecker		= "PreferenceEditorSpellingChecker"
@@ -245,6 +246,12 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
+	}
+
+	dynamic var autoshowLineNumbers: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorShowLineNumbers) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorShowLineNumbers) }
 	}
 
 	// General Settings

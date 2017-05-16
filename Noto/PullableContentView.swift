@@ -24,7 +24,8 @@ class PullableContentView: NSView
 
 	override func setFrameSize(_ newSize: NSSize)
 	{
-		// hehehehe 😈
+		// This is a hack (hopefully temporary) which forces the container view to extend under the title
+		// view. It should ideally be replaced by a non-hack.
 		super.setFrameSize(NSSize(width: newSize.width, height: newSize.height + (pullsContent ? 22 : 0)))
 	}
 
