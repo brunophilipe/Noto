@@ -89,6 +89,7 @@
 		15DC98C41E8747F100E3B7B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextStorage+Indentation.swift"; path = "Extensions/NSTextStorage+Indentation.swift"; sourceTree = "<group>"; };
 		15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifiableIndentationTest.swift; sourceTree = "<group>"; };
+		15E401751ECB92B80039E05C /* Noto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noto.entitlements; sourceTree = "<group>"; };
 		22F004DD282AB058A760B143 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
 		3D7A61399A1E660FC68C7C1F /* PrintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingView.swift; path = "View Controllers/Printing/PrintingView.swift"; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		150CFABA1E2A83CF000B69E5 /* Noto */ = {
 			isa = PBXGroup;
 			children = (
+				15E401751ECB92B80039E05C /* Noto.entitlements */,
 				15933C7B1E5B922E00AFF625 /* Application */,
 				15933C781E5B920D00AFF625 /* Document */,
 				15276E601E5BCCFA0032EDE4 /* Views */,
@@ -360,6 +362,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = R85D3K8ATT;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					15DC98BF1E8747F100E3B7B3 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -651,6 +661,7 @@
 			baseConfigurationReference = 2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
@@ -666,6 +677,7 @@
 			baseConfigurationReference = D5F7B60D283DABA28357995E /* Pods-Noto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
