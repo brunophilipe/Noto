@@ -62,6 +62,19 @@ class EditorView: PaddedTextView
 		}
 	}
 
+	var lineNumbersVisible: Bool
+	{
+		get
+		{
+			return enclosingScrollView?.rulersVisible ?? false
+		}
+
+		set
+		{
+			enclosingScrollView?.rulersVisible = newValue
+		}
+	}
+
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
@@ -78,7 +91,6 @@ class EditorView: PaddedTextView
 
 			scrollView.hasHorizontalRuler = false
 			scrollView.hasVerticalRuler = true
-			scrollView.rulersVisible = true
 
 			self.lineCounterView = lineCounterView
 		}

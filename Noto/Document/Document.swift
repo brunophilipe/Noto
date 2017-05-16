@@ -185,7 +185,7 @@ class Document: NSDocument
 
 			var originalSize = window.textView.frame.size
 
-			if window.textView.enclosingScrollView?.rulersVisible == true, let lineCounterView = window.textView.lineCounterView
+			if window.textView.lineNumbersVisible, let lineCounterView = window.textView.lineCounterView
 			{
 				originalSize.width += lineCounterView.frame.width
 			}
