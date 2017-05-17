@@ -85,6 +85,11 @@ class Preferences: UserDefaults
 		case none = 0
 		case hud = 1
 		case status = 2
+
+		init(intValue: Int?)
+		{
+			self = InfoBarMode(rawValue: intValue ?? 1)!
+		}
 	}
 
 	func resetToDefault()
@@ -254,7 +259,7 @@ class Preferences: UserDefaults
 
 	dynamic var infoBarMode: InfoBarMode
 	{
-		get { return InfoBarMode(rawValue: value(forKey: Preferences.PreferenceEditorInfoBarMode) as? Int ?? 1) ?? .hud }
+		get { return InfoBarMode(intValue: value(forKey: Preferences.PreferenceEditorInfoBarMode) as? Int) }
 		set { set(newValue.rawValue, forKey: Preferences.PreferenceEditorInfoBarMode) }
 	}
 
