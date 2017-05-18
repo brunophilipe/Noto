@@ -175,7 +175,11 @@ class LineCounterRulerView: NSRulerView
 		let maxText = "\(endLine + 1)" as NSString
 		let maxTextSize = maxText.size(withAttributes: numberTextAttributes)
 
-		if startLine > 0
+		if startLine > 1
+		{
+			startLine -= 2
+		}
+		else if startLine > 0
 		{
 			startLine -= 1
 		}
