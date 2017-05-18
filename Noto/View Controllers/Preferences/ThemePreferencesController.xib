@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,8 +13,8 @@
                 <outlet property="editorPreviewTextView" destination="zSi-Bx-N1x" id="mh8-7y-9wM"/>
                 <outlet property="editorTextColorWell" destination="mHW-ZH-nae" id="3CR-l7-BbH"/>
                 <outlet property="editorThemePopUpButton" destination="J92-WQ-r0q" id="vq3-qg-H7U"/>
-                <outlet property="lineCounterBackgroundColorWell" destination="hVB-gA-1KB" id="zK9-nC-bos"/>
-                <outlet property="lineCounterTextColorWell" destination="4k4-uq-8ql" id="Sd1-r4-SlN"/>
+                <outlet property="lineNumbersBackgroundColorWell" destination="hVB-gA-1KB" id="zK9-nC-bos"/>
+                <outlet property="lineNumbersTextColorWell" destination="4k4-uq-8ql" id="Sd1-r4-SlN"/>
                 <outlet property="renameThemeButton" destination="oBu-wg-wb4" id="saO-pZ-tk2"/>
                 <outlet property="renameThemePopover" destination="vf2-8a-Dsf" id="PxI-fV-r4g"/>
                 <outlet property="renameThemeTextField" destination="wgH-AO-IT1" id="rPc-YG-exH"/>
@@ -31,7 +31,7 @@
                     <rect key="frame" x="120" y="20" width="340" height="135"/>
                     <clipView key="contentView" id="pRB-mb-NDj">
                         <rect key="frame" x="1" y="1" width="338" height="133"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zSi-Bx-N1x" customClass="EditorView" customModule="Noto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="338" height="133"/>
