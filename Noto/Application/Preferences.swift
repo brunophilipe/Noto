@@ -28,8 +28,8 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorFontName = "PreferenceEditorFontName"
 	private static let PreferenceEditorFontSize = "PreferenceEditorFontSize"
 
-	private static let PreferenceLineCounterFontName = "PreferenceLineCounterFontName"
-	private static let PreferenceLineCounterFontSize = "PreferenceLineCounterFontSize"
+	private static let PreferenceLineNumbersFontName = "PreferenceLineNumbersFontName"
+	private static let PreferenceLineNumbersFontSize = "PreferenceLineNumbersFontSize"
 
 	private static let PreferenceEditorThemeName = "PreferenceEditorThemeName"
 	private static let PreferenceEditorInfoBarMode = "PreferenceEditorInfoBarMode"
@@ -54,8 +54,8 @@ class Preferences: UserDefaults
 	private static var sharedInstance: Preferences! = nil
 
 	private static let allPreferences = [
-		PreferenceGeneralDoubleEscToLeaveFullScreen, PreferenceEditorFontName, PreferenceEditorFontSize, PreferenceLineCounterFontName,
-		PreferenceLineCounterFontSize, PreferenceEditorThemeName, PreferenceEditorInfoBarMode, PreferenceEditorShowLineNumbers,
+		PreferenceGeneralDoubleEscToLeaveFullScreen, PreferenceEditorFontName, PreferenceEditorFontSize, PreferenceLineNumbersFontName,
+		PreferenceLineNumbersFontSize, PreferenceEditorThemeName, PreferenceEditorInfoBarMode, PreferenceEditorShowLineNumbers,
 		PreferenceEditorSmartSubstitutions, PreferenceEditorSpellingChecker, PreferenceEditorUseSpacesForTabs, PreferenceEditorTabSize,
 		PreferenceEditorCountsWhitespaces, PreferenceEditorShowsInvisibles, PreferenceEditorKeepIndentOnNewLines,
 		PreferencePrintWrapContents, PreferencePrintShowDate, PreferencePrintShowFileName, PreferencePrintShowPageNumber,
@@ -63,7 +63,7 @@ class Preferences: UserDefaults
 	]
 
 	private static let allDynamicProperties = [
-		"editorFont", "lineCounterFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "useSpacesForTabs", "tabSize",
+		"editorFont", "lineNumbersFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "useSpacesForTabs", "tabSize",
 		"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines", "autoshowLineNumbers",
 		"doubleEscToLeaveFullScreen", "printWrapContents", "printShowDate", "printShowFileName", "printShowPageNumber",
 		"printHideLineNumbers", "printUseCustomTheme", "printThemeName"
@@ -148,13 +148,13 @@ class Preferences: UserDefaults
 		}
 	}
 
-	dynamic var lineCounterFont: NSFont
+	dynamic var lineNumbersFont: NSFont
 	{
 		get
 		{
-			let fontSize = double(forKey: Preferences.PreferenceLineCounterFontSize)
+			let fontSize = double(forKey: Preferences.PreferenceLineNumbersFontSize)
 
-			if	let fontName = string(forKey: Preferences.PreferenceLineCounterFontName), fontSize > 0,
+			if	let fontName = string(forKey: Preferences.PreferenceLineNumbersFontName), fontSize > 0,
 				let font = NSFont(name: fontName, size: CGFloat(fontSize))
 			{
 				return font
@@ -185,8 +185,8 @@ class Preferences: UserDefaults
 
 		set
 		{
-			set(newValue.pointSize, forKey: Preferences.PreferenceLineCounterFontSize)
-			set(newValue.fontName, forKey: Preferences.PreferenceLineCounterFontName)
+			set(newValue.pointSize, forKey: Preferences.PreferenceLineNumbersFontSize)
+			set(newValue.fontName, forKey: Preferences.PreferenceLineNumbersFontName)
 		}
 	}
 

@@ -48,7 +48,7 @@ extension EditorView
 	{
 		backgroundColor = theme.editorBackground
 		textColor = theme.editorForeground
-		lineCounterView?.textColor = theme.lineCounterForeground
-		lineCounterView?.backgroundColor = theme.lineCounterBackground
+		lineNumbersView?.textColor = theme.lineNumbersForeground
+		lineNumbersView?.backgroundColor = theme.lineNumbersBackground
 	}
 }

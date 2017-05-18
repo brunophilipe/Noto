@@ -40,7 +40,7 @@ class DocumentWindow: NSWindow
 	]
 
 	private let observedThemeSettings = [
-			"editorBackground", "editorForeground", "lineCounterBackground", "lineCounterForeground", "willDeallocate"
+			"editorBackground", "editorForeground", "lineNumbersBackground", "lineNumbersForeground", "willDeallocate"
 	]
 
 	var text: String
@@ -447,8 +447,8 @@ class DocumentWindow: NSWindow
 		}
 		else if let statusController = infoBarController as? StatusInfoBarController
 		{
-			statusController.setTextColor(theme.lineCounterForeground)
-			statusController.setBackgroundColor(theme.lineCounterBackground)
+			statusController.setTextColor(theme.lineNumbersForeground)
+			statusController.setBackgroundColor(theme.lineNumbersBackground)
 		}
 
 		backgroundColor = theme.editorBackground

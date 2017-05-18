@@ -28,17 +28,17 @@ protocol EditorTheme: class
 	var editorForeground: NSColor { get }
 	var editorBackground: NSColor { get }
 	
-	var lineCounterForeground: NSColor { get }
-	var lineCounterBackground: NSColor { get }
+	var lineNumbersForeground: NSColor { get }
+	var lineNumbersBackground: NSColor { get }
 
 	var preferenceName: String? { get }
 }
 
 private let kThemeNameKey					= "name"
 private let kThemeEditorBackgroundKey		= "editor_background"
-private let kThemeLineCounterBackgroundKey	= "lines_background"
+private let kThemeLineNumbersBackgroundKey	= "lines_background"
 private let kThemeEditorForegroundKey		= "editor_foreground"
-private let kThemeLineCounterForegroundKey	= "lines_foreground"
+private let kThemeLineNumbersForegroundKey	= "lines_foreground"
 
 private let kThemeNativeNamePrefix = "native:"
 private let kThemeUserNamePrefix = "user:"
@@ -49,9 +49,9 @@ extension EditorTheme
 	{
 		return [
 			kThemeEditorBackgroundKey,
-			kThemeLineCounterBackgroundKey,
+			kThemeLineNumbersBackgroundKey,
 			kThemeEditorForegroundKey,
-			kThemeLineCounterForegroundKey]
+			kThemeLineNumbersForegroundKey]
 	}
 
 	fileprivate var serialized: [String: AnyObject]
@@ -59,9 +59,9 @@ extension EditorTheme
 		return [
 			kThemeNameKey:					name as NSString,
 			kThemeEditorBackgroundKey:		editorBackground,
-			kThemeLineCounterBackgroundKey:	lineCounterBackground,
+			kThemeLineNumbersBackgroundKey:	lineNumbersBackground,
 			kThemeEditorForegroundKey:		editorForeground,
-			kThemeLineCounterForegroundKey:	lineCounterForeground
+			kThemeLineNumbersForegroundKey:	lineNumbersForeground
 		]
 	}
 	
@@ -164,8 +164,8 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 		_name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
 		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? NSColor.black
 		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xFDFDFD)
-		lineCounterForeground	= (dict[kThemeLineCounterForegroundKey] as? NSColor) ?? NSColor(rgb: 0x999999)
-		lineCounterBackground	= (dict[kThemeLineCounterBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xF5F5F5)
+		lineNumbersForeground	= (dict[kThemeLineNumbersForegroundKey] as? NSColor) ?? NSColor(rgb: 0x999999)
+		lineNumbersBackground	= (dict[kThemeLineNumbersBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xF5F5F5)
 	}
 	
 	fileprivate var _name: String
@@ -177,8 +177,8 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 
 	dynamic var editorForeground: NSColor
 	dynamic var editorBackground: NSColor
-	dynamic var lineCounterForeground: NSColor
-	dynamic var lineCounterBackground: NSColor
+	dynamic var lineNumbersForeground: NSColor
+	dynamic var lineNumbersBackground: NSColor
 
 	dynamic var willDeallocate: Bool = false
 
@@ -412,12 +412,12 @@ class LightEditorTheme: NativeEditorTheme
 		return NSColor(rgb: 0xFDFDFD)
 	}
 	
-	var lineCounterForeground: NSColor
+	var lineNumbersForeground: NSColor
 	{
 		return NSColor(rgb: 0x999999)
 	}
 	
-	var lineCounterBackground: NSColor
+	var lineNumbersBackground: NSColor
 	{
 		return NSColor(rgb: 0xF5F5F5)
 	}
@@ -440,12 +440,12 @@ class DarkEditorTheme: NativeEditorTheme
 		return NSColor(rgba: 926365695)
 	}
 
-	var lineCounterForeground: NSColor
+	var lineNumbersForeground: NSColor
 	{
 		return NSColor(rgba: 1953789183)
 	}
 
-	var lineCounterBackground: NSColor
+	var lineNumbersBackground: NSColor
 	{
 		return NSColor(rgba: 707406591)
 	}

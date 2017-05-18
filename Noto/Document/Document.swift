@@ -168,13 +168,13 @@ class Document: NSDocument
 
 			printView.textView.textColor = NSColor.black
 			printView.textView.font = Preferences.instance.editorFont
-			printView.textView.lineCounterView?.font = Preferences.instance.lineCounterFont
+			printView.textView.lineNumbersView?.font = Preferences.instance.lineNumbersFont
 			printView.textView.setLayoutOrientation(window.textView.layoutOrientation)
 			
-			if let lineCounterView = printView.textView.lineCounterView
+			if let lineNumbersView = printView.textView.lineNumbersView
 			{
-				lineCounterView.backgroundColor = NSColor.white
-				lineCounterView.textColor = NSColor.black
+				lineNumbersView.backgroundColor = NSColor.white
+				lineNumbersView.textColor = NSColor.black
 			}
 
 			let accessoryContoller = PrintAccessoryViewController.make()
@@ -185,9 +185,9 @@ class Document: NSDocument
 
 			var originalSize = window.textView.frame.size
 
-			if window.textView.lineNumbersVisible, let lineCounterView = window.textView.lineCounterView
+			if window.textView.lineNumbersVisible, let lineNumbersView = window.textView.lineNumbersView
 			{
-				originalSize.width += lineCounterView.frame.width
+				originalSize.width += lineNumbersView.frame.width
 			}
 
 			printView.originalSize = originalSize

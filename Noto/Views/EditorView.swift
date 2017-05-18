@@ -27,7 +27,7 @@ class EditorView: PaddedTextView
 	private let invisiblesLayoutManager = InvisiblesLayoutManager()
 	private var tabSize: UInt = 4
 
-	var lineCounterView: LineCounterRulerView? = nil
+	var lineNumbersView: LineNumbersRulerView? = nil
 	var usesSpacesForTabs: Bool = false
 	var keepsIndentationOnNewLines: Bool = false
 
@@ -83,23 +83,23 @@ class EditorView: PaddedTextView
 
 		if let scrollView = self.enclosingScrollView
 		{
-			let lineCounterView = LineCounterRulerView(scrollView: scrollView, orientation: .verticalRuler)
-			lineCounterView.clientView = self
+			let lineNumbersView = LineNumbersRulerView(scrollView: scrollView, orientation: .verticalRuler)
+			lineNumbersView.clientView = self
 
 			scrollView.horizontalRulerView = nil
-			scrollView.verticalRulerView = lineCounterView
+			scrollView.verticalRulerView = lineNumbersView
 
 			scrollView.hasHorizontalRuler = false
 			scrollView.hasVerticalRuler = true
 
-			self.lineCounterView = lineCounterView
+			self.lineNumbersView = lineNumbersView
 		}
 	}
 
 	deinit
 	{
 		// Break cyclic reference before the text view deallocs
-		lineCounterView?.clientView = nil
+		lineNumbersView?.clientView = nil
 
 		if let scrollView = self.enclosingScrollView
 		{

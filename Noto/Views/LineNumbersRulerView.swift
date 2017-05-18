@@ -1,5 +1,5 @@
 //
-//  LineCounterRulerView.swift
+//  LineNumbersRulerView.swift
 //  Noto
 //
 //  Created by Bruno Philipe on 21/2/17.
@@ -23,7 +23,7 @@ import Cocoa
 
 let kRulerMargin: CGFloat = 10.0
 
-class LineCounterRulerView: NSRulerView
+class LineNumbersRulerView: NSRulerView
 {
 	// Index of newline characters locations
 	private var lineIndexes: [UInt : UInt] = [:]
@@ -48,11 +48,11 @@ class LineCounterRulerView: NSRulerView
 	{
 		clientView = nil
 		NotificationCenter.default.removeObserver(self)
-		Preferences.instance.removeObserver(self, forKeyPath: "lineCounterFont")
+		Preferences.instance.removeObserver(self, forKeyPath: "lineNumbersFont")
 		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
 	}
 
-	var font = Preferences.instance.lineCounterFont
+	var font = Preferences.instance.lineNumbersFont
 	{
 		didSet
 		{
@@ -85,10 +85,10 @@ class LineCounterRulerView: NSRulerView
 	                           change: [NSKeyValueChangeKey : Any]?,
 	                           context: UnsafeMutableRawPointer?)
 	{
-		if let keyPath = keyPath, ["lineCounterFont", "editorFont"].contains(keyPath) && object is Preferences
+		if let keyPath = keyPath, ["lineNumbersFont", "editorFont"].contains(keyPath) && object is Preferences
 		{
 			let pref = Preferences.instance
-			var font = pref.lineCounterFont
+			var font = pref.lineNumbersFont
 			
 			if font.pointSize > pref.editorFont.pointSize,
 				let smallerFont = NSFont(descriptor: font.fontDescriptor, size: pref.editorFont.pointSize)
@@ -133,7 +133,7 @@ class LineCounterRulerView: NSRulerView
 			if let textView = self.textView
 			{
 				NotificationCenter.default.addObserver(self,
-				                                       selector: #selector(LineCounterRulerView.textDidChange(notification:)),
+				                                       selector: #selector(LineNumbersRulerView.textDidChange(notification:)),
 				                                       name: .NSTextStorageDidProcessEditing,
 				                                       object: textView.textStorage)
 			}
@@ -141,7 +141,7 @@ class LineCounterRulerView: NSRulerView
 			if let contentView = scrollView?.contentView
 			{
 				NotificationCenter.default.addObserver(self,
-				                                       selector: #selector(LineCounterRulerView.scrollViewDidScroll(notification:)),
+				                                       selector: #selector(LineNumbersRulerView.scrollViewDidScroll(notification:)),
 				                                       name: .NSViewBoundsDidChange,
 				                                       object: contentView)
 			}
@@ -222,7 +222,7 @@ class LineCounterRulerView: NSRulerView
 
 	private func setupStateObservers()
 	{
-		Preferences.instance.addObserver(self, forKeyPath: "lineCounterFont", options: .new, context: nil)
+		Preferences.instance.addObserver(self, forKeyPath: "lineNumbersFont", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
 	}
 

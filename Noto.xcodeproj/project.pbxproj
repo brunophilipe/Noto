@@ -23,7 +23,7 @@
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
-		15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */; };
+		15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98C21E8747F100E3B7B3 /* Unit_Tests.swift */; };
 		15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
@@ -82,7 +82,7 @@
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
-		15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineCounterRulerView.swift; path = Views/LineCounterRulerView.swift; sourceTree = "<group>"; };
+		15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineNumbersRulerView.swift; path = Views/LineNumbersRulerView.swift; sourceTree = "<group>"; };
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
 		15DC98C01E8747F100E3B7B3 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DC98C21E8747F100E3B7B3 /* Unit_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_Tests.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				15276E611E5BCD120032EDE4 /* BackgroundView.swift */,
 				15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */,
 				15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */,
-				15CA3FC01E5CEAD2008ACD8D /* LineCounterRulerView.swift */,
+				15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */,
 				3D7A61885F941C02FEDEE2AA /* PullableContentView.swift */,
 			);
 			name = Views;
@@ -502,7 +502,7 @@
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
-				15CA3FC11E5CEAD2008ACD8D /* LineCounterRulerView.swift in Sources */,
+				15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
 				3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */,
 				3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */,

@@ -36,8 +36,8 @@ class ThemePreferencesController: NSViewController
 
 	@IBOutlet var editorTextColorWell: NSColorWell!
 	@IBOutlet var editorBackgroundColorWell: NSColorWell!
-	@IBOutlet var lineCounterTextColorWell: NSColorWell!
-	@IBOutlet var lineCounterBackgroundColorWell: NSColorWell!
+	@IBOutlet var lineNumbersTextColorWell: NSColorWell!
+	@IBOutlet var lineNumbersBackgroundColorWell: NSColorWell!
 
     override func viewDidLoad()
 	{
@@ -145,8 +145,8 @@ class ThemePreferencesController: NSViewController
 
 		editorPreviewTextView.textColor = theme.editorForeground
 		editorPreviewTextView.backgroundColor = theme.editorBackground
-		editorPreviewTextView.lineCounterView?.textColor = theme.lineCounterForeground
-		editorPreviewTextView.lineCounterView?.backgroundColor = theme.lineCounterBackground
+		editorPreviewTextView.lineNumbersView?.textColor = theme.lineNumbersForeground
+		editorPreviewTextView.lineNumbersView?.backgroundColor = theme.lineNumbersBackground
 		editorPreviewTextView.needsDisplay = true
 	}
 
@@ -158,8 +158,8 @@ class ThemePreferencesController: NSViewController
 
 		editorTextColorWell.color = theme.editorForeground
 		editorBackgroundColorWell.color = theme.editorBackground
-		lineCounterTextColorWell.color = theme.lineCounterForeground
-		lineCounterBackgroundColorWell.color = theme.lineCounterBackground
+		lineNumbersTextColorWell.color = theme.lineNumbersForeground
+		lineNumbersBackgroundColorWell.color = theme.lineNumbersBackground
 	}
 
 	private func updateThemesMenu()
@@ -362,10 +362,10 @@ class ThemePreferencesController: NSViewController
 			userTheme.editorBackground = sender.color
 
 		case 3: // Line counter text color
-			userTheme.lineCounterForeground = sender.color
+			userTheme.lineNumbersForeground = sender.color
 
 		case 4: // Line counter background color
-			userTheme.lineCounterBackground = sender.color
+			userTheme.lineNumbersBackground = sender.color
 
 		default:
 			break
