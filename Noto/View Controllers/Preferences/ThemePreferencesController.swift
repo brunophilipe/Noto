@@ -49,6 +49,8 @@ class ThemePreferencesController: NSViewController
 		updateFontPreviewColors()
 		updateThemeColors()
 
+		editorPreviewTextView.lineNumbersVisible = true
+
 		NSColorPanel.shared().showsAlpha = false
     }
 
