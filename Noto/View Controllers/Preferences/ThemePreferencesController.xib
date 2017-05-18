@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="EditorPreferencesController" customModule="Noto" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="ThemePreferencesController" customModule="Noto" customModuleProvider="target">
             <connections>
                 <outlet property="deleteThemeButton" destination="Sdz-mJ-vDR" id="5lG-Od-eMu"/>
                 <outlet property="editorBackgroundColorWell" destination="63Z-fW-c9R" id="LHl-92-eII"/>
@@ -18,6 +18,7 @@
                 <outlet property="renameThemeButton" destination="oBu-wg-wb4" id="saO-pZ-tk2"/>
                 <outlet property="renameThemePopover" destination="vf2-8a-Dsf" id="PxI-fV-r4g"/>
                 <outlet property="renameThemeTextField" destination="wgH-AO-IT1" id="rPc-YG-exH"/>
+                <outlet property="shareThemeButton" destination="DKR-UL-nHy" id="XOe-Pc-KUE"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -31,7 +32,7 @@
                     <rect key="frame" x="120" y="20" width="340" height="135"/>
                     <clipView key="contentView" id="pRB-mb-NDj">
                         <rect key="frame" x="1" y="1" width="338" height="133"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zSi-Bx-N1x" customClass="EditorView" customModule="Noto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="338" height="133"/>
@@ -216,6 +217,19 @@ class Hello
                         <action selector="didClickDeleteTheme:" target="-2" id="E03-3o-mNF"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DKR-UL-nHy">
+                    <rect key="frame" x="226" y="290" width="32" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="TC8-SO-6wy"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="share" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="VdD-xF-35J">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickShareTheme:" target="-2" id="Zbe-hG-gcg"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="cS8-MF-gjX" firstAttribute="centerY" secondItem="hVB-gA-1KB" secondAttribute="centerY" id="0me-Vj-H4p"/>
@@ -243,6 +257,7 @@ class Hello
                 <constraint firstItem="Sdz-mJ-vDR" firstAttribute="baseline" secondItem="oBu-wg-wb4" secondAttribute="baseline" id="dLC-0H-qz7"/>
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="4rJ-dr-CVU" secondAttribute="trailing" constant="8" id="fKg-c9-jfQ"/>
                 <constraint firstItem="RlH-eb-fha" firstAttribute="top" secondItem="hVB-gA-1KB" secondAttribute="bottom" constant="12" id="fTu-o2-602"/>
+                <constraint firstItem="DKR-UL-nHy" firstAttribute="leading" secondItem="Sdz-mJ-vDR" secondAttribute="trailing" constant="1" id="fb9-ok-X13"/>
                 <constraint firstItem="hVB-gA-1KB" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="leading" id="fss-75-W2L"/>
                 <constraint firstItem="77Z-0a-e9b" firstAttribute="leading" secondItem="4k4-uq-8ql" secondAttribute="trailing" constant="8" id="hOw-ee-5Wl"/>
                 <constraint firstItem="A2g-1H-6Vy" firstAttribute="top" secondItem="RlH-eb-fha" secondAttribute="top" constant="6" id="kjl-6q-IXJ"/>
@@ -253,6 +268,7 @@ class Hello
                 <constraint firstItem="4k4-uq-8ql" firstAttribute="leading" secondItem="63Z-fW-c9R" secondAttribute="leading" id="vcz-KR-ziM"/>
                 <constraint firstItem="vVh-AS-xMa" firstAttribute="centerY" secondItem="63Z-fW-c9R" secondAttribute="centerY" id="wNp-1r-3Bd"/>
                 <constraint firstItem="Sdz-mJ-vDR" firstAttribute="leading" secondItem="oBu-wg-wb4" secondAttribute="trailing" constant="1" id="xxA-cG-elC"/>
+                <constraint firstItem="DKR-UL-nHy" firstAttribute="baseline" secondItem="Sdz-mJ-vDR" secondAttribute="baseline" id="z7L-Wg-TU6"/>
                 <constraint firstAttribute="bottom" secondItem="RlH-eb-fha" secondAttribute="bottom" constant="20" id="zPQ-de-xXa"/>
             </constraints>
             <point key="canvasLocation" x="140" y="218"/>
@@ -277,11 +293,14 @@ class Hello
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="dDN-kx-hrI"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="aY0-la-1HA">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="aY0-la-1HA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="performClick:" target="hMi-eN-5RZ" id="Sbu-CJ-6yY"/>
+                    </connections>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hMi-eN-5RZ">
                     <rect key="frame" x="172" y="3" width="89" height="32"/>
@@ -308,5 +327,6 @@ class Hello
     <resources>
         <image name="garbage" width="12" height="12"/>
         <image name="pencil" width="12" height="12"/>
+        <image name="share" width="12" height="12"/>
     </resources>
 </document>

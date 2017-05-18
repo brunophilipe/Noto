@@ -32,6 +32,7 @@ class ThemePreferencesController: NSViewController
 	@IBOutlet var editorThemePopUpButton: NSPopUpButton!
 	@IBOutlet var renameThemeButton: NSButton!
 	@IBOutlet var deleteThemeButton: NSButton!
+	@IBOutlet var shareThemeButton: NSButton!
 	@IBOutlet var editorPreviewTextView: EditorView!
 
 	@IBOutlet var editorTextColorWell: NSColorWell!
@@ -179,6 +180,14 @@ class ThemePreferencesController: NSViewController
 													   #selector(ThemePreferencesController.didChangeEditorTheme(_:))))
 		}
 
+		menu.addItem(NSMenuItem.separator())
+
+		let importThemeItem = NSMenuItem(title: "Import theme from file…",
+		                                 action: #selector(ThemePreferencesController.didClickImportTheme(_:)),
+		                                 keyEquivalent: "")
+		importThemeItem.target = self
+		menu.addItem(importThemeItem)
+
 		if themes.user.count > 0
 		{
 			menu.addItem(NSMenuItem.separator())
@@ -213,8 +222,10 @@ class ThemePreferencesController: NSViewController
 		editorThemePopUpButton.menu = menu
 		editorThemePopUpButton.select(selectedItem)
 
-		renameThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
-		deleteThemeButton.isHidden = !(selectedItem?.representedObject is UserEditorTheme)
+		let hideThemeButtons = !(selectedItem?.representedObject is UserEditorTheme)
+		renameThemeButton.isHidden = hideThemeButtons
+		deleteThemeButton.isHidden = hideThemeButtons
+		shareThemeButton.isHidden = hideThemeButtons
 
 		updateThemeColors()
 	}
@@ -267,11 +278,14 @@ class ThemePreferencesController: NSViewController
 			setNewPreferenceEditorTheme(theme: theme)
 		}
 
-		renameThemeButton.isHidden = !(sender.representedObject is UserEditorTheme)
-		deleteThemeButton.isHidden = !(sender.representedObject is UserEditorTheme)
+		let hideThemeButtons = !(sender.representedObject is UserEditorTheme)
+		renameThemeButton.isHidden = hideThemeButtons
+		deleteThemeButton.isHidden = hideThemeButtons
+		shareThemeButton.isHidden = hideThemeButtons
 
 		updateThemeColors()
 		updateFontPreviewColors()
+		updateThemesMenu()
 	}
 
 	@IBAction func didClickRenameTheme(_ sender: NSButton)
@@ -337,6 +351,58 @@ class ThemePreferencesController: NSViewController
 				}
 
 				renameThemePopover.close()
+			}
+		}
+	}
+
+	@IBAction func didClickImportTheme(_ sender: NSMenuItem)
+	{
+		if let window = self.preferencesWindow
+		{
+			let panel = NSOpenPanel()
+			panel.canChooseFiles = true
+			panel.canChooseDirectories = false
+			panel.prompt = "Import Theme"
+			panel.message = "Choose a location from where to import the theme file:"
+			panel.allowedFileTypes = ["plist"]
+			panel.directoryURL = URL(fileURLWithPath: "~/Desktop")
+
+			panel.beginSheetModal(for: window)
+			{
+				(result) in
+
+				if result == NSFileHandlingPanelOKButton, let fileUrl = panel.url
+				{
+					if let theme = UserEditorTheme(fromFile: fileUrl)
+					{
+						theme.writeToFile(immediatelly: true)
+
+						self.setNewPreferenceEditorTheme(theme: theme)
+						self.updateThemesMenu()
+					}
+				}
+			}
+		}
+	}
+
+	@IBAction func didClickShareTheme(_ sender: Any)
+	{
+		if let window = self.preferencesWindow, let theme = Preferences.instance.editorTheme as? UserEditorTheme
+		{
+			let panel = NSSavePanel()
+			panel.prompt = "Export Theme"
+			panel.message = "Choose a location where to export the theme file:"
+			panel.directoryURL = URL(fileURLWithPath: "~/Desktop")
+			panel.nameFieldStringValue = "\(theme.name).plist"
+
+			panel.beginSheetModal(for: window)
+			{
+				(result) in
+
+				if result == NSFileHandlingPanelOKButton, let targetUrl = panel.url
+				{
+					theme.exportThemeTo(url: targetUrl)
+				}
 			}
 		}
 	}

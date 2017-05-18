@@ -36,6 +36,8 @@ extension NSMenuItem
 		if selectedItem == nil && theme.preferenceName == selectedThemeName
 		{
 			selectedItem = menuItem
+
+			menuItem.state = 1
 		}
 
 		return menuItem

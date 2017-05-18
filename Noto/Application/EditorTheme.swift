@@ -322,9 +322,14 @@ extension UserEditorTheme
 		}
 	}
 
-	private func writeToFileNow()
+	func exportThemeTo(url targetUrl: URL)
 	{
-		if let url = self.fileURL
+		writeToFileNow(url: targetUrl)
+	}
+
+	private func writeToFileNow(url targetUrl: URL? = nil)
+	{
+		if let url = targetUrl ?? self.fileURL
 		{
 			let serialized = self.serialized
 			let dict = (serialized as NSDictionary).mutableCopy() as! NSMutableDictionary
