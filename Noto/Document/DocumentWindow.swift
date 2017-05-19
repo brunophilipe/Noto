@@ -76,7 +76,7 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-	private func setup(_ document: Document)
+	internal func setup(_ document: Document)
 	{
 		for observedPreference in observedPreferences
 		{
