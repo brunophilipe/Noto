@@ -122,6 +122,10 @@ class DocumentWindow: NSWindow
 		{
 			menuItem.title = textView.lineNumbersVisible ? "Hide Line Numbers" : "Show Line Numbers"
 		}
+		else if menuItem.action == #selector(DocumentWindow.toggleShowInvisibles(_:))
+		{
+			menuItem.title = textView.showsInvisibleCharacters ? "Hide Invisible Characters" : "Show Invisible Characters"
+		}
 
 		return super.validateMenuItem(menuItem)
 	}

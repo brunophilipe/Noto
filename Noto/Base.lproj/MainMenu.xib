@@ -393,6 +393,12 @@
                                     <action selector="toggleLineNumbers:" target="-1" id="Wm5-uE-uyt"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Invisible Characters" id="9z8-Ji-jN6">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="toggleShowInvisibles:" target="-1" id="4s7-f5-9Ny"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Info Bar" id="1Vo-rd-tOa">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Info Bar" id="PNy-fC-d5P">
