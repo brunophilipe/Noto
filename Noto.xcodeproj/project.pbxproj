@@ -17,6 +17,11 @@
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
+		1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
+		1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
+		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
+		1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
+		1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
 		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
 		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
@@ -33,21 +38,16 @@
 		3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		3D7A60593288B574BD1DE5EB /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
 		3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
-		3D7A6290E3AC56D0F5166DBC /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61885F941C02FEDEE2AA /* PullableContentView.swift */; };
 		3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
 		3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */; };
 		3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */; };
 		3D7A6552F3CAF6690B465562 /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */; };
-		3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66639631E5934C625045 /* String+Additions.swift */; };
-		3D7A65F66F76DBF98501636A /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66032F185ECFD2FE5BE2 /* Bool+Additions.swift */; };
 		3D7A67FFA65969A7EFD1DF63 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */; };
 		3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
 		3D7A695561A245288374A532 /* EditorPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */; };
 		3D7A6A516AB3B8A74FD70D23 /* StatusInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */; };
-		3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A616C708C4C55E455C552 /* NSTextView+Additions.swift */; };
 		3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */; };
-		3D7A6BB501B3B3861279C1D6 /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6E3061FBFB220A90F833 /* NSMenuItem+EditorTheme.swift */; };
 		3D7A6C4EB25C0DC9A582723E /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */; };
 		3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */; };
 		3D7A6FA7E4CC93640224D624 /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */; };
@@ -68,14 +68,19 @@
 		150CFAC01E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150CFAC51E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		150CFAC71E2A83CF000B69E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		150DB9B01E626B49001569D7 /* AssignIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssignIf.swift; path = Extensions/AssignIf.swift; sourceTree = "<group>"; };
-		15257EB01E9F0DD5002C194B /* BumpBuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = BumpBuild.sh; path = Noto/BumpBuild.sh; sourceTree = SOURCE_ROOT; };
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
+		1558E6E91ECFAEEC00468F86 /* BumpBuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BumpBuild.sh; path = Application/BumpBuild.sh; sourceTree = "<group>"; };
+		1558E6EA1ECFAEEC00468F86 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Application/Info.plist; sourceTree = "<group>"; };
+		1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Additions.swift"; path = "Extensions/Bool+Additions.swift"; sourceTree = "<group>"; };
+		1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenuItem+EditorTheme.swift"; path = "Extensions/NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
+		1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextView+Additions.swift"; path = "Extensions/NSTextView+Additions.swift"; sourceTree = "<group>"; };
+		1558E6F01ECFAF1000468F86 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Extensions/String+Additions.swift"; sourceTree = "<group>"; };
+		1558E6F51ECFAF3700468F86 /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullableContentView.swift; path = Views/PullableContentView.swift; sourceTree = "<group>"; };
 		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
 		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
@@ -93,24 +98,19 @@
 		22F004DD282AB058A760B143 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
 		3D7A61399A1E660FC68C7C1F /* PrintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingView.swift; path = "View Controllers/Printing/PrintingView.swift"; sourceTree = "<group>"; };
-		3D7A616C708C4C55E455C552 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Additions.swift"; sourceTree = "<group>"; };
-		3D7A61885F941C02FEDEE2AA /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullableContentView.swift; sourceTree = "<group>"; };
 		3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusInfoBarController.xib; sourceTree = "<group>"; };
 		3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWatcher.swift; sourceTree = "<group>"; };
 		3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ThemePreferencesController.xib; path = "View Controllers/Preferences/ThemePreferencesController.xib"; sourceTree = "<group>"; };
 		3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUDInfoBarController.xib; sourceTree = "<group>"; };
 		3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesController.swift; path = "View Controllers/Preferences/PreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditorPreferencesViewController.xib; path = "View Controllers/Preferences/EditorPreferencesViewController.xib"; sourceTree = "<group>"; };
-		3D7A66032F185ECFD2FE5BE2 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Additions.swift"; sourceTree = "<group>"; };
 		3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingTool.swift; sourceTree = "<group>"; };
-		3D7A66639631E5934C625045 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintAccessoryViewController.swift; path = "View Controllers/Printing/PrintAccessoryViewController.swift"; sourceTree = "<group>"; };
 		3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedToolbar.swift; sourceTree = "<group>"; };
 		3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDInfoBarController.swift; sourceTree = "<group>"; };
 		3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorPreferencesViewController.swift; path = "View Controllers/Preferences/EditorPreferencesViewController.swift"; sourceTree = "<group>"; };
-		3D7A6E3061FBFB220A90F833 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
 		3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrintAccessoryViewController.xib; path = "View Controllers/Printing/PrintAccessoryViewController.xib"; sourceTree = "<group>"; };
 		3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusInfoBarController.swift; sourceTree = "<group>"; };
 		3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */,
 				15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */,
 				15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */,
-				3D7A61885F941C02FEDEE2AA /* PullableContentView.swift */,
+				1558E6F51ECFAF3700468F86 /* PullableContentView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -185,12 +185,12 @@
 		15276E651E5CD5050032EDE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */,
+				1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */,
+				1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */,
+				1558E6F01ECFAF1000468F86 /* String+Additions.swift */,
 				15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */,
 				150DB9B01E626B49001569D7 /* AssignIf.swift */,
-				3D7A66639631E5934C625045 /* String+Additions.swift */,
-				3D7A66032F185ECFD2FE5BE2 /* Bool+Additions.swift */,
-				3D7A6E3061FBFB220A90F833 /* NSMenuItem+EditorTheme.swift */,
-				3D7A616C708C4C55E455C552 /* NSTextView+Additions.swift */,
 				153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */,
 				15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */,
 			);
@@ -210,11 +210,12 @@
 		15933C7B1E5B922E00AFF625 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1558E6E91ECFAEEC00468F86 /* BumpBuild.sh */,
+				1558E6EA1ECFAEEC00468F86 /* Info.plist */,
 				15DB0BE81E64FD9B00170795 /* EditorTheme.swift */,
 				15933C7C1E5B924A00AFF625 /* AppDelegate.swift */,
 				15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */,
 				150CFAC41E2A83CF000B69E5 /* MainMenu.xib */,
-				150CFAC71E2A83CF000B69E5 /* Info.plist */,
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
 			);
 			name = Application;
@@ -260,7 +261,6 @@
 				3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */,
 				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
 				3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */,
-				15257EB01E9F0DD5002C194B /* BumpBuild.sh */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -436,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "infoplist=\"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\"\n/bin/sh \"Noto/BumpBuild.sh\" $infoplist\nbuilddate=`date +%s`\nif [[ -n \"$builddate\" ]]; then\ndefaults write \"${infoplist%.plist}\" BuildDate \"${builddate}\"\nfi";
+			shellScript = "infoplist=\"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\"\n/bin/sh \"Noto/Application/BumpBuild.sh\" $infoplist\nbuilddate=`date +%s`\nif [[ -n \"$builddate\" ]]; then\ndefaults write \"${infoplist%.plist}\" BuildDate \"${builddate}\"\nfi";
 		};
 		3AD655DB63EFD5F3FC0DCC0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -501,15 +501,15 @@
 				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
+				1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */,
+				1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
-				3D7A65D0697DAE2A22A25222 /* String+Additions.swift in Sources */,
 				3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */,
 				3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */,
+				1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */,
 				3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */,
-				3D7A65F66F76DBF98501636A /* Bool+Additions.swift in Sources */,
-				3D7A6BB501B3B3861279C1D6 /* NSMenuItem+EditorTheme.swift in Sources */,
 				3D7A6C4EB25C0DC9A582723E /* InfoBar.swift in Sources */,
 				3D7A6552F3CAF6690B465562 /* HUDInfoBarController.swift in Sources */,
 				3D7A6A516AB3B8A74FD70D23 /* StatusInfoBarController.swift in Sources */,
@@ -517,9 +517,9 @@
 				3D7A67FFA65969A7EFD1DF63 /* ThemePreferencesController.swift in Sources */,
 				3D7A695561A245288374A532 /* EditorPreferencesViewController.swift in Sources */,
 				15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
+				1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */,
+				1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
-				3D7A6B1C0DC127EB078C9FED /* NSTextView+Additions.swift in Sources */,
-				3D7A6290E3AC56D0F5166DBC /* PullableContentView.swift in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,7 +665,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
-				INFOPLIST_FILE = Noto/Info.plist;
+				INFOPLIST_FILE = Noto/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,7 +681,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
-				INFOPLIST_FILE = Noto/Info.plist;
+				INFOPLIST_FILE = Noto/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
