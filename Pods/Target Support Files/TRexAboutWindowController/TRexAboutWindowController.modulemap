@@ -1,0 +1,6 @@
+framework module TRexAboutWindowController {
+  umbrella header "TRexAboutWindowController-umbrella.h"
+
+  export *
+  module * { export * }
+}
