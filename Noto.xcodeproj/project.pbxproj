@@ -320,6 +320,7 @@
 				15257EAF1E9F0D9A002C194B /* ShellScript */,
 				3AD655DB63EFD5F3FC0DCC0F /* [CP] Embed Pods Frameworks */,
 				9B1267AA18DD10F375C5FFD8 /* [CP] Copy Pods Resources */,
+				1558E6F81ECFF14700468F86 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -437,6 +438,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"Noto/Application/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		1558E6F81ECFF14700468F86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n\nhtmlAcks=$(cat \"Pods/Target Support Files/Pods-Noto/Pods-Noto-acknowledgements.markdown\" | markdown)\n\necho \"<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"utf-8\\\"/><style>body{font-family: sans-serif}</style></head><body>$htmlAcks</body></html>\" > \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/acknowledgements.html\"";
 		};
 		3AD655DB63EFD5F3FC0DCC0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

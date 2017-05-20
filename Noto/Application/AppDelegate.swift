@@ -21,13 +21,15 @@
 
 import Cocoa
 import CCNPreferencesWindowController
+import TRexAboutWindowController
 
 let kNotoErrorDomain = "com.brunophilipe.Noto"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate
 {
-	let preferencesController = CCNPreferencesWindowController()
+	fileprivate let preferencesController = CCNPreferencesWindowController()
+	fileprivate let aboutWindowController = TRexAboutWindowController(windowNibName: "PFAboutWindow")
 
 	@IBOutlet weak var disabledInfoBarMenuItem: NSMenuItem!
 	@IBOutlet weak var hudInfoBarMenuItem: NSMenuItem!
@@ -46,6 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	{
 		// Insert code here to initialize your application
 		makePreferencesController()
+		makeAboutWindow()
 
 		updateInfoBarModeMenuItems()
 
@@ -87,6 +90,29 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		disabledInfoBarMenuItem.state	= (mode == .none ? 1 : 0)
 		hudInfoBarMenuItem.state		= (mode == .hud ? 1 : 0)
 		statusBarInfoBarMenuItem.state	= (mode == .status ? 1 : 0)
+	}
+
+	private func makeAboutWindow()
+	{
+		let bundle = Bundle.main
+
+		aboutWindowController.appURL = URL(string: "https://www.brunophilipe.com/software/noto")!
+		aboutWindowController.appName = (bundle.object(forInfoDictionaryKey: "CFBundleName") as? String) ?? "Noto"
+
+		if let creditsHtmlUrl = bundle.url(forResource: "acknowledgements", withExtension: "html"),
+		   let creditsHtmlData: Data = try? Data(contentsOf: creditsHtmlUrl),
+		   let creditsHtmlString = NSAttributedString(html: creditsHtmlData, options: [:], documentAttributes: nil)
+		{
+			aboutWindowController.appCredits = creditsHtmlString
+		}
+
+		let font: NSFont = NSFont(name: "HelveticaNeue", size: 11) ?? NSFont.systemFont(ofSize: 11)
+		let color: NSColor = NSColor.tertiaryLabelColor
+		let copyright = (bundle.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String) ?? "Copyright © 2017 Bruno Philipe. All rights reserved."
+		let attribs: [String : AnyObject] = [NSForegroundColorAttributeName: color, NSFontAttributeName:font]
+
+		aboutWindowController.appCopyright = NSAttributedString(string: copyright, attributes: attribs)
+		aboutWindowController.windowShouldHaveShadow = true
 	}
 
 	private func makePreferencesController()
@@ -134,5 +160,10 @@ extension AppDelegate
 		{
 			Preferences.instance.infoBarMode = mode
 		}
+	}
+
+	@IBAction func showAboutWindow(_ sender: Any)
+	{
+		aboutWindowController.showWindow(sender)
 	}
 }
