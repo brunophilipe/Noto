@@ -232,7 +232,11 @@ class UserEditorTheme : ConcreteEditorTheme
 					return nil
 				}
 
-				if let intValue = themeDictionary[itemKey] as? UInt
+				if let data = themeDictionary[itemKey] as? Data
+				{
+					themeDictionary[itemKey] = NSColor.fromData(data) ?? NSColor.white
+				}
+				else if let intValue = themeDictionary[itemKey] as? UInt
 				{
 					themeDictionary[itemKey] = NSColor(rgb: intValue)
 				}
@@ -338,7 +342,7 @@ extension UserEditorTheme
 			{
 				if let color = dict[settingKey] as? NSColor
 				{
-					dict.setValue(color.rgb, forKey: settingKey)
+					dict.setValue(color.data, forKey: settingKey)
 				}
 			}
 
