@@ -223,7 +223,9 @@ class UserEditorTheme : ConcreteEditorTheme
 
 	init?(fromFile fileURL: URL)
 	{
-		if fileURL.isFileURL, var themeDictionary = NSDictionary(contentsOf: fileURL) as? [String : AnyObject]
+		if fileURL.isFileURL,
+			let data = try? Data(contentsOf: fileURL),
+			var themeDictionary = (try? PropertyListSerialization.propertyList(from: data, format: nil)) as? [String : AnyObject]
 		{
 			for itemKey in UserEditorTheme.userThemeKeys
 			{
@@ -346,7 +348,19 @@ extension UserEditorTheme
 				}
 			}
 
-			dict.write(to: url, atomically: true)
+			do
+			{
+				try PropertyListSerialization.data(fromPropertyList: dict,
+				                                   format: .binary,
+				                                   options: 0).write(to: url,
+				                                                     options: .atomicWrite)
+				print("Now 1")
+			}
+			catch
+			{
+				print("Now 2")
+				dict.write(to: url, atomically: true)
+			}
 		}
 	}
 
@@ -359,6 +373,9 @@ extension UserEditorTheme
 				try FileManager.default.moveItem(at: oldURL, to: newURL)
 
 				fileWriterOldURL = nil
+
+				// We have to write now so we update the theme name.
+				writeToFileNow()
 
 				return true
 			}
