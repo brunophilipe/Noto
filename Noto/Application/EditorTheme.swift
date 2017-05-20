@@ -217,8 +217,6 @@ class UserEditorTheme : ConcreteEditorTheme
 		super.init(fromSerialized: originalTheme.serialized)
 
 		_name = newName
-
-		writeToFile(immediatelly: true)
 	}
 
 	init?(fromFile fileURL: URL)

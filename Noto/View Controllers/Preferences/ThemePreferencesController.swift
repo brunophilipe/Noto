@@ -230,6 +230,26 @@ class ThemePreferencesController: NSViewController
 		updateThemeColors()
 	}
 
+	private func updateThemesMenuItemsState()
+	{
+		if let menuItems = editorThemePopUpButton.menu?.items
+		{
+			let themeName = Preferences.instance.editorThemeName
+
+			for menuItem in menuItems
+			{
+				if (menuItem.representedObject as? EditorTheme)?.preferenceName == themeName
+				{
+					menuItem.state = 1
+				}
+				else
+				{
+					menuItem.state = 0
+				}
+			}
+		}
+	}
+
 	private func setRenameThemeTextFieldState(error: String?)
 	{
 		if let errorMessage = error
@@ -285,7 +305,7 @@ class ThemePreferencesController: NSViewController
 
 		updateThemeColors()
 		updateFontPreviewColors()
-		updateThemesMenu()
+		updateThemesMenuItemsState()
 	}
 
 	@IBAction func didClickRenameTheme(_ sender: NSButton)
@@ -410,13 +430,13 @@ class ThemePreferencesController: NSViewController
 	@IBAction func didChangeColor(_ sender: NSColorWell)
 	{
 		var theme = Preferences.instance.editorTheme
+		var isNewTheme = false
 
 		if theme is NativeEditorTheme || (theme is UserEditorTheme && !(theme as! UserEditorTheme).isCustomization)
 		{
 			theme = UserEditorTheme(customizingTheme: theme)
 
-			setNewPreferenceEditorTheme(theme: theme)
-			updateThemesMenu()
+			isNewTheme = true
 		}
 
 		let userTheme = theme as! UserEditorTheme
@@ -440,6 +460,13 @@ class ThemePreferencesController: NSViewController
 		}
 
 		updateFontPreviewColors()
+
+		if isNewTheme
+		{
+			(theme as? UserEditorTheme)?.writeToFile(immediatelly: true)
+			setNewPreferenceEditorTheme(theme: theme)
+			updateThemesMenu()
+		}
 	}
 }
 
