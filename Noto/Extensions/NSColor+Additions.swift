@@ -35,12 +35,17 @@ extension NSColor
 		let blue	= CGFloat((rgba >>  8) & 0x000000FF) / CGFloat(255.0)
 		let alpha	= CGFloat((rgba >>  0) & 0x000000FF) / CGFloat(255.0)
 
-		self.init(red: red, green: green, blue: blue, alpha: alpha)
+		self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
 	}
-	
+
+	static func fromData(_ data: Data) -> NSColor?
+	{
+		return NSUnarchiver.unarchiveObject(with: data) as? NSColor
+	}
+
 	var rgb: UInt
 	{
-		if colorSpace.colorSpaceModel == .RGB
+		if colorSpace == NSColorSpace.sRGB
 		{
 			var rgbInt = UInt(0)
 			
@@ -51,12 +56,17 @@ extension NSColor
 			return rgbInt
 		}
 		
-		return self.usingColorSpace(NSColorSpace.deviceRGB)?.rgb ?? 0
+		return self.usingColorSpace(NSColorSpace.sRGB)?.rgb ?? 0
 	}
 
 	var rgba: UInt
 	{
 		return (rgb << 8) | (UInt(alphaComponent * 255) & 0x000000FF)
+	}
+
+	var data: Data
+	{
+		return NSArchiver.archivedData(withRootObject: self)
 	}
 	
 	var luminance: CGFloat
