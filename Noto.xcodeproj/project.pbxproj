@@ -436,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "infoplist=\"$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH\"\n/bin/sh \"Noto/Application/BumpBuild.sh\" $infoplist\nbuilddate=`date +%s`\nif [[ -n \"$builddate\" ]]; then\ndefaults write \"${infoplist%.plist}\" BuildDate \"${builddate}\"\nfi";
+			shellScript = "/bin/sh \"Noto/Application/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		3AD655DB63EFD5F3FC0DCC0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
