@@ -1,9 +1,11 @@
 PODS:
   - CCNPreferencesWindowController (1.4.3)
+  - Sparkle (1.15.1)
   - TRexAboutWindowController (1.5.3)
 
 DEPENDENCIES:
   - CCNPreferencesWindowController (from `https://github.com/brunophilipe/CCNPreferencesWindowController.git`)
+  - Sparkle
   - TRexAboutWindowController
 
 EXTERNAL SOURCES:
@@ -17,8 +19,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CCNPreferencesWindowController: e89fc1d448197c6d20e995a4d6488142cae529f5
+  Sparkle: 618fd2d2867fa06a5572a8c4a4c6a721f04da2d2
   TRexAboutWindowController: f25282990c62ccfd01f5012823d8334617d482ed
 
-PODFILE CHECKSUM: 16bd144a0fcc86d1115620ec3aab7fc166295cda
+PODFILE CHECKSUM: b19784eaac5596f946ef649de00359cfd81baac3
 
 COCOAPODS: 1.2.1

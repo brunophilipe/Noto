@@ -15,6 +15,7 @@
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
+		152FCE331ED10DA40058AA40 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 156EDE421ED0FD670032FD38 /* dsa_pub.pem */; };
 		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
 		1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
@@ -27,6 +28,46 @@
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
+		15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
+		15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
+		15A0FB731ED0C46500B1DD8C /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB9B01E626B49001569D7 /* AssignIf.swift */; };
+		15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
+		15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
+		15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
+		15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
+		15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
+		15A0FB791ED0C46500B1DD8C /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
+		15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
+		15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
+		15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
+		15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
+		15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
+		15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
+		15A0FB801ED0C46500B1DD8C /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
+		15A0FB811ED0C46500B1DD8C /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */; };
+		15A0FB821ED0C46500B1DD8C /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */; };
+		15A0FB831ED0C46500B1DD8C /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
+		15A0FB841ED0C46500B1DD8C /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
+		15A0FB851ED0C46500B1DD8C /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */; };
+		15A0FB861ED0C46500B1DD8C /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */; };
+		15A0FB871ED0C46500B1DD8C /* StatusInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */; };
+		15A0FB881ED0C46500B1DD8C /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
+		15A0FB891ED0C46500B1DD8C /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */; };
+		15A0FB8A1ED0C46500B1DD8C /* EditorPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */; };
+		15A0FB8B1ED0C46500B1DD8C /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
+		15A0FB8C1ED0C46500B1DD8C /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
+		15A0FB8D1ED0C46500B1DD8C /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
+		15A0FB8E1ED0C46500B1DD8C /* PrintAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */; };
+		15A0FB8F1ED0C46500B1DD8C /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
+		15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
+		15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
+		15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
+		15A0FB961ED0C46500B1DD8C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
+		15A0FB971ED0C46500B1DD8C /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */; };
+		15A0FB981ED0C46500B1DD8C /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */; };
+		15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
+		15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
+		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
@@ -35,6 +76,7 @@
 		15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
 		15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
 		1852DE2DE7333AE950A7808F /* Pods_Noto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F004DD282AB058A760B143 /* Pods_Noto.framework */; };
+		21EBE8B93A180711ACDB3673 /* Pods_Noto__AppStore_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */; };
 		3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		3D7A60593288B574BD1DE5EB /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
 		3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
@@ -81,11 +123,14 @@
 		1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextView+Additions.swift"; path = "Extensions/NSTextView+Additions.swift"; sourceTree = "<group>"; };
 		1558E6F01ECFAF1000468F86 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Extensions/String+Additions.swift"; sourceTree = "<group>"; };
 		1558E6F51ECFAF3700468F86 /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullableContentView.swift; path = Views/PullableContentView.swift; sourceTree = "<group>"; };
+		156EDE411ED0F9260032FD38 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "Application/Info-AppStore.plist"; sourceTree = "<group>"; };
+		156EDE421ED0FD670032FD38 /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; name = dsa_pub.pem; path = Application/dsa_pub.pem; sourceTree = "<group>"; };
 		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
 		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
+		15A0FBA31ED0C46500B1DD8C /* Noto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineNumbersRulerView.swift; path = Views/LineNumbersRulerView.swift; sourceTree = "<group>"; };
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
@@ -95,8 +140,8 @@
 		15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextStorage+Indentation.swift"; path = "Extensions/NSTextStorage+Indentation.swift"; sourceTree = "<group>"; };
 		15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifiableIndentationTest.swift; sourceTree = "<group>"; };
 		15E401751ECB92B80039E05C /* Noto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noto.entitlements; sourceTree = "<group>"; };
+		1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto (AppStore).release.xcconfig"; path = "Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore).release.xcconfig"; sourceTree = "<group>"; };
 		22F004DD282AB058A760B143 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
 		3D7A61399A1E660FC68C7C1F /* PrintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingView.swift; path = "View Controllers/Printing/PrintingView.swift"; sourceTree = "<group>"; };
 		3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusInfoBarController.xib; sourceTree = "<group>"; };
 		3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWatcher.swift; sourceTree = "<group>"; };
@@ -114,7 +159,10 @@
 		3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrintAccessoryViewController.xib; path = "View Controllers/Printing/PrintAccessoryViewController.xib"; sourceTree = "<group>"; };
 		3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusInfoBarController.swift; sourceTree = "<group>"; };
 		3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
-		D5F7B60D283DABA28357995E /* Pods-Noto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.release.xcconfig"; sourceTree = "<group>"; };
+		67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto__AppStore_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75693DC54529A742F665731A /* Pods-Noto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.release.xcconfig"; sourceTree = "<group>"; };
+		7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto (AppStore).debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore).debug.xcconfig"; sourceTree = "<group>"; };
+		F3AA2E9A717F7089F7E6D7DB /* Pods-Noto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +171,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1852DE2DE7333AE950A7808F /* Pods_Noto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15A0FB901ED0C46500B1DD8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21EBE8B93A180711ACDB3673 /* Pods_Noto__AppStore_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +208,7 @@
 			children = (
 				150CFAB81E2A83CF000B69E5 /* Noto.app */,
 				15DC98C01E8747F100E3B7B3 /* Unit Tests.xctest */,
+				15A0FBA31ED0C46500B1DD8C /* Noto.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,11 +269,13 @@
 			children = (
 				1558E6E91ECFAEEC00468F86 /* BumpBuild.sh */,
 				1558E6EA1ECFAEEC00468F86 /* Info.plist */,
+				156EDE411ED0F9260032FD38 /* Info-AppStore.plist */,
 				15DB0BE81E64FD9B00170795 /* EditorTheme.swift */,
 				15933C7C1E5B924A00AFF625 /* AppDelegate.swift */,
 				15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */,
 				150CFAC41E2A83CF000B69E5 /* MainMenu.xib */,
 				150CFAC21E2A83CF000B69E5 /* Assets.xcassets */,
+				156EDE421ED0FD670032FD38 /* dsa_pub.pem */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -293,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				22F004DD282AB058A760B143 /* Pods_Noto.framework */,
+				67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -300,8 +360,10 @@
 		BCE72710A52A2D92235FA696 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */,
-				D5F7B60D283DABA28357995E /* Pods-Noto.release.xcconfig */,
+				F3AA2E9A717F7089F7E6D7DB /* Pods-Noto.debug.xcconfig */,
+				75693DC54529A742F665731A /* Pods-Noto.release.xcconfig */,
+				7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */,
+				1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -329,6 +391,28 @@
 			name = Noto;
 			productName = Noto;
 			productReference = 150CFAB81E2A83CF000B69E5 /* Noto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		15A0FB6E1ED0C46500B1DD8C /* Noto (AppStore) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15A0FBA01ED0C46500B1DD8C /* Build configuration list for PBXNativeTarget "Noto (AppStore)" */;
+			buildPhases = (
+				8E944F41D36DBD10F80EBE7F /* [CP] Check Pods Manifest.lock */,
+				15A0FB701ED0C46500B1DD8C /* Sources */,
+				15A0FB901ED0C46500B1DD8C /* Frameworks */,
+				15A0FB921ED0C46500B1DD8C /* Resources */,
+				15A0FB9C1ED0C46500B1DD8C /* ShellScript */,
+				15A0FB9F1ED0C46500B1DD8C /* ShellScript */,
+				D2B2049E783E5F86BEACF00B /* [CP] Embed Pods Frameworks */,
+				BC471366F0A9DFA898A7E3D9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Noto (AppStore)";
+			productName = Noto;
+			productReference = 15A0FBA31ED0C46500B1DD8C /* Noto.app */;
 			productType = "com.apple.product-type.application";
 		};
 		15DC98BF1E8747F100E3B7B3 /* Unit Tests */ = {
@@ -372,6 +456,15 @@
 							};
 						};
 					};
+					15A0FB6E1ED0C46500B1DD8C = {
+						DevelopmentTeam = R85D3K8ATT;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					15DC98BF1E8747F100E3B7B3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = R85D3K8ATT;
@@ -394,6 +487,7 @@
 			projectRoot = "";
 			targets = (
 				150CFAB71E2A83CF000B69E5 /* Noto */,
+				15A0FB6E1ED0C46500B1DD8C /* Noto (AppStore) */,
 				15DC98BF1E8747F100E3B7B3 /* Unit Tests */,
 			);
 		};
@@ -405,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */,
+				152FCE331ED10DA40058AA40 /* dsa_pub.pem in Resources */,
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
@@ -413,6 +508,22 @@
 				3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */,
 				3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */,
 				3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15A0FB921ED0C46500B1DD8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */,
+				15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */,
+				15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */,
+				15A0FB961ED0C46500B1DD8C /* MainMenu.xib in Resources */,
+				15A0FB971ED0C46500B1DD8C /* HUDInfoBarController.xib in Resources */,
+				15A0FB981ED0C46500B1DD8C /* StatusInfoBarController.xib in Resources */,
+				15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */,
+				15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */,
+				15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +551,32 @@
 			shellScript = "/bin/sh \"Noto/Application/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		1558E6F81ECFF14700468F86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n\nhtmlAcks=$(cat \"Pods/Target Support Files/Pods-Noto/Pods-Noto-acknowledgements.markdown\" | markdown)\n\necho \"<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"utf-8\\\"/><style>body{font-family: sans-serif}</style></head><body>$htmlAcks</body></html>\" > \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/acknowledgements.html\"";
+		};
+		15A0FB9C1ED0C46500B1DD8C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"Noto/Application/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		15A0FB9F1ED0C46500B1DD8C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -482,6 +619,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		8E944F41D36DBD10F80EBE7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9B1267AA18DD10F375C5FFD8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,6 +647,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Noto/Pods-Noto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC471366F0A9DFA898A7E3D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore)-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2B2049E783E5F86BEACF00B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore)-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -535,6 +717,44 @@
 				1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15A0FB701ED0C46500B1DD8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */,
+				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
+				15A0FB731ED0C46500B1DD8C /* AssignIf.swift in Sources */,
+				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
+				15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */,
+				15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */,
+				15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */,
+				15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */,
+				15A0FB791ED0C46500B1DD8C /* PaddedTextView.swift in Sources */,
+				15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */,
+				15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */,
+				15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */,
+				15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */,
+				15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */,
+				15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */,
+				15A0FB801ED0C46500B1DD8C /* DocumentWindow.swift in Sources */,
+				15A0FB811ED0C46500B1DD8C /* InvisiblesLayoutManager.swift in Sources */,
+				15A0FB821ED0C46500B1DD8C /* FileWatcher.swift in Sources */,
+				15A0FB831ED0C46500B1DD8C /* Bool+Additions.swift in Sources */,
+				15A0FB841ED0C46500B1DD8C /* EncodingTool.swift in Sources */,
+				15A0FB851ED0C46500B1DD8C /* InfoBar.swift in Sources */,
+				15A0FB861ED0C46500B1DD8C /* HUDInfoBarController.swift in Sources */,
+				15A0FB871ED0C46500B1DD8C /* StatusInfoBarController.swift in Sources */,
+				15A0FB881ED0C46500B1DD8C /* PreferencesController.swift in Sources */,
+				15A0FB891ED0C46500B1DD8C /* ThemePreferencesController.swift in Sources */,
+				15A0FB8A1ED0C46500B1DD8C /* EditorPreferencesViewController.swift in Sources */,
+				15A0FB8B1ED0C46500B1DD8C /* NSTextStorage+Indentation.swift in Sources */,
+				15A0FB8C1ED0C46500B1DD8C /* String+Additions.swift in Sources */,
+				15A0FB8D1ED0C46500B1DD8C /* NSMenuItem+EditorTheme.swift in Sources */,
+				15A0FB8E1ED0C46500B1DD8C /* PrintAccessoryViewController.swift in Sources */,
+				15A0FB8F1ED0C46500B1DD8C /* ManagedToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,7 +892,7 @@
 		};
 		150CFACB1E2A83CF000B69E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C5BD674571E69327EB13B7D /* Pods-Noto.debug.xcconfig */;
+			baseConfigurationReference = F3AA2E9A717F7089F7E6D7DB /* Pods-Noto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
@@ -683,12 +903,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG SPARKLE";
 			};
 			name = Debug;
 		};
 		150CFACC1E2A83CF000B69E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5F7B60D283DABA28357995E /* Pods-Noto.release.xcconfig */;
+			baseConfigurationReference = 75693DC54529A742F665731A /* Pods-Noto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
@@ -699,6 +920,43 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SPARKLE;
+			};
+			name = Release;
+		};
+		15A0FBA11ED0C46500B1DD8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R85D3K8ATT;
+				INFOPLIST_FILE = "Noto/Application/Info-AppStore.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto-AppStore";
+				PRODUCT_NAME = Noto;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		15A0FBA21ED0C46500B1DD8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R85D3K8ATT;
+				INFOPLIST_FILE = "Noto/Application/Info-AppStore.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto-AppStore";
+				PRODUCT_NAME = Noto;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -749,6 +1007,15 @@
 			buildConfigurations = (
 				150CFACB1E2A83CF000B69E5 /* Debug */,
 				150CFACC1E2A83CF000B69E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15A0FBA01ED0C46500B1DD8C /* Build configuration list for PBXNativeTarget "Noto (AppStore)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15A0FBA11ED0C46500B1DD8C /* Debug */,
+				15A0FBA21ED0C46500B1DD8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

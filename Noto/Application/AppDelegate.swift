@@ -23,6 +23,10 @@ import Cocoa
 import CCNPreferencesWindowController
 import TRexAboutWindowController
 
+#if SPARKLE
+import Sparkle
+#endif
+
 let kNotoErrorDomain = "com.brunophilipe.Noto"
 
 @NSApplicationMain
@@ -40,6 +44,15 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	var keyDocumentCanReopen: NSNumber
 	{
 		return NSNumber.init(value: NSDocumentController.shared().currentDocument?.fileURL != nil)
+	}
+
+	var hasUpdaterFeature: NSNumber
+	{
+		#if SPARKLE
+		return true
+		#else
+		return false
+		#endif
 	}
 
 	// App Delegate
@@ -165,5 +178,12 @@ extension AppDelegate
 	@IBAction func showAboutWindow(_ sender: Any)
 	{
 		aboutWindowController.showWindow(sender)
+	}
+
+	@IBAction func checkForUpdates(_ sender: Any)
+	{
+		#if SPARKLE
+		SUUpdater.shared().checkForUpdates(sender)
+		#endif
 	}
 }

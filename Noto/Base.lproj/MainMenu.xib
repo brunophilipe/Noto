@@ -32,6 +32,17 @@
                                     <action selector="showAboutWindow:" target="-1" id="IQb-AQ-EfQ"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Check for Updates..." id="mMB-AP-gWI">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="-1" id="cXo-Aq-8ye"/>
+                                    <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.hasUpdaterFeature" id="ZvD-d1-vNF">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>

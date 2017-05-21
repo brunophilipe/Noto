@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Noto (AppStore).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Noto.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -23,6 +28,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>17DFD5C5E2155523C0EB241095563940</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49D7D8F15494833C709B66ABC808B15E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
