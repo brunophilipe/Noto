@@ -26,6 +26,7 @@
 				<string>public.html</string>
 				<string>public.text</string>
 				<string>public.data</string>
+				<string>public.content</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>

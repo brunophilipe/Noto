@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
-	<key>SUFeedURL</key>
-	<string>https://www.brunophilipe.com/software/noto/updates/appcast.xml</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDocumentTypes</key>
@@ -30,6 +26,7 @@
 				<string>public.html</string>
 				<string>public.text</string>
 				<string>public.data</string>
+				<string>public.content</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
@@ -77,5 +74,9 @@
 			<string>Any</string>
 		</dict>
 	</dict>
+	<key>SUFeedURL</key>
+	<string>https://www.brunophilipe.com/software/noto/updates/appcast.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
 </dict>
 </plist>
