@@ -474,3 +474,31 @@ class DarkEditorTheme: NativeEditorTheme
 		return NSColor(rgba: 707406591)
 	}
 }
+
+class PrintingEditorTheme: NativeEditorTheme
+{
+	var name: String
+	{
+		return "Print"
+	}
+	
+	var editorForeground: NSColor
+	{
+		return NSColor.black
+	}
+	
+	var editorBackground: NSColor
+	{
+		return NSColor(rgb: 0xFFFFFF)
+	}
+	
+	var lineNumbersForeground: NSColor
+	{
+		return NSColor(rgb: 0x999999)
+	}
+	
+	var lineNumbersBackground: NSColor
+	{
+		return NSColor(rgb: 0xF5F5F5)
+	}
+}

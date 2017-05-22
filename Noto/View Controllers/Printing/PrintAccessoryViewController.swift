@@ -200,7 +200,7 @@ extension PrintAccessoryViewController // IBActions
 		}
 		else
 		{
-			self.themeName = LightEditorTheme().preferenceName!
+			self.themeName = PrintingEditorTheme().preferenceName!
 		}
 	}
 }
