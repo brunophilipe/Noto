@@ -10,7 +10,6 @@
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
-		150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB9B01E626B49001569D7 /* AssignIf.swift */; };
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
@@ -30,7 +29,6 @@
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
 		15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
-		15A0FB731ED0C46500B1DD8C /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DB9B01E626B49001569D7 /* AssignIf.swift */; };
 		15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
 		15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
@@ -70,6 +68,7 @@
 		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
+		15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98C21E8747F100E3B7B3 /* Unit_Tests.swift */; };
 		15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
@@ -110,7 +109,6 @@
 		150CFAC01E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150CFAC51E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		150DB9B01E626B49001569D7 /* AssignIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssignIf.swift; path = Extensions/AssignIf.swift; sourceTree = "<group>"; };
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
@@ -133,6 +131,7 @@
 		15A0FBA31ED0C46500B1DD8C /* Noto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineNumbersRulerView.swift; path = Views/LineNumbersRulerView.swift; sourceTree = "<group>"; };
+		15DA4EBF1ED4D10C00782994 /* AssignIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignIf.swift; sourceTree = "<group>"; };
 		15DB0BE81E64FD9B00170795 /* EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorTheme.swift; path = Application/EditorTheme.swift; sourceTree = "<group>"; };
 		15DC98C01E8747F100E3B7B3 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DC98C21E8747F100E3B7B3 /* Unit_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_Tests.swift; sourceTree = "<group>"; };
@@ -247,7 +246,6 @@
 				1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */,
 				1558E6F01ECFAF1000468F86 /* String+Additions.swift */,
 				15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */,
-				150DB9B01E626B49001569D7 /* AssignIf.swift */,
 				153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */,
 				15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */,
 			);
@@ -316,6 +314,7 @@
 		3D7A65D621A92EA3DF2A986D /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				15DA4EBF1ED4D10C00782994 /* AssignIf.swift */,
 				3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */,
 				3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */,
 				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
@@ -687,8 +686,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
+				15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
-				150DB9B11E626B49001569D7 /* AssignIf.swift in Sources */,
 				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
@@ -726,7 +725,6 @@
 			files = (
 				15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
-				15A0FB731ED0C46500B1DD8C /* AssignIf.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
 				15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */,
 				15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */,
