@@ -19,7 +19,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-import Foundation
+import Cocoa
 
 protocol InfoBar: class
 {
@@ -27,4 +27,19 @@ protocol InfoBar: class
 	func setWordsCount(_: String)
 	func setCharactersCount(_: String)
 	func setEncoding(_: String)
+}
+
+internal extension InfoBar
+{
+	func makeCopyContextMenuForView(_ view: NSView) -> NSMenu
+	{
+		let menuItem = NSMenuItem(title: "Copy", action: #selector(DocumentWindow.copyDocumentStatToPasteboard(_:)), keyEquivalent: "")
+		menuItem.target = (view.window as? DocumentWindow)
+		menuItem.tag = view.tag
+
+		let menu = NSMenu()
+		menu.addItem(menuItem)
+
+		return menu
+	}
 }

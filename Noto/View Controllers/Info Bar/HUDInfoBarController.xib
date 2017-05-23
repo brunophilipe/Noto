@@ -20,7 +20,7 @@
         <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGC-Wl-a2y">
             <rect key="frame" x="0.0" y="0.0" width="235" height="32"/>
             <subviews>
-                <textField toolTip="Characters Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-ue-JOq">
+                <textField toolTip="Characters Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-ue-JOq">
                     <rect key="frame" x="8" y="8" width="27" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>
@@ -35,7 +35,7 @@
                     </textFieldCell>
                     <accessibility description="Characters Count" help="The total number of characters in the document"/>
                 </textField>
-                <textField toolTip="Words Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-tM-DTi">
+                <textField toolTip="Words Count" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-tM-DTi">
                     <rect key="frame" x="43" y="8" width="30" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>
@@ -50,7 +50,7 @@
                     </textFieldCell>
                     <accessibility description="Words Count" help="The total number of words in the document"/>
                 </textField>
-                <textField toolTip="Lines Count" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
+                <textField toolTip="Lines Count" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="3" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvo-A7-ZBL">
                     <rect key="frame" x="81" y="8" width="23" height="17"/>
                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                         <configuration>

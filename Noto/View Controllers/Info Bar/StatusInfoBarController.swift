@@ -32,6 +32,10 @@ class StatusInfoBarController: NSViewController, InfoBar
 	{
         super.viewDidLoad()
         // Do view setup here.
+
+		labelCharacters.menu = makeCopyContextMenuForView(labelCharacters)
+		labelWords.menu = makeCopyContextMenuForView(labelWords)
+		labelLines.menu = makeCopyContextMenuForView(labelLines)
     }
 
 	func setTextColor(_ color: NSColor)

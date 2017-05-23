@@ -33,6 +33,10 @@ class HUDInfoBarController: NSViewController, InfoBar
 		super.viewDidLoad()
 
 		self.view.layer?.cornerRadius = 10
+
+		labelCharacters.menu = makeCopyContextMenuForView(labelCharacters)
+		labelWords.menu = makeCopyContextMenuForView(labelWords)
+		labelLines.menu = makeCopyContextMenuForView(labelLines)
 	}
 
 	func setDarkMode(_ isDark: Bool)

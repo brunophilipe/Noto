@@ -24,7 +24,7 @@ import Cocoa
 @IBDesignable
 class DocumentWindow: NSWindow
 {
-	private var infoBarController: InfoBar? = nil
+	fileprivate var infoBarController: InfoBar? = nil
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
 	private var customTopThemeConstraint: NSLayoutConstraint? = nil
@@ -33,6 +33,30 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 	@IBOutlet var titleBarSeparatorView: BackgroundView!
 	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
+
+	private var characterCount: Int = 0
+	{
+		didSet
+		{
+			infoBarController?.setCharactersCount("\(characterCount) Character\(characterCount == 1 ? "" : "s")")
+		}
+	}
+
+	private var wordsCount: Int = 0
+	{
+		didSet
+		{
+			infoBarController?.setWordsCount("\(wordsCount) Word\(wordsCount == 1 ? "" : "s")")
+		}
+	}
+
+	private var linesCount: Int = 1
+	{
+		didSet
+		{
+			infoBarController?.setLinesCount("\(linesCount) Line\(linesCount == 1 ? "" : "s")")
+		}
+	}
 
 	private let observedPreferences = [
 			"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize", "useSpacesForTabs",
@@ -53,7 +77,7 @@ class DocumentWindow: NSWindow
 		set
 		{
 			textView.string = newValue
-			updateInfoBar()
+			updateDocumentStats()
 		}
 	}
 
@@ -173,6 +197,29 @@ class DocumentWindow: NSWindow
 		textView.lineNumbersVisible.flip()
 
 		Preferences.instance.autoshowLineNumbers = textView.lineNumbersVisible
+	}
+
+	@IBAction func copyDocumentStatToPasteboard(_ sender: Any?)
+	{
+		let pasteboard = NSPasteboard.general()
+
+		switch (sender as? NSMenuItem)?.tag
+		{
+		case .some(1):
+			pasteboard.clearContents()
+			pasteboard.writeObjects([NSString(string: "\(characterCount)")])
+
+		case .some(2):
+			pasteboard.clearContents()
+			pasteboard.writeObjects([NSString(string: "\(wordsCount)")])
+
+		case .some(3):
+			pasteboard.clearContents()
+			pasteboard.writeObjects([NSString(string: "\(linesCount)")])
+
+		default:
+			break
+		}
 	}
 
 	private func setupThemeObserver()
@@ -295,16 +342,18 @@ class DocumentWindow: NSWindow
 		}
 
 		updateEditorColors()
-		updateInfoBar()
+		updateDocumentStats()
+
+		infoBarController?.setEncoding((delegate as? Document)?.encoding.description ?? "<error>")
 	}
 
-	fileprivate func updateInfoBar()
+	fileprivate func updateDocumentStats()
 	{
-		if let infoBar = self.infoBarController, let string = self.textView.string
+		if let string = self.textView.string
 		{
-			var characterCount = Int(0)
-			var wordsCount = Int(0)
-			var linesCount = Int(1)
+			var wordsCount = 0
+			var linesCount = 0
+			var characterCount = 0
 
 			if Preferences.instance.countWhitespacesInTotalCharacters
 			{
@@ -328,10 +377,9 @@ class DocumentWindow: NSWindow
 			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords, { _ in wordsCount += 1 })
 			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines, { _ in linesCount += 1 })
 
-			infoBar.setCharactersCount("\(characterCount) Character\(characterCount == 1 ? "" : "s")")
-			infoBar.setWordsCount("\(wordsCount) Word\(wordsCount == 1 ? "" : "s")")
-			infoBar.setLinesCount("\(linesCount) Line\(linesCount == 1 ? "" : "s")")
-			infoBar.setEncoding((delegate as? Document)?.encoding.description ?? "<error>")
+			self.wordsCount = wordsCount
+			self.characterCount = characterCount
+			self.linesCount = max(linesCount, 1)
 		}
 	}
 
@@ -369,7 +417,7 @@ class DocumentWindow: NSWindow
 				setupInfoBar()
 
 			case .some("countWhitespacesInTotalCharacters"):
-				updateInfoBar()
+				updateDocumentStats()
 
 			case .some("showsInvisibles"):
 				updateEditorInvisibles()
@@ -503,7 +551,7 @@ extension DocumentWindow: NSTextViewDelegate
 {
 	func textDidChange(_ notification: Notification)
 	{
-		self.updateInfoBar()
+		self.updateDocumentStats()
 	}
 }
 
@@ -511,6 +559,6 @@ extension DocumentWindow
 {
 	func encodingDidChange(document: Document, newEncoding: String.Encoding)
 	{
-		self.updateInfoBar()
+		infoBarController?.setEncoding(document.encoding.description)
 	}
 }
