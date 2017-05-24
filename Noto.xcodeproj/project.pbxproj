@@ -66,6 +66,9 @@
 		15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
 		15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
+		15B005281ED646700028B27E /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
+		15B005291ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
+		15B0052A1ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
 		15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
 		15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
@@ -724,6 +727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */,
+				15B005291ED646870028B27E /* AssignIf.swift in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
 				15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */,
@@ -762,6 +766,8 @@
 			files = (
 				15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */,
 				15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */,
+				15B0052A1ED646870028B27E /* AssignIf.swift in Sources */,
+				15B005281ED646700028B27E /* EncodingTool.swift in Sources */,
 				15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,12 +968,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = R85D3K8ATT;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};
@@ -977,12 +985,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = R85D3K8ATT;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};

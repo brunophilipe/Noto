@@ -29,7 +29,7 @@ protocol ModifiableIndentation
 
 extension NSTextStorage: ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
@@ -83,7 +83,7 @@ extension NSTextStorage: ModifiableIndentation
 		return updatedRanges
 	}
 
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
