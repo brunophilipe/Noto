@@ -126,6 +126,7 @@
 		1558E6F51ECFAF3700468F86 /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullableContentView.swift; path = Views/PullableContentView.swift; sourceTree = "<group>"; };
 		156EDE411ED0F9260032FD38 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "Application/Info-AppStore.plist"; sourceTree = "<group>"; };
 		156EDE421ED0FD670032FD38 /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; name = dsa_pub.pem; path = Application/dsa_pub.pem; sourceTree = "<group>"; };
+		158377BE1EDB62BF003AA2BF /* Noto-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Noto-AppStore.entitlements"; sourceTree = "<group>"; };
 		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
 		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				15E401751ECB92B80039E05C /* Noto.entitlements */,
+				158377BE1EDB62BF003AA2BF /* Noto-AppStore.entitlements */,
 				15933C7B1E5B922E00AFF625 /* Application */,
 				15933C781E5B920D00AFF625 /* Document */,
 				15276E601E5BCCFA0032EDE4 /* Views */,
@@ -933,7 +935,7 @@
 			baseConfigurationReference = 7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Noto/Noto-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
@@ -951,7 +953,7 @@
 			baseConfigurationReference = 1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Noto/Noto.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Noto/Noto-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = R85D3K8ATT;
