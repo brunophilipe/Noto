@@ -84,6 +84,9 @@ class Document: NSDocument
 			savePanel.accessoryView = label
 		}
 
+		savePanel.isExtensionHidden = false
+		savePanel.allowsOtherFileTypes = true
+
 		return super.prepareSavePanel(savePanel)
 	}
 
@@ -148,6 +151,11 @@ class Document: NSDocument
 		{
 			throw NSError(domain: kNotoErrorDomain, code: 1010, userInfo: [NSLocalizedDescriptionKey: "Could not load file"])
 		}
+	}
+
+	override func fileNameExtension(forType typeName: String, saveOperation: NSSaveOperationType) -> String?
+	{
+		return fileURL?.pathExtension ?? "txt"
 	}
 
 	override func printOperation(withSettings printSettings: [String: Any]) throws -> NSPrintOperation
