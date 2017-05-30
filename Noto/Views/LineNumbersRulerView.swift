@@ -240,6 +240,7 @@ class LineNumbersRulerView: NSRulerView
 		var right = lineIndexes.count
 		var mid = 0
 
+		// Then do a binary search
 		while (right - left) > 1
 		{
 			mid = (right + left) / 2
