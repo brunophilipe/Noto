@@ -87,11 +87,18 @@ class AppDelegate: NSObject, NSApplicationDelegate
 
 	func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool
 	{
-		// Show open panel instead of building a new file right away.
-		let panel = NSOpenPanel()
-		panel.makeKeyAndOrderFront(self)
+		if FileManager.default.ubiquityIdentityToken != nil
+		{
+			// Show open panel instead of building a new file right away.
+			let panel = NSOpenPanel()
+			panel.makeKeyAndOrderFront(self)
 
-		return false
+			return false
+		}
+		else
+		{
+			return true
+		}
 	}
 
 	// Private Methods
