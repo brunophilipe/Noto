@@ -247,7 +247,13 @@ class Document: NSDocument
 						self.loadedString = newString
 						self.usedEncoding = newEncoding
 
+						// Sends the re-encoded text
 						sendDataToWindow()
+
+						// Tells the window that the encoding changed
+						window?.encodingDidChange(document: self, newEncoding: usedEncoding)
+
+						// Resets the change status
 						updateChangeCount(.changeCleared)
 						return
 					}
