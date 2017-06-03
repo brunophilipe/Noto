@@ -436,6 +436,17 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="h4z-1D-4QQ"/>
+                            <menuItem title="Increase Font Size" keyEquivalent="+" id="rTB-OY-rEx">
+                                <connections>
+                                    <action selector="increaseFontSize:" target="-1" id="lSa-X7-2y6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Decrease Font Size" keyEquivalent="-" id="fAk-8n-3bM">
+                                <connections>
+                                    <action selector="decreaseFontSize:" target="-1" id="QkG-Kx-KWR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="piZ-nb-Coe"/>
                             <menuItem title="Go to Line…" keyEquivalent="l" id="HTE-o3-Srn">
                                 <connections>
                                     <action selector="jumpToALine:" target="-1" id="PMh-hv-Vw2"/>

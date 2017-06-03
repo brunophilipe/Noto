@@ -106,6 +106,26 @@ class Preferences: UserDefaults
 
 	// Editor Settings
 
+	func increaseFontSize()
+	{
+		let font = self.editorFont
+
+		if let largerFont = NSFont(descriptor: font.fontDescriptor, size: (font.pointSize + 1))
+		{
+			self.editorFont = largerFont
+		}
+	}
+
+	func decreaseFontSize()
+	{
+		let font = self.editorFont
+
+		if font.pointSize > 1, let smallerFont = NSFont(descriptor: font.fontDescriptor, size: (font.pointSize - 1))
+		{
+			self.editorFont = smallerFont
+		}
+	}
+
 	dynamic var editorFont: NSFont
 	{
 		get

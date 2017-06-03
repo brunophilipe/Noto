@@ -187,6 +187,16 @@ extension AppDelegate
 		aboutWindowController.showWindow(sender)
 	}
 
+	@IBAction func increaseFontSize(_ sender: Any)
+	{
+		Preferences.instance.increaseFontSize()
+	}
+
+	@IBAction func decreaseFontSize(_ sender: Any)
+	{
+		Preferences.instance.decreaseFontSize()
+	}
+
 	@IBAction func checkForUpdates(_ sender: Any)
 	{
 		#if SPARKLE
