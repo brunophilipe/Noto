@@ -5,7 +5,7 @@
     "build_id": "572a6aae094622ca7342dc9d",
     "icon": "../SharedGlobalArt/AppIconDefault_Noto.png",
     "sections": {
-        "txte66378667": {
+        "documents": {
             "name": "Create and open documents",
             "children": [
                 "start-a-document",
@@ -15,7 +15,7 @@
                 "hear-document-aloud"
             ]
         },
-        "txtead825d1d": {
+        "appearance": {
             "name": "Customize editor appearance",
             "children": [
                 "themes",
@@ -25,8 +25,8 @@
                 "txte5c41b552"
             ]
         },
-        "txteff27d864": {
-            "name": "Use writing tools",
+        "tools": {
+            "name": "Tools",
             "children": [
                 "txte86b1c1b9",
                 "txtef6cfde1a",
@@ -37,10 +37,9 @@
     "birdseed_version": 5,
     "toc": [
         "overview",
-        "txte66378667",
-        "txtead825d1d",
-        "txte33f64074",
-        "txteff27d864"
+        "documents",
+        "appearance",
+        "tools"
     ],
     "locale": "en",
     "version": "10.12",

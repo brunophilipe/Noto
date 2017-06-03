@@ -11,11 +11,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>50.2</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>hbwr</string>
 	<key>CFBundleVersion</key>
-	<string>50.2</string>
+	<string>1.0</string>
 	<key>HPDBookAccessPath</key>
 	<string>redirect.html</string>
 	<key>HPDBookIconPath</key>
@@ -23,12 +23,16 @@
 	<key>HPDBookIndexPath</key>
 	<string>search.helpindex</string>
 	<key>HPDBookKBProduct</key>
-	<string>kte</string>
+	<string>notohelp</string>
 	<key>HPDBookType</key>
 	<string>3</string>
 	<key>HPDBookUsesExternalViewer</key>
 	<false/>
 	<key>HPDMaxWindowWidth</key>
-	<integer>938</integer>
+	<integer>1024</integer>
+	<key>HPDBookTitle</key>
+	<string>Noto Help</string>
+	<key>CFBundleName</key>
+	<string>Noto</string>
 </dict>
 </plist>

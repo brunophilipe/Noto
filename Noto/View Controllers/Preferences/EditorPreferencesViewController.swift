@@ -128,6 +128,12 @@ class EditorPreferencesViewController: NSViewController
 			}
 		}
 	}
+
+	@IBAction func didClickShowHelp(_ sender: Any)
+	{
+		let helpBook = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String
+		NSHelpManager.shared().openHelpAnchor("editor-prefs", inBook: helpBook)
+	}
 	
 	// Editor Font
 	
