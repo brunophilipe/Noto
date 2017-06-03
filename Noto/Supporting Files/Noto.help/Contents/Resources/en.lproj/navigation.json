@@ -1,0 +1,204 @@
+{
+    "css": "",
+    "framework": "duck-10.0.0",
+    "title": "Noto Help",
+    "build_id": "572a6aae094622ca7342dc9d",
+    "icon": "../SharedGlobalArt/AppIconDefault_Noto.png",
+    "sections": {
+        "txte66378667": {
+            "name": "Create and open documents",
+            "children": [
+                "start-a-document",
+                "open-a-document",
+                "save-a-document",
+                "change-document-encoding",
+                "hear-document-aloud"
+            ]
+        },
+        "txtead825d1d": {
+            "name": "Customize editor appearance",
+            "children": [
+                "themes",
+                "editor-prefs",
+                "infobar-prefs",
+                "txte44f15043",
+                "txte5c41b552"
+            ]
+        },
+        "txteff27d864": {
+            "name": "Use writing tools",
+            "children": [
+                "txte86b1c1b9",
+                "txtef6cfde1a",
+                "txtef5d9dd70"
+            ]
+        }
+    },
+    "birdseed_version": 5,
+    "toc": [
+        "overview",
+        "txte66378667",
+        "txtead825d1d",
+        "txte33f64074",
+        "txteff27d864"
+    ],
+    "locale": "en",
+    "version": "10.12",
+    "enable_tracking": false,
+    "source_schema": "apd-schema",
+    "collect_feedback": false,
+    "platform": "mac",
+    "build_date": "2016.05.04-14:34:28",
+    "landing": "landing",
+    "product": "noto",
+    "urls": {},
+    "copyright": "",
+    "show_previous_next": false,
+    "topics": {
+        "themes": {
+            "name": "Editor themes",
+            "searchName": "Choose themes in Noto",
+            "href": "themes.html"
+        },
+        "custom-themes": {
+            "name": "Custom editor themes",
+            "searchName": "Create, change, import, and export themes in Noto",
+            "href": "custom-themes.html"
+        },
+        "txte5c41b552": {
+            "name": "Set character and line spacing",
+            "searchName": "Set character and line spacing in Noto"
+        },
+        "txtec0fe94d2": {
+            "name": "Insert special characters",
+            "searchName": "Insert special characters in Noto documents"
+        },
+        "start-a-document": {
+            "name": "Start a new document",
+            "searchName": "Start new Noto documents",
+            "href": "start-a-document.html"
+        },
+        "txtef6cfde1a": {
+            "name": "Find and replace text",
+            "searchName": "Find and replace text in Noto"
+        },
+        "txte44f15043": {
+            "name": "Add headers and footers",
+            "searchName": "Add headers and footers in Noto"
+        },
+        "save-a-document": {
+            "name": "Save a document",
+            "searchName": "Save Noto documents",
+            "href": "save-a-document.html"
+        },
+        "change-document-encoding": {
+            "name": "Change a document’s encoding",
+            "searchName": "Change the encoding used for a document",
+            "href": "change-document-encoding.html"
+        },
+        "hear-document-aloud": {
+            "name": "Hear a document read aloud",
+            "searchName": "Listen to Noto documents",
+            "href": "hear-document-aloud.html"
+        },
+        "open-a-document": {
+            "name": "Open a document",
+            "searchName": "Open documents in Noto",
+            "href": "open-a-document.html"
+        },
+        "txte4120841e": {
+            "name": "Add tables and lists",
+            "searchName": "Add tables and lists to a Noto document"
+        },
+        "txte5d6611d0": {
+            "name": "Add photos, movies, and files",
+            "searchName": "Add photos, movies, and files in Noto"
+        },
+        "txte52183e41": {
+            "name": "Annotate images",
+            "searchName": "Annotate images with Markup in Noto"
+        },
+        "txted1019": {
+            "name": "If text formatting disappears",
+            "searchName": "If text formatting disappears in Noto"
+        },
+        "txtef5d9dd70": {
+            "name": "Complete partially entered words",
+            "searchName": "Complete partially entered words in Noto"
+        },
+        "txted1026": {
+            "name": "Make documents read-only",
+            "searchName": "Make read-only Noto documents"
+        },
+        "txted1028": {
+            "name": "If characters aren’t displayed correctly",
+            "searchName": "If characters aren’t displayed correctly in Noto"
+        },
+        "txted1063": {
+            "name": "Set new document, open, and save preferences",
+            "searchName": "Set new document, open, and save preferences in Noto"
+        },
+        "overview": {
+            "name": "Noto overview",
+            "href": "overview.html"
+        },
+        "txted0b6cd61": {
+            "name": "Work with HTML documents",
+            "searchName": "Work with HTML documents in Noto"
+        },
+        "editor-prefs": {
+            "name": "Editor options & font",
+            "searchName": "Choose the font family and size used in the editor as well as other options in Noto",
+            "href": "editor-prefs.html"
+        },
+        "landing": {
+            "name": "Noto Help",
+            "href": "landing.html",
+            "categories": [
+                "landing"
+            ]
+        },
+        "infobar-prefs": {
+            "name": "Change Info Bar appearance",
+            "searchName": "Change the appearance of the Info Bar in Noto",
+            "href": "infobar-prefs.html"
+        },
+        "txte86b1c1b9": {
+            "name": "Check spelling and grammar",
+            "searchName": "Check spelling and grammar in Noto"
+        },
+        "txted11519": {
+            "name": "Jump to locations in documents",
+            "searchName": "Jump to locations in Noto documents"
+        },
+        "txted35481": {
+            "name": "Use vertical text",
+            "searchName": "Use vertical text in Noto"
+        },
+        "txted35741": {
+            "name": "View the RTF directives in RTF files",
+            "searchName": "View the RTF directives in RTF files using Noto"
+        },
+        "txte58c1b39e": {
+            "name": "Change the look of text",
+            "searchName": "Change the look of text in Noto documents"
+        },
+        "txted35745": {
+            "name": "Add clickable links automatically",
+            "searchName": "Add clickable links automatically to Noto documents"
+        },
+        "txted35753": {
+            "name": "Turn on data detectors",
+            "searchName": "Turn on data detectors in Noto"
+        },
+        "txte15912956": {
+            "name": "Use styles",
+            "searchName": "Use styles in Noto documents"
+        },
+        "txted35754": {
+            "name": "Properly space pasted text automatically",
+            "searchName": "Properly space pasted text automatically in Noto"
+        }
+    },
+    "copyright_text": "© 2017 Bruno Philipe. All rights reserved."
+}

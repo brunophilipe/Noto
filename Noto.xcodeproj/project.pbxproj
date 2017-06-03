@@ -19,6 +19,8 @@
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
+		15321F011EE0F53800AE2456 /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 15321F001EE0F53800AE2456 /* Noto.help */; };
+		15321F021EE0F53800AE2456 /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 15321F001EE0F53800AE2456 /* Noto.help */; };
 		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
 		154148B71F217A3B000D6383 /* WindowDragHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E276B1F15650300CD473C /* WindowDragHandleView.swift */; };
@@ -132,6 +134,7 @@
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153E276B1F15650300CD473C /* WindowDragHandleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowDragHandleView.swift; path = Views/WindowDragHandleView.swift; sourceTree = "<group>"; };
+		15321F001EE0F53800AE2456 /* Noto.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto.help; sourceTree = "<group>"; };
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
 		154148B91F253E42000D6383 /* Temporizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temporizer.swift; sourceTree = "<group>"; };
 		1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Additions.swift"; path = "Extensions/Bool+Additions.swift"; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 		15260C381EE0EE5300A91CE6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15321F001EE0F53800AE2456 /* Noto.help */,
 				15260C391EE0EE5300A91CE6 /* BumpBuild.sh */,
 				15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */,
 				15260C3B1EE0EE5300A91CE6 /* Info-AppStore.plist */,
@@ -538,6 +542,7 @@
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
 				3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */,
 				3D7A6FA7E4CC93640224D624 /* StatusInfoBarController.xib in Resources */,
+				15321F011EE0F53800AE2456 /* Noto.help in Resources */,
 				3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */,
 				3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */,
 				3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */,
@@ -548,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15321F021EE0F53800AE2456 /* Noto.help in Resources */,
 				15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */,
 				15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */,
 				15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */,

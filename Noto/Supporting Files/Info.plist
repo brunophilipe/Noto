@@ -38,6 +38,10 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>Noto.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>com.brunophilipe.Noto.help</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

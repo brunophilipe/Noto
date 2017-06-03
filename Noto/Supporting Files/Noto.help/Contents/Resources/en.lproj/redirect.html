@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex" />
+    <script type="text/javascript">
+      (function apd_language_redirect () {
+        var lproj_match = location.pathname.match(/([\-_a-z]+\.lproj)/i) || [],
+        topic_match = location.search.match(/topic=([-_a-z0-9]+)/i) || [],
+        search = (lproj_match.length > 1 ? "?localePath=" + lproj_match.pop() : ""),
+        hash = (topic_match.length > 1 ? "#/" + topic_match.pop() : location.hash),
+        url = "../index.html" + search + hash;
+        location.replace(url);
+      }());
+    </script>
+    <meta http-equiv="refresh" content="1;url=../index.html" />
+    <title></title>
+  </head>
+  <body></body>
+</html>
