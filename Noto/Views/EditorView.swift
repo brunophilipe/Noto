@@ -231,13 +231,13 @@ class EditorView: PaddedTextView
 			{
 				let previousLineRange = string.lineRange(for: NSMakeRange(currentLineRange.location - 1, 0))
 
-				var tabCount = 0
+				var charCount = 0
 
-				for i in previousLineRange.location ..< (previousLineRange.location + previousLineRange.length)
+				for i in previousLineRange.location ..< NSMaxRange(previousLineRange)
 				{
-					if string.character(at: i).isTab()
+					if string.character(at: i).isSpace() || string.character(at: i).isTab()
 					{
-						tabCount += 1
+						charCount += 1
 					}
 					else
 					{
@@ -245,10 +245,11 @@ class EditorView: PaddedTextView
 					}
 				}
 
-				textStorage.replaceCharacters(in: NSMakeRange(currentLineRange.location, 0),
-				                              with: String(repeating: "\t", count: tabCount))
+				let indentationString = string.substring(with: NSMakeRange(previousLineRange.location, charCount))
 
-				return tabCount
+				textStorage.replaceCharacters(in: NSMakeRange(currentLineRange.location, 0), with: indentationString)
+
+				return charCount
 			}
 		}
 

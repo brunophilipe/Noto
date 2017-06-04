@@ -183,4 +183,9 @@ extension unichar
 	{
 		return self == 0x9
 	}
+
+	func isSpace() -> Bool
+	{
+		return self == 0x20
+	}
 }
