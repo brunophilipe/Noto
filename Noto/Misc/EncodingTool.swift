@@ -83,7 +83,8 @@ class EncodingTool
 
 			repeat
 			{
-				if let encoding = showEncodingPicker()
+				if let encoding = showEncodingPicker(title: "Could not detect encoding automatically",
+				                                     message: "Please select an encoding for the file:")
 				{
 					if let attempt: String = try? String(contentsOf: url, encoding: encoding)
 					{
@@ -103,16 +104,18 @@ class EncodingTool
 		return ("", .utf8)
 	}
 
-	static func showEncodingPicker() -> String.Encoding?
+	static func showEncodingPicker(title: String, message: String, currentEncoding: String.Encoding? = nil) -> String.Encoding?
 	{
 		let alert = NSAlert()
-		alert.messageText = "Please select an encoding for the file:"
+		alert.messageText = message
 		alert.addButton(withTitle: "OK")
 		alert.addButton(withTitle: "Cancel")
-		alert.window.title = "Could not detect encoding automatically"
+		alert.window.title = title
 
 		let encodingPopUpButton = NSPopUpButton(frame: NSRect(x: 0, y: 0, width: 190, height: 40), pullsDown: false)
 		let menu = NSMenu()
+
+		var currentItem: NSMenuItem? = nil
 
 		for encoding in EncodingTool.supportedEncodings
 		{
@@ -120,11 +123,21 @@ class EncodingTool
 			menuItem.representedObject = encoding
 
 			menu.addItem(menuItem)
+
+			if encoding == currentEncoding
+			{
+				currentItem = menuItem
+			}
 		}
 
 		encodingPopUpButton.menu = menu
 		encodingPopUpButton.target = self
 		encodingPopUpButton.action = #selector(EncodingTool.didChangeEncodingPopUpButton(_:))
+
+		if let selectedItem = currentItem
+		{
+			encodingPopUpButton.select(selectedItem)
+		}
 
 		alert.accessoryView = encodingPopUpButton
 

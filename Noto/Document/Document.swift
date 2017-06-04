@@ -240,7 +240,9 @@ class Document: NSDocument
 		{
 			repeat
 			{
-				if let newEncoding = EncodingTool.showEncodingPicker()
+				if let newEncoding = EncodingTool.showEncodingPicker(title: "Reopening file with specific encoding",
+				                                                     message: "Please select an encoding to use while reopening the file:",
+				                                                     currentEncoding: usedEncoding)
 				{
 					if let newString = try? String(contentsOf: fileURL, encoding: newEncoding)
 					{
@@ -270,7 +272,9 @@ class Document: NSDocument
 
 	fileprivate func saveFileAskingForEncoding(_ sender: Any?)
 	{
-		if let newEncoding = EncodingTool.showEncodingPicker()
+		if let newEncoding = EncodingTool.showEncodingPicker(title: "Saving file with specific encoding",
+		                                                     message: "Please select an encoding to use while saving the file:",
+		                                                     currentEncoding: usedEncoding)
 		{
 			self.pendingOperations.append(SavePanelMessageOperation(message: "Saving file with new encoding: \(newEncoding.description)"))
 			self.pendingOperations.append(ChangeEncodingNotificationOperation(encoding: newEncoding))
