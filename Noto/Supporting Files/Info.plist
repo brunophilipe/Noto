@@ -78,5 +78,7 @@
 	<string>https://www.brunophilipe.com/software/noto/updates/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
