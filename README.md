@@ -6,6 +6,10 @@ A beautiful and simple plain text editor for macOS written in Swift.
 
 ![Noto Screenshot](http://i.imgur.com/BlqwbV7.png)
 
+## Download
+
+You can download a compiled binary from [Noto's homepage](https://www.brunophilipe.com/software/noto).
+
 ## Features
 
 Some of the features in Noto include:
@@ -19,14 +23,26 @@ Some of the features in Noto include:
 
 ## To-Do
 
-Planned features to be implemented:
+Features planned to be implemented:
 
 * Touch bar support.
 * Multi-caret editing.
 
+## Compiling the Project
+
+To compile Noto you should use Xcode 8.3, and you need [CocoaPods](https://cocoapods.org) installed.
+
+1. Clone the project:<br>`git clone https://github.com/brunophilipe/Noto.git`
+2. Switch to the directory:<br>`cd Noto/`
+3. Run CocoaPods:<br>`pod install`
+4. Launch the Workspace file in Xcode:<br>`open Noto.xcworkspace/ -a Xcode`
+5. Compile and Launch using <span title="Command + R">⌘R</span>
+
+**Note:** Some dependencies are not compatible and won't compile in Xcode 9 beta.
+
 ## Under Development
 
-Noto is still under (slow) development. I am expecting to fix some bugs and finish some features before I make the first public release. Please feel free to fork/clone the project and compile if you wish to contribute to development.
+Noto is still under (slow but steady) development. The first release contains just the basic features but I plan to add many more in the future.
 
 ## More Screenshots
 
