@@ -22,7 +22,7 @@
 import Cocoa
 import Carbon
 
-class EditorView: PaddedTextView
+class EditorView: NSTextView
 {
 	private let invisiblesLayoutManager = InvisiblesLayoutManager()
 	private var tabSize: UInt = 4
@@ -78,6 +78,8 @@ class EditorView: PaddedTextView
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
+
+		textContainerInset = NSSize(width: 10.0, height: 10.0)
 
 		self.textContainer?.replaceLayoutManager(invisiblesLayoutManager)
 

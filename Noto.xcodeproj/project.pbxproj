@@ -13,7 +13,6 @@
 		15260C3F1EE0EE9700A91CE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */; };
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
-		15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
@@ -34,7 +33,6 @@
 		15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
-		15A0FB791ED0C46500B1DD8C /* PaddedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */; };
 		15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
 		15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
@@ -120,7 +118,6 @@
 		15260C3E1EE0EE5300A91CE6 /* Noto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noto.entitlements; sourceTree = "<group>"; };
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
-		15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaddedTextView.swift; path = Views/PaddedTextView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
 		1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Additions.swift"; path = "Extensions/Bool+Additions.swift"; sourceTree = "<group>"; };
@@ -247,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				15276E611E5BCD120032EDE4 /* BackgroundView.swift */,
-				15276E631E5BD0DE0032EDE4 /* PaddedTextView.swift */,
 				15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */,
 				15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */,
 				1558E6F51ECFAF3700468F86 /* PullableContentView.swift */,
@@ -706,7 +702,6 @@
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
 				153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */,
-				15276E641E5BD0DE0032EDE4 /* PaddedTextView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */,
@@ -744,7 +739,6 @@
 				15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */,
 				15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */,
 				15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */,
-				15A0FB791ED0C46500B1DD8C /* PaddedTextView.swift in Sources */,
 				15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */,
 				15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */,
 				15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */,
