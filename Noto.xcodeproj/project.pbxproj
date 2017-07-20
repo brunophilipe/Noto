@@ -16,6 +16,8 @@
 		15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */; };
 		153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */; };
+		154148B71F217A3B000D6383 /* WindowDragHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E276B1F15650300CD473C /* WindowDragHandleView.swift */; };
+		154148B81F217A3C000D6383 /* WindowDragHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E276B1F15650300CD473C /* WindowDragHandleView.swift */; };
 		1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
 		1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
 		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
@@ -119,6 +121,7 @@
 		15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Application/Preferences.swift; sourceTree = "<group>"; };
 		15276E611E5BCD120032EDE4 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Views/BackgroundView.swift; sourceTree = "<group>"; };
 		15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+Additions.swift"; path = "Extensions/NSColor+Additions.swift"; sourceTree = "<group>"; };
+		153E276B1F15650300CD473C /* WindowDragHandleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowDragHandleView.swift; path = Views/WindowDragHandleView.swift; sourceTree = "<group>"; };
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
 		1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Additions.swift"; path = "Extensions/Bool+Additions.swift"; sourceTree = "<group>"; };
 		1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenuItem+EditorTheme.swift"; path = "Extensions/NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 				15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */,
 				15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */,
 				1558E6F51ECFAF3700468F86 /* PullableContentView.swift */,
+				153E276B1F15650300CD473C /* WindowDragHandleView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -722,6 +726,7 @@
 				15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
 				1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */,
 				1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */,
+				154148B71F217A3B000D6383 /* WindowDragHandleView.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
 			);
@@ -759,6 +764,7 @@
 				15A0FB8B1ED0C46500B1DD8C /* NSTextStorage+Indentation.swift in Sources */,
 				15A0FB8C1ED0C46500B1DD8C /* String+Additions.swift in Sources */,
 				15A0FB8D1ED0C46500B1DD8C /* NSMenuItem+EditorTheme.swift in Sources */,
+				154148B81F217A3C000D6383 /* WindowDragHandleView.swift in Sources */,
 				15A0FB8E1ED0C46500B1DD8C /* PrintAccessoryViewController.swift in Sources */,
 				15A0FB8F1ED0C46500B1DD8C /* ManagedToolbar.swift in Sources */,
 			);

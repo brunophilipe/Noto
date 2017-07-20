@@ -28,6 +28,7 @@ class DocumentWindow: NSWindow
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
 	private var customTopThemeConstraint: NSLayoutConstraint? = nil
+	private var titleDragHandleView: WindowDragHandleView!
 
 	@IBOutlet var textView: EditorView!
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
@@ -123,6 +124,18 @@ class DocumentWindow: NSWindow
 
 		self.textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
 		self.textView.undoManager?.removeAllActions()
+
+		let dragHandle = WindowDragHandleView(frame: NSMakeRect(0, 0, 100, 80))
+		titleDragHandleView?.backgroundColor = Preferences.instance.editorTheme.editorBackground
+		self.contentView?.addSubview(dragHandle)
+
+		let constraints: [NSLayoutConstraint] =
+			NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": dragHandle]) +
+			NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view(22)]", options: [], metrics: nil, views: ["view": dragHandle])
+
+		NSLayoutConstraint.activate(constraints)
+
+		titleDragHandleView = dragHandle
 	}
 
 	deinit
@@ -152,6 +165,11 @@ class DocumentWindow: NSWindow
 		}
 
 		return super.validateMenuItem(menuItem)
+	}
+
+	override func mouseDragged(with event: NSEvent)
+	{
+		super.mouseDragged(with: event)
 	}
 
 	@IBAction func jumpToALine(_ sender: Any?)
@@ -490,8 +508,10 @@ class DocumentWindow: NSWindow
 		let theme = Preferences.instance.editorTheme
 		let isDark = theme.editorBackground.isDarkColor
 
-		appearance = isDark ? NSAppearance(named:NSAppearanceNameVibrantDark)
-							: NSAppearance(named:NSAppearanceNameVibrantLight)
+		let appearance = isDark ? NSAppearance(named:NSAppearanceNameVibrantDark)
+								: NSAppearance(named:NSAppearanceNameVibrantLight)
+
+		self.appearance = appearance
 
 		if let hudController = infoBarController as? HUDInfoBarController
 		{
@@ -504,6 +524,7 @@ class DocumentWindow: NSWindow
 		}
 
 		backgroundColor = theme.editorBackground
+		titleDragHandleView?.backgroundColor = theme.editorBackground
 		textView.setColorsFromTheme(theme: theme)
 	}
 	

@@ -40,3 +40,15 @@ extension Collection where Iterator.Element == NSLayoutConstraint
 		return nil
 	}
 }
+
+extension NSLayoutConstraint
+{
+	static func constraintsForFullSizeEmbeddedView(_ view: NSView) -> [NSLayoutConstraint]
+	{
+		let constraints: [NSLayoutConstraint] =
+			NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": view]) +
+			NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": view])
+
+		return constraints
+	}
+}
