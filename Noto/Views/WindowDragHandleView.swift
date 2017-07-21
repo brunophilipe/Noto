@@ -29,11 +29,6 @@ class WindowDragHandleView: NSTextField
 		return false
 	}
 
-	override var mouseDownCanMoveWindow: Bool
-	{
-		return true
-	}
-
 	override func updateTrackingAreas()
 	{
 		if let trackingArea = self.trackingArea
@@ -60,17 +55,21 @@ class WindowDragHandleView: NSTextField
 
 	override func mouseEntered(with event: NSEvent)
 	{
-		backgroundColor = Preferences.instance.editorTheme.lineNumbersBackground
-
 		super.mouseEntered(with: event)
 
-		animator().alphaValue = 1.0
+		if !isHidden
+		{
+			animator().alphaValue = 1.0
+		}
 	}
 
 	override func mouseExited(with event: NSEvent)
 	{
 		super.mouseExited(with: event)
 
-		animator().alphaValue = 0.0
+		if !isHidden
+		{
+			animator().alphaValue = 0.0
+		}
 	}
 }

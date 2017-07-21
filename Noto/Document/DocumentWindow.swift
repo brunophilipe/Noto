@@ -126,7 +126,8 @@ class DocumentWindow: NSWindow
 		self.textView.undoManager?.removeAllActions()
 
 		let dragHandle = WindowDragHandleView(frame: NSMakeRect(0, 0, 100, 80))
-		titleDragHandleView?.backgroundColor = Preferences.instance.editorTheme.editorBackground
+		dragHandle.backgroundColor = Preferences.instance.editorTheme.editorBackground.withAlphaComponent(0.5)
+		dragHandle.isHidden = toolbar?.isVisible ?? true
 		self.contentView?.addSubview(dragHandle)
 
 		let constraints: [NSLayoutConstraint] =
@@ -488,6 +489,7 @@ class DocumentWindow: NSWindow
 		textView.textContainerInset = NSSize(width: textView.textContainerInset.width, height: visible ? 10 : 32)
 
 		titleBarSeparatorView.isHidden = !visible
+		titleDragHandleView?.isHidden = visible
 
 		if let contentView = self.contentView
 		{
@@ -524,7 +526,7 @@ class DocumentWindow: NSWindow
 		}
 
 		backgroundColor = theme.editorBackground
-		titleDragHandleView?.backgroundColor = theme.editorBackground
+		titleDragHandleView?.backgroundColor = theme.editorBackground.withAlphaComponent(0.5)
 		textView.setColorsFromTheme(theme: theme)
 	}
 	
