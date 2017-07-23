@@ -25,6 +25,7 @@ import Cocoa
 class DocumentWindow: NSWindow
 {
 	fileprivate var infoBarController: InfoBar? = nil
+	fileprivate var documentStatsUpdateTemporizer: Temporizer!
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
 	private var customTopThemeConstraint: NSLayoutConstraint? = nil
@@ -34,6 +35,16 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 	@IBOutlet var titleBarSeparatorView: BackgroundView!
 	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
+
+	override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool)
+	{
+		super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
+
+		documentStatsUpdateTemporizer = Temporizer(withFiringDelay: 0.25)
+		{
+			self.updateDocumentStats()
+		}
+	}
 
 	private var characterCount: Int = 0
 	{
@@ -574,7 +585,7 @@ extension DocumentWindow: NSTextViewDelegate
 {
 	func textDidChange(_ notification: Notification)
 	{
-		self.updateDocumentStats()
+		documentStatsUpdateTemporizer.trigger()
 	}
 }
 
