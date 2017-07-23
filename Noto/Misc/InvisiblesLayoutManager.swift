@@ -23,7 +23,6 @@ import Cocoa
 
 class InvisiblesLayoutManager: NSLayoutManager
 {
-	var displayInvisibles: Bool = true
 	var textInset = NSSize(width: 10, height: 10)
 
 	// We override this to hide the implementation-default rendering which is not like what we want

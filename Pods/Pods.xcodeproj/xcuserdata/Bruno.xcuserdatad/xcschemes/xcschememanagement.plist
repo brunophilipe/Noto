@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Highlightr.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Noto (AppStore).xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>17DFD5C5E2155523C0EB241095563940</key>
+		<key>07D87B458394EB0EF2C0D01AB82D0C12</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49D7D8F15494833C709B66ABC808B15E</key>
+		<key>186D603E966B81A1168029C941CBDD87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A40A82E88C7D0144E49E85B9AAA8A11</key>
+		<key>4C45DA1AB71BB88A6463C99BBBD5EF15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9CDC41D33B2D46235F90A266C18865D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9ABFCA2B8BFB8BD4BAA30C9B9712B74</key>
 		<dict>
 			<key>primary</key>
 			<true/>

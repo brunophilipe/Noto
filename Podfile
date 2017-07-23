@@ -9,6 +9,7 @@ target 'Noto' do
   pod 'CCNPreferencesWindowController', :git => 'https://github.com/brunophilipe/CCNPreferencesWindowController.git'
   pod 'TRexAboutWindowController'
   pod 'Sparkle'
+  pod 'Highlightr', :path => '~/Workspace/GitHub/Highlightr', :branch => 'master'
 end
 
 target 'Noto (AppStore)' do
@@ -18,4 +19,5 @@ target 'Noto (AppStore)' do
 	# Pods for Noto
 	pod 'CCNPreferencesWindowController', :git => 'https://github.com/brunophilipe/CCNPreferencesWindowController.git'
 	pod 'TRexAboutWindowController'
+	pod 'Highlightr', :path => '~/Workspace/GitHub/Highlightr', :branch => 'master'
 end

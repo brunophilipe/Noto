@@ -1,16 +1,21 @@
 PODS:
   - CCNPreferencesWindowController (1.4.3)
+  - Highlightr (1.1.0)
   - Sparkle (1.15.1)
   - TRexAboutWindowController (1.5.3)
 
 DEPENDENCIES:
   - CCNPreferencesWindowController (from `https://github.com/brunophilipe/CCNPreferencesWindowController.git`)
+  - Highlightr (from `~/Workspace/GitHub/Highlightr`)
   - Sparkle
   - TRexAboutWindowController
 
 EXTERNAL SOURCES:
   CCNPreferencesWindowController:
     :git: https://github.com/brunophilipe/CCNPreferencesWindowController.git
+  Highlightr:
+    :branch: master
+    :path: ~/Workspace/GitHub/Highlightr
 
 CHECKOUT OPTIONS:
   CCNPreferencesWindowController:
@@ -19,9 +24,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CCNPreferencesWindowController: e89fc1d448197c6d20e995a4d6488142cae529f5
+  Highlightr: 70c4df19e4aa55aa1b4387fb98182abce1dec9da
   Sparkle: 618fd2d2867fa06a5572a8c4a4c6a721f04da2d2
   TRexAboutWindowController: f25282990c62ccfd01f5012823d8334617d482ed
 
-PODFILE CHECKSUM: b19784eaac5596f946ef649de00359cfd81baac3
+PODFILE CHECKSUM: 6ff2675cfbe65716a16f1d17c33f5a87ae094c81
 
 COCOAPODS: 1.3.0.beta.1

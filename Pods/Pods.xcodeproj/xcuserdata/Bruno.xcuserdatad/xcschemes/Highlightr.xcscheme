@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '07D87B458394EB0EF2C0D01AB82D0C12'
-               BlueprintName = 'TRexAboutWindowController'
+               BlueprintIdentifier = 'C9ABFCA2B8BFB8BD4BAA30C9B9712B74'
+               BlueprintName = 'Highlightr'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TRexAboutWindowController.framework'>
+               BuildableName = 'Highlightr.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
