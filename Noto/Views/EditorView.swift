@@ -95,13 +95,6 @@ class EditorView: NSTextView
 		textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
 		layoutManager?.replaceTextStorage(ObservableTextStorage())
 
-//		if let textStorage = self.textStorage as? CodeAttributedString
-//		{
-//			textStorage.language = "Swift"
-//			textStorage.highlightr.setTheme(to: "Pojoaque")
-//			textStorage.highlightr.theme.codeFont = NSFont(name: "Courier", size: 12)
-//		}
-
 		if let scrollView = self.enclosingScrollView
 		{
 			let lineNumbersView = LineNumbersRulerView(scrollView: scrollView, orientation: .verticalRuler)
