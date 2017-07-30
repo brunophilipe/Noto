@@ -27,9 +27,9 @@ class EditorView: NSTextView
 {
 	private var tabSize: UInt = 4
 
-	private var observableTextStorage: ObservableTextStorage?
+	private var metricsTextStorage: MetricsTextStorage?
 	{
-		return self.textStorage as? ObservableTextStorage
+		return self.textStorage as? MetricsTextStorage
 	}
 
 	var lineNumbersView: LineNumbersRulerView? = nil
@@ -62,6 +62,19 @@ class EditorView: NSTextView
 			updateTextStorage()
 		}
 	}
+	
+	var textStorageObserver: TextStorageObserver?
+	{
+		get
+		{
+			return metricsTextStorage?.observer
+		}
+		
+		set
+		{
+			metricsTextStorage?.observer = newValue
+		}
+	}
 
 	var showsInvisibleCharacters: Bool
 	{
@@ -90,7 +103,7 @@ class EditorView: NSTextView
 	{
 		didSet
 		{
-			observableTextStorage?.language = highlightrLanguage
+			metricsTextStorage?.language = highlightrLanguage
 		}
 	}
 
@@ -103,9 +116,9 @@ class EditorView: NSTextView
 		let theme = Preferences.instance.editorTheme.makeHighlightrTheme(withFont: Preferences.instance.editorFont)
 
 		textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
-		layoutManager?.replaceTextStorage(ObservableTextStorage(highlightr: Highlightr(defaultTheme: theme)!))
+		layoutManager?.replaceTextStorage(MetricsTextStorage(highlightr: Highlightr(defaultTheme: theme)!))
 
-		observableTextStorage?.highlightDelegate = self
+		metricsTextStorage?.highlightDelegate = self
 
 		if let scrollView = self.enclosingScrollView
 		{
@@ -284,7 +297,7 @@ class EditorView: NSTextView
 
 	private func updateTextStorage()
 	{
-		if let textStorage = self.observableTextStorage
+		if let textStorage = self.metricsTextStorage
 		{
 			let preferences = Preferences.instance
 			let theme = preferences.editorTheme.makeHighlightrTheme(withFont: preferences.editorFont)

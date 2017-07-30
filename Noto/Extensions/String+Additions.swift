@@ -25,7 +25,7 @@ extension String
 		return startIndex..<endIndex
 	}
 	
-	var metrics: (chars: Int, whitespaceChars: Int, words: Int, lines: Int)
+	var metrics: StringMetrics
 	{
 		var wordsCount = 0
 		var linesCount = 0
@@ -34,26 +34,19 @@ extension String
 		
 		let totalCharsCount = characters.count
 		
-		if Preferences.instance.countWhitespacesInTotalCharacters
+		let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
+		
+		characters.forEach
 		{
-			characterCount = totalCharsCount
-		}
-		else
-		{
-			let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
+			character in
 			
-			characters.forEach
+			if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
 			{
-				character in
-				
-				if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
-				{
-					characterCount += 1
-				}
-				else
-				{
-					whitespaceCharsCount += 1
-				}
+				characterCount += 1
+			}
+			else
+			{
+				whitespaceCharsCount += 1
 			}
 		}
 		
@@ -65,8 +58,34 @@ extension String
 			linesCount += 1
 		}
 		
-		return (characterCount, whitespaceCharsCount, wordsCount, linesCount)
+		return StringMetrics(characterCount, whitespaceCharsCount, wordsCount, linesCount)
 	}
+}
+
+struct StringMetrics
+{
+	let chars: Int
+	let whitespaceChars: Int
+	let words: Int
+	let lines: Int
+	
+	init(_ characterCount: Int, _ whitespaceCharsCount: Int, _ wordsCount: Int, _ linesCount: Int)
+	{
+		chars = characterCount
+		whitespaceChars = whitespaceCharsCount
+		words = wordsCount
+		lines = linesCount
+	}
+	
+	var allCharacters: Int
+	{
+		return chars + whitespaceChars
+	}
+}
+
+func +(lhs: StringMetrics, rhs: StringMetrics) -> StringMetrics
+{
+	return StringMetrics(lhs.chars + rhs.chars, lhs.whitespaceChars + rhs.whitespaceChars, lhs.words + rhs.words, lhs.lines + rhs.lines)
 }
 
 extension NSString

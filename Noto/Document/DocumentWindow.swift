@@ -46,7 +46,7 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-	private var characterCount: Int = 0
+	fileprivate var characterCount: Int = 0
 	{
 		didSet
 		{
@@ -54,7 +54,7 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-	private var wordsCount: Int = 0
+	fileprivate var wordsCount: Int = 0
 	{
 		didSet
 		{
@@ -62,7 +62,7 @@ class DocumentWindow: NSWindow
 		}
 	}
 
-	private var linesCount: Int = 1
+	fileprivate var linesCount: Int = 1
 	{
 		didSet
 		{
@@ -123,18 +123,19 @@ class DocumentWindow: NSWindow
 
 		self.setupInfoBar()
 
-		self.updateEditorFont()
-		self.updateEditorColors()
-		self.updateEditorSubstitutions()
-		self.updateEditorSpellingCheck()
-		self.updateEditorInvisibles()
-		self.updateEditorTabSize()
-		self.updateEditorSpacesForTabsOption()
-		self.updateEditorKeepIndentsSetting()
-		self.setupThemeObserver()
+		updateEditorFont()
+		updateEditorColors()
+		updateEditorSubstitutions()
+		updateEditorSpellingCheck()
+		updateEditorInvisibles()
+		updateEditorTabSize()
+		updateEditorSpacesForTabsOption()
+		updateEditorKeepIndentsSetting()
+		setupThemeObserver()
 
-		self.textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
-		self.textView.undoManager?.removeAllActions()
+		textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
+		textView.undoManager?.removeAllActions()
+		textView.textStorageObserver = self
 
 		let dragHandle = WindowDragHandleView(frame: NSMakeRect(0, 0, 100, 80))
 		dragHandle.backgroundColor = Preferences.instance.editorTheme.editorBackground.withAlphaComponent(0.5)
@@ -554,6 +555,18 @@ class DocumentWindow: NSWindow
 	private func updateEditorKeepIndentsSetting()
 	{
 		textView.keepsIndentationOnNewLines = Preferences.instance.keepIndentationOnNewLines
+	}
+}
+
+extension DocumentWindow: TextStorageObserver
+{
+	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics metrics: StringMetrics)
+	{
+		let countsWhitespaces = Preferences.instance.countWhitespacesInTotalCharacters
+		
+		characterCount = countsWhitespaces ? metrics.allCharacters : metrics.chars
+		linesCount = metrics.lines
+		wordsCount = metrics.words
 	}
 }
 
