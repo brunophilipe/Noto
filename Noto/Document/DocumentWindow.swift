@@ -25,7 +25,7 @@ import Cocoa
 class DocumentWindow: NSWindow
 {
 	fileprivate var infoBarController: InfoBar? = nil
-	fileprivate var documentStatsUpdateTemporizer: Temporizer!
+	fileprivate var metricsUpdateTemporizer: Temporizer!
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
 	private var customTopThemeConstraint: NSLayoutConstraint? = nil
@@ -40,9 +40,9 @@ class DocumentWindow: NSWindow
 	{
 		super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
 
-		documentStatsUpdateTemporizer = Temporizer(withFiringDelay: 0.25)
+		metricsUpdateTemporizer = Temporizer(withFiringDelay: 0.25)
 		{
-			self.updateDocumentStats()
+			self.updateDocumentMetrics()
 		}
 	}
 
@@ -89,7 +89,7 @@ class DocumentWindow: NSWindow
 		set
 		{
 			textView.string = newValue
-			updateDocumentStats()
+			updateDocumentMetrics()
 		}
 	}
 
@@ -372,44 +372,20 @@ class DocumentWindow: NSWindow
 		}
 
 		updateEditorColors()
-		updateDocumentStats()
+		updateDocumentMetrics()
 
 		infoBarController?.setEncoding((delegate as? Document)?.encoding.description ?? "<error>")
 	}
 
-	fileprivate func updateDocumentStats()
+	fileprivate func updateDocumentMetrics()
 	{
 		if let string = self.textView.string
 		{
-			var wordsCount = 0
-			var linesCount = 0
-			var characterCount = 0
+			let metrics = string.metrics
 
-			if Preferences.instance.countWhitespacesInTotalCharacters
-			{
-				characterCount = string.characters.count
-			}
-			else
-			{
-				let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
-
-				string.characters.forEach
-				{
-					character in
-
-					if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
-					{
-						characterCount += 1
-					}
-				}
-			}
-
-			string.enumerateSubstrings(in: string.fullStringRange, options: .byWords, { _ in wordsCount += 1 })
-			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines, { _ in linesCount += 1 })
-
-			self.wordsCount = wordsCount
-			self.characterCount = characterCount
-			self.linesCount = max(linesCount, 1)
+			self.wordsCount = metrics.words
+			self.characterCount = metrics.chars
+			self.linesCount = metrics.lines
 		}
 	}
 
@@ -447,7 +423,7 @@ class DocumentWindow: NSWindow
 				setupInfoBar()
 
 			case .some("countWhitespacesInTotalCharacters"):
-				updateDocumentStats()
+				updateDocumentMetrics()
 
 			case .some("showsInvisibles"):
 				updateEditorInvisibles()
@@ -585,7 +561,7 @@ extension DocumentWindow: NSTextViewDelegate
 {
 	func textDidChange(_ notification: Notification)
 	{
-		documentStatsUpdateTemporizer.trigger()
+		metricsUpdateTemporizer.trigger()
 	}
 }
 

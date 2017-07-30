@@ -24,6 +24,49 @@ extension String
 	{
 		return startIndex..<endIndex
 	}
+	
+	var metrics: (chars: Int, whitespaceChars: Int, words: Int, lines: Int)
+	{
+		var wordsCount = 0
+		var linesCount = 0
+		var characterCount = 0
+		var whitespaceCharsCount = 0
+		
+		let totalCharsCount = characters.count
+		
+		if Preferences.instance.countWhitespacesInTotalCharacters
+		{
+			characterCount = totalCharsCount
+		}
+		else
+		{
+			let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
+			
+			characters.forEach
+			{
+				character in
+				
+				if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
+				{
+					characterCount += 1
+				}
+				else
+				{
+					whitespaceCharsCount += 1
+				}
+			}
+		}
+		
+		enumerateSubstrings(in: fullStringRange, options: [.byWords, .substringNotRequired], { _ in wordsCount += 1 })
+		enumerateSubstrings(in: fullStringRange, options: [.byLines, .substringNotRequired], { _ in linesCount += 1 })
+		
+		if totalCharsCount == 0 || substring(with: index(before: endIndex)..<endIndex) == "\n"
+		{
+			linesCount += 1
+		}
+		
+		return (characterCount, whitespaceCharsCount, wordsCount, linesCount)
+	}
 }
 
 extension NSString
