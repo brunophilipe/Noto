@@ -119,7 +119,7 @@ extension EditorTheme
 		return nil
 	}
 
-	public static func getWithPreferenceName(_ name: String) -> EditorTheme?
+	static func getWithPreferenceName(_ name: String) -> EditorTheme?
 	{
 		if name.hasPrefix(kThemeNativeNamePrefix)
 		{

@@ -22,6 +22,8 @@
 		154148BB1F253E42000D6383 /* Temporizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154148B91F253E42000D6383 /* Temporizer.swift */; };
 		154148BD1F25497C000D6383 /* ObservableTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154148BC1F25497C000D6383 /* ObservableTextStorage.swift */; };
 		154148BE1F25497C000D6383 /* ObservableTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154148BC1F25497C000D6383 /* ObservableTextStorage.swift */; };
+		154E087D1F2D542E007E6B80 /* EditorTheme+Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154E087C1F2D542E007E6B80 /* EditorTheme+Highlightr.swift */; };
+		154E087E1F2D542E007E6B80 /* EditorTheme+Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154E087C1F2D542E007E6B80 /* EditorTheme+Highlightr.swift */; };
 		1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
 		1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
 		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
@@ -129,6 +131,7 @@
 		153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Additions.swift"; path = "Extensions/NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
 		154148B91F253E42000D6383 /* Temporizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temporizer.swift; sourceTree = "<group>"; };
 		154148BC1F25497C000D6383 /* ObservableTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTextStorage.swift; sourceTree = "<group>"; };
+		154E087C1F2D542E007E6B80 /* EditorTheme+Highlightr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EditorTheme+Highlightr.swift"; path = "Extensions/EditorTheme+Highlightr.swift"; sourceTree = "<group>"; };
 		1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Additions.swift"; path = "Extensions/Bool+Additions.swift"; sourceTree = "<group>"; };
 		1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenuItem+EditorTheme.swift"; path = "Extensions/NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
 		1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextView+Additions.swift"; path = "Extensions/NSTextView+Additions.swift"; sourceTree = "<group>"; };
@@ -271,6 +274,7 @@
 				15276E661E5CD5380032EDE4 /* NSColor+Additions.swift */,
 				153EE9431E77708B00A1F080 /* NSLayoutConstraint+Additions.swift */,
 				15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */,
+				154E087C1F2D542E007E6B80 /* EditorTheme+Highlightr.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -710,6 +714,7 @@
 				15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
 				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
+				154E087D1F2D542E007E6B80 /* EditorTheme+Highlightr.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
@@ -750,6 +755,7 @@
 				15B005291ED646870028B27E /* AssignIf.swift in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
+				154E087E1F2D542E007E6B80 /* EditorTheme+Highlightr.swift in Sources */,
 				15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */,
 				15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */,
 				15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */,

@@ -12,7 +12,7 @@
 		<key>Highlightr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-Noto (AppStore).xcscheme</key>
 		<dict>
@@ -37,7 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>17DFD5C5E2155523C0EB241095563940</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>186D603E966B81A1168029C941CBDD87</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49D7D8F15494833C709B66ABC808B15E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A40A82E88C7D0144E49E85B9AAA8A11</key>
 		<dict>
 			<key>primary</key>
 			<true/>

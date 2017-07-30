@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E6BEDF7D5F9B7B8E3C7F216E15C6D5438FEBA923",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E6BEDF7D5F9B7B8E3C7F216E15C6D5438FEBA923" : 9223372036854775807,
+    "7D0A7E0A2865478CC68B4B65B0837B9B5C82600C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3BED9E42-9F0F-46B4-9991-47BBE876C18B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E6BEDF7D5F9B7B8E3C7F216E15C6D5438FEBA923" : "Noto\/",
+    "7D0A7E0A2865478CC68B4B65B0837B9B5C82600C" : "GitHub\/Highlightr\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Noto",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Noto.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:brunophilipe\/Highlightr.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7D0A7E0A2865478CC68B4B65B0837B9B5C82600C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:brunophilipe\/Noto.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6BEDF7D5F9B7B8E3C7F216E15C6D5438FEBA923"
+    }
+  ]
+}

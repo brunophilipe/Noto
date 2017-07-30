@@ -27,6 +27,11 @@ class EditorView: NSTextView
 {
 	private var tabSize: UInt = 4
 
+	private var observableTextStorage: ObservableTextStorage?
+	{
+		return self.textStorage as? ObservableTextStorage
+	}
+
 	var lineNumbersView: LineNumbersRulerView? = nil
 	var usesSpacesForTabs: Bool = false
 	var keepsIndentationOnNewLines: Bool = false
@@ -58,11 +63,6 @@ class EditorView: NSTextView
 		}
 	}
 
-	var observableTextStorage: ObservableTextStorage?
-	{
-		return self.textStorage as? ObservableTextStorage
-	}
-
 	var showsInvisibleCharacters: Bool
 	{
 		get { return invisiblesLayoutManager?.showsInvisibleCharacters ?? false }
@@ -86,14 +86,26 @@ class EditorView: NSTextView
 		}
 	}
 
+	var highlightrLanguage: LanguageMode = .automatic
+	{
+		didSet
+		{
+			observableTextStorage?.language = highlightrLanguage
+		}
+	}
+
 	override func awakeFromNib()
 	{
 		super.awakeFromNib()
 
 		textContainerInset = NSSize(width: 10.0, height: 10.0)
 
+		let theme = Preferences.instance.editorTheme.makeHighlightrTheme(withFont: Preferences.instance.editorFont)
+
 		textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
-		layoutManager?.replaceTextStorage(ObservableTextStorage())
+		layoutManager?.replaceTextStorage(ObservableTextStorage(highlightr: Highlightr(defaultTheme: theme)!))
+
+		observableTextStorage?.highlightDelegate = self
 
 		if let scrollView = self.enclosingScrollView
 		{
@@ -272,11 +284,12 @@ class EditorView: NSTextView
 
 	private func updateTextStorage()
 	{
-		if let textStorage = self.observableTextStorage, let font = self.font
+		if let textStorage = self.observableTextStorage
 		{
-			textStorage.language = "Swift"
-			textStorage.highlightr.setTheme(to: "atom-one-dark")
-			textStorage.highlightr.theme.setCodeFont(font)
+			let preferences = Preferences.instance
+			let theme = preferences.editorTheme.makeHighlightrTheme(withFont: preferences.editorFont)
+
+			textStorage.highlightr.theme = theme
 		}
 	}
 
@@ -304,6 +317,15 @@ class EditorView: NSTextView
 			textStorage?.setAttributes(typingAttributes, range: textRange)
 			didChangeText()
 		}
+	}
+}
+
+extension EditorView: HighlightDelegate
+{
+	func didDetectHighlightLanguage(_ language: String)
+	{
+		// Disable automatic mode once an initial detection was successful.
+		highlightrLanguage = .enabled(language)
 	}
 }
 
