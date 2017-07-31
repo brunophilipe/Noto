@@ -40,9 +40,9 @@ class DocumentWindow: NSWindow
 	{
 		super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
 
-		metricsUpdateTemporizer = Temporizer(withFiringDelay: 0.25)
+		metricsUpdateTemporizer = Temporizer(withFiringDelay: 1)
 		{
-			self.updateDocumentMetrics()
+			self.updateDocumentMetrics(self.textView.metrics)
 		}
 	}
 
@@ -89,7 +89,7 @@ class DocumentWindow: NSWindow
 		set
 		{
 			textView.string = newValue
-			updateDocumentMetrics()
+			updateDocumentMetrics(textView.metrics)
 		}
 	}
 
@@ -373,21 +373,18 @@ class DocumentWindow: NSWindow
 		}
 
 		updateEditorColors()
-		updateDocumentMetrics()
+		updateDocumentMetrics(textView.metrics)
 
 		infoBarController?.setEncoding((delegate as? Document)?.encoding.description ?? "<error>")
 	}
 
-	fileprivate func updateDocumentMetrics()
+	fileprivate func updateDocumentMetrics(_ metrics: StringMetrics)
 	{
-		if let string = self.textView.string
-		{
-			let metrics = string.metrics
+		let countsWhitespaces = Preferences.instance.countWhitespacesInTotalCharacters
 
-			self.wordsCount = metrics.words
-			self.characterCount = metrics.chars
-			self.linesCount = metrics.lines
-		}
+		characterCount = countsWhitespaces ? metrics.allCharacters : metrics.chars
+		wordsCount = metrics.words
+		linesCount = metrics.lines
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
@@ -424,7 +421,7 @@ class DocumentWindow: NSWindow
 				setupInfoBar()
 
 			case .some("countWhitespacesInTotalCharacters"):
-				updateDocumentMetrics()
+				updateDocumentMetrics(textView.metrics)
 
 			case .some("showsInvisibles"):
 				updateEditorInvisibles()
@@ -562,11 +559,7 @@ extension DocumentWindow: TextStorageObserver
 {
 	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics metrics: StringMetrics)
 	{
-		let countsWhitespaces = Preferences.instance.countWhitespacesInTotalCharacters
-		
-		characterCount = countsWhitespaces ? metrics.allCharacters : metrics.chars
-		linesCount = metrics.lines
-		wordsCount = metrics.words
+		updateDocumentMetrics(metrics)
 	}
 }
 

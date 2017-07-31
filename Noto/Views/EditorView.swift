@@ -76,6 +76,11 @@ class EditorView: NSTextView
 		}
 	}
 
+	var metrics: StringMetrics
+	{
+		return metricsTextStorage?.metrics ?? StringMetrics()
+	}
+
 	var showsInvisibleCharacters: Bool
 	{
 		get { return invisiblesLayoutManager?.showsInvisibleCharacters ?? false }

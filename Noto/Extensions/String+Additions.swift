@@ -68,6 +68,11 @@ struct StringMetrics
 	let whitespaceChars: Int
 	let words: Int
 	let lines: Int
+
+	init()
+	{
+		self.init(0, 0, 0, 0)
+	}
 	
 	init(_ characterCount: Int, _ whitespaceCharsCount: Int, _ wordsCount: Int, _ linesCount: Int)
 	{

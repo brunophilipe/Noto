@@ -19,7 +19,7 @@ class MetricsTextStorage: CodeAttributedString
 	
 	var metrics: StringMetrics
 	{
-		return metricsByRange.reduce(StringMetrics(0, 0, 0, 0))
+		return metricsByRange.reduce(StringMetrics())
 		{
 			(metricsSum, metric) -> StringMetrics in
 		
