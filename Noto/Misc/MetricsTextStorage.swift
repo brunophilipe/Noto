@@ -11,61 +11,54 @@ import Highlightr
 
 class MetricsTextStorage: CodeAttributedString
 {
-	private static let rangeChunkSize = 512
-	
-	private var metricsByRange = [Int: StringMetrics]()
+	private var textMetrics = StringMetrics()
 	
 	var observer: TextStorageObserver? = nil
 	
 	var metrics: StringMetrics
 	{
-		return metricsByRange.reduce(StringMetrics())
+		return textMetrics
+	}
+
+	open override func replaceCharacters(in range: NSRange, with str: String)
+	{
+		let stringLength = (string as NSString).length
+		let delta = (str as NSString).length - range.length
+		let testRange = range.expanding(byEncapsulating: 1, maxLength: stringLength)
+
+		let metricsBeforeChange = attributedSubstring(from: testRange).string.metrics
+		super.replaceCharacters(in: range, with: str)
+		let metricsAfterChange = (stringLength + delta) > 0 ? attributedSubstring(from: testRange.expanding(byLength: delta).meaningfulRange).string.metrics
+														    : StringMetrics()
+
+		textMetrics = textMetrics - metricsBeforeChange + metricsAfterChange
+
+		if let observer = self.observer
 		{
-			(metricsSum, metric) -> StringMetrics in
-		
-			return metricsSum + metric.value
+			DispatchQueue.main.async
+			{
+				observer.textStorage(self, didUpdateMetrics: self.metrics)
+			}
 		}
 	}
-	
-	override func edited(_ editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int)
+}
+
+extension NSRange
+{
+	/// Returns a range with the same location as the receiver and with length equal to the receiver's length if it is > 0, or 1 otherwise.
+	var meaningfulRange: NSRange
 	{
-		super.edited(editedMask, range: editedRange, changeInLength: delta)
-		
-		if editedMask == .editedCharacters
-		{
-			updateMetrics(with: editedRange)
-		}
+		return NSMakeRange(location, max(length, 1))
 	}
-	
-	private func updateMetrics(with editedRange: NSRange)
+
+	func expanding(byLength delta: Int) -> NSRange
 	{
-		let totalLength = characters.count
-		let chunkSize = MetricsTextStorage.rangeChunkSize
-		
-		var metricsByRange: [Int: StringMetrics] = [:]
-		var processedLength = 0
-		
-		let monitoredRange = NSMakeRange(editedRange.location - 1, editedRange.length + 2)
-		
-		for rangeIndex in 0 ..< Int(ceil(Double(totalLength)/Double(chunkSize)))
-		{
-			let range = NSMakeRange(rangeIndex*chunkSize, min(totalLength - processedLength, chunkSize))
-			
-			if self.metricsByRange[rangeIndex] == nil || NSIntersectionRange(range, monitoredRange).length != 0
-			{
-				metricsByRange[rangeIndex] = attributedSubstring(from: range).string.metrics
-			}
-			else
-			{
-				metricsByRange[rangeIndex] = self.metricsByRange[rangeIndex]
-			}
-			
-			processedLength += range.length
-		}
-		
-		self.metricsByRange = metricsByRange
-		
-		observer?.textStorage(self, didUpdateMetrics: self.metrics)
+		return NSMakeRange(location, max(length + delta, 0))
+	}
+
+	func expanding(byEncapsulating delta: Int, maxLength: Int) -> NSRange
+	{
+		return NSMakeRange(max(0, location - delta), min(length + delta, maxLength))
 	}
 }
 

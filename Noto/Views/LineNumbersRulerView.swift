@@ -189,21 +189,21 @@ class LineNumbersRulerView: NSRulerView
 			if let index = lineIndexes[lineNumber]
 			{
 				let charRange = NSMakeRange(Int(index), 0)
-				var rectCount: Int = 0
-				if let rectArray = layoutManager.rectArray(forCharacterRange: charRange,
-				                                           withinSelectedCharacterRange: nullRange,
-				                                           in: textContainer,
-				                                           rectCount: &rectCount),
-					rectCount > 0
-				{
-					let ypos = heightInset + NSMinY(rectArray[0]) - NSMinY(visibleRect)
-					let rect = NSRect(x: kRulerMargin,
-					                  y: ypos + (rectArray[0].height - maxTextSize.height) / 2.0,
-					                  width: NSWidth(bounds) - kRulerMargin * 2.0,
-					                  height: rectArray[0].height)
 
-					"\(lineNumber + 1)".draw(in: rect, withAttributes: numberTextAttributes)
-				}
+				layoutManager.enumerateEnclosingRects(forGlyphRange: charRange, withinSelectedGlyphRange: nullRange, in: textContainer, using:
+					{
+						(rect, stop) in
+
+						let ypos = heightInset + NSMinY(rect) - NSMinY(visibleRect)
+						let rect = NSRect(x: kRulerMargin,
+						                  y: ypos + (rect.height - maxTextSize.height) / 2.0,
+						                  width: NSWidth(self.bounds) - kRulerMargin * 2.0,
+						                  height: rect.height)
+
+						"\(lineNumber + 1)".draw(in: rect, withAttributes: self.numberTextAttributes)
+
+						stop.pointee = true
+					})
 			}
 		}
 	}
