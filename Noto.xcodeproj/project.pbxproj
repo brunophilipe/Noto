@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150ADD591F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */; };
+		150ADD5A1F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */; };
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
+		1522D5B41F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
+		1522D5B51F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
 		15260C3F1EE0EE9700A91CE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */; };
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
@@ -110,10 +114,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsTextStorage.swift; sourceTree = "<group>"; };
 		150CFAB81E2A83CF000B69E5 /* Noto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		150CFAC01E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150CFAC51E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteTextStorage.swift; sourceTree = "<group>"; };
 		15260C391EE0EE5300A91CE6 /* BumpBuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BumpBuild.sh; sourceTree = "<group>"; };
 		15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		15260C3B1EE0EE5300A91CE6 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-AppStore.plist"; sourceTree = "<group>"; };
@@ -336,6 +342,8 @@
 				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
 				3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */,
 				154148B91F253E42000D6383 /* Temporizer.swift */,
+				1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */,
+				150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -706,12 +714,14 @@
 				15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
 				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
+				150ADD591F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
 				15276E671E5CD5380032EDE4 /* NSColor+Additions.swift in Sources */,
 				15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */,
 				15933C7A1E5B922900AFF625 /* Document.swift in Sources */,
 				153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
+				1522D5B41F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */,
 				1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */,
 				1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
@@ -745,12 +755,14 @@
 				15B005291ED646870028B27E /* AssignIf.swift in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
+				150ADD5A1F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
 				15A0FB751ED0C46500B1DD8C /* NSColor+Additions.swift in Sources */,
 				15A0FB761ED0C46500B1DD8C /* AppDelegate.swift in Sources */,
 				15A0FB771ED0C46500B1DD8C /* Document.swift in Sources */,
 				15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */,
 				15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */,
 				15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */,
+				1522D5B51F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */,
 				15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */,
 				15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */,
 				15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */,

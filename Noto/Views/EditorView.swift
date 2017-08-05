@@ -24,8 +24,12 @@ import Carbon
 
 class EditorView: NSTextView
 {
-	private let invisiblesLayoutManager = InvisiblesLayoutManager()
 	private var tabSize: UInt = 4
+
+	private var metricsTextStorage: MetricsTextStorage?
+	{
+		return self.textStorage as? MetricsTextStorage
+	}
 
 	var lineNumbersView: LineNumbersRulerView? = nil
 	var usesSpacesForTabs: Bool = false
@@ -33,11 +37,16 @@ class EditorView: NSTextView
 
 	var escToLeaveFullScreenMode: WaitStatus = .none
 
+	var invisiblesLayoutManager: InvisiblesLayoutManager?
+	{
+		return layoutManager as? InvisiblesLayoutManager
+	}
+
 	override var textContainerInset: NSSize
 	{
 		didSet
 		{
-			invisiblesLayoutManager.textInset = textContainerInset
+			invisiblesLayoutManager?.textInset = textContainerInset
 			
 			// Re-set selected range so that the insertion point is drawn at the right location
 			self.selectedRanges = self.selectedRanges
@@ -48,16 +57,29 @@ class EditorView: NSTextView
 	{
 		didSet
 		{
-			invisiblesLayoutManager.updateFontInformation()
+			invisiblesLayoutManager?.updateFontInformation()
+		}
+	}
+
+	var textStorageObserver: TextStorageObserver?
+	{
+		get
+		{
+			return metricsTextStorage?.observer
+		}
+
+		set
+		{
+			metricsTextStorage?.observer = newValue
 		}
 	}
 
 	var showsInvisibleCharacters: Bool
 	{
-		get { return invisiblesLayoutManager.showsInvisibleCharacters }
+		get { return invisiblesLayoutManager?.showsInvisibleCharacters ?? false }
 		set
 		{
-			invisiblesLayoutManager.showsInvisibleCharacters = newValue
+			invisiblesLayoutManager?.showsInvisibleCharacters = newValue
 			needsDisplay = true
 		}
 	}
@@ -81,7 +103,8 @@ class EditorView: NSTextView
 
 		textContainerInset = NSSize(width: 10.0, height: 10.0)
 
-		self.textContainer?.replaceLayoutManager(invisiblesLayoutManager)
+		self.textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
+		layoutManager?.replaceTextStorage(MetricsTextStorage())
 
 		if let scrollView = self.enclosingScrollView
 		{
@@ -115,14 +138,14 @@ class EditorView: NSTextView
 	{
 		super.viewWillStartLiveResize()
 
-		invisiblesLayoutManager.isResizing = true
+		invisiblesLayoutManager?.isResizing = true
 	}
 
 	override func viewDidEndLiveResize()
 	{
 		super.viewDidEndLiveResize()
 
-		invisiblesLayoutManager.isResizing = false
+		invisiblesLayoutManager?.isResizing = false
 		needsDisplay = true
 	}
 
