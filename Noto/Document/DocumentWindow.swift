@@ -89,7 +89,6 @@ class DocumentWindow: NSWindow
 		set
 		{
 			textView.string = newValue
-			updateDocumentMetrics()
 		}
 	}
 
@@ -380,12 +379,12 @@ class DocumentWindow: NSWindow
 
 	fileprivate func updateDocumentMetrics()
 	{
-		if let string = self.textView.string
+		if let string = textView.string
 		{
 			let metrics = string.metrics
 
 			self.wordsCount = metrics.words
-			self.characterCount = metrics.chars
+			self.characterCount = Preferences.instance.countWhitespacesInTotalCharacters ? metrics.allCharacters : metrics.chars
 			self.linesCount = metrics.lines
 		}
 	}
