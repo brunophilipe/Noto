@@ -27,6 +27,7 @@ class LineNumbersRulerView: NSRulerView
 {
 	// Index of newline characters locations
 	private var lineIndexes: [UInt : UInt] = [:]
+	private var lastRequiredGutterWidth: CGFloat = 32.0
 
 	// MARK: - Initializers and Deinitializer
 
@@ -102,7 +103,7 @@ class LineNumbersRulerView: NSRulerView
 
 	func textDidChange(notification: Notification)
 	{
-		updateLineInfos()
+//		updateLineInfos()
 		needsDisplay = true
 		needsLayout = true
 	}
@@ -114,7 +115,7 @@ class LineNumbersRulerView: NSRulerView
 
 	func reindexLinesForPrinting()
 	{
-		updateLineInfos()
+//		updateLineInfos()
 	}
 
 	// MARK: - Override Methods
@@ -146,64 +147,127 @@ class LineNumbersRulerView: NSRulerView
 				                                       object: contentView)
 			}
 
-			updateLineInfos()
+//			updateLineInfos()
 		}
 	}
 
 	override func drawHashMarksAndLabels(in rect: NSRect)
 	{
-		guard let layoutManager		= textView?.layoutManager,
-			  let textContainer		= textView?.textContainer,
-			  let heightInset		= textView?.textContainerInset.height,
-			  let visibleRect		= scrollView?.contentView.bounds
+		guard let textView				= textView,
+			  let scrollView			= scrollView,
+			  let textString: NSString	= textView.textStorage?.string as NSString?,
+			  let layoutManager			= textView.layoutManager as? EditorLayoutManager,
+			  let textContainer			= textView.textContainer,
+			  let selectedRange			= textView.selectedRanges.first?.rangeValue
 		else
 		{
 			return
 		}
-
-		let nullRange = NSMakeRange(NSNotFound, 0)
 
 		backgroundColor.setFill()
 		NSRectFill(rect)
 
 		textColor.setStroke()
 
-		let visibleRange = layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
-		var startLine = findLineForNearestIndex(index: visibleRange.location)
-		let endLine = findLineForNearestIndex(index: NSMaxRange(visibleRange))
+		let emptyText			= textString.length == 0
+		let lastCharIndex		= emptyText ? 0 : textString.length - 1
+		let lastCharIsNewLine	= emptyText ? false : textString.character(at: lastCharIndex) == unichar(0x0A)
+		let boundsRect			= scrollView.contentView.bounds
+		let heightInset			= textView.textContainerInset.height
+		let visibleRect			= CGRect(x: boundsRect.origin.x, y: boundsRect.origin.y - heightInset,
+		               			         width: boundsRect.size.width, height: boundsRect.size.height + heightInset * 2.0)
+		let visibleRange		= layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
+		let gutterWidth			= self.gutterWidth
+		let topScrollOffset		= boundsRect.origin.y
 
-		let maxText = "\(endLine + 1)" as NSString
-		let maxTextSize = maxText.size(withAttributes: numberTextAttributes)
+		var columnRect: CGRect = .zero
+		var lineNumber: UInt = 0
 
-		if startLine > 1
+		layoutManager.enumerateLineFragments(forGlyphRange: visibleRange)
 		{
-			startLine -= 2
-		}
-		else if startLine > 0
-		{
-			startLine -= 1
-		}
+			(rect, usedRect, textContainer, glyphRange, stop) in
 
-		for lineNumber in startLine ... endLine
-		{
-			if let index = lineIndexes[lineNumber]
+			let charRange = layoutManager.characterRange(forGlyphRange: glyphRange, actualGlyphRange: nil)
+			let paraRange = textString.paragraphRange(for: charRange)
+
+			if charRange.location == paraRange.location
 			{
-				let charRange = NSMakeRange(Int(index), 0)
+				let gutterAttributes: [String : Any]
+				let intersectionRange = NSIntersectionRange(paraRange, selectedRange)
 
-				layoutManager.enumerateEnclosingRects(forGlyphRange: charRange, withinSelectedGlyphRange: nullRange, in: textContainer, using:
-					{
-						(rect, stop) in
+				if !(intersectionRange.location == 0 && intersectionRange.length == 0) // Normal intersection
+					|| (paraRange.location == 0 && selectedRange.location == 0) // first char of first line
+					|| ((NSMaxRange(paraRange) == selectedRange.location) && (selectedRange.location == lastCharIndex + 1) && !lastCharIsNewLine) // last char of last line (with other chars after the last \n)
+				{
+					gutterAttributes = self.selectedNumberTextAttributes
+				}
+				else
+				{
+					gutterAttributes = self.numberTextAttributes
+				}
 
-						let ypos = heightInset + NSMinY(rect) - NSMinY(visibleRect)
-						let rect = NSRect(x: kRulerMargin,
-						                  y: ypos + (rect.height - maxTextSize.height) / 2.0,
-						                  width: NSWidth(self.bounds) - kRulerMargin * 2.0,
-						                  height: rect.height)
+				columnRect = CGRect(x: 0, y: rect.origin.y + heightInset, width: gutterWidth - 8.0, height: rect.size.height)
+				lineNumber = layoutManager.lineNumber(for: charRange) + 1
 
-						"\(lineNumber + 1)".draw(in: rect, withAttributes: self.numberTextAttributes)
+				let numberString = NSString(string: "\(lineNumber)")
 
-						stop.pointee = true
-				})
+				let size = numberString.size(withAttributes: gutterAttributes)
+				let drawRect = columnRect.offsetBy(dx: 0, dy: (columnRect.height - size.height) / 2 - topScrollOffset)
+
+				self.lastRequiredGutterWidth = 4.0 + size.width + 8.0
+
+				numberString.draw(in: drawRect, withAttributes: gutterAttributes)
+			}
+
+			// This information will be used to properly place the line number for the empty line special case below
+			columnRect = columnRect.offsetBy(dx: 0, dy: rect.size.height)
+		}
+
+		// Special case: Draw line number for empty trailing lines and for the empty string text.
+		if emptyText || lastCharIsNewLine
+		{
+			let gutterAttributes: [String : Any]
+
+			if selectedRange.location > lastCharIndex || lastCharIndex == 0
+			{
+				gutterAttributes = selectedNumberTextAttributes
+			}
+			else
+			{
+				gutterAttributes = numberTextAttributes
+			}
+
+			let numberString = NSString(string: "\(lineNumber + 1)")
+
+			let size = numberString.size(withAttributes: gutterAttributes)
+
+			self.lastRequiredGutterWidth = 4.0 + size.width + 8.0
+
+			if emptyText
+			{
+				let font = (textView.font ?? Preferences.instance.editorFont)
+				let normalSize = font.ascender - font.descender
+
+				// Unfortunately AppKit is not returning a sane value for the following commented call, which should produce the
+				// same height value as the height value of the `rect` parameter of the `enumerateLineFragments()` callback.
+				// The hack used above is close enough to produce a visually consistent value, even though it is still a bit off.
+//				let normalSize = NSString(string: " ").size(withAttributes: textView.typingAttributes).height
+				columnRect = CGRect(x: 0, y: 0, width: gutterWidth - 8.0, height: normalSize)
+			}
+
+			columnRect = columnRect.offsetBy(dx: 0, dy: emptyText ? heightInset : 0.0)
+
+			let drawRect = columnRect.offsetBy(dx: 0, dy: (columnRect.height - size.height) / 2 - topScrollOffset)
+
+			numberString.draw(in: drawRect, withAttributes: gutterAttributes)
+		}
+
+		if gutterWidth != self.gutterWidth
+		{
+			DispatchQueue.main.async
+			{
+				self.ruleThickness = gutterWidth
+				self.needsLayout = true
 			}
 		}
 	}
@@ -220,51 +284,15 @@ class LineNumbersRulerView: NSRulerView
 
 	// MARK: - Private Methods
 
+	var gutterWidth: CGFloat
+	{
+		return max(lastRequiredGutterWidth, 32.0)
+	}
+
 	private func setupStateObservers()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "lineNumbersFont", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
-	}
-
-	private func findLineForNearestIndex(index: Int) -> UInt
-	{
-		let keys = lineIndexes.keys.sorted()
-
-		// First some optimizations
-		if index == 0, let key = lineIndexes[0]
-		{
-			return key
-		}
-
-		var left = 0
-		var right = lineIndexes.count
-		var mid = 0
-
-		// Then do a binary search
-		while (right - left) > 1
-		{
-			mid = (right + left) / 2
-
-			if let foundIndex = lineIndexes[keys[mid]]
-			{
-				let distance = index - Int(foundIndex)
-
-				if distance < 0
-				{
-					right = mid
-				}
-				else if distance > 0
-				{
-					left = mid
-				}
-				else
-				{
-					return keys[mid]
-				}
-			}
-		}
-
-		return keys[mid]
 	}
 
 	private var textView: NSTextView?
@@ -295,44 +323,12 @@ class LineNumbersRulerView: NSRulerView
 		]
 	}
 
-	private func updateLineInfos()
+	private var selectedNumberTextAttributes: [String : Any]
 	{
-		let oldDigitsCount = Int(log10(Double(max(lineIndexes.count, 1))) + 1)
-
-		lineIndexes.removeAll()
-
-		if let textView = self.textView, let text: NSString = textView.string as NSString?
-		{
-			if text.length == 0
-			{
-				self.lineIndexes[0] = 0
-			}
-			else
-			{
-				var lineNumber = UInt(0)
-
-				text.enumerateSubstrings(in: NSMakeRange(0, text.length), options: [.byLines, .substringNotRequired])
-				{ (_, lineRange, enclosingRange, _) in
-					self.lineIndexes[lineNumber] = UInt(enclosingRange.location)
-					lineNumber += 1
-				}
-
-				if text.character(at: text.length - 1) == unichar(0xA) // newline
-				{
-					self.lineIndexes[lineNumber] = UInt(text.length)
-				}
-			}
-		}
-
-		let newDigitsCount = Int(log10(Double(max(lineIndexes.count, 1))) + 1)
-
-		if newDigitsCount != oldDigitsCount
-		{
-			DispatchQueue.main.async
-			{
-				self.ruleThickness = self.requiredThickness
-				self.needsLayout = true
-			}
-		}
+		return [
+			NSFontAttributeName: font,
+			NSForegroundColorAttributeName: backgroundColor.isDarkColor ? NSColor.white : NSColor.black,
+			NSParagraphStyleAttributeName: numberParagraphStyle
+		]
 	}
 }

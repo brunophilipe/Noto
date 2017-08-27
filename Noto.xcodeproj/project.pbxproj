@@ -72,6 +72,8 @@
 		15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
 		15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
+		15AB8CD81F5362F0007CB05A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
+		15AB8CD91F5362F0007CB05A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
 		15B005281ED646700028B27E /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
 		15B005291ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
 		15B0052A1ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
@@ -143,6 +145,9 @@
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
 		15A0FBA31ED0C46500B1DD8C /* Noto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15AB8CD61F5362F0007CB05A /* EditorLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorLayoutManager.h; sourceTree = "<group>"; };
+		15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorLayoutManager.m; sourceTree = "<group>"; };
+		15AB8CDB1F536323007CB05A /* Noto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Noto-Bridging-Header.h"; sourceTree = "<group>"; };
 		15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorView.swift; path = Views/EditorView.swift; sourceTree = "<group>"; };
 		15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineNumbersRulerView.swift; path = Views/LineNumbersRulerView.swift; sourceTree = "<group>"; };
 		15DA4EBF1ED4D10C00782994 /* AssignIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignIf.swift; sourceTree = "<group>"; };
@@ -248,6 +253,7 @@
 				15260C3C1EE0EE5300A91CE6 /* Info.plist */,
 				15260C3D1EE0EE5300A91CE6 /* Noto-AppStore.entitlements */,
 				15260C3E1EE0EE5300A91CE6 /* Noto.entitlements */,
+				15AB8CDB1F536323007CB05A /* Noto-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,6 +350,8 @@
 				154148B91F253E42000D6383 /* Temporizer.swift */,
 				1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */,
 				150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */,
+				15AB8CD61F5362F0007CB05A /* EditorLayoutManager.h */,
+				15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -470,6 +478,7 @@
 					150CFAB71E2A83CF000B69E5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = R85D3K8ATT;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -482,6 +491,7 @@
 					};
 					15A0FB6E1ED0C46500B1DD8C = {
 						DevelopmentTeam = R85D3K8ATT;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
@@ -712,6 +722,7 @@
 			files = (
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
 				15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */,
+				15AB8CD81F5362F0007CB05A /* EditorLayoutManager.m in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
 				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
 				150ADD591F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
@@ -753,6 +764,7 @@
 			files = (
 				15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */,
 				15B005291ED646870028B27E /* AssignIf.swift in Sources */,
+				15AB8CD91F5362F0007CB05A /* EditorLayoutManager.m in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
 				150ADD5A1F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
@@ -927,6 +939,7 @@
 			baseConfigurationReference = F3AA2E9A717F7089F7E6D7DB /* Pods-Noto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Noto/Supporting Files/Noto.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -936,6 +949,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG SPARKLE";
+				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -944,6 +960,7 @@
 			baseConfigurationReference = 75693DC54529A742F665731A /* Pods-Noto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Noto/Supporting Files/Noto.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -953,6 +970,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brunophilipe.Noto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SPARKLE;
+				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -961,6 +980,7 @@
 			baseConfigurationReference = 7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Noto/Supporting Files/Noto-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -971,6 +991,9 @@
 				PRODUCT_NAME = Noto;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -979,6 +1002,7 @@
 			baseConfigurationReference = 1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Noto/Supporting Files/Noto-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -989,6 +1013,8 @@
 				PRODUCT_NAME = Noto;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

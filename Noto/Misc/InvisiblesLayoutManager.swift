@@ -21,7 +21,7 @@
 
 import Cocoa
 
-class InvisiblesLayoutManager: NSLayoutManager
+class InvisiblesLayoutManager: EditorLayoutManager
 {
 	var displayInvisibles: Bool = true
 	var textInset = NSSize(width: 10, height: 10)
