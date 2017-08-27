@@ -20,6 +20,9 @@ import Foundation
 
 extension String
 {
+	static let newLineChar = Character("\n")
+	static let whitespaceCharset = NSCharacterSet.whitespacesAndNewlines
+
 	var fullStringRange: Range<Index>
 	{
 		return startIndex..<endIndex
@@ -31,7 +34,9 @@ extension String
 		var linesCount = 0
 		var characterCount = 0
 		var whitespaceCharsCount = 0
-		let whitespaceCharacterSet = NSCharacterSet.whitespacesAndNewlines
+		let whitespaceCharacterSet = String.whitespaceCharset
+
+		var lastCharWasWhitespace = true
 
 		characters.forEach
 			{
@@ -40,17 +45,26 @@ extension String
 				if String(character).rangeOfCharacter(from: whitespaceCharacterSet) == nil
 				{
 					characterCount += 1
+
+					if lastCharWasWhitespace
+					{
+						wordsCount += 1
+						lastCharWasWhitespace = false
+					}
 				}
 				else
 				{
+					if character == String.newLineChar
+					{
+						linesCount += 1
+					}
+
 					whitespaceCharsCount += 1
+					lastCharWasWhitespace = true
 				}
-		}
+			}
 
-		enumerateSubstrings(in: fullStringRange, options: [.byWords, .substringNotRequired], { _ in wordsCount += 1 })
-		enumerateSubstrings(in: fullStringRange, options: [.byLines, .substringNotRequired], { _ in linesCount += 1 })
-
-		if startIndex != endIndex && substring(with: index(before: endIndex)..<endIndex) == "\n"
+		if characterCount + whitespaceCharsCount > 0
 		{
 			linesCount += 1
 		}
