@@ -103,7 +103,6 @@ class LineNumbersRulerView: NSRulerView
 
 	func textDidChange(notification: Notification)
 	{
-//		updateLineInfos()
 		needsDisplay = true
 		needsLayout = true
 	}
@@ -141,8 +140,6 @@ class LineNumbersRulerView: NSRulerView
 				                                       name: .NSViewBoundsDidChange,
 				                                       object: contentView)
 			}
-
-//			updateLineInfos()
 		}
 	}
 

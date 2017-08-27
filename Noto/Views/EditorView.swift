@@ -31,7 +31,11 @@ class EditorView: NSTextView
 		return self.textStorage as? MetricsTextStorage
 	}
 
-	var lineNumbersView: LineNumbersRulerView? = nil
+	var lineNumbersView: LineNumbersRulerView?
+	{
+		return enclosingScrollView?.verticalRulerView as? LineNumbersRulerView
+	}
+
 	var usesSpacesForTabs: Bool = false
 	var keepsIndentationOnNewLines: Bool = false
 
@@ -118,8 +122,6 @@ class EditorView: NSTextView
 
 			scrollView.hasHorizontalRuler = false
 			scrollView.hasVerticalRuler = true
-
-			self.lineNumbersView = lineNumbersView
 		}
 
 		string = text
