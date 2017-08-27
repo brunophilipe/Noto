@@ -19,24 +19,26 @@ class MetricsTextStorage: ConcreteTextStorage
 		return textMetrics
 	}
 
-	open override func replaceCharacters(in range: NSRange, with str: String)
+	override func replaceCharacters(in range: NSRange, with str: String)
 	{
 		let stringLength = (string as NSString).length
 		let delta = (str as NSString).length - range.length
 		let testRange = range.expanding(byEncapsulating: 1, maxLength: stringLength)
 
 		let metricsBeforeChange = attributedSubstring(from: testRange).string.metrics
+
 		super.replaceCharacters(in: range, with: str)
+
 		let metricsAfterChange = (stringLength + delta) > 0 ? attributedSubstring(from: testRange.expanding(byLength: delta).meaningfulRange).string.metrics
-			: StringMetrics()
+															: StringMetrics()
 
 		textMetrics = textMetrics - metricsBeforeChange + metricsAfterChange
 
 		if let observer = self.observer
 		{
 			DispatchQueue.main.async
-				{
-					observer.textStorage(self, didUpdateMetrics: self.metrics)
+			{
+				observer.textStorage(self, didUpdateMetrics: self.metrics)
 			}
 		}
 	}
@@ -57,7 +59,9 @@ extension NSRange
 
 	func expanding(byEncapsulating delta: Int, maxLength: Int) -> NSRange
 	{
-		return NSMakeRange(max(0, location - delta), min(length + delta, maxLength))
+		let newLocation = max(0, location - delta)
+		let newLength = min(length + delta * 2, maxLength - newLocation)
+		return NSMakeRange(newLocation, newLength)
 	}
 }
 
