@@ -33,15 +33,17 @@ import Cocoa
 class ConcreteTextStorage: NSTextStorage
 {
 	/// A storage facility for attributed text.
-	fileprivate let storage = NSMutableAttributedString()
+	fileprivate let storage = NSTextStorage()
 
 	/// Initializer.
-	required init?(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder)
+	{
 		super.init(coder: aDecoder)
 	}
 
 	/// Initializer.
-	override init() {
+	override init()
+	{
 		super.init()
 	}
 
@@ -84,8 +86,10 @@ extension ConcreteTextStorage
 	*/
 	override func replaceCharacters(in range: NSRange, with str: String)
 	{
+		beginEditing()
 		storage.replaceCharacters(in: range, with: str)
 		edited(.editedCharacters, range: range, changeInLength: str.utf16.count - range.length)
+		endEditing()
 	}
 
 	/**
@@ -96,8 +100,10 @@ extension ConcreteTextStorage
 	*/
 	override func setAttributes(_ attrs: [String : Any]?, range: NSRange)
 	{
+		beginEditing()
 		storage.setAttributes(attrs, range: range)
 		edited(.editedAttributes, range: range, changeInLength: 0)
+		endEditing()
 	}
 
 	/**
@@ -109,8 +115,10 @@ extension ConcreteTextStorage
 	*/
 	override func addAttribute(_ name: String, value: Any, range: NSRange)
 	{
+		beginEditing()
 		storage.addAttribute(name, value: value, range: range)
 		edited(.editedAttributes, range: range, changeInLength: 0)
+		endEditing()
 	}
 
 	/**
@@ -121,7 +129,9 @@ extension ConcreteTextStorage
 	*/
 	override func removeAttribute(_ name: String, range: NSRange)
 	{
+		beginEditing()
 		storage.removeAttribute(name, range: range)
 		edited(.editedAttributes, range: range, changeInLength: 0)
+		endEditing()
 	}
 }
