@@ -103,6 +103,8 @@ class EditorView: NSTextView
 
 		textContainerInset = NSSize(width: 10.0, height: 10.0)
 
+		let text = string
+
 		self.textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
 		layoutManager?.replaceTextStorage(MetricsTextStorage())
 
@@ -119,6 +121,9 @@ class EditorView: NSTextView
 
 			self.lineNumbersView = lineNumbersView
 		}
+
+		string = text
+		setSelectedRange(NSMakeRange(0, 0))
 	}
 
 	deinit
