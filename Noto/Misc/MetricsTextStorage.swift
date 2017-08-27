@@ -12,11 +12,18 @@ class MetricsTextStorage: ConcreteTextStorage
 {
 	private var textMetrics = StringMetrics()
 
+	private var _isUpdatingMetrics = false
+
 	var observer: TextStorageObserver? = nil
 
 	var metrics: StringMetrics
 	{
 		return textMetrics
+	}
+
+	var isUpdatingMetrics: Bool
+	{
+		return _isUpdatingMetrics
 	}
 
 	override func replaceCharacters(in range: NSRange, with str: String)
@@ -25,22 +32,40 @@ class MetricsTextStorage: ConcreteTextStorage
 		let delta = (str as NSString).length - range.length
 		let testRange = range.expanding(byEncapsulating: 1, maxLength: stringLength)
 
-		let metricsBeforeChange = attributedSubstring(from: testRange).string.metrics
-
-		super.replaceCharacters(in: range, with: str)
-
-		let metricsAfterChange = (stringLength + delta) > 0 ? attributedSubstring(from: testRange.expanding(byLength: delta).meaningfulRange).string.metrics
-															: StringMetrics()
-
-		textMetrics = textMetrics - metricsBeforeChange + metricsAfterChange
+		_isUpdatingMetrics = true
 
 		if let observer = self.observer
 		{
 			DispatchQueue.main.async
-			{
-				observer.textStorage(self, didUpdateMetrics: self.metrics)
-			}
+				{
+					observer.textStorageWillUpdateMetrics(self)
+				}
 		}
+
+		let stringBeforeChange = attributedSubstring(from: testRange).string
+
+		super.replaceCharacters(in: range, with: str)
+
+		let stringAfterChange = self.attributedSubstring(from: testRange.expanding(byLength: delta).meaningfulRange).string
+
+		DispatchQueue.global(qos: .utility).async
+			{
+				let metricsBeforeChange = stringBeforeChange.metrics
+				let metricsAfterChange = (stringLength + delta) > 0 ? stringAfterChange.metrics
+																	: StringMetrics()
+
+				self.textMetrics = self.textMetrics - metricsBeforeChange + metricsAfterChange
+
+				self._isUpdatingMetrics = false
+
+				if let observer = self.observer
+				{
+					DispatchQueue.main.async
+						{
+							observer.textStorage(self, didUpdateMetrics: self.metrics)
+						}
+				}
+			}
 	}
 }
 
@@ -67,5 +92,6 @@ extension NSRange
 
 protocol TextStorageObserver
 {
+	func textStorageWillUpdateMetrics(_ textStorage: MetricsTextStorage)
 	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics: StringMetrics)
 }

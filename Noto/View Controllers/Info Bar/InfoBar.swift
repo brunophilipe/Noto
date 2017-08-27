@@ -27,6 +27,8 @@ protocol InfoBar: class
 	func setWordsCount(_: String)
 	func setCharactersCount(_: String)
 	func setEncoding(_: String)
+
+	var animatedViews: [NSView] { get }
 }
 
 internal extension InfoBar
@@ -41,5 +43,15 @@ internal extension InfoBar
 		menu.addItem(menuItem)
 
 		return menu
+	}
+
+	func setIntermitentState(_ state: Bool)
+	{
+		let alpha: CGFloat = state ? 0.25 : 1.0
+
+		for view in animatedViews
+		{
+			view.animator().alphaValue = alpha
+		}
 	}
 }

@@ -28,6 +28,11 @@ class HUDInfoBarController: NSViewController, InfoBar
 	@IBOutlet private var labelLines: NSTextField!
 	@IBOutlet private var labelEncoding: NSTextField!
 
+	var animatedViews: [NSView]
+	{
+		return [labelCharacters, labelWords, labelLines]
+	}
+
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()

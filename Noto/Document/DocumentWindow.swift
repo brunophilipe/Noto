@@ -25,7 +25,7 @@ import Cocoa
 class DocumentWindow: NSWindow
 {
 	fileprivate var infoBarController: InfoBar? = nil
-	fileprivate var metricsUpdateTemporizer: Temporizer!
+
 	private var infoBarConstraints: [NSLayoutConstraint]? = nil
 	private var defaultTopThemeConstraint: NSLayoutConstraint? = nil
 	private var customTopThemeConstraint: NSLayoutConstraint? = nil
@@ -35,16 +35,6 @@ class DocumentWindow: NSWindow
 	@IBOutlet var textEditorBottomConstraint: NSLayoutConstraint!
 	@IBOutlet var titleBarSeparatorView: BackgroundView!
 	@IBOutlet var textEditorTopConstraint: NSLayoutConstraint!
-
-	override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool)
-	{
-		super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
-
-		metricsUpdateTemporizer = Temporizer(withFiringDelay: 0.25)
-		{
-			self.updateDocumentMetrics()
-		}
-	}
 
 	fileprivate var characterCount: Int = 0
 	{
@@ -334,7 +324,6 @@ class DocumentWindow: NSWindow
 
 				self.infoBarController = infoBarController
 
-				textView.delegate = self
 				textEditorBottomConstraint.constant = 0
 			}
 
@@ -361,7 +350,6 @@ class DocumentWindow: NSWindow
 
 				self.infoBarController = infoBarController
 
-				textView.delegate = self
 				textEditorBottomConstraint.constant = infoBar.bounds.height
 			}
 
@@ -559,21 +547,26 @@ class DocumentWindow: NSWindow
 
 extension DocumentWindow: TextStorageObserver
 {
+	func textStorageWillUpdateMetrics(_ textStorage: MetricsTextStorage)
+	{
+		DispatchQueue.main.asyncAfter(deadline: .now()+0.25)
+		{
+			if textStorage.isUpdatingMetrics
+			{
+				self.infoBarController?.setIntermitentState(true)
+			}
+		}
+	}
+
 	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics metrics: StringMetrics)
 	{
 		let countsWhitespaces = Preferences.instance.countWhitespacesInTotalCharacters
-		
+
+		infoBarController?.setIntermitentState(false)
+
 		characterCount = countsWhitespaces ? metrics.allCharacters : metrics.chars
 		linesCount = metrics.lines
 		wordsCount = metrics.words
-	}
-}
-
-extension DocumentWindow: NSTextViewDelegate
-{
-	func textDidChange(_ notification: Notification)
-	{
-		metricsUpdateTemporizer.trigger()
 	}
 }
 
