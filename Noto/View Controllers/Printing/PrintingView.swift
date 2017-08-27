@@ -159,11 +159,6 @@ class PrintingView: NSScrollView
 					textView.setColorsFromTheme(theme: LightEditorTheme())
 				}
 
-				if rulersVisible, let lineNumbersView = textView.lineNumbersView
-				{
-					lineNumbersView.reindexLinesForPrinting()
-				}
-
 				setFrameSize(size)
 
 				if rulersVisible, let lineNumbersView = textView.lineNumbersView

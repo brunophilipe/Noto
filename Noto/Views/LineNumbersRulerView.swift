@@ -113,11 +113,6 @@ class LineNumbersRulerView: NSRulerView
 		needsDisplay = true
 	}
 
-	func reindexLinesForPrinting()
-	{
-//		updateLineInfos()
-	}
-
 	// MARK: - Override Methods
 
 	override var clientView: NSView?
@@ -284,7 +279,7 @@ class LineNumbersRulerView: NSRulerView
 
 	// MARK: - Private Methods
 
-	var gutterWidth: CGFloat
+	private var gutterWidth: CGFloat
 	{
 		return max(lastRequiredGutterWidth, 32.0)
 	}
