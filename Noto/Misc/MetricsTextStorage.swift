@@ -46,13 +46,13 @@ class MetricsTextStorage: ConcreteTextStorage
 
 		super.replaceCharacters(in: range, with: str)
 
-		let stringAfterChange = self.attributedSubstring(from: testRange.expanding(byLength: delta).meaningfulRange).string
+		let rangeAfterChange = testRange.expanding(byLength: delta).meaningfulRange
+		let stringAfterChange = (stringLength + delta) > 0 ? attributedSubstring(from: rangeAfterChange).string : ""
 
 		DispatchQueue.global(qos: .utility).async
 			{
 				let metricsBeforeChange = stringBeforeChange.metrics
-				let metricsAfterChange = (stringLength + delta) > 0 ? stringAfterChange.metrics
-																	: StringMetrics()
+				let metricsAfterChange = stringAfterChange.metrics
 
 				self.textMetrics = self.textMetrics - metricsBeforeChange + metricsAfterChange
 
