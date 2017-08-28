@@ -220,7 +220,7 @@ class LineNumbersRulerView: NSRulerView
 		{
 			let gutterAttributes: [String : Any]
 
-			if selectedRange.location > lastCharIndex || lastCharIndex == 0
+			if NSMaxRange(selectedRange) > lastCharIndex || lastCharIndex == 0
 			{
 				gutterAttributes = selectedNumberTextAttributes
 			}

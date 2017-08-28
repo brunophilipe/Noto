@@ -125,6 +125,7 @@ class DocumentWindow: NSWindow
 		textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
 		textView.undoManager?.removeAllActions()
 		textView.textStorageObserver = self
+		textView.delegate = self
 
 		let dragHandle = WindowDragHandleView(frame: NSMakeRect(0, 0, 100, 80))
 		dragHandle.backgroundColor = Preferences.instance.editorTheme.editorBackground.withAlphaComponent(0.5)
@@ -354,7 +355,6 @@ class DocumentWindow: NSWindow
 			}
 
 		default:
-			textView.delegate = nil
 			textEditorBottomConstraint.constant = 0
 			break
 		}
@@ -542,6 +542,14 @@ class DocumentWindow: NSWindow
 	private func updateEditorKeepIndentsSetting()
 	{
 		textView.keepsIndentationOnNewLines = Preferences.instance.keepIndentationOnNewLines
+	}
+}
+
+extension DocumentWindow: NSTextViewDelegate
+{
+	func textViewDidChangeSelection(_ notification: Notification)
+	{
+		textView.lineNumbersView?.needsDisplay = true
 	}
 }
 
