@@ -161,7 +161,7 @@ class Preferences: UserDefaults
 
 				for fontName in fontNames
 				{
-					if let font = NSFont(name: fontName, size: 14.0)
+					if let font = NSFont(name: fontName, size: defaultFontSize)
 					{
 						return font
 					}
@@ -169,7 +169,7 @@ class Preferences: UserDefaults
 
 				// NO FONTS FOUND??
 				NSLog("error: could not find any default fonts!")
-				return NSFont.monospacedDigitSystemFont(ofSize: 14.0, weight: 400)
+				return NSFont.monospacedDigitSystemFont(ofSize: defaultFontSize, weight: 400)
 			}
 		}
 
