@@ -31,6 +31,11 @@ class EditorView: NSTextView
 		return self.textStorage as? MetricsTextStorage
 	}
 
+	var textMetrics: StringMetrics?
+	{
+		return metricsTextStorage?.metrics
+	}
+
 	var lineNumbersView: LineNumbersRulerView?
 	{
 		return enclosingScrollView?.verticalRulerView as? LineNumbersRulerView

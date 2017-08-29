@@ -566,7 +566,7 @@ extension DocumentWindow: TextStorageObserver
 		}
 	}
 
-	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics metrics: StringMetrics)
+	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics metrics: StringMetrics, fromOldMetrics oldMetrics: StringMetrics)
 	{
 		let countsWhitespaces = Preferences.instance.countWhitespacesInTotalCharacters
 
@@ -575,6 +575,27 @@ extension DocumentWindow: TextStorageObserver
 		characterCount = countsWhitespaces ? metrics.allCharacters : metrics.chars
 		linesCount = metrics.lines
 		wordsCount = metrics.words
+
+		if oldMetrics.lineCountDigitsCount != metrics.lineCountDigitsCount
+		{
+			textView.lineNumbersView?.invalidateRequiredThickness()
+		}
+	}
+}
+
+private extension NSRulerView
+{
+	func invalidateRequiredThickness()
+	{
+		ruleThickness = requiredThickness
+	}
+}
+
+private extension StringMetrics
+{
+	var lineCountDigitsCount: Int
+	{
+		return Int(log10(Double(max(lines, 1)))) + 1
 	}
 }
 

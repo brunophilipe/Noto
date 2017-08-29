@@ -34,12 +34,11 @@ class MetricsTextStorage: ConcreteTextStorage
 
 		_isUpdatingMetrics = true
 
+		let oldMetrics = textMetrics
+
 		if let observer = self.observer
 		{
-			DispatchQueue.main.async
-				{
-					observer.textStorageWillUpdateMetrics(self)
-				}
+			observer.textStorageWillUpdateMetrics(self)
 		}
 
 		let stringBeforeChange = attributedSubstring(from: testRange).string
@@ -62,7 +61,7 @@ class MetricsTextStorage: ConcreteTextStorage
 				{
 					DispatchQueue.main.async
 						{
-							observer.textStorage(self, didUpdateMetrics: self.metrics)
+							observer.textStorage(self, didUpdateMetrics: self.metrics, fromOldMetrics: oldMetrics)
 						}
 				}
 			}
@@ -93,5 +92,5 @@ extension NSRange
 protocol TextStorageObserver
 {
 	func textStorageWillUpdateMetrics(_ textStorage: MetricsTextStorage)
-	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics: StringMetrics)
+	func textStorage(_ textStorage: MetricsTextStorage, didUpdateMetrics: StringMetrics, fromOldMetrics: StringMetrics)
 }

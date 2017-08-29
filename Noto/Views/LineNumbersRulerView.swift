@@ -25,10 +25,6 @@ let kRulerMargin: CGFloat = 10.0
 
 class LineNumbersRulerView: NSRulerView
 {
-	// Index of newline characters locations
-	private var lineIndexes: [UInt : UInt] = [:]
-	private var lastRequiredGutterWidth: CGFloat = 32.0
-
 	// MARK: - Initializers and Deinitializer
 
 	override init(scrollView: NSScrollView?, orientation: NSRulerOrientation)
@@ -51,6 +47,11 @@ class LineNumbersRulerView: NSRulerView
 		NotificationCenter.default.removeObserver(self)
 		Preferences.instance.removeObserver(self, forKeyPath: "lineNumbersFont")
 		Preferences.instance.removeObserver(self, forKeyPath: "editorFont")
+	}
+
+	override var mouseDownCanMoveWindow: Bool
+	{
+		return true
 	}
 
 	var font = Preferences.instance.lineNumbersFont
@@ -169,7 +170,7 @@ class LineNumbersRulerView: NSRulerView
 		let visibleRect			= CGRect(x: boundsRect.origin.x, y: boundsRect.origin.y - heightInset,
 		               			         width: boundsRect.size.width, height: boundsRect.size.height + heightInset * 2.0)
 		let visibleRange		= layoutManager.glyphRange(forBoundingRect: visibleRect, in: textContainer)
-		let gutterWidth			= self.gutterWidth
+		let gutterWidth			= requiredThickness
 		let topScrollOffset		= boundsRect.origin.y
 
 		var columnRect: CGRect = .zero
@@ -206,8 +207,6 @@ class LineNumbersRulerView: NSRulerView
 				let size = numberString.size(withAttributes: gutterAttributes)
 				let drawRect = columnRect.offsetBy(dx: 0, dy: (columnRect.height - size.height) / 2 - topScrollOffset)
 
-				self.lastRequiredGutterWidth = 4.0 + size.width + 8.0
-
 				numberString.draw(in: drawRect, withAttributes: gutterAttributes)
 			}
 
@@ -230,10 +229,7 @@ class LineNumbersRulerView: NSRulerView
 			}
 
 			let numberString = NSString(string: "\(lineNumber + 1)")
-
 			let size = numberString.size(withAttributes: gutterAttributes)
-
-			self.lastRequiredGutterWidth = 4.0 + size.width + 8.0
 
 			if emptyText
 			{
@@ -253,21 +249,19 @@ class LineNumbersRulerView: NSRulerView
 
 			numberString.draw(in: drawRect, withAttributes: gutterAttributes)
 		}
-
-		if gutterWidth != self.gutterWidth
-		{
-			DispatchQueue.main.async
-			{
-				self.ruleThickness = gutterWidth
-				self.needsLayout = true
-			}
-		}
 	}
 
 	override var requiredThickness: CGFloat
 	{
 		let defaultThickness = CGFloat(20.0)
-		let digits = Int(log10(Double(max(lineIndexes.count, 1))) + 1)
+		var lineCount = 1
+
+		if let textLineCount = textView?.textMetrics?.lines, textLineCount > 0
+		{
+			lineCount = textLineCount
+		}
+
+		let digits = Int(log10(Double(lineCount)) + 1)
 		let sampleString = String(repeating: "8", count: digits) as NSString
 		let requiredThickness = sampleString.size(withAttributes: numberTextAttributes).width
 
@@ -276,20 +270,15 @@ class LineNumbersRulerView: NSRulerView
 
 	// MARK: - Private Methods
 
-	private var gutterWidth: CGFloat
-	{
-		return max(lastRequiredGutterWidth, 32.0)
-	}
-
 	private func setupStateObservers()
 	{
 		Preferences.instance.addObserver(self, forKeyPath: "lineNumbersFont", options: .new, context: nil)
 		Preferences.instance.addObserver(self, forKeyPath: "editorFont", options: .new, context: nil)
 	}
 
-	private var textView: NSTextView?
+	private var textView: EditorView?
 	{
-		return clientView as? NSTextView
+		return clientView as? EditorView
 	}
 
 	private var usesRTL: Bool
