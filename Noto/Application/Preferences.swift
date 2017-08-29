@@ -106,6 +106,8 @@ class Preferences: UserDefaults
 
 	// Editor Settings
 
+	let defaultFontSize: CGFloat = 14.0
+
 	func increaseFontSize()
 	{
 		let font = self.editorFont
@@ -123,6 +125,16 @@ class Preferences: UserDefaults
 		if font.pointSize > 1, let smallerFont = NSFont(descriptor: font.fontDescriptor, size: (font.pointSize - 1))
 		{
 			self.editorFont = smallerFont
+		}
+	}
+
+	func resetFontSize()
+	{
+		let font = self.editorFont
+
+		if let defaultSizeFont = NSFont(descriptor: font.fontDescriptor, size: defaultFontSize)
+		{
+			self.editorFont = defaultSizeFont
 		}
 	}
 

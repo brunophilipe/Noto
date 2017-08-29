@@ -197,6 +197,11 @@ extension AppDelegate
 		Preferences.instance.decreaseFontSize()
 	}
 
+	@IBAction func resetFontSize(_ sender: Any)
+	{
+		Preferences.instance.resetFontSize()
+	}
+
 	@IBAction func checkForUpdates(_ sender: Any)
 	{
 		#if SPARKLE
