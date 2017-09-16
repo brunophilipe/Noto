@@ -12,6 +12,7 @@
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
+		151CCF2C1F6DD8F4002D006D /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
 		1522D5B41F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
 		1522D5B51F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
 		15260C3F1EE0EE9700A91CE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */; };
@@ -83,7 +84,6 @@
 		15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98C21E8747F100E3B7B3 /* Unit_Tests.swift */; };
 		15DC98CB1E87482500E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
-		15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
 		15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CA1E87482500E3B7B3 /* NSTextStorage+Indentation.swift */; };
 		1852DE2DE7333AE950A7808F /* Pods_Noto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F004DD282AB058A760B143 /* Pods_Noto.framework */; };
 		21EBE8B93A180711ACDB3673 /* Pods_Noto__AppStore_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */; };
@@ -501,7 +501,6 @@
 					};
 					15DC98BF1E8747F100E3B7B3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R85D3K8ATT;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 150CFAB71E2A83CF000B69E5;
 					};
@@ -805,10 +804,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */,
-				15DC98CD1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift in Sources */,
 				15B0052A1ED646870028B27E /* AssignIf.swift in Sources */,
 				15B005281ED646700028B27E /* EncodingTool.swift in Sources */,
 				15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
+				151CCF2C1F6DD8F4002D006D /* ModifiableIndentationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1036,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Unit Tests/Info.plist";
@@ -1044,7 +1044,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};
 			name = Debug;
@@ -1054,6 +1053,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Unit Tests/Info.plist";
@@ -1061,7 +1061,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};
 			name = Release;

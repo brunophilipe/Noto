@@ -177,24 +177,22 @@ class EditorView: NSTextView
 	{
 		var success = false
 
-		if let string = self.string as NSString?
+		let string = self.string as NSString
+		var iteratedLines = 1
+
+		string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
 		{
-			var iteratedLines = 1
+			(substring, range, enclosingRange, stop: UnsafeMutablePointer<ObjCBool>) in
 
-			string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
+			if lineNumber == iteratedLines
 			{
-				(substring, range, enclosingRange, stop: UnsafeMutablePointer<ObjCBool>) in
-
-				if lineNumber == iteratedLines
-				{
-					self.setSelectedRange(range)
-					self.scrollRangeToVisible(range)
-					stop.pointee = ObjCBool(true)
-					success = true
-				}
-
-				iteratedLines += 1
+				self.setSelectedRange(range)
+				self.scrollRangeToVisible(range)
+				stop.pointee = ObjCBool(true)
+				success = true
 			}
+
+			iteratedLines += 1
 		}
 
 		return success
