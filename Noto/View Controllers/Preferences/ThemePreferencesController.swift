@@ -270,7 +270,7 @@ class ThemePreferencesController: NSViewController
 		}
 	}
 
-	private func showErrorAlert(errorMessage: String, callback: ((Void) -> Void)? = nil)
+	private func showErrorAlert(errorMessage: String, callback: (() -> Void)? = nil)
 	{
 		let alert = NSAlert()
 		alert.messageText = "Error"

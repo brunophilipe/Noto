@@ -56,7 +56,7 @@ open class TRexAboutWindowController : NSWindowController {
         
         if self.appCopyright.string.isEmpty {
             let font = NSFont(name: "HelveticaNeue", size: 11.0) ?? NSFont.systemFont(ofSize: 11.0)
-            let color = floor(NSAppKitVersionNumber) <= Double(NSAppKitVersionNumber10_9) ? NSColor.lightGray : NSColor.tertiaryLabelColor
+            let color = floor(NSAppKitVersion.current.rawValue) <= NSAppKitVersion.macOS10_9.rawValue ? NSColor.lightGray : NSColor.tertiaryLabelColor
             let attribs:[String:AnyObject] = [NSForegroundColorAttributeName:color,
                                               NSFontAttributeName:font]
             self.appCopyright = NSAttributedString(string: valueFromInfoDict("NSHumanReadableCopyright") ?? "", attributes:attribs)
