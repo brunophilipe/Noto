@@ -37,7 +37,7 @@ extension NSMenuItem
 		{
 			selectedItem = menuItem
 
-			menuItem.state = 1
+			menuItem.state = .on
 		}
 
 		return menuItem

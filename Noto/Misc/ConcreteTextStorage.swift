@@ -48,7 +48,7 @@ class ConcreteTextStorage: NSTextStorage
 	}
 
 	/// Initializer.
-	required init?(pasteboardPropertyList propertyList: Any, ofType type: String)
+	required init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType)
 	{
 		super.init(pasteboardPropertyList: propertyList, ofType: type)
 	}
@@ -73,7 +73,7 @@ extension ConcreteTextStorage
 	If you don't need this value, pass NULL.
 	- Returns: The attributes for the character at index.
 	*/
-	override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [String: Any]
+	override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [NSAttributedStringKey: Any]
 	{
 		return storage.attributes(at: location, effectiveRange: range)
 	}
@@ -98,7 +98,7 @@ extension ConcreteTextStorage
 	- Parameter range: A range of characters that will have their
 	attributes updated.
 	*/
-	override func setAttributes(_ attrs: [String : Any]?, range: NSRange)
+	override func setAttributes(_ attrs: [NSAttributedStringKey : Any]?, range: NSRange)
 	{
 		beginEditing()
 		storage.setAttributes(attrs, range: range)
@@ -113,7 +113,7 @@ extension ConcreteTextStorage
 	- Parameter range: A range of characters that will have their
 	attributes added.
 	*/
-	override func addAttribute(_ name: String, value: Any, range: NSRange)
+	override func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange)
 	{
 		beginEditing()
 		storage.addAttribute(name, value: value, range: range)
@@ -127,7 +127,7 @@ extension ConcreteTextStorage
 	- Parameter range: A range of characters that will have their
 	attributes removed.
 	*/
-	override func removeAttribute(_ name: String, range: NSRange)
+	override func removeAttribute(_ name: NSAttributedStringKey, range: NSRange)
 	{
 		beginEditing()
 		storage.removeAttribute(name, range: range)

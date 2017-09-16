@@ -80,6 +80,6 @@ class HUDInfoBarController: NSViewController, InfoBar
 
 	static func make() -> HUDInfoBarController
 	{
-		return HUDInfoBarController(nibName: "HUDInfoBarController", bundle: Bundle.main)!
+		return HUDInfoBarController(nibName: NSNib.Name(rawValue: "HUDInfoBarController"), bundle: Bundle.main)
 	}
 }

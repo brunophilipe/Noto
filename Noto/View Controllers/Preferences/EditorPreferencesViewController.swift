@@ -89,7 +89,7 @@ class EditorPreferencesViewController: NSViewController
 	{
 		super.viewDidDisappear()
 		
-		NSFontPanel.shared().close()
+		NSFontPanel.shared.close()
 	}
 	
 	private func createObservers()
@@ -135,7 +135,7 @@ class EditorPreferencesViewController: NSViewController
 	{
 		if let window = preferencesWindow
 		{
-			let fontPanel = NSFontPanel.shared()
+			let fontPanel = NSFontPanel.shared
 			fontPanel.setPanelFont(Preferences.instance.editorFont, isMultiple: false)
 			fontPanel.makeKeyAndOrderFront(sender)
 			
@@ -180,13 +180,13 @@ extension EditorPreferencesViewController: PreferencesController, CCNPreferences
 	
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImageNameFontPanel)
+		return NSImage(named: NSImage.Name.fontPanel)
 	}
 	
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = EditorPreferencesViewController(nibName: "EditorPreferencesViewController", bundle: Bundle.main)
-		controller?.preferencesWindow = window
+		let controller = EditorPreferencesViewController(nibName: NSNib.Name(rawValue: "EditorPreferencesViewController"), bundle: Bundle.main)
+		controller.preferencesWindow = window
 		return controller
 	}
 }

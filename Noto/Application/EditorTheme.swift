@@ -123,7 +123,7 @@ extension EditorTheme
 	{
 		if name.hasPrefix(kThemeNativeNamePrefix)
 		{
-			let themeName = name.substring(from: name.index(name.startIndex, offsetBy: kThemeNativeNamePrefix.characters.count))
+			let themeName = name[name.index(name.startIndex, offsetBy: kThemeNativeNamePrefix.count) ..< name.endIndex]
 
 			switch themeName
 			{
@@ -139,7 +139,7 @@ extension EditorTheme
 		}
 		else if name.hasPrefix(kThemeUserNamePrefix)
 		{
-			let themeFilePath = name.substring(from: name.index(name.startIndex, offsetBy: kThemeUserNamePrefix.characters.count))
+			let themeFilePath = String(name[name.index(name.startIndex, offsetBy: kThemeUserNamePrefix.count) ..< name.endIndex])
 
 			if FileManager.default.fileExists(atPath: themeFilePath)
 			{
@@ -175,12 +175,12 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 		return _name
 	}
 
-	dynamic var editorForeground: NSColor
-	dynamic var editorBackground: NSColor
-	dynamic var lineNumbersForeground: NSColor
-	dynamic var lineNumbersBackground: NSColor
+	@objc dynamic var editorForeground: NSColor
+	@objc dynamic var editorBackground: NSColor
+	@objc dynamic var lineNumbersForeground: NSColor
+	@objc dynamic var lineNumbersBackground: NSColor
 
-	dynamic var willDeallocate: Bool = false
+	@objc dynamic var willDeallocate: Bool = false
 
 	var preferenceName: String?
 	{

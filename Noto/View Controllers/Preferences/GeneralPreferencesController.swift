@@ -58,13 +58,13 @@ extension GeneralPreferencesController: PreferencesController, CCNPreferencesWin
 
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImageNamePreferencesGeneral)
+		return NSImage(named: NSImage.Name.preferencesGeneral)
 	}
 
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = GeneralPreferencesController(nibName: "GeneralPreferencesController", bundle: Bundle.main)
-		controller?.preferencesWindow = window
+		let controller = GeneralPreferencesController(nibName: NSNib.Name(rawValue: "GeneralPreferencesController"), bundle: Bundle.main)
+		controller.preferencesWindow = window
 		return controller
 	}
 }

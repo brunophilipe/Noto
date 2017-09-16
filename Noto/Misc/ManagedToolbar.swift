@@ -20,7 +20,7 @@ import AppKit
 
 class ManagedToolbar: NSToolbar
 {
-	dynamic var dynamicIsVisible: Bool = true
+	@objc dynamic var dynamicIsVisible: Bool = true
 
 	override var isVisible: Bool
 	{

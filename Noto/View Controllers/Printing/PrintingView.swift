@@ -49,9 +49,9 @@ class PrintingView: NSScrollView
 
 		let userDefaults = UserDefaults.standard
 
-		if !userDefaults.bool(forKey: NSPrintHeaderAndFooter)
+		if !userDefaults.bool(forKey: NSPrintInfo.AttributeKey.headerAndFooter.rawValue)
 		{
-			userDefaults.set(true, forKey: NSPrintHeaderAndFooter)
+			userDefaults.set(true, forKey: NSPrintInfo.AttributeKey.headerAndFooter.rawValue)
 		}
 		
 		textView.awakeFromNib()
@@ -84,17 +84,17 @@ class PrintingView: NSScrollView
 		// Adds filename text aligned to center
 		if printPanelAccessoryController?.showFileName == true
 		{
-			let titleParagraphStyle = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+			let titleParagraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
 			titleParagraphStyle.tabStops = [NSTextTab.init(textAlignment: .center, location: paperWidth / 2.0, options: [:])]
 
 			headerString.append(NSAttributedString(string: "\t" + jobTitle,
-			                                       attributes: [NSParagraphStyleAttributeName: titleParagraphStyle]))
+			                                       attributes: [.paragraphStyle: titleParagraphStyle]))
 		}
 
 		// Adds print date text aligned to right
 		if printPanelAccessoryController?.showDate == true
 		{
-			let dateParagraphStyle = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+			let dateParagraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
 			dateParagraphStyle.tabStops = [NSTextTab.init(textAlignment: .right, location: paperWidth, options: [:])]
 
 			let dateFormatter = DateFormatter()
@@ -102,7 +102,7 @@ class PrintingView: NSScrollView
 			dateFormatter.timeStyle = .short
 
 			headerString.append(NSAttributedString(string: "\t" + dateFormatter.string(from: Date()),
-			                                       attributes: [NSParagraphStyleAttributeName: dateParagraphStyle]))
+			                                       attributes: [.paragraphStyle: dateParagraphStyle]))
 		}
 
 		return headerString

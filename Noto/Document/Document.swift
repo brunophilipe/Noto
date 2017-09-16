@@ -69,14 +69,14 @@ class Document: NSDocument
 		return usedEncoding
 	}
 
-	override class func autosavesInPlace() -> Bool
+	override class var autosavesInPlace: Bool
 	{
 		return true
 	}
 
-	override var windowNibName: String?
+	override var windowNibName: NSNib.Name
 	{
-		return "Document"
+		return .init(rawValue: "Document")
 	}
 
 	override var shouldRunSavePanelWithAccessoryView: Bool
@@ -166,12 +166,12 @@ class Document: NSDocument
 		}
 	}
 
-	override func fileNameExtension(forType typeName: String, saveOperation: NSSaveOperationType) -> String?
+	override func fileNameExtension(forType typeName: String, saveOperation: NSDocument.SaveOperationType) -> String?
 	{
 		return fileURL?.pathExtension ?? "txt"
 	}
 
-	override func printOperation(withSettings printSettings: [String: Any]) throws -> NSPrintOperation
+	override func printOperation(withSettings printSettings: [NSPrintInfo.AttributeKey: Any]) throws -> NSPrintOperation
 	{
 		if let window = self.window
 		{

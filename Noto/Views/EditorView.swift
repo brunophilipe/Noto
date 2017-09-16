@@ -297,7 +297,7 @@ class EditorView: NSTextView
 	func setTabWidth(_ width: UInt)
 	{
 		// Update paragraph style
-		let paragraphStyle = (defaultParagraphStyle ?? NSParagraphStyle.default()).mutableCopy() as! NSMutableParagraphStyle
+		let paragraphStyle = (defaultParagraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
 		let characterWidth = (font ?? NSFont.systemFont(ofSize: 14)).screenFont(with: .antialiasedRenderingMode).advancement(forGlyph: NSGlyph(" "))
 
 		paragraphStyle.defaultTabInterval = CGFloat(width) * characterWidth.width
@@ -307,16 +307,14 @@ class EditorView: NSTextView
 
 		// Re-render current text with new typing attributes
 		var typingAttributes = self.typingAttributes
-		typingAttributes[NSParagraphStyleAttributeName] = paragraphStyle
+		typingAttributes[NSAttributedStringKey.paragraphStyle] = paragraphStyle
 		self.typingAttributes = typingAttributes
 
-		if let textString: NSString = self.string as NSString?
-		{
-			let textRange = NSMakeRange(0, textString.length)
-			shouldChangeText(in: textRange, replacementString: nil)
-			textStorage?.setAttributes(typingAttributes, range: textRange)
-			didChangeText()
-		}
+		let textString = self.string as NSString
+		let textRange = NSMakeRange(0, textString.length)
+		shouldChangeText(in: textRange, replacementString: nil)
+		textStorage?.setAttributes(typingAttributes, range: textRange)
+		didChangeText()
 	}
 }
 

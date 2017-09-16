@@ -73,7 +73,7 @@ class DocumentWindow: NSWindow
 	{
 		get
 		{
-			return textView.string ?? ""
+			return textView.string
 		}
 
 		set
@@ -191,7 +191,7 @@ class DocumentWindow: NSWindow
 		{
 			response in
 
-			if response == NSAlertFirstButtonReturn
+			if response == .alertFirstButtonReturn
 			{
 				if !self.textView.jumpToLine(lineNumber: textField.integerValue)
 				{
@@ -222,7 +222,7 @@ class DocumentWindow: NSWindow
 
 	@IBAction func copyDocumentStatToPasteboard(_ sender: Any?)
 	{
-		let pasteboard = NSPasteboard.general()
+		let pasteboard = NSPasteboard.general
 
 		switch (sender as? NSMenuItem)?.tag
 		{
@@ -367,14 +367,12 @@ class DocumentWindow: NSWindow
 
 	fileprivate func updateDocumentMetrics()
 	{
-		if let string = textView.string
-		{
-			let metrics = string.metrics
+		let string = textView.string
+		let metrics = string.metrics
 
-			self.wordsCount = metrics.words
-			self.characterCount = Preferences.instance.countWhitespacesInTotalCharacters ? metrics.allCharacters : metrics.chars
-			self.linesCount = metrics.lines
-		}
+		self.wordsCount = metrics.words
+		self.characterCount = Preferences.instance.countWhitespacesInTotalCharacters ? metrics.allCharacters : metrics.chars
+		self.linesCount = metrics.lines
 	}
 
 	override func observeValue(forKeyPath keyPath: String?,
@@ -485,10 +483,7 @@ class DocumentWindow: NSWindow
 		let theme = Preferences.instance.editorTheme
 		let isDark = theme.editorBackground.isDarkColor
 
-		let appearance = isDark ? NSAppearance(named:NSAppearanceNameVibrantDark)
-								: NSAppearance(named:NSAppearanceNameVibrantLight)
-
-		self.appearance = appearance
+		appearance = NSAppearance(named: (isDark ? .vibrantDark : .vibrantLight))!
 
 		if let hudController = infoBarController as? HUDInfoBarController
 		{

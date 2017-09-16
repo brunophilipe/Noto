@@ -138,7 +138,7 @@ class Preferences: UserDefaults
 		}
 	}
 
-	dynamic var editorFont: NSFont
+	@objc dynamic var editorFont: NSFont
 	{
 		get
 		{
@@ -169,7 +169,7 @@ class Preferences: UserDefaults
 
 				// NO FONTS FOUND??
 				NSLog("error: could not find any default fonts!")
-				return NSFont.monospacedDigitSystemFont(ofSize: defaultFontSize, weight: 400)
+				return NSFont.monospacedDigitSystemFont(ofSize: defaultFontSize, weight: .light)
 			}
 		}
 
@@ -180,7 +180,7 @@ class Preferences: UserDefaults
 		}
 	}
 
-	dynamic var lineNumbersFont: NSFont
+	@objc dynamic var lineNumbersFont: NSFont
 	{
 		get
 		{
@@ -222,7 +222,7 @@ class Preferences: UserDefaults
 		}
 	}
 
-	dynamic var editorThemeName: String
+	@objc dynamic var editorThemeName: String
 	{
 		get
 		{
@@ -265,55 +265,55 @@ class Preferences: UserDefaults
 		}
 	}
 	
-	dynamic var smartSubstitutionsOn: Bool
+	@objc dynamic var smartSubstitutionsOn: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorSmartSubstitutions) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorSmartSubstitutions) }
 	}
 	
-	dynamic var spellingCheckerOn: Bool
+	@objc dynamic var spellingCheckerOn: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorSpellingChecker) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorSpellingChecker) }
 	}
 	
-	dynamic var useSpacesForTabs: Bool
+	@objc dynamic var useSpacesForTabs: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
 	}
 	
-	dynamic var tabSize: UInt
+	@objc dynamic var tabSize: UInt
 	{
 		get { return (value(forKey: Preferences.PreferenceEditorTabSize) as? UInt) ?? 4 }
 		set { set(newValue, forKey: Preferences.PreferenceEditorTabSize) }
 	}
 
-	dynamic var infoBarMode: InfoBarMode
+	@objc dynamic var infoBarMode: InfoBarMode
 	{
 		get { return InfoBarMode(intValue: value(forKey: Preferences.PreferenceEditorInfoBarMode) as? Int) }
 		set { set(newValue.rawValue, forKey: Preferences.PreferenceEditorInfoBarMode) }
 	}
 
-	dynamic var countWhitespacesInTotalCharacters: Bool
+	@objc dynamic var countWhitespacesInTotalCharacters: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorCountsWhitespaces) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorCountsWhitespaces) }
 	}
 
-	dynamic var showsInvisibles: Bool
+	@objc dynamic var showsInvisibles: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorShowsInvisibles) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorShowsInvisibles) }
 	}
 
-	dynamic var keepIndentationOnNewLines: Bool
+	@objc dynamic var keepIndentationOnNewLines: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorKeepIndentOnNewLines) }
 	}
 
-	dynamic var autoshowLineNumbers: Bool
+	@objc dynamic var autoshowLineNumbers: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorShowLineNumbers) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorShowLineNumbers) }
@@ -321,7 +321,7 @@ class Preferences: UserDefaults
 
 	// General Settings
 
-	dynamic var doubleEscToLeaveFullScreen: Bool
+	@objc dynamic var doubleEscToLeaveFullScreen: Bool
 	{
 		get { return bool(forKey: Preferences.PreferenceGeneralDoubleEscToLeaveFullScreen) }
 		set { set(newValue, forKey: Preferences.PreferenceGeneralDoubleEscToLeaveFullScreen) }
@@ -329,43 +329,43 @@ class Preferences: UserDefaults
 
 	// Printing Options
 
-	dynamic var printWrapContents: Bool
+	@objc dynamic var printWrapContents: Bool
 	{
 		get { return !bool(forKey: Preferences.PreferencePrintWrapContents) }
 		set { set(!newValue, forKey: Preferences.PreferencePrintWrapContents) }
 	}
 
-	dynamic var printShowDate: Bool
+	@objc dynamic var printShowDate: Bool
 	{
 		get { return bool(forKey: Preferences.PreferencePrintShowDate) }
 		set { set(newValue, forKey: Preferences.PreferencePrintShowDate) }
 	}
 
-	dynamic var printShowFileName: Bool
+	@objc dynamic var printShowFileName: Bool
 	{
 		get { return bool(forKey: Preferences.PreferencePrintShowFileName) }
 		set { set(newValue, forKey: Preferences.PreferencePrintShowFileName) }
 	}
 
-	dynamic var printShowPageNumber: Bool
+	@objc dynamic var printShowPageNumber: Bool
 	{
 		get { return bool(forKey: Preferences.PreferencePrintShowPageNumber) }
 		set { set(newValue, forKey: Preferences.PreferencePrintShowPageNumber) }
 	}
 
-	dynamic var printHideLineNumbers: Bool
+	@objc dynamic var printHideLineNumbers: Bool
 	{
 		get { return bool(forKey: Preferences.PreferencePrintHideLineNumbers) }
 		set { set(newValue, forKey: Preferences.PreferencePrintHideLineNumbers) }
 	}
 
-	dynamic var printUseCustomTheme: Bool
+	@objc dynamic var printUseCustomTheme: Bool
 	{
 		get { return bool(forKey: Preferences.PreferencePrintUseCustomTheme) }
 		set { set(newValue, forKey: Preferences.PreferencePrintUseCustomTheme) }
 	}
 
-	dynamic var printThemeName: String
+	@objc dynamic var printThemeName: String
 	{
 		get
 		{

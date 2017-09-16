@@ -23,8 +23,8 @@ import AppKit
 
 extension Collection where Iterator.Element == NSLayoutConstraint
 {
-	func findConstraint(relating firstAttribute: NSLayoutAttribute,
-	                    to secondAttribute: NSLayoutAttribute,
+	func findConstraint(relating firstAttribute: NSLayoutConstraint.Attribute,
+	                    to secondAttribute: NSLayoutConstraint.Attribute,
 	                    constant: CGFloat) -> NSLayoutConstraint?
 	{
 		for constraint in self

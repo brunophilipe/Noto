@@ -52,7 +52,7 @@ class ThemePreferencesController: NSViewController
 
 		editorPreviewTextView.lineNumbersVisible = true
 
-		NSColorPanel.shared().showsAlpha = false
+		NSColorPanel.shared.showsAlpha = false
     }
 
 	deinit
@@ -111,7 +111,7 @@ class ThemePreferencesController: NSViewController
 	{
 		if let window = preferencesWindow
 		{
-			let fontPanel = NSFontPanel.shared()
+			let fontPanel = NSFontPanel.shared
 			fontPanel.setPanelFont(Preferences.instance.editorFont, isMultiple: false)
 
 			fontPanel.makeKeyAndOrderFront(sender)
@@ -238,14 +238,7 @@ class ThemePreferencesController: NSViewController
 
 			for menuItem in menuItems
 			{
-				if (menuItem.representedObject as? EditorTheme)?.preferenceName == themeName
-				{
-					menuItem.state = 1
-				}
-				else
-				{
-					menuItem.state = 0
-				}
+				menuItem.state = (menuItem.representedObject as? EditorTheme)?.preferenceName == themeName ? .on : .off
 			}
 		}
 	}
@@ -391,7 +384,7 @@ class ThemePreferencesController: NSViewController
 			{
 				(result) in
 
-				if result == NSFileHandlingPanelOKButton, let fileUrl = panel.url
+				if result == .OK, let fileUrl = panel.url
 				{
 					if let theme = UserEditorTheme(fromFile: fileUrl)
 					{
@@ -419,7 +412,7 @@ class ThemePreferencesController: NSViewController
 			{
 				(result) in
 
-				if result == NSFileHandlingPanelOKButton, let targetUrl = panel.url
+				if result == .OK, let targetUrl = panel.url
 				{
 					theme.exportThemeTo(url: targetUrl)
 				}
@@ -484,13 +477,13 @@ extension ThemePreferencesController: PreferencesController, CCNPreferencesWindo
 
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImageNameColorPanel)
+		return NSImage(named: NSImage.Name.colorPanel)
 	}
 
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = ThemePreferencesController(nibName: "ThemePreferencesController", bundle: Bundle.main)
-		controller?.preferencesWindow = window
+		let controller = ThemePreferencesController(nibName: NSNib.Name(rawValue: "ThemePreferencesController"), bundle: Bundle.main)
+		controller.preferencesWindow = window
 		return controller
 	}
 }

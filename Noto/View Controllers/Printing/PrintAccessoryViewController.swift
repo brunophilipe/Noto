@@ -32,43 +32,43 @@ class PrintAccessoryViewController: NSViewController
 	@IBOutlet fileprivate var radioButtonUseTheme: NSButton!
 	@IBOutlet fileprivate var popUpButtonThemes: NSPopUpButton!
 
-	dynamic var rewrapContents: NSNumber
+	@objc dynamic var rewrapContents: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printWrapContents) }
 		set { Preferences.instance.printWrapContents = newValue.boolValue }
 	}
 
-	dynamic var showFileName: NSNumber
+	@objc dynamic var showFileName: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printShowFileName) }
 		set { Preferences.instance.printShowFileName = newValue.boolValue }
 	}
 
-	dynamic var showDate: NSNumber
+	@objc dynamic var showDate: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printShowDate) }
 		set { Preferences.instance.printShowDate = newValue.boolValue }
 	}
 
-	dynamic var showPageNumber: NSNumber
+	@objc dynamic var showPageNumber: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printShowPageNumber) }
 		set { Preferences.instance.printShowPageNumber = newValue.boolValue }
 	}
 
-	dynamic var showLineNumbers: NSNumber
+	@objc dynamic var showLineNumbers: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printHideLineNumbers) }
 		set { Preferences.instance.printHideLineNumbers = newValue.boolValue }
 	}
 
-	dynamic var usesTheme: NSNumber
+	@objc dynamic var usesTheme: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.printUseCustomTheme) }
 		set { Preferences.instance.printUseCustomTheme = newValue.boolValue }
 	}
 
-	dynamic var themeName: String
+	@objc dynamic var themeName: String
 	{
 		get { return Preferences.instance.printThemeName }
 		set { Preferences.instance.printThemeName = newValue }
@@ -97,8 +97,8 @@ class PrintAccessoryViewController: NSViewController
 		updateThemesMenu()
 
 		let usesCustomTheme = Preferences.instance.printUseCustomTheme
-		radioButtonNoTheme.state = usesCustomTheme ? 0 : 1
-		radioButtonUseTheme.state = usesCustomTheme ? 1 : 0
+		radioButtonNoTheme.state = NSControl.StateValue(rawValue: usesCustomTheme ? 0 : 1)
+		radioButtonUseTheme.state = NSControl.StateValue(rawValue: usesCustomTheme ? 1 : 0)
 
 		popUpButtonThemes.isEnabled = usesCustomTheme
     }
@@ -209,15 +209,15 @@ extension PrintAccessoryViewController // Maker
 {
 	static func make() -> PrintAccessoryViewController
 	{
-		return PrintAccessoryViewController(nibName: "PrintAccessoryViewController", bundle: Bundle.main)!
+		return PrintAccessoryViewController(nibName: NSNib.Name(rawValue: "PrintAccessoryViewController"), bundle: Bundle.main)
 	}
 }
 
 extension PrintAccessoryViewController: NSPrintPanelAccessorizing
 {
-	func localizedSummaryItems() -> [[String : String]]
+	func localizedSummaryItems() -> [[NSPrintPanel.AccessorySummaryKey : String]]
 	{
-		return [[String : String]]()
+		return [[:]]
 	}
 
 	func keyPathsForValuesAffectingPreview() -> Set<String>

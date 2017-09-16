@@ -33,7 +33,7 @@ let kNotoErrorDomain = "com.brunophilipe.Noto"
 class AppDelegate: NSObject, NSApplicationDelegate
 {
 	fileprivate let preferencesController = CCNPreferencesWindowController()
-	fileprivate let aboutWindowController = TRexAboutWindowController(windowNibName: "PFAboutWindow")
+	fileprivate let aboutWindowController = TRexAboutWindowController(windowNibName: NSNib.Name(rawValue: "PFAboutWindow"))
 
 	@IBOutlet weak var disabledInfoBarMenuItem: NSMenuItem!
 	@IBOutlet weak var hudInfoBarMenuItem: NSMenuItem!
@@ -41,12 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate
 
 	// Cocoa Bindings
 
-	var keyDocumentCanReopen: NSNumber
+	@objc var keyDocumentCanReopen: NSNumber
 	{
-		return NSNumber.init(value: NSDocumentController.shared().currentDocument?.fileURL != nil)
+		return NSNumber(value: NSDocumentController.shared.currentDocument?.fileURL != nil)
 	}
 
-	var hasUpdaterFeature: NSNumber
+	@objc var hasUpdaterFeature: NSNumber
 	{
 		#if SPARKLE
 		return true
@@ -107,9 +107,9 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	{
 		let mode = Preferences.instance.infoBarMode
 
-		disabledInfoBarMenuItem.state	= (mode == .none ? 1 : 0)
-		hudInfoBarMenuItem.state		= (mode == .hud ? 1 : 0)
-		statusBarInfoBarMenuItem.state	= (mode == .status ? 1 : 0)
+		disabledInfoBarMenuItem.state	= (mode == .none ? .on : .off)
+		hudInfoBarMenuItem.state		= (mode == .hud ? .on : .off)
+		statusBarInfoBarMenuItem.state	= (mode == .status ? .on : .off)
 	}
 
 	private func makeAboutWindow()
@@ -129,7 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		let font: NSFont = NSFont(name: "HelveticaNeue", size: 11) ?? NSFont.systemFont(ofSize: 11)
 		let color: NSColor = NSColor.tertiaryLabelColor
 		let copyright = (bundle.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String) ?? "Copyright © 2017 Bruno Philipe. All rights reserved."
-		let attribs: [String : AnyObject] = [NSForegroundColorAttributeName: color, NSFontAttributeName:font]
+		let attribs: [NSAttributedStringKey : AnyObject] = [.foregroundColor: color, .font: font]
 
 		aboutWindowController.appCopyright = NSAttributedString(string: copyright, attributes: attribs)
 		aboutWindowController.windowShouldHaveShadow = true

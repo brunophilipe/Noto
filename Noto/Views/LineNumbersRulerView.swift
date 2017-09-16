@@ -27,7 +27,7 @@ class LineNumbersRulerView: NSRulerView
 {
 	// MARK: - Initializers and Deinitializer
 
-	override init(scrollView: NSScrollView?, orientation: NSRulerOrientation)
+	override init(scrollView: NSScrollView?, orientation: NSRulerView.Orientation)
 	{
 		super.init(scrollView: scrollView, orientation: orientation)
 
@@ -102,13 +102,13 @@ class LineNumbersRulerView: NSRulerView
 		}
 	}
 
-	func textDidChange(notification: Notification)
+	@objc func textDidChange(notification: Notification)
 	{
 		needsDisplay = true
 		needsLayout = true
 	}
 
-	func scrollViewDidScroll(notification: Notification)
+	@objc func scrollViewDidScroll(notification: Notification)
 	{
 		needsDisplay = true
 	}
@@ -130,7 +130,7 @@ class LineNumbersRulerView: NSRulerView
 			{
 				NotificationCenter.default.addObserver(self,
 				                                       selector: #selector(LineNumbersRulerView.textDidChange(notification:)),
-				                                       name: .NSTextStorageDidProcessEditing,
+				                                       name: NSTextStorage.didProcessEditingNotification,
 				                                       object: textView.textStorage)
 			}
 
@@ -138,7 +138,7 @@ class LineNumbersRulerView: NSRulerView
 			{
 				NotificationCenter.default.addObserver(self,
 				                                       selector: #selector(LineNumbersRulerView.scrollViewDidScroll(notification:)),
-				                                       name: .NSViewBoundsDidChange,
+				                                       name: NSView.boundsDidChangeNotification,
 				                                       object: contentView)
 			}
 		}
@@ -158,7 +158,7 @@ class LineNumbersRulerView: NSRulerView
 		}
 
 		backgroundColor.setFill()
-		NSRectFill(rect)
+		rect.fill()
 
 		textColor.setStroke()
 
@@ -185,7 +185,7 @@ class LineNumbersRulerView: NSRulerView
 
 			if charRange.location == paraRange.location
 			{
-				let gutterAttributes: [String : Any]
+				let gutterAttributes: [NSAttributedStringKey : Any]
 				let intersectionRange = NSIntersectionRange(paraRange, selectedRange)
 
 				if !(intersectionRange.location == 0 && intersectionRange.length == 0) // Normal intersection
@@ -217,7 +217,7 @@ class LineNumbersRulerView: NSRulerView
 		// Special case: Draw line number for empty trailing lines and for the empty string text.
 		if emptyText || lastCharIsNewLine
 		{
-			let gutterAttributes: [String : Any]
+			let gutterAttributes: [NSAttributedStringKey : Any]
 
 			if NSMaxRange(selectedRange) > lastCharIndex || lastCharIndex == 0
 			{
@@ -283,33 +283,33 @@ class LineNumbersRulerView: NSRulerView
 
 	private var usesRTL: Bool
 	{
-		return NSApplication.shared().userInterfaceLayoutDirection == .rightToLeft
+		return NSApplication.shared.userInterfaceLayoutDirection == .rightToLeft
 	}
 
 	private var numberParagraphStyle: NSParagraphStyle
 	{
-		let style = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+		let style = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
 
 		style.alignment = usesRTL ? .left : .right
 
 		return style
 	}
 
-	private var numberTextAttributes: [String : Any]
+	private var numberTextAttributes: [NSAttributedStringKey : Any]
 	{
 		return [
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: textColor,
-			NSParagraphStyleAttributeName: numberParagraphStyle
+			.font: font,
+			.foregroundColor: textColor,
+			.paragraphStyle: numberParagraphStyle
 		]
 	}
 
-	private var selectedNumberTextAttributes: [String : Any]
+	private var selectedNumberTextAttributes: [NSAttributedStringKey : Any]
 	{
 		return [
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: backgroundColor.isDarkColor ? NSColor.white : NSColor.black,
-			NSParagraphStyleAttributeName: numberParagraphStyle
+			.font: font,
+			.foregroundColor: backgroundColor.isDarkColor ? NSColor.white : NSColor.black,
+			.paragraphStyle: numberParagraphStyle
 		]
 	}
 }

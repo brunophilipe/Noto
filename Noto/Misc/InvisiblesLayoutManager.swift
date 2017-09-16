@@ -83,9 +83,9 @@ class InvisiblesLayoutManager: EditorLayoutManager
 	{
 		if !isResizing && _showsInvisibleCharacters
 		{
-			let invisiblesAttributes: [String : Any] = [
-				NSForegroundColorAttributeName: (Preferences.instance.editorTheme.editorForeground).withAlphaComponent(0.6),
-				NSFontAttributeName: invisiblesFontWithSize(size: fontPointSize * 0.6)
+			let invisiblesAttributes: [NSAttributedStringKey : Any] = [
+				.foregroundColor: (Preferences.instance.editorTheme.editorForeground).withAlphaComponent(0.6),
+				.font: invisiblesFontWithSize(size: fontPointSize * 0.6)
 			]
 
 			for glyphIndex in glyphsToShow.location ..< NSMaxRange(glyphsToShow)

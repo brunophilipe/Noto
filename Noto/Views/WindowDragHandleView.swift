@@ -50,7 +50,7 @@ class WindowDragHandleView: NSTextField
 
 	override func resetCursorRects()
 	{
-		addCursorRect(bounds, cursor: .crosshair())
+		addCursorRect(bounds, cursor: .crosshair)
 	}
 
 	override func mouseEntered(with event: NSEvent)

@@ -141,7 +141,7 @@ class EncodingTool
 
 		alert.accessoryView = encodingPopUpButton
 
-		if alert.runModal() == 1000
+		if alert.runModal() == .alertFirstButtonReturn
 		{
 			return encodingPopUpButton.selectedItem?.representedObject as? String.Encoding
 		}

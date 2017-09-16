@@ -23,7 +23,7 @@ import Cocoa
 
 class BackgroundView: NSView
 {
-	var backgroundColor: NSColor = NSColor.clear
+	@objc var backgroundColor: NSColor = NSColor.clear
 
 	override var isOpaque: Bool
 	{
@@ -33,6 +33,6 @@ class BackgroundView: NSView
     override func draw(_ dirtyRect: NSRect)
 	{
         backgroundColor.setFill()
-		NSRectFill(dirtyRect)
+		dirtyRect.fill()
     }
 }
