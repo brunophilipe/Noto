@@ -30,43 +30,43 @@ class EditorPreferencesViewController: NSViewController
 	@IBOutlet var fontNameLabel: NSTextField!
 	@IBOutlet var infoBarModeSegmentedControl: NSSegmentedControl!
 	
-	var smartSubstitutionsOn: NSNumber
+	@objc var smartSubstitutionsOn: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.smartSubstitutionsOn) }
 		set { Preferences.instance.smartSubstitutionsOn = newValue.boolValue }
 	}
 	
-	var spellingCheckerOn: NSNumber
+	@objc var spellingCheckerOn: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.spellingCheckerOn) }
 		set { Preferences.instance.spellingCheckerOn = newValue.boolValue }
 	}
 
-	var useSpacesForTabs: NSNumber
+	@objc var useSpacesForTabs: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.useSpacesForTabs) }
 		set { Preferences.instance.useSpacesForTabs = newValue.boolValue }
 	}
 
-	var tabSize: NSNumber
+	@objc var tabSize: NSNumber
 	{
 		get { return NSNumber(value: Preferences.instance.tabSize) }
 		set { Preferences.instance.tabSize = newValue.uintValue }
 	}
 
-	var infoBarMode: NSNumber
+	@objc var infoBarMode: NSNumber
 	{
 		get { return  NSNumber(value: Preferences.instance.infoBarMode.rawValue) }
 		set { Preferences.instance.infoBarMode = Preferences.InfoBarMode(rawValue: newValue.intValue) ?? .hud }
 	}
 
-	var countsWhitespaces: NSNumber
+	@objc var countsWhitespaces: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.countWhitespacesInTotalCharacters) }
 		set { Preferences.instance.countWhitespacesInTotalCharacters = newValue.boolValue }
 	}
 
-	var keepIndentation: NSNumber
+	@objc var keepIndentation: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.keepIndentationOnNewLines) }
 		set { Preferences.instance.keepIndentationOnNewLines = newValue.boolValue }

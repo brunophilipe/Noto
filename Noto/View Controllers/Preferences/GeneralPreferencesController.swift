@@ -28,7 +28,7 @@ class GeneralPreferencesController: NSViewController
 
 	fileprivate var preferencesWindow: NSWindow? = nil
 
-	var doubleEscToLeaveFullScreen: NSNumber
+	@objc var doubleEscToLeaveFullScreen: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.doubleEscToLeaveFullScreen) }
 		set { Preferences.instance.doubleEscToLeaveFullScreen = newValue.boolValue }
