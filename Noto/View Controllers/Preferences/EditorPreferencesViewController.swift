@@ -131,8 +131,13 @@ class EditorPreferencesViewController: NSViewController
 
 	@IBAction func didClickShowHelp(_ sender: Any)
 	{
-		let helpBook = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String
-		NSHelpManager.shared().openHelpAnchor("editor-prefs", inBook: helpBook)
+		guard let bookName = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String else
+		{
+			return
+		}
+
+		let helpBook = NSHelpManager.BookName(bookName)
+		NSHelpManager.shared.openHelpAnchor(NSHelpManager.AnchorName(rawValue: "editor-prefs"), inBook: helpBook)
 	}
 	
 	// Editor Font
