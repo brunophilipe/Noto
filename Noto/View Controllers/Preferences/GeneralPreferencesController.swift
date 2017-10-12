@@ -42,6 +42,11 @@ class GeneralPreferencesController: NSViewController
 
 		didChangeValue(forKey: "doubleEscToLeaveFullScreen")
 	}
+
+	@IBAction func didClickShowHelp(_ sender: Any)
+	{
+		NSHelpManager.shared.openHelpAnchor(AppDelegate.HelpAnchor.preferencesGeneral, inBook: AppDelegate.helpBookName)
+	}
 }
 
 extension GeneralPreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol

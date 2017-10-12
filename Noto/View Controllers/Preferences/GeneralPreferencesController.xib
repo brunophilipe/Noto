@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +28,7 @@
                         <binding destination="-2" name="value" keyPath="doubleEscToLeaveFullScreen" id="kle-W1-fCE"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-AG-iRa">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-AG-iRa">
                     <rect key="frame" x="28" y="65" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Options:" id="UBo-os-nGQ">
                         <font key="font" metaFont="system"/>
@@ -49,17 +49,29 @@
                         </connections>
                     </buttonCell>
                 </button>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Gl-1S-kyB">
+                    <rect key="frame" x="437" y="17" width="25" height="25"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OS7-3b-gU7">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didClickShowHelp:" target="-2" id="008-xg-lnr"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iIz-iQ-GRb" secondAttribute="trailing" constant="12" id="KnH-BI-jVq"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="ke1-AG-iRa" secondAttribute="trailing" constant="8" id="QNU-oa-rQA"/>
                 <constraint firstItem="rrZ-U1-aMJ" firstAttribute="leading" secondItem="QYS-DU-BbX" secondAttribute="leading" id="RFD-nw-Fri"/>
+                <constraint firstAttribute="bottom" secondItem="6Gl-1S-kyB" secondAttribute="bottom" constant="20" id="Re7-Q0-hT1"/>
                 <constraint firstItem="iIz-iQ-GRb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="VUo-w7-A5v"/>
                 <constraint firstItem="iIz-iQ-GRb" firstAttribute="top" secondItem="QYS-DU-BbX" secondAttribute="bottom" constant="12" id="XIq-QB-5Rs"/>
                 <constraint firstAttribute="bottom" secondItem="rrZ-U1-aMJ" secondAttribute="bottom" constant="20" id="ddG-7i-0CR"/>
                 <constraint firstItem="rrZ-U1-aMJ" firstAttribute="top" secondItem="iIz-iQ-GRb" secondAttribute="bottom" constant="12" id="gQ5-Ka-lx8"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="90" id="ooh-Bw-L25"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="baseline" secondItem="ke1-AG-iRa" secondAttribute="baseline" id="uLM-SO-qeR"/>
+                <constraint firstAttribute="trailing" secondItem="6Gl-1S-kyB" secondAttribute="trailing" constant="20" id="wf0-zq-HTo"/>
                 <constraint firstItem="QYS-DU-BbX" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="yhQ-4X-9L9"/>
             </constraints>
             <point key="canvasLocation" x="139" y="82"/>

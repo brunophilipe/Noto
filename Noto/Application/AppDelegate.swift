@@ -39,6 +39,23 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	@IBOutlet weak var hudInfoBarMenuItem: NSMenuItem!
 	@IBOutlet weak var statusBarInfoBarMenuItem: NSMenuItem!
 
+	static let helpBookName = NSHelpManager.BookName(Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as! String)
+
+	struct HelpAnchor
+	{
+		static let preferencesGeneral		= NSHelpManager.AnchorName("general-prefs")
+		static let preferencesEditor		= NSHelpManager.AnchorName("editor-prefs")
+		static let preferencesThemes		= NSHelpManager.AnchorName("themes")
+		static let preferencesInfoBar		= NSHelpManager.AnchorName("infobar-prefs")
+		static let customThemes				= NSHelpManager.AnchorName("custom-themes")
+		static let startDocument			= NSHelpManager.AnchorName("start-a-document")
+		static let saveDocument				= NSHelpManager.AnchorName("save-a-document")
+		static let openDocument				= NSHelpManager.AnchorName("open-a-document")
+		static let changeDocumentEncoding	= NSHelpManager.AnchorName("change-document-encoding")
+		static let hearDocumentAloud		= NSHelpManager.AnchorName("hear-document-aloud")
+		static let overview					= NSHelpManager.AnchorName("overview")
+	}
+
 	// Cocoa Bindings
 
 	@objc var keyDocumentCanReopen: NSNumber

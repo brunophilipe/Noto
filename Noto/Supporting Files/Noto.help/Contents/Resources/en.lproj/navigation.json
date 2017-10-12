@@ -37,6 +37,7 @@
     "birdseed_version": 5,
     "toc": [
         "overview",
+        "general-prefs",
         "documents",
         "appearance",
         "tools"
@@ -156,6 +157,11 @@
             "categories": [
                 "landing"
             ]
+        },
+        "general-prefs": {
+            "name": "General options",
+            "searchName": "Change global Noto behaviors",
+            "href": "general-prefs.html"
         },
         "infobar-prefs": {
             "name": "Change Info Bar appearance",

@@ -461,6 +461,11 @@ class ThemePreferencesController: NSViewController
 			updateThemesMenu()
 		}
 	}
+
+	@IBAction func didClickShowHelp(_ sender: Any)
+	{
+		NSHelpManager.shared.openHelpAnchor(AppDelegate.HelpAnchor.preferencesThemes, inBook: AppDelegate.helpBookName)
+	}
 }
 
 extension ThemePreferencesController: PreferencesController, CCNPreferencesWindowControllerProtocol
