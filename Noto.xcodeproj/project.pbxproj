@@ -30,6 +30,8 @@
 		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
 		1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
 		1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
+		157FD88E1F8FC3C2007FDE7F /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 157FD88D1F8FC00E007FDE7F /* Noto.help */; };
+		157FD88F1F8FC3C2007FDE7F /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 157FD88D1F8FC00E007FDE7F /* Noto.help */; };
 		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
 		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
@@ -540,6 +542,7 @@
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
 				3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */,
 				3D7A6FA7E4CC93640224D624 /* StatusInfoBarController.xib in Resources */,
+				157FD88E1F8FC3C2007FDE7F /* Noto.help in Resources */,
 				3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */,
 				3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */,
 				3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */,
@@ -550,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157FD88F1F8FC3C2007FDE7F /* Noto.help in Resources */,
 				15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */,
 				15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */,
 				15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */,
