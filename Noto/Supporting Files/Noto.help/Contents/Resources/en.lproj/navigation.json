@@ -20,17 +20,15 @@
             "children": [
                 "themes",
                 "editor-prefs",
-                "infobar-prefs",
-                "txte44f15043",
-                "txte5c41b552"
+                "infobar-prefs"
             ]
         },
         "tools": {
             "name": "Tools",
             "children": [
-                "txte86b1c1b9",
-                "txtef6cfde1a",
-                "txtef5d9dd70"
+                "spelling-and-grammar",
+                "find-and-replace",
+                "insert-special-char"
             ]
         }
     },
@@ -65,26 +63,20 @@
             "searchName": "Create, change, import, and export themes in Noto",
             "href": "custom-themes.html"
         },
-        "txte5c41b552": {
-            "name": "Set character and line spacing",
-            "searchName": "Set character and line spacing in Noto"
-        },
-        "txtec0fe94d2": {
+        "insert-special-char": {
             "name": "Insert special characters",
-            "searchName": "Insert special characters in Noto documents"
+            "searchName": "Insert special characters in Noto documents",
+            "href": "insert-special-char.html"
         },
         "start-a-document": {
             "name": "Start a new document",
             "searchName": "Start new Noto documents",
             "href": "start-a-document.html"
         },
-        "txtef6cfde1a": {
+        "find-and-replace": {
             "name": "Find and replace text",
-            "searchName": "Find and replace text in Noto"
-        },
-        "txte44f15043": {
-            "name": "Add headers and footers",
-            "searchName": "Add headers and footers in Noto"
+            "searchName": "Find and replace text in Noto",
+            "href": "find-and-replace.html"
         },
         "save-a-document": {
             "name": "Save a document",
@@ -168,9 +160,10 @@
             "searchName": "Change the appearance of the Info Bar in Noto",
             "href": "infobar-prefs.html"
         },
-        "txte86b1c1b9": {
+        "spelling-and-grammar": {
             "name": "Check spelling and grammar",
-            "searchName": "Check spelling and grammar in Noto"
+            "searchName": "Check spelling and grammar in Noto",
+            "href": "spelling-and-grammar.html"
         },
         "txted11519": {
             "name": "Jump to locations in documents",
