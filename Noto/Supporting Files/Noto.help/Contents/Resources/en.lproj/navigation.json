@@ -28,7 +28,7 @@
             "children": [
                 "spelling-and-grammar",
                 "find-and-replace",
-                "insert-special-char"
+                "special-chars"
             ]
         }
     },
@@ -63,10 +63,10 @@
             "searchName": "Create, change, import, and export themes in Noto",
             "href": "custom-themes.html"
         },
-        "insert-special-char": {
+        "special-chars": {
             "name": "Insert special characters",
             "searchName": "Insert special characters in Noto documents",
-            "href": "insert-special-char.html"
+            "href": "special-chars.html"
         },
         "start-a-document": {
             "name": "Start a new document",
