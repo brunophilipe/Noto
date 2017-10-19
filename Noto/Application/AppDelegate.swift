@@ -225,4 +225,20 @@ extension AppDelegate
 		SUUpdater.shared().checkForUpdates(sender)
 		#endif
 	}
+
+	@IBAction func newDocumentAndActivate(_ sender: Any)
+	{
+		NSDocumentController.shared.newDocument(sender)
+
+		// Invoked from Dock, that's why ignoringOtherApps is true.
+		NSApplication.shared.activate(ignoringOtherApps: true)
+	}
+
+	@IBAction func openDocumentAndActivate(_ sender: Any)
+	{
+		NSDocumentController.shared.openDocument(sender)
+
+		// Invoked from Dock, that's why ignoringOtherApps is true.
+		NSApplication.shared.activate(ignoringOtherApps: true)
+	}
 }

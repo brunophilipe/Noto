@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+                <outlet property="dockMenu" destination="ior-28-ix5" id="aMw-Ov-Vpw"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -506,6 +507,23 @@
                 </menuItem>
             </items>
             <point key="canvasLocation" x="136" y="172"/>
+        </menu>
+        <menu id="ior-28-ix5">
+            <items>
+                <menuItem title="New Document" id="q7e-th-9Mm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="newDocumentAndActivate:" target="-1" id="j4v-ri-4di"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Open Document…" id="Mcm-cl-pDF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openDocumentAndActivate:" target="-1" id="Vqw-2K-haA"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-8" y="342"/>
         </menu>
     </objects>
 </document>
