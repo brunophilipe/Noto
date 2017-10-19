@@ -60,6 +60,12 @@ class EditorPreferencesViewController: NSViewController
 		set { Preferences.instance.infoBarMode = Preferences.InfoBarMode(rawValue: newValue.intValue) ?? .hud }
 	}
 
+	@objc var disableLigatures: NSNumber
+	{
+		get { return  NSNumber(value: Preferences.instance.disableLigatures) }
+		set { Preferences.instance.disableLigatures = newValue.boolValue }
+	}
+
 	@objc var countsWhitespaces: NSNumber
 	{
 		get { return NSNumber(booleanLiteral: Preferences.instance.countWhitespacesInTotalCharacters) }

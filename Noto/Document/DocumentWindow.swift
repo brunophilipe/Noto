@@ -62,7 +62,7 @@ class DocumentWindow: NSWindow
 
 	private let observedPreferences = [
 			"editorFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "tabSize", "useSpacesForTabs",
-			"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines"
+			"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines", "disableLigatures"
 	]
 
 	private let observedThemeSettings = [
@@ -118,6 +118,7 @@ class DocumentWindow: NSWindow
 		updateEditorSpellingCheck()
 		updateEditorInvisibles()
 		updateEditorTabSize()
+		updateEditorLigatures()
 		updateEditorSpacesForTabsOption()
 		updateEditorKeepIndentsSetting()
 		setupThemeObserver()
@@ -375,47 +376,56 @@ class DocumentWindow: NSWindow
 		self.linesCount = metrics.lines
 	}
 
-	override func observeValue(forKeyPath keyPath: String?,
+	override func observeValue(forKeyPath keyPathOptional: String?,
 							   of object: Any?,
 							   change: [NSKeyValueChangeKey: Any]?,
 							   context: UnsafeMutableRawPointer?)
 	{
+		guard let keyPath = keyPathOptional else
+		{
+			super.observeValue(forKeyPath: keyPathOptional, of: object, change: change, context: context)
+			return
+		}
+
 		textView.undoManager?.disableUndoRegistration()
 
 		if object is Preferences
 		{
 			switch keyPath
 			{
-			case .some("editorFont"):
+			case "editorFont":
 				updateEditorFont()
 
-			case .some("editorThemeName"):
+			case "editorThemeName":
 				updateEditorColors()
 				setupThemeObserver()
 
-			case .some("smartSubstitutionsOn"):
+			case "smartSubstitutionsOn":
 				updateEditorSubstitutions()
 
-			case .some("spellingCheckerOn"):
+			case "spellingCheckerOn":
 				updateEditorSpellingCheck()
 
-			case .some("tabSize"):
+			case "tabSize":
 				updateEditorTabSize()
 
-			case .some("useSpacesForTabs"):
+			case "useSpacesForTabs":
 				updateEditorSpacesForTabsOption()
 
-			case .some("infoBarMode"):
+			case "infoBarMode":
 				setupInfoBar()
 
-			case .some("countWhitespacesInTotalCharacters"):
+			case "countWhitespacesInTotalCharacters":
 				updateDocumentMetrics()
 
-			case .some("showsInvisibles"):
+			case "showsInvisibles":
 				updateEditorInvisibles()
 
-			case .some("keepIndentationOnNewLines"):
+			case "keepIndentationOnNewLines":
 				updateEditorKeepIndentsSetting()
+
+			case "disableLigatures":
+				updateEditorLigatures()
 
 			default:
 				break
@@ -425,26 +435,27 @@ class DocumentWindow: NSWindow
 		{
 			switch keyPath
 			{
-			case .some("willDeallocate"):
+			case "willDeallocate":
 				removeThemeObserver()
 
-			case .some(_):
-				updateEditorColors()
-
 			default:
-				break
+				updateEditorColors()
 			}
 		}
 		else if object is NSToolbar
 		{
 			switch keyPath
 			{
-			case .some("dynamicIsVisible"):
+			case "dynamicIsVisible":
 				updateWindowToolbarStyle()
 
 			default:
 				break
 			}
+		}
+		else
+		{
+			super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
 		}
 
 		textView.undoManager?.enableUndoRegistration()
@@ -527,6 +538,18 @@ class DocumentWindow: NSWindow
 	private func updateEditorTabSize()
 	{
 		textView.setTabWidth(Preferences.instance.tabSize)
+	}
+
+	private func updateEditorLigatures()
+	{
+		if Preferences.instance.disableLigatures
+		{
+			textView.turnOffLigatures(self)
+		}
+		else
+		{
+			textView.useAllLigatures(self)
+		}
 	}
 
 	private func updateEditorSpacesForTabsOption()

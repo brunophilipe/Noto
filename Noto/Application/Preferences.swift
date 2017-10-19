@@ -39,6 +39,7 @@ class Preferences: UserDefaults
 	private static let PreferenceEditorSpellingChecker		= "PreferenceEditorSpellingChecker"
 	private static let PreferenceEditorUseSpacesForTabs		= "PreferenceEditorUseSpacesForTabs"
 	private static let PreferenceEditorTabSize				= "PreferenceEditorTabSize"
+	private static let PreferenceEditorDisableLigatures		= "PreferenceEditorDisableLigatures"
 	private static let PreferenceEditorCountsWhitespaces	= "PreferenceEditorCountsWhitespaces"
 	private static let PreferenceEditorShowsInvisibles		= "PreferenceEditorShowsInvisibles"
 	private static let PreferenceEditorKeepIndentOnNewLines	= "PreferenceEditorKeepIndentOnNewLines"
@@ -57,15 +58,15 @@ class Preferences: UserDefaults
 		PreferenceGeneralDoubleEscToLeaveFullScreen, PreferenceEditorFontName, PreferenceEditorFontSize, PreferenceLineNumbersFontName,
 		PreferenceLineNumbersFontSize, PreferenceEditorThemeName, PreferenceEditorInfoBarMode, PreferenceEditorShowLineNumbers,
 		PreferenceEditorSmartSubstitutions, PreferenceEditorSpellingChecker, PreferenceEditorUseSpacesForTabs, PreferenceEditorTabSize,
-		PreferenceEditorCountsWhitespaces, PreferenceEditorShowsInvisibles, PreferenceEditorKeepIndentOnNewLines,
-		PreferencePrintWrapContents, PreferencePrintShowDate, PreferencePrintShowFileName, PreferencePrintShowPageNumber,
-		PreferencePrintHideLineNumbers, PreferencePrintUseCustomTheme, PreferencePrintThemeName
+		PreferenceEditorDisableLigatures, PreferenceEditorCountsWhitespaces, PreferenceEditorShowsInvisibles,
+		PreferenceEditorKeepIndentOnNewLines, PreferencePrintWrapContents, PreferencePrintShowDate, PreferencePrintShowFileName,
+		PreferencePrintShowPageNumber, PreferencePrintHideLineNumbers, PreferencePrintUseCustomTheme, PreferencePrintThemeName
 	]
 
 	private static let allDynamicProperties = [
 		"editorFont", "lineNumbersFont", "editorThemeName", "smartSubstitutionsOn", "spellingCheckerOn", "useSpacesForTabs", "tabSize",
 		"infoBarMode", "countWhitespacesInTotalCharacters", "showsInvisibles", "keepIndentationOnNewLines", "autoshowLineNumbers",
-		"doubleEscToLeaveFullScreen", "printWrapContents", "printShowDate", "printShowFileName", "printShowPageNumber",
+		"doubleEscToLeaveFullScreen", "printWrapContents", "disableLigatures", "printShowDate", "printShowFileName", "printShowPageNumber",
 		"printHideLineNumbers", "printUseCustomTheme", "printThemeName"
 	]
 
@@ -281,6 +282,12 @@ class Preferences: UserDefaults
 	{
 		get { return bool(forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
 		set { set(newValue, forKey: Preferences.PreferenceEditorUseSpacesForTabs) }
+	}
+
+	@objc dynamic var disableLigatures: Bool
+	{
+		get { return bool(forKey: Preferences.PreferenceEditorDisableLigatures) }
+		set { set(newValue, forKey: Preferences.PreferenceEditorDisableLigatures) }
 	}
 	
 	@objc dynamic var tabSize: UInt
