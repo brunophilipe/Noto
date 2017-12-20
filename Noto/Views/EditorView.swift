@@ -237,19 +237,19 @@ class EditorView: NSTextView
 
 	func increaseIndentation()
 	{
-		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue },
+		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
 		                                                             usingUndoManager: self.undoManager)
 		{
-			selectedRanges = ranges.map { return NSValue(range: $0) }
+			selectedRanges = ranges.map { NSValue(range: $0) }
 		}
 	}
 
 	func decreaseIndentation()
 	{
-		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { return $0.rangeValue },
+		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
 		                                                             usingUndoManager: self.undoManager)
 		{
-			selectedRanges = ranges.map { return NSValue(range: $0) }
+			selectedRanges = ranges.map { NSValue(range: $0) }
 		}
 	}
 
