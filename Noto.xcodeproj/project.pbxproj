@@ -585,7 +585,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"$SRCROOT/Noto/Supporting Files/Info-AppStore.plist\"";
 		};
 		1558E6F81ECFF14700468F86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -611,7 +611,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"$SRCROOT/Noto/Supporting Files/Info.plist\"";
 		};
 		15A0FB9F1ED0C46500B1DD8C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
