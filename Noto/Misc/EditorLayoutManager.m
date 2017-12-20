@@ -23,6 +23,16 @@
 
 @synthesize editorLayoutManagerDelegate;
 
+- (instancetype)init
+{
+	self = [super init];
+	if (self)
+	{
+		_textInset = NSMakeSize(10, 10);
+	}
+	return self;
+}
+
 -(void)setIsDrawingPaused:(BOOL)isDrawingPaused
 {
 	_isDrawingPaused = isDrawingPaused;
@@ -199,8 +209,8 @@ typedef enum
 
 	// Readjust vertical position of the glyph
 	glyphBounds.origin.y -= glyphBounds.size.height * 0.1;
-	glyphBounds.origin.y += 10.0;
-	glyphBounds.origin.x += 10.0;
+	glyphBounds.origin.y += _textInset.height;
+	glyphBounds.origin.x += _textInset.width;
 
 	if (glyphBounds.size.width == 0.0)
 	{

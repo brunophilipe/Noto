@@ -32,6 +32,7 @@
 @property (nullable, weak) id<EditorLayoutManagerDataSource> editorLayoutManagerDataSource;
 
 @property BOOL isDrawingPaused;
+@property NSSize textInset;
 
 @property (atomic) BOOL drawsInvisibleCharacters;
 

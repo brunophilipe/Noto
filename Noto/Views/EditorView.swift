@@ -55,6 +55,8 @@ class EditorView: NSTextView
 	{
 		didSet
 		{
+			invisiblesLayoutManager?.textInset = textContainerInset
+			
 			// Re-set selected range so that the insertion point is drawn at the right location
 			self.selectedRanges = self.selectedRanges
 		}
