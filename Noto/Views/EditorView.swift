@@ -46,29 +46,27 @@ class EditorView: NSTextView
 
 	var escToLeaveFullScreenMode: WaitStatus = .none
 
-	var invisiblesLayoutManager: InvisiblesLayoutManager?
+	var invisiblesLayoutManager: EditorLayoutManager?
 	{
-		return layoutManager as? InvisiblesLayoutManager
+		return layoutManager as? EditorLayoutManager
 	}
 
 	override var textContainerInset: NSSize
 	{
 		didSet
 		{
-			invisiblesLayoutManager?.textInset = textContainerInset
-			
 			// Re-set selected range so that the insertion point is drawn at the right location
 			self.selectedRanges = self.selectedRanges
 		}
 	}
 
-	override var font: NSFont?
-	{
-		didSet
-		{
-			invisiblesLayoutManager?.updateFontInformation()
-		}
-	}
+//	override var font: NSFont?
+//	{
+//		didSet
+//		{
+//			invisiblesLayoutManager?.updateFontInformation()
+//		}
+//	}
 
 	var textStorageObserver: TextStorageObserver?
 	{
@@ -85,10 +83,10 @@ class EditorView: NSTextView
 
 	var showsInvisibleCharacters: Bool
 	{
-		get { return invisiblesLayoutManager?.showsInvisibleCharacters ?? false }
+		get { return invisiblesLayoutManager?.drawsInvisibleCharacters ?? false }
 		set
 		{
-			invisiblesLayoutManager?.showsInvisibleCharacters = newValue
+			invisiblesLayoutManager?.drawsInvisibleCharacters = newValue
 			needsDisplay = true
 		}
 	}
@@ -114,7 +112,7 @@ class EditorView: NSTextView
 
 		let text = string
 
-		self.textContainer?.replaceLayoutManager(InvisiblesLayoutManager())
+		self.textContainer?.replaceLayoutManager(EditorLayoutManager())
 		layoutManager?.replaceTextStorage(MetricsTextStorage())
 
 		if let scrollView = self.enclosingScrollView
@@ -150,14 +148,14 @@ class EditorView: NSTextView
 	{
 		super.viewWillStartLiveResize()
 
-		invisiblesLayoutManager?.isResizing = true
+		invisiblesLayoutManager?.isDrawingPaused = true
 	}
 
 	override func viewDidEndLiveResize()
 	{
 		super.viewDidEndLiveResize()
 
-		invisiblesLayoutManager?.isResizing = false
+		invisiblesLayoutManager?.isDrawingPaused = false
 		needsDisplay = true
 	}
 

@@ -13,8 +13,6 @@
 		150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
 		151CCF2C1F6DD8F4002D006D /* ModifiableIndentationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC98CC1E8748DF00E3B7B3 /* ModifiableIndentationTest.swift */; };
-		1522D5B41F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
-		1522D5B51F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */; };
 		15260C3F1EE0EE9700A91CE6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */; };
 		15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E611E5BCD120032EDE4 /* BackgroundView.swift */; };
@@ -30,8 +28,12 @@
 		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
 		1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
 		1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
+		156E62D51FEB07C00037D04A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
+		156E62D61FEB07C00037D04A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
 		157FD88E1F8FC3C2007FDE7F /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 157FD88D1F8FC00E007FDE7F /* Noto.help */; };
 		157FD88F1F8FC3C2007FDE7F /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 157FD88D1F8FC00E007FDE7F /* Noto.help */; };
+		1582F9431FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */; };
+		1582F9441FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */; };
 		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
 		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
@@ -51,7 +53,6 @@
 		15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
 		15A0FB801ED0C46500B1DD8C /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
-		15A0FB811ED0C46500B1DD8C /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */; };
 		15A0FB821ED0C46500B1DD8C /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */; };
 		15A0FB831ED0C46500B1DD8C /* Bool+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6ED1ECFAF1000468F86 /* Bool+Additions.swift */; };
 		15A0FB841ED0C46500B1DD8C /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
@@ -75,8 +76,6 @@
 		15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
 		15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
-		15AB8CD81F5362F0007CB05A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
-		15AB8CD91F5362F0007CB05A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
 		15B005281ED646700028B27E /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
 		15B005291ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
 		15B0052A1ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
@@ -95,7 +94,6 @@
 		3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
 		3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */; };
 		3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
-		3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */; };
 		3D7A6552F3CAF6690B465562 /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */; };
 		3D7A67FFA65969A7EFD1DF63 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */; };
 		3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
@@ -142,6 +140,8 @@
 		1558E6F01ECFAF1000468F86 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Extensions/String+Additions.swift"; sourceTree = "<group>"; };
 		1558E6F51ECFAF3700468F86 /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullableContentView.swift; path = Views/PullableContentView.swift; sourceTree = "<group>"; };
 		157FD88D1F8FC00E007FDE7F /* Noto.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto.help; sourceTree = "<group>"; };
+		1582F9411FEB02E000FE69A9 /* ConcreteTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcreteTextStorage.h; sourceTree = "<group>"; };
+		1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcreteTextStorage.m; sourceTree = "<group>"; };
 		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
 		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
@@ -356,6 +356,8 @@
 				150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */,
 				15AB8CD61F5362F0007CB05A /* EditorLayoutManager.h */,
 				15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */,
+				1582F9411FEB02E000FE69A9 /* ConcreteTextStorage.h */,
+				1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -727,7 +729,6 @@
 			files = (
 				15276E621E5BCD120032EDE4 /* BackgroundView.swift in Sources */,
 				15DA4EC01ED4D10C00782994 /* AssignIf.swift in Sources */,
-				15AB8CD81F5362F0007CB05A /* EditorLayoutManager.m in Sources */,
 				153EE9441E77708B00A1F080 /* NSLayoutConstraint+Additions.swift in Sources */,
 				158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */,
 				150ADD591F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
@@ -737,13 +738,12 @@
 				153C74831E9EE38900D57BD6 /* PrintingView.swift in Sources */,
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
-				1522D5B41F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */,
+				1582F9431FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */,
 				1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */,
 				1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */,
 				15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */,
-				3D7A63584E7552351FC29293 /* InvisiblesLayoutManager.swift in Sources */,
 				3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */,
 				1558E6F11ECFAF1000468F86 /* Bool+Additions.swift in Sources */,
 				3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */,
@@ -759,6 +759,7 @@
 				154148BA1F253E42000D6383 /* Temporizer.swift in Sources */,
 				154148B71F217A3B000D6383 /* WindowDragHandleView.swift in Sources */,
 				3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */,
+				156E62D61FEB07C00037D04A /* EditorLayoutManager.m in Sources */,
 				3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,7 +770,6 @@
 			files = (
 				15A0FB711ED0C46500B1DD8C /* BackgroundView.swift in Sources */,
 				15B005291ED646870028B27E /* AssignIf.swift in Sources */,
-				15AB8CD91F5362F0007CB05A /* EditorLayoutManager.m in Sources */,
 				15A0FB721ED0C46500B1DD8C /* NSLayoutConstraint+Additions.swift in Sources */,
 				15A0FB741ED0C46500B1DD8C /* GeneralPreferencesController.swift in Sources */,
 				150ADD5A1F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */,
@@ -779,13 +779,12 @@
 				15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */,
 				15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */,
 				15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */,
-				1522D5B51F3567B6008549F2 /* ConcreteTextStorage.swift in Sources */,
+				1582F9441FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */,
 				15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */,
 				15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */,
 				15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */,
 				15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */,
 				15A0FB801ED0C46500B1DD8C /* DocumentWindow.swift in Sources */,
-				15A0FB811ED0C46500B1DD8C /* InvisiblesLayoutManager.swift in Sources */,
 				15A0FB821ED0C46500B1DD8C /* FileWatcher.swift in Sources */,
 				15A0FB831ED0C46500B1DD8C /* Bool+Additions.swift in Sources */,
 				15A0FB841ED0C46500B1DD8C /* EncodingTool.swift in Sources */,
@@ -801,6 +800,7 @@
 				154148BB1F253E42000D6383 /* Temporizer.swift in Sources */,
 				154148B81F217A3C000D6383 /* WindowDragHandleView.swift in Sources */,
 				15A0FB8E1ED0C46500B1DD8C /* PrintAccessoryViewController.swift in Sources */,
+				156E62D51FEB07C00037D04A /* EditorLayoutManager.m in Sources */,
 				15A0FB8F1ED0C46500B1DD8C /* ManagedToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

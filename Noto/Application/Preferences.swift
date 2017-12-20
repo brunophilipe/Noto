@@ -21,7 +21,7 @@
 
 import Cocoa
 
-class Preferences: UserDefaults
+@objc class Preferences: UserDefaults
 {
 	private static let PreferenceGeneralDoubleEscToLeaveFullScreen = "PreferenceGeneralDoubleEscToLeaveFullScreen"
 
@@ -69,7 +69,7 @@ class Preferences: UserDefaults
 		"printHideLineNumbers", "printUseCustomTheme", "printThemeName"
 	]
 
-	static var instance: Preferences
+	@objc static var instance: Preferences
 	{
 		if sharedInstance == nil
 		{
@@ -79,8 +79,7 @@ class Preferences: UserDefaults
 		return sharedInstance
 	}
 
-	@objc
-	enum InfoBarMode: Int
+	@objc enum InfoBarMode: Int
 	{
 		case none = 0
 		case hud = 1
@@ -92,7 +91,7 @@ class Preferences: UserDefaults
 		}
 	}
 
-	func resetToDefault()
+	@objc func resetToDefault()
 	{
 		Preferences.allDynamicProperties.forEach({ willChangeValue(forKey: $0) })
 

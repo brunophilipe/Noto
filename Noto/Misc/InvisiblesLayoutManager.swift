@@ -29,8 +29,8 @@ class InvisiblesLayoutManager: EditorLayoutManager
 	// We override this to hide the implementation-default rendering which is not like what we want
 	private var _showsInvisibleCharacters: Bool = false
 
-	private let kVisibleGlyphForNewLine: NSString	= "↩︎"
-	private let kVisibleGlyphForBlank: NSString		= "⎵"
+	private let kVisibleGlyphForNewLine: NSString	= "↵"
+	private let kVisibleGlyphForBlank: NSString		= "•"
 	private let kVisibleGlyphForTab: NSString		= "⇥"
 
 	private var pointScale: CGFloat = 1
@@ -122,6 +122,8 @@ class InvisiblesLayoutManager: EditorLayoutManager
 						point.y  = rect.origin.y + rect.height * pow((14.0 / max(fontPointSize, 1)), 0.5) + (textInset.height - 10.0)
 
 						glyph.draw(at: point, withAttributes: invisiblesAttributes)
+
+						
 					}
 				}
 			}
