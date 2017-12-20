@@ -38,7 +38,7 @@ extension String
 
 		var lastCharWasWhitespace = true
 
-		characters.forEach
+		forEach
 			{
 				character in
 

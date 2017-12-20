@@ -43,7 +43,7 @@ class Document: NSDocument
 
 		// This is a temporary hack to prevent a memory bomb caused by attempting to set the text and scroll
 		// to the user's position the last time the document was open. It only happens with very large files.
-		if 20_000 < loadedString?.characters.count ?? 0
+		if 20_000 < loadedString?.count ?? 0
 		{
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.01)
 			{
