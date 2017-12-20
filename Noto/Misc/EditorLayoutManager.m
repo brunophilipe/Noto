@@ -193,14 +193,21 @@ typedef enum
 	return nil;
 }
 
-- (CGRect)adjustedGlyphBoundsForGlyph:(NSUInteger)glyphIndex inContainer:(NSTextContainer *)textContainer
+- (CGRect)adjustedGlyphBoundsForGlyphRange:(NSRange)glyphRange inContainer:(NSTextContainer *)textContainer
 {
-	CGRect glyphBounds = [self boundingRectForGlyphRange:NSMakeRange(glyphIndex, 1) inTextContainer:textContainer];
+	CGRect glyphBounds = [self boundingRectForGlyphRange:glyphRange inTextContainer:textContainer];
 
 	// Readjust vertical position of the glyph
 	glyphBounds.origin.y -= glyphBounds.size.height * 0.1;
 	glyphBounds.origin.y += 10.0;
 	glyphBounds.origin.x += 10.0;
+
+	if (glyphBounds.size.width == 0.0)
+	{
+		// Any positive value big enough for the character will do. The height is always a good value in this case.
+		// This is zero when measuring the newline character, as the alternative is getting the y position from the next line.
+		glyphBounds.size.width = glyphBounds.size.height;
+	}
 
 	return glyphBounds;
 }
@@ -227,32 +234,32 @@ typedef enum
 		{
 			case ' ':
 				glyphReplacement = [EditorLayoutManager stringForHiddenGlypth:HiddenGlypthSpace];
+				[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 1) inContainer:textContainer]
+							  withAttributes:@{NSFontAttributeName: [self invisiblesFont],
+											   NSForegroundColorAttributeName: replacementColor}];
 				break;
 
 			case '\n':
 				glyphReplacement = [EditorLayoutManager stringForHiddenGlypth:HiddenGlypthNewLine];
+				[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 0) inContainer:textContainer]
+							  withAttributes:@{NSFontAttributeName: [self invisiblesFont],
+											   NSForegroundColorAttributeName: replacementColor}];
 				break;
 
 			case '\t':
 			{
 				// Tabs are replaced with a rectangle whose width is made to fit the "visual" width of the tab in the text.
-				CGRect glyphBounds = [self adjustedGlyphBoundsForGlyph:glyphIndex inContainer:textContainer];
+				CGRect glyphBounds = [self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 1) inContainer:textContainer];
 				CGFloat rectHeight = glyphBounds.size.height * 0.18;
 
-				CGRect bezierRect = CGRectMake(ceil(glyphBounds.origin.x + 1.0),
+				CGRect bezierRect = CGRectMake(glyphBounds.origin.x + 1.0,
 											   floor(glyphBounds.origin.y + (glyphBounds.size.height - rectHeight) * 0.65),
-											   ceil(glyphBounds.size.width - 2.0),
+											   glyphBounds.size.width - 2.0,
 											   ceil(rectHeight));
 
 				replacementPath = [NSBezierPath bezierPathWithRoundedRect:bezierRect xRadius:rectHeight/2.0 yRadius:rectHeight/2.0];
 			}
 			break;
-		}
-
-		if (glyphReplacement)
-		{
-			[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyph:glyphIndex inContainer:textContainer]
-						  withAttributes:@{NSFontAttributeName: [self invisiblesFont], NSForegroundColorAttributeName: replacementColor}];
 		}
 
 		if (replacementPath)
