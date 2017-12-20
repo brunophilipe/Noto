@@ -239,9 +239,9 @@ typedef enum
 				CGRect glyphBounds = [self adjustedGlyphBoundsForGlyph:glyphIndex inContainer:textContainer];
 				CGFloat rectHeight = glyphBounds.size.height * 0.18;
 
-				CGRect bezierRect = CGRectMake(ceil(glyphBounds.origin.x + 2.0),
+				CGRect bezierRect = CGRectMake(ceil(glyphBounds.origin.x + 1.0),
 											   floor(glyphBounds.origin.y + (glyphBounds.size.height - rectHeight) * 0.65),
-											   floor(glyphBounds.size.width - 4.0),
+											   ceil(glyphBounds.size.width - 2.0),
 											   ceil(rectHeight));
 
 				replacementPath = [NSBezierPath bezierPathWithRoundedRect:bezierRect xRadius:rectHeight/2.0 yRadius:rectHeight/2.0];
