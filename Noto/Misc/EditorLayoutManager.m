@@ -7,7 +7,6 @@
 //
 
 #import "EditorLayoutManager.h"
-#import "Noto-Swift.h"
 
 @interface EditorLayoutManager ()
 
@@ -166,7 +165,12 @@ typedef enum
 	static CGFloat cachedSize = 0.0;
 	static NSFont *cachedFont = nil;
 
-	CGFloat size = [[[Preferences instance] editorFont] pointSize];
+	if (!_editorLayoutManagerDataSource)
+	{
+		return nil;
+	}
+
+	CGFloat size = [_editorLayoutManagerDataSource invisiblesPointSize];
 
 	if (size != cachedSize || cachedFont == nil)
 	{
@@ -203,7 +207,7 @@ typedef enum
 
 - (void)drawGlyphsForGlyphRange:(NSRange)glyphsToShow atPoint:(CGPoint)origin
 {
-	if (!_drawsInvisibleCharacters)
+	if (!_drawsInvisibleCharacters || !_editorLayoutManagerDataSource)
 	{
 		[super drawGlyphsForGlyphRange:glyphsToShow atPoint:origin];
 		return;
@@ -211,7 +215,7 @@ typedef enum
 
 	NSTextContainer *textContainer = [[self textContainers] firstObject];
 	NSString *string = [[self textStorage] string];
-	NSColor *replacementColor = [[NSColor lightGrayColor] colorWithAlphaComponent:0.4];
+	NSColor *replacementColor = [_editorLayoutManagerDataSource invisiblesColor];
 
 	for (NSUInteger glyphIndex = glyphsToShow.location; glyphIndex < glyphsToShow.location + glyphsToShow.length; glyphIndex++)
 	{

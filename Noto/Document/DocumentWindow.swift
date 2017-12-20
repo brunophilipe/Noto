@@ -122,6 +122,7 @@ class DocumentWindow: NSWindow
 		updateEditorKeepIndentsSetting()
 		setupThemeObserver()
 
+		textView.invisiblesLayoutManager?.editorLayoutManagerDataSource = self
 		textView.lineNumbersVisible = Preferences.instance.autoshowLineNumbers
 		textView.undoManager?.removeAllActions()
 		textView.textStorageObserver = self
@@ -575,6 +576,19 @@ extension DocumentWindow: TextStorageObserver
 		{
 			textView.lineNumbersView?.invalidateRequiredThickness()
 		}
+	}
+}
+
+extension DocumentWindow: EditorLayoutManagerDataSource
+{
+	func invisiblesColor() -> NSColor
+	{
+		return Preferences.instance.editorTheme.editorForeground.withAlphaComponent(0.33)
+	}
+
+	func invisiblesPointSize() -> CGFloat
+	{
+		return Preferences.instance.editorFont.pointSize
 	}
 }
 

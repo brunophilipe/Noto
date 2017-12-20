@@ -12,13 +12,25 @@
 
 @protocol EditorLayoutManagerDelegate <NSObject>
 
-- (void)layoutManagerDidProcessEdit:(EditorLayoutManager *)layoutManager;
+- (void)layoutManagerDidProcessEdit:(nonnull EditorLayoutManager *)layoutManager;
+
+@end
+
+@protocol EditorLayoutManagerDataSource <NSObject>
+
+/// Color to be used to draw the "invisible" characters.
+- (nonnull NSColor *)invisiblesColor;
+
+/// The point size for the "invisible" characters. Usually the same as the editor font point size.
+- (CGFloat)invisiblesPointSize;
 
 @end
 
 @interface EditorLayoutManager : NSLayoutManager
 
-@property (weak) id<EditorLayoutManagerDelegate> editorLayoutManagerDelegate;
+@property (nullable, weak) id<EditorLayoutManagerDelegate> editorLayoutManagerDelegate;
+@property (nullable, weak) id<EditorLayoutManagerDataSource> editorLayoutManagerDataSource;
+
 @property BOOL isDrawingPaused;
 
 @property (atomic) BOOL drawsInvisibleCharacters;
