@@ -121,7 +121,6 @@
 		150CFAC01E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		150CFAC21E2A83CF000B69E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		150CFAC51E2A83CF000B69E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteTextStorage.swift; sourceTree = "<group>"; };
 		15260C391EE0EE5300A91CE6 /* BumpBuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BumpBuild.sh; sourceTree = "<group>"; };
 		15260C3A1EE0EE5300A91CE6 /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		15260C3B1EE0EE5300A91CE6 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-AppStore.plist"; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 		3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesController.swift; path = "View Controllers/Preferences/PreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditorPreferencesViewController.xib; path = "View Controllers/Preferences/EditorPreferencesViewController.xib"; sourceTree = "<group>"; };
 		3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingTool.swift; sourceTree = "<group>"; };
-		3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvisiblesLayoutManager.swift; sourceTree = "<group>"; };
 		3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintAccessoryViewController.swift; path = "View Controllers/Printing/PrintAccessoryViewController.swift"; sourceTree = "<group>"; };
 		3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedToolbar.swift; sourceTree = "<group>"; };
@@ -347,12 +345,10 @@
 			isa = PBXGroup;
 			children = (
 				15DA4EBF1ED4D10C00782994 /* AssignIf.swift */,
-				3D7A66E5B02FCCA51C11843F /* InvisiblesLayoutManager.swift */,
 				3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */,
 				3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */,
 				3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */,
 				154148B91F253E42000D6383 /* Temporizer.swift */,
-				1522D5B31F3567B6008549F2 /* ConcreteTextStorage.swift */,
 				150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */,
 				15AB8CD61F5362F0007CB05A /* EditorLayoutManager.h */,
 				15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */,
