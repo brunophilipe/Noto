@@ -247,8 +247,8 @@ class ThemePreferencesController: NSViewController
 	{
 		if let errorMessage = error
 		{
-			renameThemeTextField.backgroundColor = NSColor(rgb: 0xFFEEEE)
-			renameThemeTextField.textColor = NSColor(rgb: 0xFF2222)
+			renameThemeTextField.backgroundColor = #colorLiteral(red: 1, green: 0.9478865266, blue: 0.9467069507, alpha: 1)
+			renameThemeTextField.textColor = #colorLiteral(red: 1, green: 0.236114502, blue: 0.1714083254, alpha: 1)
 
 			showErrorAlert(errorMessage: "Error renaming theme: \(errorMessage)")
 			{

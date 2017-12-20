@@ -62,7 +62,7 @@ class LineNumbersRulerView: NSRulerView
 		}
 	}
 
-	var backgroundColor = NSColor(rgb: 0xF5F5F5)
+	var backgroundColor = #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)
 	{
 		didSet
 		{
@@ -71,7 +71,7 @@ class LineNumbersRulerView: NSRulerView
 		}
 	}
 
-	var textColor = NSColor(rgb: 999999)
+	var textColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
 	{
 		didSet
 		{

@@ -162,10 +162,10 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 	fileprivate init(fromSerialized dict: [String: AnyObject])
 	{
 		_name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
-		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? NSColor.black
-		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xFDFDFD)
-		lineNumbersForeground	= (dict[kThemeLineNumbersForegroundKey] as? NSColor) ?? NSColor(rgb: 0x999999)
-		lineNumbersBackground	= (dict[kThemeLineNumbersBackgroundKey] as? NSColor) ?? NSColor(rgb: 0xF5F5F5)
+		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1)
+		lineNumbersForeground	= (dict[kThemeLineNumbersForegroundKey] as? NSColor) ?? #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+		lineNumbersBackground	= (dict[kThemeLineNumbersBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
 	}
 	
 	fileprivate var _name: String
@@ -433,17 +433,17 @@ class LightEditorTheme: NativeEditorTheme
 	
 	var editorBackground: NSColor
 	{
-		return NSColor(rgb: 0xFDFDFD)
+		return #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1)
 	}
 	
 	var lineNumbersForeground: NSColor
 	{
-		return NSColor(rgb: 0x999999)
+		return #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
 	}
 	
 	var lineNumbersBackground: NSColor
 	{
-		return NSColor(rgb: 0xF5F5F5)
+		return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
 	}
 }
 
@@ -456,22 +456,22 @@ class DarkEditorTheme: NativeEditorTheme
 
 	var editorForeground: NSColor
 	{
-		return NSColor(rgba: 3688619007)
+		return #colorLiteral(red: 0.8588235294, green: 0.8588235294, blue: 0.8588235294, alpha: 1)
 	}
 
 	var editorBackground: NSColor
 	{
-		return NSColor(rgba: 926365695)
+		return #colorLiteral(red: 0.2156862745, green: 0.2156862745, blue: 0.2156862745, alpha: 1)
 	}
 
 	var lineNumbersForeground: NSColor
 	{
-		return NSColor(rgba: 1953789183)
+		return #colorLiteral(red: 0.4549019608, green: 0.4549019608, blue: 0.4549019608, alpha: 1)
 	}
 
 	var lineNumbersBackground: NSColor
 	{
-		return NSColor(rgba: 707406591)
+		return #colorLiteral(red: 0.1647058824, green: 0.1647058824, blue: 0.1647058824, alpha: 1)
 	}
 }
 
@@ -484,21 +484,21 @@ class PrintingEditorTheme: NativeEditorTheme
 	
 	var editorForeground: NSColor
 	{
-		return NSColor.black
+		return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 	}
 	
 	var editorBackground: NSColor
 	{
-		return NSColor(rgb: 0xFFFFFF)
+		return #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
 	}
 	
 	var lineNumbersForeground: NSColor
 	{
-		return NSColor(rgb: 0x999999)
+		return #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
 	}
 	
 	var lineNumbersBackground: NSColor
 	{
-		return NSColor(rgb: 0xF5F5F5)
+		return #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)
 	}
 }
