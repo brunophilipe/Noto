@@ -222,6 +222,25 @@ typedef enum
 	return glyphBounds;
 }
 
+BOOL rangesContainIndex(NSArray<NSValue *> *ranges, NSInteger index)
+{
+//	if ([ranges count] <= 1 && [[ranges firstObject] rangeValue].length == 0)
+//	{
+//		return NO;
+//	}
+	for (NSValue *value in ranges)
+	{
+		NSRange range = [value rangeValue];
+		
+		if (index >= range.location && index < NSMaxRange(range))
+		{
+			return YES;
+		}
+	}
+	
+	return NO;
+}
+
 - (void)drawGlyphsForGlyphRange:(NSRange)glyphsToShow atPoint:(CGPoint)origin
 {
 	if (!_drawsInvisibleCharacters || !_editorLayoutManagerDataSource)
@@ -230,6 +249,7 @@ typedef enum
 		return;
 	}
 
+	NSArray<NSValue *> *selectedRanges = [[self firstTextView] selectedRanges];
 	NSTextContainer *textContainer = [[self textContainers] firstObject];
 	NSString *string = [[self textStorage] string];
 	NSColor *replacementColor = [_editorLayoutManagerDataSource invisiblesColor];
@@ -239,6 +259,7 @@ typedef enum
 		NSUInteger characterIndex = [self characterIndexForGlyphAtIndex: glyphIndex];
 		NSString *glyphReplacement = nil;
 		NSBezierPath *replacementPath = nil;
+		NSColor *actualColor = rangesContainIndex(selectedRanges, glyphIndex) ? [NSColor blackColor] : replacementColor;
 
 		switch ([string characterAtIndex:characterIndex])
 		{
@@ -246,14 +267,14 @@ typedef enum
 				glyphReplacement = [EditorLayoutManager stringForHiddenGlypth:HiddenGlypthSpace];
 				[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 1) inContainer:textContainer]
 							  withAttributes:@{NSFontAttributeName: [self invisiblesFont],
-											   NSForegroundColorAttributeName: replacementColor}];
+											   NSForegroundColorAttributeName: actualColor}];
 				break;
 
 			case '\n':
 				glyphReplacement = [EditorLayoutManager stringForHiddenGlypth:HiddenGlypthNewLine];
 				[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 0) inContainer:textContainer]
 							  withAttributes:@{NSFontAttributeName: [self invisiblesFont],
-											   NSForegroundColorAttributeName: replacementColor}];
+											   NSForegroundColorAttributeName: actualColor}];
 				break;
 
 			case '\t':
@@ -274,7 +295,7 @@ typedef enum
 
 		if (replacementPath)
 		{
-			[replacementColor setFill];
+			[actualColor setFill];
 			[replacementPath fill];
 		}
 	}
