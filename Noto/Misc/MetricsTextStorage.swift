@@ -45,7 +45,7 @@ class MetricsTextStorage: ConcreteTextStorage
 
 		super.replaceCharacters(in: range, with: str)
 
-		let rangeAfterChange = testRange.expanding(byLength: delta).meaningfulRange
+		let rangeAfterChange = testRange.expanding(by: delta).meaningfulRange
 		let stringAfterChange = (stringLength + delta) > 0 ? attributedSubstring(from: rangeAfterChange).string : ""
 
 		DispatchQueue.global(qos: .utility).async
@@ -65,27 +65,6 @@ class MetricsTextStorage: ConcreteTextStorage
 						}
 				}
 			}
-	}
-}
-
-extension NSRange
-{
-	/// Returns a range with the same location as the receiver and with length equal to the receiver's length if it is > 0, or 1 otherwise.
-	var meaningfulRange: NSRange
-	{
-		return NSMakeRange(location, max(length, 1))
-	}
-
-	func expanding(byLength delta: Int) -> NSRange
-	{
-		return NSMakeRange(location, max(length + delta, 0))
-	}
-
-	func expanding(byEncapsulating delta: Int, maxLength: Int) -> NSRange
-	{
-		let newLocation = max(0, location - delta)
-		let newLength = min(length + delta * 2, maxLength - newLocation)
-		return NSMakeRange(newLocation, newLength)
 	}
 }
 

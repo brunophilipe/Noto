@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15040AE41FEB2B0900769778 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
 		150ADD591F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */; };
 		150ADD5A1F356ABE00B147E4 /* MetricsTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ADD581F356ABE00B147E4 /* MetricsTextStorage.swift */; };
 		150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
@@ -807,6 +808,7 @@
 			files = (
 				15DC98C31E8747F100E3B7B3 /* Unit_Tests.swift in Sources */,
 				15B0052A1ED646870028B27E /* AssignIf.swift in Sources */,
+				15040AE41FEB2B0900769778 /* String+Additions.swift in Sources */,
 				15B005281ED646700028B27E /* EncodingTool.swift in Sources */,
 				15DC98CE1E874AC400E3B7B3 /* NSTextStorage+Indentation.swift in Sources */,
 				151CCF2C1F6DD8F4002D006D /* ModifiableIndentationTest.swift in Sources */,

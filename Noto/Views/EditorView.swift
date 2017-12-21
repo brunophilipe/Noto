@@ -180,7 +180,7 @@ class EditorView: NSTextView
 		let string = self.string as NSString
 		var iteratedLines = 1
 
-		string.enumerateSubstrings(in: string.fullStringRange, options: .byLines)
+		string.enumerateSubstrings(in: string.fullRange, options: .byLines)
 		{
 			(substring, range, enclosingRange, stop: UnsafeMutablePointer<ObjCBool>) in
 
@@ -239,8 +239,7 @@ class EditorView: NSTextView
 
 	func increaseIndentation()
 	{
-		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
-		                                                             usingUndoManager: self.undoManager)
+		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue }, usingUndoManager: undoManager)
 		{
 			selectedRanges = ranges.map { NSValue(range: $0) }
 		}
@@ -248,8 +247,7 @@ class EditorView: NSTextView
 
 	func decreaseIndentation()
 	{
-		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
-		                                                             usingUndoManager: self.undoManager)
+		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue }, usingUndoManager: undoManager)
 		{
 			selectedRanges = ranges.map { NSValue(range: $0) }
 		}

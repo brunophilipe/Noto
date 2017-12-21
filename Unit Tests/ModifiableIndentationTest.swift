@@ -248,6 +248,15 @@ class ModifiableIndentationTest: XCTestCase
 		                           textStorage.decreaseIndentForSelectedRanges([NSMakeRange(19, 0), NSMakeRange(54, 0)])))
 		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!", textStorage.string)
 	}
+	
+	func testUnindentSpaces()
+	{
+		let textStorage = NSTextStorage(string: "    Hold it\n   Wait a minute...\n  I can't read my writing, my own writing!\n Like tiny insects.\n     In the palm of history.")
+		
+		XCTAssert(rangeArraysEqual([NSMakeRange(0, 0), NSMakeRange(8, 0), NSMakeRange(25, 0), NSMakeRange(66, 0), NSMakeRange(86, 0)],
+								   textStorage.decreaseIndentForSelectedRanges([NSMakeRange(4, 0), NSMakeRange(15, 0), NSMakeRange(34, 0), NSMakeRange(76, 0), NSMakeRange(100, 0)])))
+		XCTAssertEqual("Hold it\nWait a minute...\nI can't read my writing, my own writing!\nLike tiny insects.\n In the palm of history.", textStorage.string)
+	}
 }
 
 func rangeArraysEqual(_ first: [NSRange], _ second: [NSRange]) -> Bool

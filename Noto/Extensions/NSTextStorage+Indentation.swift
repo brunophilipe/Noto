@@ -23,19 +23,35 @@ import AppKit
 
 protocol ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?) -> [NSRange]
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?, mode: IndentMode) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager: UndoManager?, tabWidth: Int) -> [NSRange]
+}
+
+protocol CamelCaseNavigation
+{
+	func findNextWordInCamelCase(_ range: NSRange) -> NSRange
+	func findPreviousWordInCamelCase(_ range: NSRange) -> NSRange
+
+	func expandSelectionForwardsInCamelCase(_ range: NSRange) -> NSRange
+	func expandSelectionBackwardsInCamelCase(_ range: NSRange) -> NSRange
+}
+
+enum IndentMode
+{
+	case tab
+	case space(Int)
 }
 
 extension NSTextStorage: ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?, mode: IndentMode = .tab) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
 		var insertedCharacters = 0
 
 		undoManager?.beginUndoGrouping()
+		beginEditing()
 
 		for range in ranges
 		{
@@ -78,18 +94,20 @@ extension NSTextStorage: ModifiableIndentation
 			insertedCharacters += insertedCharactersForRange
 		}
 
+		endEditing()
 		undoManager?.endUndoGrouping()
 
 		return updatedRanges
 	}
 
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?, tabWidth: Int = 4) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
 		var removedCharacters = 0
 
 		var hasBegunUndoGrouping = false
+		beginEditing()
 
 		for range in ranges
 		{
@@ -100,16 +118,57 @@ extension NSTextStorage: ModifiableIndentation
 			{
 				(_, _, enclosingRange, _) in
 
+				var previousContents: String? = nil
+				var undoRange: NSRange? = nil
+				
+				// Look for tabs
 				if string.character(at: enclosingRange.location).isTab()
 				{
 					let replacementRange = NSMakeRange(enclosingRange.location - removedCharacters - removedCharactersForRange, 1)
-					let previousContents = self.attributedSubstring(from: replacementRange)
-					let undoRange = NSMakeRange(replacementRange.location, 0)
+					previousContents = self.attributedSubstring(from: replacementRange).string
+					undoRange = NSMakeRange(replacementRange.location, 0)
 
 					self.replaceCharacters(in: replacementRange, with: "")
 
-					// We only begin grouping undos if we are actually going to register one or more undo events, otherwise Cocoa will 
-					// register an "empty" undo operation for each non-productive key stroke (nothing to unindent),
+					removedCharactersForRange += 1
+				}
+				// Look for spaces
+				if string.character(at: enclosingRange.location).isSpace()
+				{
+					var charsToRemove = 1
+					
+					for i in 1..<tabWidth
+					{
+						if string.character(at: enclosingRange.location + i).isSpace()
+						{
+							charsToRemove += 1
+						}
+						else if string.character(at: enclosingRange.location + i).isTab()
+						{
+							// In this case we want to remove the tab, otherwise it will just grow to fill the void from the removed spaces.
+							charsToRemove += 1
+							break
+						}
+						else
+						{
+							break
+						}
+					}
+					
+					let replacementRange = NSMakeRange(enclosingRange.location - removedCharacters - removedCharactersForRange, charsToRemove)
+					previousContents = self.attributedSubstring(from: replacementRange).string
+					undoRange = NSMakeRange(replacementRange.location, 0)
+
+					// TODO: NEEDS UNDO
+					self.replaceCharacters(in: replacementRange, with: "")
+					
+					removedCharactersForRange += charsToRemove
+				}
+				
+				if let undoRange = undoRange, let previousContents = previousContents
+				{
+					// We only begin grouping undos if we are actually going to register one or more undo events, otherwise
+					// Cocoa will register an "empty" undo operation for each non-productive key stroke (nothing to unindent),
 					// and that would produce an unintuitive UX where pressing Cmd+Z doesn't seem to do anything.
 					if !hasBegunUndoGrouping
 					{
@@ -123,8 +182,6 @@ extension NSTextStorage: ModifiableIndentation
 
 						target.replaceCharacters(in: undoRange, with: previousContents)
 					}
-
-					removedCharactersForRange += 1
 				}
 			}
 
@@ -161,6 +218,8 @@ extension NSTextStorage: ModifiableIndentation
 		{
 			undoManager?.endUndoGrouping()
 		}
+		
+		endEditing()
 
 		return updatedRanges
 	}

@@ -23,11 +23,11 @@ extension String
 	static let newLineChar = Character("\n")
 	static let whitespaceCharset = NSCharacterSet.whitespacesAndNewlines
 
-	var fullStringRange: Range<Index>
+	var fullRange: Range<Index>
 	{
 		return startIndex..<endIndex
 	}
-	
+
 	var metrics: StringMetrics
 	{
 		var wordsCount = 0
@@ -73,6 +73,14 @@ extension String
 	}
 }
 
+extension NSString
+{
+	var fullRange: NSRange
+	{
+		return NSMakeRange(0, length)
+	}
+}
+
 struct StringMetrics: Equatable
 {
 	let chars: Int
@@ -114,10 +122,38 @@ func ==(lhs: StringMetrics, rhs: StringMetrics) -> Bool
 	return lhs.chars == rhs.chars && lhs.lines == rhs.lines && lhs.whitespaceChars == rhs.whitespaceChars && lhs.words == rhs.words
 }
 
-extension NSString
+extension NSRange
 {
-	var fullStringRange: NSRange
+	func advancing(by: Int) -> NSRange
 	{
-		return NSMakeRange(0, length)
+		return NSRange(location: max(location + by, 0), length: length)
+	}
+
+	/// Returns a range with the same location as the receiver and with length equal to the receiver's length if it is > 0, or 1 otherwise.
+	var meaningfulRange: NSRange
+	{
+		return NSMakeRange(location, max(length, 1))
+	}
+
+	func expanding(by delta: Int) -> NSRange
+	{
+		return NSMakeRange(location, max(length + delta, 0))
+	}
+
+	func expanding(byEncapsulating delta: Int, maxLength: Int) -> NSRange
+	{
+		let newLocation = max(0, location - delta)
+		let newLength = min(length + delta * 2, maxLength - newLocation)
+		return NSMakeRange(newLocation, newLength)
+	}
+
+	var lowerBoundInsertionRange: NSRange
+	{
+		return NSMakeRange(lowerBound, 0)
+	}
+
+	var upperBoundInsertionRange: NSRange
+	{
+		return NSMakeRange(upperBound, 0)
 	}
 }
