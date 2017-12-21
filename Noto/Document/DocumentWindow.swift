@@ -583,7 +583,7 @@ extension DocumentWindow: EditorLayoutManagerDataSource
 {
 	func invisiblesColor() -> NSColor
 	{
-		return Preferences.instance.editorTheme.editorForeground.withAlphaComponent(0.33)
+		return Preferences.instance.editorTheme.invisiblesForeground
 	}
 
 	func invisiblesPointSize() -> CGFloat

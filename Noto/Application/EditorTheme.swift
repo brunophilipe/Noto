@@ -32,6 +32,8 @@ protocol EditorTheme: class
 	var lineNumbersBackground: NSColor { get }
 
 	var preferenceName: String? { get }
+	
+	var invisiblesForeground: NSColor { get }
 }
 
 private let kThemeNameKey					= "name"
@@ -51,7 +53,8 @@ extension EditorTheme
 			kThemeEditorBackgroundKey,
 			kThemeLineNumbersBackgroundKey,
 			kThemeEditorForegroundKey,
-			kThemeLineNumbersForegroundKey]
+			kThemeLineNumbersForegroundKey
+		]
 	}
 
 	fileprivate var serialized: [String: AnyObject]
@@ -67,7 +70,7 @@ extension EditorTheme
 	
 	func make(fromSerialized dict: [String: AnyObject]) -> EditorTheme
 	{
-		return ConcreteEditorTheme(fromSerialized: dict)
+		return UserEditorTheme(fromSerialized: dict)
 	}
 
 	static func installedThemes() -> (native: [EditorTheme], user: [EditorTheme])
@@ -157,23 +160,29 @@ extension EditorTheme
 	}
 }
 
+fileprivate extension NSColor
+{
+	var invisibles: NSColor
+	{
+		return withAlphaComponent(0.2)
+	}
+}
+
 class ConcreteEditorTheme: NSObject, EditorTheme
 {
-	fileprivate init(fromSerialized dict: [String: AnyObject])
+	init(name: String, editorForeground: NSColor, editorBackground: NSColor, lineNumbersForeground: NSColor, lineNumbersBackground: NSColor)
 	{
-		_name = (dict[kThemeNameKey] as? String) ?? "(Unamed)"
-		editorForeground		= (dict[kThemeEditorForegroundKey] as? NSColor) ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-		editorBackground		= (dict[kThemeEditorBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1)
-		lineNumbersForeground	= (dict[kThemeLineNumbersForegroundKey] as? NSColor) ?? #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-		lineNumbersBackground	= (dict[kThemeLineNumbersBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+		self.name = name
+		self.editorForeground = editorForeground
+		self.editorBackground = editorBackground
+		self.lineNumbersForeground = lineNumbersForeground
+		self.lineNumbersBackground = lineNumbersBackground
 	}
 	
-	fileprivate var _name: String
-
-	var name: String
-	{
-		return _name
-	}
+	fileprivate(set) var name: String
+	
+	/// Color to be used for invisible characters rendering. It is based on the foreground 
+	lazy var invisiblesForeground: NSColor = editorForeground.invisibles
 
 	@objc dynamic var editorForeground: NSColor
 	@objc dynamic var editorBackground: NSColor
@@ -195,6 +204,15 @@ class ConcreteEditorTheme: NSObject, EditorTheme
 
 class UserEditorTheme : ConcreteEditorTheme
 {
+	fileprivate init(fromSerialized dict: [String: AnyObject])
+	{
+		super.init(name: (dict[kThemeNameKey] as? String) ?? "(Unamed)",
+				   editorForeground: (dict[kThemeEditorForegroundKey] as? NSColor) ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+				   editorBackground: (dict[kThemeEditorBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1),
+				   lineNumbersForeground: (dict[kThemeLineNumbersForegroundKey] as? NSColor) ?? #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1),
+				   lineNumbersBackground: (dict[kThemeLineNumbersBackgroundKey] as? NSColor) ?? #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1))
+	}
+	
 	fileprivate var fileWriterOldURL: URL? = nil
 	fileprivate var fileWriterTimer: Timer? = nil
 
@@ -210,16 +228,14 @@ class UserEditorTheme : ConcreteEditorTheme
 		}
 	}
 
-	init(customizingTheme originalTheme: EditorTheme)
+	convenience init(customizingTheme originalTheme: EditorTheme)
 	{
-		let newName = originalTheme.name.appending(" (Custom)")
-
-		super.init(fromSerialized: originalTheme.serialized)
-
-		_name = newName
+		self.init(fromSerialized: originalTheme.serialized)
+		
+		name = originalTheme.name.appending(" (Custom)")
 	}
 
-	init?(fromFile fileURL: URL)
+	convenience init?(fromFile fileURL: URL)
 	{
 		if fileURL.isFileURL,
 			let data = try? Data(contentsOf: fileURL),
@@ -241,10 +257,10 @@ class UserEditorTheme : ConcreteEditorTheme
 					themeDictionary[itemKey] = NSColor(rgb: intValue)
 				}
 			}
-
-			super.init(fromSerialized: themeDictionary)
-
-			_name = fileURL.deletingPathExtension().lastPathComponent
+			
+			self.init(fromSerialized: themeDictionary)
+			
+			name = fileURL.deletingPathExtension().lastPathComponent
 		}
 		else
 		{
@@ -283,7 +299,7 @@ class UserEditorTheme : ConcreteEditorTheme
 		{
 			fileWriterOldURL = oldUrl
 
-			_name = newName
+			name = newName
 
 			return moveThemeFile()
 		}
@@ -408,12 +424,11 @@ extension UserEditorTheme
 	}
 }
 
-protocol NativeEditorTheme: EditorTheme
-{}
-
-extension NativeEditorTheme
+class NativeEditorTheme: ConcreteEditorTheme
 {
-	var preferenceName: String?
+	
+	
+	override var preferenceName: String?
 	{
 		return "\(kThemeNativeNamePrefix)\(name)"
 	}
@@ -421,84 +436,36 @@ extension NativeEditorTheme
 
 class LightEditorTheme: NativeEditorTheme
 {
-	var name: String
+	init()
 	{
-		return "Light"
-	}
-	
-	var editorForeground: NSColor
-	{
-		return NSColor.black
-	}
-	
-	var editorBackground: NSColor
-	{
-		return #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1)
-	}
-	
-	var lineNumbersForeground: NSColor
-	{
-		return #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-	}
-	
-	var lineNumbersBackground: NSColor
-	{
-		return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+		super.init(name: "Light",
+				   editorForeground: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+				   editorBackground: #colorLiteral(red: 0.9921568627, green: 0.9921568627, blue: 0.9921568627, alpha: 1),
+				   lineNumbersForeground: #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1),
+				   lineNumbersBackground: #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1))
 	}
 }
 
 class DarkEditorTheme: NativeEditorTheme
 {
-	var name: String
+	init()
 	{
-		return "Dark"
-	}
-
-	var editorForeground: NSColor
-	{
-		return #colorLiteral(red: 0.8588235294, green: 0.8588235294, blue: 0.8588235294, alpha: 1)
-	}
-
-	var editorBackground: NSColor
-	{
-		return #colorLiteral(red: 0.2156862745, green: 0.2156862745, blue: 0.2156862745, alpha: 1)
-	}
-
-	var lineNumbersForeground: NSColor
-	{
-		return #colorLiteral(red: 0.4549019608, green: 0.4549019608, blue: 0.4549019608, alpha: 1)
-	}
-
-	var lineNumbersBackground: NSColor
-	{
-		return #colorLiteral(red: 0.1647058824, green: 0.1647058824, blue: 0.1647058824, alpha: 1)
+		super.init(name: "Dark",
+				   editorForeground: #colorLiteral(red: 0.8588235294, green: 0.8588235294, blue: 0.8588235294, alpha: 1),
+				   editorBackground: #colorLiteral(red: 0.2156862745, green: 0.2156862745, blue: 0.2156862745, alpha: 1),
+				   lineNumbersForeground: #colorLiteral(red: 0.4549019608, green: 0.4549019608, blue: 0.4549019608, alpha: 1),
+				   lineNumbersBackground: #colorLiteral(red: 0.1647058824, green: 0.1647058824, blue: 0.1647058824, alpha: 1))
 	}
 }
 
 class PrintingEditorTheme: NativeEditorTheme
 {
-	var name: String
+	init()
 	{
-		return "Print"
-	}
-	
-	var editorForeground: NSColor
-	{
-		return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-	}
-	
-	var editorBackground: NSColor
-	{
-		return #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
-	}
-	
-	var lineNumbersForeground: NSColor
-	{
-		return #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
-	}
-	
-	var lineNumbersBackground: NSColor
-	{
-		return #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1)
+		super.init(name: "Print",
+				   editorForeground: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+				   editorBackground: #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1),
+				   lineNumbersForeground: #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1),
+				   lineNumbersBackground: #colorLiteral(red: 0.9688121676, green: 0.9688346982, blue: 0.9688225389, alpha: 1))
 	}
 }
