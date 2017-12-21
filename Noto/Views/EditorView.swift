@@ -241,20 +241,36 @@ class EditorView: NSTextView
 	{
 		let mode: IndentMode = Preferences.instance.useSpacesForTabs ? .space(Int(tabSize)) : .tab
 		
-		if let ranges = textStorage?.increaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
+		undoManager?.beginUndoGrouping()
+		
+		let previousSelectedRanges = selectedRanges
+		
+		undoManager?.registerUndo(withTarget: self) { $0.selectedRanges = previousSelectedRanges }
+		
+		if let ranges = textStorage?.increaseIndentForSelectedRanges(previousSelectedRanges.map { $0.rangeValue },
 																	 usingUndoManager: undoManager, mode: mode)
 		{
 			selectedRanges = ranges.map { NSValue(range: $0) }
 		}
+		
+		undoManager?.endUndoGrouping()
 	}
 
 	func decreaseIndentation()
 	{
-		if let ranges = textStorage?.decreaseIndentForSelectedRanges(selectedRanges.map { $0.rangeValue },
+		undoManager?.beginUndoGrouping()
+		
+		let previousSelectedRanges = selectedRanges
+		
+		undoManager?.registerUndo(withTarget: self) { $0.selectedRanges = previousSelectedRanges }
+		
+		if let ranges = textStorage?.decreaseIndentForSelectedRanges(previousSelectedRanges.map { $0.rangeValue },
 																	 usingUndoManager: undoManager, tabWidth: Int(tabSize))
 		{
 			selectedRanges = ranges.map { NSValue(range: $0) }
 		}
+		
+		undoManager?.endUndoGrouping()
 	}
 
 	private func insertIndentationMatchingPreviousLineFromLocation(_ location: Int) -> Int
