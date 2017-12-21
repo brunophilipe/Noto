@@ -30,15 +30,12 @@ Features planned to be implemented:
 
 ## Compiling the Project
 
-To compile Noto you should use Xcode 8.3, and you need [CocoaPods](https://cocoapods.org) installed.
+To compile Noto you should use Xcode 9.
 
 1. Clone the project:<br>`git clone https://github.com/brunophilipe/Noto.git`
 2. Switch to the directory:<br>`cd Noto/`
-3. Run CocoaPods:<br>`pod install`
-4. Launch the Workspace file in Xcode:<br>`open Noto.xcworkspace/ -a Xcode`
-5. Compile and Launch using <span title="Command + R">⌘R</span>
-
-**Note:** Some dependencies are not compatible and won't compile in Xcode 9 beta.
+3. Launch the Workspace file in Xcode:<br>`open Noto.xcworkspace/ -a Xcode`
+4. Compile and Launch using <span title="Command + R">⌘R</span>
 
 ## Under Development
 
