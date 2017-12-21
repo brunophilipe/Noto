@@ -40,11 +40,20 @@ enum IndentMode
 {
 	case tab
 	case space(Int)
+	
+	fileprivate var asString: String
+	{
+		switch self
+		{
+		case .space(let count): return String(repeating: Character(" "), count: count)
+		case .tab:	return "\t"
+		}
+	}
 }
 
 extension NSTextStorage: ModifiableIndentation
 {
-	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?, mode: IndentMode = .tab) -> [NSRange]
+	func increaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil, mode: IndentMode = .tab) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
@@ -53,6 +62,9 @@ extension NSTextStorage: ModifiableIndentation
 		undoManager?.beginUndoGrouping()
 		beginEditing()
 
+		let indentText = mode.asString
+		let indentCharCount = indentText.utf16.count
+		
 		for range in ranges
 		{
 			var insertedCharactersForRange = 0
@@ -63,28 +75,29 @@ extension NSTextStorage: ModifiableIndentation
 				(_, lineRange, enclosingRange, _) in
 
 				let replacementRange = NSMakeRange(enclosingRange.location + insertedCharacters + insertedCharactersForRange, 0)
-				let previousContents = self.attributedSubstring(from: replacementRange)
-				let undoRange = NSMakeRange(replacementRange.location, 1)
+				let undoRange = NSMakeRange(replacementRange.location, indentCharCount)
 
-				self.replaceCharacters(in: replacementRange, with: "\t")
+				self.replaceCharacters(in: replacementRange, with: indentText)
 
 				undoManager?.registerUndo(withTarget: self)
 				{
 					(target) in
 
-					target.replaceCharacters(in: undoRange, with: previousContents)
+					target.replaceCharacters(in: undoRange, with: "")
 				}
 
-				insertedCharactersForRange += 1
+				insertedCharactersForRange += indentCharCount
 			}
 
 			if range.length == 0
 			{
-				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + insertedCharactersForRange, range.length))
+				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + insertedCharactersForRange,
+												 range.length))
 			}
 			else if insertedCharactersForRange > 0
 			{
-				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + 1, range.length + (insertedCharactersForRange - 1)))
+				updatedRanges.append(NSMakeRange(range.location + insertedCharacters + indentCharCount,
+												 range.length + (insertedCharactersForRange - indentCharCount)))
 			}
 			else
 			{
@@ -100,7 +113,7 @@ extension NSTextStorage: ModifiableIndentation
 		return updatedRanges
 	}
 
-	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager?, tabWidth: Int = 4) -> [NSRange]
+	func decreaseIndentForSelectedRanges(_ ranges: [NSRange], usingUndoManager undoManager: UndoManager? = nil, tabWidth: Int = 4) -> [NSRange]
 	{
 		let string = self.string as NSString
 		var updatedRanges = [NSRange]()
