@@ -264,10 +264,18 @@ BOOL rangesContainIndex(NSArray<NSValue *> *ranges, NSInteger index)
 		switch ([string characterAtIndex:characterIndex])
 		{
 			case ' ':
-				glyphReplacement = [EditorLayoutManager stringForHiddenGlypth:HiddenGlypthSpace];
-				[glyphReplacement drawInRect:[self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 1) inContainer:textContainer]
-							  withAttributes:@{NSFontAttributeName: [self invisiblesFont],
-											   NSForegroundColorAttributeName: actualColor}];
+			{
+				// Spaces are replaced with a circle in the text.
+				CGRect glyphBounds = [self adjustedGlyphBoundsForGlyphRange:NSMakeRange(glyphIndex, 1) inContainer:textContainer];
+				CGFloat circleHeight = glyphBounds.size.height * 0.18;
+				
+				CGRect bezierRect = CGRectMake(glyphBounds.origin.x + (glyphBounds.size.width - 2.0 - ceil(circleHeight)) / 2.0 + 1.0,
+											   floor(glyphBounds.origin.y + (glyphBounds.size.height - circleHeight) * 0.65) + 2.0,
+											   ceil(circleHeight),
+											   ceil(circleHeight));
+				
+				replacementPath = [NSBezierPath bezierPathWithRoundedRect:bezierRect xRadius:circleHeight/2.0 yRadius:circleHeight/2.0];
+			}
 				break;
 
 			case '\n':
@@ -284,7 +292,7 @@ BOOL rangesContainIndex(NSArray<NSValue *> *ranges, NSInteger index)
 				CGFloat rectHeight = glyphBounds.size.height * 0.18;
 
 				CGRect bezierRect = CGRectMake(glyphBounds.origin.x + 1.0,
-											   floor(glyphBounds.origin.y + (glyphBounds.size.height - rectHeight) * 0.65),
+											   floor(glyphBounds.origin.y + (glyphBounds.size.height - rectHeight) * 0.65) + 2.0,
 											   glyphBounds.size.width - 2.0,
 											   ceil(rectHeight));
 
