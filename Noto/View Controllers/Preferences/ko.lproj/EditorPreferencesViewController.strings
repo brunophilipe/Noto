@@ -1,0 +1,60 @@
+
+/* Class = "NSButtonCell"; title = "Disable smart substitutions by default"; ObjectID = "0OQ-tC-asT"; */
+"0OQ-tC-asT.title" = "디폴트로 스마트 대체 끄기";
+
+/* Class = "NSButtonCell"; title = "Insert spaces instead of tabs"; ObjectID = "0w1-gB-xwB"; */
+"0w1-gB-xwB.title" = "탭 대신 스페이스 삽입";
+
+/* Class = "NSTextFieldCell"; title = "Info Bar:"; ObjectID = "3Fj-x0-42b"; */
+"3Fj-x0-42b.title" = "정보 바:";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "7wA-yW-DXc"; */
+"7wA-yW-DXc.title" = "라벨";
+
+/* Class = "NSButtonCell"; title = "Keep indentation on new lines"; ObjectID = "8M1-Bn-LTY"; */
+"8M1-Bn-LTY.title" = "새 줄에서 들여쓰기 유지하기";
+
+/* Class = "NSSegmentedCell"; GKH-5z-mvj.ibShadowedLabels[0] = "Disabled"; ObjectID = "GKH-5z-mvj"; */
+"GKH-5z-mvj.ibShadowedLabels[0]" = "사용 안함";
+
+/* Class = "NSSegmentedCell"; GKH-5z-mvj.ibShadowedLabels[1] = "HUD"; ObjectID = "GKH-5z-mvj"; */
+"GKH-5z-mvj.ibShadowedLabels[1]" = "HUD";
+
+/* Class = "NSSegmentedCell"; GKH-5z-mvj.ibShadowedLabels[2] = "Status Bar"; ObjectID = "GKH-5z-mvj"; */
+"GKH-5z-mvj.ibShadowedLabels[2]" = "상태 바";
+
+/* Class = "NSTextFieldCell"; title = "Font:"; ObjectID = "RfN-hO-L0e"; */
+"RfN-hO-L0e.title" = "글꼴:";
+
+/* Class = "NSTextFieldCell"; title = "Options:"; ObjectID = "WA3-BG-KKE"; */
+"WA3-BG-KKE.title" = "옵션:";
+
+/* Class = "NSButtonCell"; title = "Counts white-spaces in total characters"; ObjectID = "WSF-dL-YTe"; */
+"WSF-dL-YTe.title" = "흰 공간도 글자수에 포함";
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "XO4-2p-OF1"; */
+"XO4-2p-OF1.title" = "4";
+
+/* Class = "NSButton"; ibExternalAccessibilityHelp = "Enable this option to count all characters in the total number of characters shows. If this option is disabled, only non-empty characters (letters, numbers) will count."; ObjectID = "dLy-vd-QMT"; */
+"dLy-vd-QMT.ibExternalAccessibilityHelp" = "이 옵션을 선택하시게 되면 전체 글자를 세게 됩니다. 만약 옵션이 꺼져 있다면, 빈 공간이 아닌 글자(일반 글자, 숫자등)만 셉니다.";
+
+/* Class = "NSButton"; ibShadowedToolTip = "If enabled also counts spaces, tabs, and new-lines as characters, along letters, punctuations, and numbers."; ObjectID = "dLy-vd-QMT"; */
+"dLy-vd-QMT.ibShadowedToolTip" = "이 옵션이 켜지게 되면 스페이스, 탭, 그리고 줄 바꿈 문자를 일반 단어와 구두점, 숫자등과 함께 셉니다.";
+
+/* Class = "NSButton"; ibExternalAccessibilityHelp = "Enable this option to count all characters in the total number of characters shows. If this option is disabled, only non-empty characters (letters, numbers) will count."; ObjectID = "eJt-cb-Tyu"; */
+"eJt-cb-Tyu.ibExternalAccessibilityHelp" = "이 옵션을 선택하시게 되면 전체 글자를 세게 됩니다. 만약 옵션이 꺼져 있다면, 빈 공간이 아닌 글자(일반 글자, 숫자등)만 셉니다.";
+
+/* Class = "NSButton"; ibShadowedToolTip = "If enabled also counts spaces, tabs, and new-lines as characters, along letters, punctuations, and numbers."; ObjectID = "eJt-cb-Tyu"; */
+"eJt-cb-Tyu.ibShadowedToolTip" = "이 옵션이 켜지게 되면 스페이스, 탭, 그리고 줄 바꿈 문자를 일반 단어와 구두점, 숫자등과 함께 셉니다.";
+
+/* Class = "NSTextFieldCell"; title = "Tab Size:"; ObjectID = "fbk-Uv-DcY"; */
+"fbk-Uv-DcY.title" = "탭 크기:";
+
+/* Class = "NSButtonCell"; title = "Disable automatic spelling checker by default"; ObjectID = "hgH-05-anW"; */
+"hgH-05-anW.title" = "디폴트로 자동 철자 수정 끄기";
+
+/* Class = "NSTextFieldCell"; title = "spaces"; ObjectID = "nPH-y3-RS1"; */
+"nPH-y3-RS1.title" = "스페이스";
+
+/* Class = "NSButtonCell"; title = "Choose Font"; ObjectID = "wlw-dL-zJa"; */
+"wlw-dL-zJa.title" = "글꼴 선택";

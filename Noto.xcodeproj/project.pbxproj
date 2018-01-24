@@ -36,7 +36,6 @@
 		1582F9431FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */; };
 		1582F9441FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */; };
 		158767981E84A7D0006ED5F0 /* GeneralPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */; };
-		158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15933C7A1E5B922900AFF625 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C791E5B922900AFF625 /* Document.swift */; };
 		15933C7D1E5B924A00AFF625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C7C1E5B924A00AFF625 /* AppDelegate.swift */; };
 		15933C811E5BBC8000AFF625 /* DocumentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15933C801E5BBC8000AFF625 /* DocumentWindow.swift */; };
@@ -68,14 +67,9 @@
 		15A0FB8D1ED0C46500B1DD8C /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
 		15A0FB8E1ED0C46500B1DD8C /* PrintAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */; };
 		15A0FB8F1ED0C46500B1DD8C /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
-		15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */; };
 		15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC21E2A83CF000B69E5 /* Assets.xcassets */; };
 		15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFABF1E2A83CF000B69E5 /* Document.xib */; };
 		15A0FB961ED0C46500B1DD8C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150CFAC41E2A83CF000B69E5 /* MainMenu.xib */; };
-		15A0FB971ED0C46500B1DD8C /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */; };
-		15A0FB981ED0C46500B1DD8C /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */; };
-		15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
-		15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		15B005281ED646700028B27E /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
 		15B005291ED646870028B27E /* AssignIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA4EBF1ED4D10C00782994 /* AssignIf.swift */; };
@@ -91,10 +85,7 @@
 		21EBE8B93A180711ACDB3673 /* Pods_Noto__AppStore_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */; };
 		3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */; };
 		3D7A60593288B574BD1DE5EB /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */; };
-		3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */; };
 		3D7A630C8CF5CE685EAB847A /* EncodingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */; };
-		3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */; };
-		3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */; };
 		3D7A6552F3CAF6690B465562 /* HUDInfoBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */; };
 		3D7A67FFA65969A7EFD1DF63 /* ThemePreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */; };
 		3D7A69227069FD07AF9815C5 /* ManagedToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6ABA84B96CC7FB64EA7D /* ManagedToolbar.swift */; };
@@ -103,7 +94,16 @@
 		3D7A6B5F8935D86C41AFEB4C /* PrintAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */; };
 		3D7A6C4EB25C0DC9A582723E /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */; };
 		3D7A6E8F9C2D3062F8D75744 /* FileWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */; };
-		3D7A6FA7E4CC93640224D624 /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */; };
+		41D192CA20189EB80031DC15 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192CD20189EB80031DC15 /* HUDInfoBarController.xib */; };
+		41D192CB20189EB80031DC15 /* HUDInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192CD20189EB80031DC15 /* HUDInfoBarController.xib */; };
+		41D192D020189EC20031DC15 /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192D320189EC20031DC15 /* StatusInfoBarController.xib */; };
+		41D192D120189EC20031DC15 /* StatusInfoBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192D320189EC20031DC15 /* StatusInfoBarController.xib */; };
+		41D192D620189ECE0031DC15 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192D920189ECE0031DC15 /* ThemePreferencesController.xib */; };
+		41D192D720189ECE0031DC15 /* ThemePreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192D920189ECE0031DC15 /* ThemePreferencesController.xib */; };
+		41D192DC20189ED60031DC15 /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192DF20189ED60031DC15 /* EditorPreferencesViewController.xib */; };
+		41D192DD20189ED60031DC15 /* EditorPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192DF20189ED60031DC15 /* EditorPreferencesViewController.xib */; };
+		41D192E220189EDD0031DC15 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192E520189EDD0031DC15 /* GeneralPreferencesController.xib */; };
+		41D192E320189EDD0031DC15 /* GeneralPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D192E520189EDD0031DC15 /* GeneralPreferencesController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +143,6 @@
 		1582F9411FEB02E000FE69A9 /* ConcreteTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcreteTextStorage.h; sourceTree = "<group>"; };
 		1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcreteTextStorage.m; sourceTree = "<group>"; };
 		158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralPreferencesController.swift; path = "View Controllers/Preferences/GeneralPreferencesController.swift"; sourceTree = "<group>"; };
-		158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesController.xib; path = "View Controllers/Preferences/GeneralPreferencesController.xib"; sourceTree = "<group>"; };
 		15933C791E5B922900AFF625 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Document/Document.swift; sourceTree = "<group>"; };
 		15933C7C1E5B924A00AFF625 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/AppDelegate.swift; sourceTree = "<group>"; };
 		15933C801E5BBC8000AFF625 /* DocumentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentWindow.swift; path = Document/DocumentWindow.swift; sourceTree = "<group>"; };
@@ -163,12 +162,8 @@
 		1841FBBB7A82BE4F9688ED92 /* Pods-Noto (AppStore).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto (AppStore).release.xcconfig"; path = "Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore).release.xcconfig"; sourceTree = "<group>"; };
 		22F004DD282AB058A760B143 /* Pods_Noto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7A61399A1E660FC68C7C1F /* PrintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingView.swift; path = "View Controllers/Printing/PrintingView.swift"; sourceTree = "<group>"; };
-		3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusInfoBarController.xib; sourceTree = "<group>"; };
 		3D7A61EF7B8EEA3C294945D1 /* FileWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWatcher.swift; sourceTree = "<group>"; };
-		3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ThemePreferencesController.xib; path = "View Controllers/Preferences/ThemePreferencesController.xib"; sourceTree = "<group>"; };
-		3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUDInfoBarController.xib; sourceTree = "<group>"; };
 		3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesController.swift; path = "View Controllers/Preferences/PreferencesController.swift"; sourceTree = "<group>"; };
-		3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditorPreferencesViewController.xib; path = "View Controllers/Preferences/EditorPreferencesViewController.xib"; sourceTree = "<group>"; };
 		3D7A660DE21A76CAA3B31D9F /* EncodingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingTool.swift; sourceTree = "<group>"; };
 		3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemePreferencesController.swift; path = "View Controllers/Preferences/ThemePreferencesController.swift"; sourceTree = "<group>"; };
 		3D7A689396F765AAA86ED282 /* PrintAccessoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintAccessoryViewController.swift; path = "View Controllers/Printing/PrintAccessoryViewController.swift"; sourceTree = "<group>"; };
@@ -178,6 +173,25 @@
 		3D7A6E4F599223E8955B91C5 /* PrintAccessoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrintAccessoryViewController.xib; path = "View Controllers/Printing/PrintAccessoryViewController.xib"; sourceTree = "<group>"; };
 		3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusInfoBarController.swift; sourceTree = "<group>"; };
 		3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
+		4121B9BF20189FDB00859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		4121B9C020189FE900859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Document.strings; sourceTree = "<group>"; };
+		4121B9C22018A00100859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/HUDInfoBarController.strings; sourceTree = "<group>"; };
+		4121B9C42018A00400859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/StatusInfoBarController.strings; sourceTree = "<group>"; };
+		4121B9C62018A00800859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ThemePreferencesController.strings; sourceTree = "<group>"; };
+		4121B9C82018A00B00859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/EditorPreferencesViewController.strings; sourceTree = "<group>"; };
+		4121B9CA2018A00E00859A5A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GeneralPreferencesController.strings; sourceTree = "<group>"; };
+		41D192C720189E9F0031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		41D192C920189EA70031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Document.strings; sourceTree = "<group>"; };
+		41D192CC20189EB80031DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HUDInfoBarController.xib; sourceTree = "<group>"; };
+		41D192CF20189EBA0031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HUDInfoBarController.strings; sourceTree = "<group>"; };
+		41D192D220189EC20031DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatusInfoBarController.xib; sourceTree = "<group>"; };
+		41D192D520189EC70031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatusInfoBarController.strings; sourceTree = "<group>"; };
+		41D192D820189ECE0031DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ThemePreferencesController.xib; sourceTree = "<group>"; };
+		41D192DB20189ED00031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ThemePreferencesController.strings; sourceTree = "<group>"; };
+		41D192DE20189ED60031DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditorPreferencesViewController.xib; sourceTree = "<group>"; };
+		41D192E120189ED90031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EditorPreferencesViewController.strings; sourceTree = "<group>"; };
+		41D192E420189EDD0031DC15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPreferencesController.xib; sourceTree = "<group>"; };
+		41D192E720189EDF0031DC15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GeneralPreferencesController.strings; sourceTree = "<group>"; };
 		67EB833377B9A32060643334 /* Pods_Noto__AppStore_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noto__AppStore_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75693DC54529A742F665731A /* Pods-Noto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noto/Pods-Noto.release.xcconfig"; sourceTree = "<group>"; };
 		7ACC5EC4AA259EEAF6DED31D /* Pods-Noto (AppStore).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noto (AppStore).debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noto (AppStore)/Pods-Noto (AppStore).debug.xcconfig"; sourceTree = "<group>"; };
@@ -334,9 +348,9 @@
 			children = (
 				3D7A6F92D0C4987B8C44A013 /* InfoBar.swift */,
 				3D7A6B3CA5E761B947CD620F /* HUDInfoBarController.swift */,
-				3D7A638789623CBC1BE9B95A /* HUDInfoBarController.xib */,
+				41D192CD20189EB80031DC15 /* HUDInfoBarController.xib */,
 				3D7A6F35748E970A69239B54 /* StatusInfoBarController.swift */,
-				3D7A61ED717C8F5AEEB632B7 /* StatusInfoBarController.xib */,
+				41D192D320189EC20031DC15 /* StatusInfoBarController.xib */,
 			);
 			name = "Info Bar";
 			path = "View Controllers/Info Bar";
@@ -364,11 +378,11 @@
 			children = (
 				3D7A645CBC040EE9A65603C9 /* PreferencesController.swift */,
 				3D7A684A13D7D7E3BFCE1148 /* ThemePreferencesController.swift */,
-				3D7A63833C2D839F46D6BD18 /* ThemePreferencesController.xib */,
+				41D192D920189ECE0031DC15 /* ThemePreferencesController.xib */,
 				3D7A6BB95A3C842BF1266BC2 /* EditorPreferencesViewController.swift */,
-				3D7A64F2C7AB0151AEF2DF3D /* EditorPreferencesViewController.xib */,
+				41D192DF20189ED60031DC15 /* EditorPreferencesViewController.xib */,
 				158767961E84A7D0006ED5F0 /* GeneralPreferencesController.swift */,
-				158767971E84A7D0006ED5F0 /* GeneralPreferencesController.xib */,
+				41D192E520189EDD0031DC15 /* GeneralPreferencesController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -516,6 +530,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 150CFAAF1E2A83CF000B69E5;
 			productRefGroup = 150CFAB91E2A83CF000B69E5 /* Products */;
@@ -534,16 +549,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158767991E84A7D0006ED5F0 /* GeneralPreferencesController.xib in Resources */,
+				41D192E220189EDD0031DC15 /* GeneralPreferencesController.xib in Resources */,
 				15260C3F1EE0EE9700A91CE6 /* dsa_pub.pem in Resources */,
 				150CFAC31E2A83CF000B69E5 /* Assets.xcassets in Resources */,
 				150CFAC11E2A83CF000B69E5 /* Document.xib in Resources */,
 				150CFAC61E2A83CF000B69E5 /* MainMenu.xib in Resources */,
-				3D7A6318BFD6E4550F8804E6 /* HUDInfoBarController.xib in Resources */,
-				3D7A6FA7E4CC93640224D624 /* StatusInfoBarController.xib in Resources */,
+				41D192CA20189EB80031DC15 /* HUDInfoBarController.xib in Resources */,
+				41D192D020189EC20031DC15 /* StatusInfoBarController.xib in Resources */,
 				157FD88E1F8FC3C2007FDE7F /* Noto.help in Resources */,
-				3D7A61381C3826217EAF3065 /* ThemePreferencesController.xib in Resources */,
-				3D7A63573DFF85E46656127E /* EditorPreferencesViewController.xib in Resources */,
+				41D192D620189ECE0031DC15 /* ThemePreferencesController.xib in Resources */,
+				41D192DC20189ED60031DC15 /* EditorPreferencesViewController.xib in Resources */,
 				3D7A6029CD140902D1595651 /* PrintAccessoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,14 +568,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				157FD88F1F8FC3C2007FDE7F /* Noto.help in Resources */,
-				15A0FB931ED0C46500B1DD8C /* GeneralPreferencesController.xib in Resources */,
+				41D192E320189EDD0031DC15 /* GeneralPreferencesController.xib in Resources */,
 				15A0FB941ED0C46500B1DD8C /* Assets.xcassets in Resources */,
 				15A0FB951ED0C46500B1DD8C /* Document.xib in Resources */,
 				15A0FB961ED0C46500B1DD8C /* MainMenu.xib in Resources */,
-				15A0FB971ED0C46500B1DD8C /* HUDInfoBarController.xib in Resources */,
-				15A0FB981ED0C46500B1DD8C /* StatusInfoBarController.xib in Resources */,
-				15A0FB991ED0C46500B1DD8C /* ThemePreferencesController.xib in Resources */,
-				15A0FB9A1ED0C46500B1DD8C /* EditorPreferencesViewController.xib in Resources */,
+				41D192CB20189EB80031DC15 /* HUDInfoBarController.xib in Resources */,
+				41D192D120189EC20031DC15 /* StatusInfoBarController.xib in Resources */,
+				41D192D720189ECE0031DC15 /* ThemePreferencesController.xib in Resources */,
+				41D192DD20189ED60031DC15 /* EditorPreferencesViewController.xib in Resources */,
 				15A0FB9B1ED0C46500B1DD8C /* PrintAccessoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,6 +845,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				150CFAC01E2A83CF000B69E5 /* Base */,
+				41D192C920189EA70031DC15 /* en */,
+				4121B9C020189FE900859A5A /* ko */,
 			);
 			name = Document.xib;
 			sourceTree = "<group>";
@@ -838,8 +855,63 @@
 			isa = PBXVariantGroup;
 			children = (
 				150CFAC51E2A83CF000B69E5 /* Base */,
+				41D192C720189E9F0031DC15 /* en */,
+				4121B9BF20189FDB00859A5A /* ko */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		41D192CD20189EB80031DC15 /* HUDInfoBarController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41D192CC20189EB80031DC15 /* Base */,
+				41D192CF20189EBA0031DC15 /* en */,
+				4121B9C22018A00100859A5A /* ko */,
+			);
+			name = HUDInfoBarController.xib;
+			sourceTree = "<group>";
+		};
+		41D192D320189EC20031DC15 /* StatusInfoBarController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41D192D220189EC20031DC15 /* Base */,
+				41D192D520189EC70031DC15 /* en */,
+				4121B9C42018A00400859A5A /* ko */,
+			);
+			name = StatusInfoBarController.xib;
+			sourceTree = "<group>";
+		};
+		41D192D920189ECE0031DC15 /* ThemePreferencesController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41D192D820189ECE0031DC15 /* Base */,
+				41D192DB20189ED00031DC15 /* en */,
+				4121B9C62018A00800859A5A /* ko */,
+			);
+			name = ThemePreferencesController.xib;
+			path = "View Controllers/Preferences";
+			sourceTree = "<group>";
+		};
+		41D192DF20189ED60031DC15 /* EditorPreferencesViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41D192DE20189ED60031DC15 /* Base */,
+				41D192E120189ED90031DC15 /* en */,
+				4121B9C82018A00B00859A5A /* ko */,
+			);
+			name = EditorPreferencesViewController.xib;
+			path = "View Controllers/Preferences";
+			sourceTree = "<group>";
+		};
+		41D192E520189EDD0031DC15 /* GeneralPreferencesController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41D192E420189EDD0031DC15 /* Base */,
+				41D192E720189EDF0031DC15 /* en */,
+				4121B9CA2018A00E00859A5A /* ko */,
+			);
+			name = GeneralPreferencesController.xib;
+			path = "View Controllers/Preferences";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

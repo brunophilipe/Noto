@@ -1,0 +1,27 @@
+
+/* Class = "NSToolbarItem"; label = "Indentation"; ObjectID = "42a-LL-ZaC"; */
+"42a-LL-ZaC.label" = "Indentation";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Indentation"; ObjectID = "42a-LL-ZaC"; */
+"42a-LL-ZaC.paletteLabel" = "Indentation";
+
+/* Class = "NSToolbarItem"; label = "Invisibles"; ObjectID = "Fjt-53-Qx5"; */
+"Fjt-53-Qx5.label" = "Invisibles";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Invisibles"; ObjectID = "Fjt-53-Qx5"; */
+"Fjt-53-Qx5.paletteLabel" = "Invisibles";
+
+/* Class = "NSToolbarItem"; label = "Go to Line"; ObjectID = "Gfm-Dd-VNZ"; */
+"Gfm-Dd-VNZ.label" = "Go to Line";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Go to Line"; ObjectID = "Gfm-Dd-VNZ"; */
+"Gfm-Dd-VNZ.paletteLabel" = "Go to Line";
+
+/* Class = "NSToolbarItem"; label = "Print"; ObjectID = "WJe-Rx-Doy"; */
+"WJe-Rx-Doy.label" = "Print";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Print"; ObjectID = "WJe-Rx-Doy"; */
+"WJe-Rx-Doy.paletteLabel" = "Print";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "xOd-HO-29H"; */
+"xOd-HO-29H.title" = "Window";

@@ -1,0 +1,9 @@
+
+/* Class = "NSButtonCell"; title = "Require pressing Escape twice to leave full-screen mode"; ObjectID = "ARe-2l-7nS"; */
+"ARe-2l-7nS.title" = "Esc 키를 두번 눌러 전체 화면 모드에서 나오기";
+
+/* Class = "NSButtonCell"; title = "Reset to Default Preferences"; ObjectID = "GYz-BB-39v"; */
+"GYz-BB-39v.title" = "디폴트로 돌리기";
+
+/* Class = "NSTextFieldCell"; title = "Options:"; ObjectID = "UBo-os-nGQ"; */
+"UBo-os-nGQ.title" = "옵션:";

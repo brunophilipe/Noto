@@ -1,0 +1,27 @@
+
+/* Class = "NSTextFieldCell"; title = "Text Color"; ObjectID = "73n-nK-kjp"; */
+"73n-nK-kjp.title" = "Text Color";
+
+/* Class = "NSTextFieldCell"; title = "Line Counter:"; ObjectID = "9Te-94-LsD"; */
+"9Te-94-LsD.title" = "Line Counter:";
+
+/* Class = "NSTextFieldCell"; title = "Background Color"; ObjectID = "AWk-4E-EPK"; */
+"AWk-4E-EPK.title" = "Background Color";
+
+/* Class = "NSButtonCell"; title = "Rename"; ObjectID = "Mfm-2i-NZ2"; */
+"Mfm-2i-NZ2.title" = "Rename";
+
+/* Class = "NSTextFieldCell"; title = "Text Color"; ObjectID = "Ock-NX-0mQ"; */
+"Ock-NX-0mQ.title" = "Text Color";
+
+/* Class = "NSTextFieldCell"; title = "Theme:"; ObjectID = "lKc-Pp-bjv"; */
+"lKc-Pp-bjv.title" = "Theme:";
+
+/* Class = "NSTextFieldCell"; title = "Editor Preview:"; ObjectID = "oHa-ot-Kjf"; */
+"oHa-ot-Kjf.title" = "Editor Preview:";
+
+/* Class = "NSTextFieldCell"; title = "Background Color"; ObjectID = "old-Ex-33O"; */
+"old-Ex-33O.title" = "Background Color";
+
+/* Class = "NSTextFieldCell"; title = "Editor:"; ObjectID = "wrp-cM-gfe"; */
+"wrp-cM-gfe.title" = "Editor:";
