@@ -272,8 +272,6 @@ class DocumentWindow: NSWindow
 
 	private func setupWindowStyle()
 	{
-		titlebarAppearsTransparent = true
-
 		updateWindowToolbarStyle()
 
 		minSize = NSSize(width: 300, height: 200)
