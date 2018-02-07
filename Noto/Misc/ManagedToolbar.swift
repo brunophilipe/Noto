@@ -24,9 +24,16 @@ class ManagedToolbar: NSToolbar
 
 	override var isVisible: Bool
 	{
+		willSet
+		{
+			NSAnimationContext.beginGrouping()
+			NSAnimationContext.current.duration = 1.3
+		}
+
 		didSet
 		{
 			dynamicIsVisible = isVisible
+			NSAnimationContext.endGrouping()
 		}
 	}
 }

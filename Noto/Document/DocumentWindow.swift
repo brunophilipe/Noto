@@ -451,23 +451,28 @@ class DocumentWindow: NSWindow
 
 	private func updateWindowToolbarStyle()
 	{
-		let visible = (toolbar?.isVisible ?? false)
-
-		if let contentView = self.contentView as? PullableContentView
+		guard let visible = toolbar?.isVisible else
 		{
-			contentView.pullsContent = !visible
+			return
 		}
+		
+		let animator = self.animator()
 
 		textView.textContainerInset = NSSize(width: textView.textContainerInset.width, height: visible ? 10 : 32)
 
+		if visible
+		{
+			animator.styleMask = styleMask.subtracting([.fullSizeContentView, .borderless])
+		}
+		else
+		{
+			animator.styleMask = styleMask.union([.fullSizeContentView, .borderless])
+		}
+
+		animator.titlebarAppearsTransparent = !visible
+
 		titleBarSeparatorView.isHidden = !visible
 		titleDragHandleView?.isHidden = visible
-
-		if let contentView = self.contentView
-		{
-			contentView.setFrameSize(NSSize(width: contentView.frame.size.width,
-											height: contentView.frame.size.height - (visible ? 22.0 : 0.0)))
-		}
 	}
 
 	private func updateEditorFont()
@@ -603,6 +608,14 @@ private extension StringMetrics
 	var lineCountDigitsCount: Int
 	{
 		return Int(log10(Double(max(lines, 1)))) + 1
+	}
+}
+
+extension CGRect
+{
+	func expandingSize(width: CGFloat, height: CGFloat) -> CGRect
+	{
+		return CGRect(x: origin.x, y: origin.y, width: size.width + width, height: size.height + height)
 	}
 }
 
