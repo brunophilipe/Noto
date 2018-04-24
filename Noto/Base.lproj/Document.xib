@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="133" y="235" width="507" height="413"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="94" height="86"/>
             <view key="contentView" wantsLayer="YES" id="gIp-Ho-8D9" customClass="PullableContentView" customModule="Noto" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
@@ -26,11 +26,11 @@
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sU-qFQ" customClass="NoClippingScrollView" customModule="Noto" customModuleProvider="target">
                         <rect key="frame" x="-1" y="-1" width="509" height="414"/>
                         <clipView key="contentView" drawsBackground="NO" id="895-DM-yKi">
-                            <rect key="frame" x="0.0" y="0.0" width="494" height="414"/>
+                            <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa" customClass="EditorView" customModule="Noto" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="494" height="414"/>
+                                <textView importsGraphics="NO" richText="NO" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3kl-bg-vXa" customClass="EditorView" customModule="Noto" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="509" height="414"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <ciFilter key="compositingFilter" name="CISourceOverCompositing">
                                         <configuration>
@@ -39,7 +39,7 @@
                                         </configuration>
                                     </ciFilter>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                    <size key="minSize" width="494" height="414"/>
+                                    <size key="minSize" width="509" height="414"/>
                                     <size key="maxSize" width="509" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -51,7 +51,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="esY-Zs-NcM">
-                            <rect key="frame" x="494" y="0.0" width="15" height="414"/>
+                            <rect key="frame" x="493" y="0.0" width="16" height="414"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
