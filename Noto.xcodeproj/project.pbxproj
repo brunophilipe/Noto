@@ -28,7 +28,6 @@
 		1558E6F21ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */; };
 		1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
 		1558E6F41ECFAF1000468F86 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F01ECFAF1000468F86 /* String+Additions.swift */; };
-		1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
 		156E62D51FEB07C00037D04A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
 		156E62D61FEB07C00037D04A /* EditorLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8CD71F5362F0007CB05A /* EditorLayoutManager.m */; };
 		157FD88E1F8FC3C2007FDE7F /* Noto.help in Resources */ = {isa = PBXBuildFile; fileRef = 157FD88D1F8FC00E007FDE7F /* Noto.help */; };
@@ -49,7 +48,6 @@
 		15A0FB781ED0C46500B1DD8C /* PrintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7A61399A1E660FC68C7C1F /* PrintingView.swift */; };
 		15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DB0BE81E64FD9B00170795 /* EditorTheme.swift */; };
 		15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */; };
-		15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6F51ECFAF3700468F86 /* PullableContentView.swift */; };
 		15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */; };
 		15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15276E5E1E5BBEEF0032EDE4 /* Preferences.swift */; };
 		15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */; };
@@ -138,7 +136,6 @@
 		1558E6EE1ECFAF1000468F86 /* NSMenuItem+EditorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenuItem+EditorTheme.swift"; path = "Extensions/NSMenuItem+EditorTheme.swift"; sourceTree = "<group>"; };
 		1558E6EF1ECFAF1000468F86 /* NSTextView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextView+Additions.swift"; path = "Extensions/NSTextView+Additions.swift"; sourceTree = "<group>"; };
 		1558E6F01ECFAF1000468F86 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Extensions/String+Additions.swift"; sourceTree = "<group>"; };
-		1558E6F51ECFAF3700468F86 /* PullableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullableContentView.swift; path = Views/PullableContentView.swift; sourceTree = "<group>"; };
 		157FD88D1F8FC00E007FDE7F /* Noto.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto.help; sourceTree = "<group>"; };
 		1582F9411FEB02E000FE69A9 /* ConcreteTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcreteTextStorage.h; sourceTree = "<group>"; };
 		1582F9421FEB02E000FE69A9 /* ConcreteTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcreteTextStorage.m; sourceTree = "<group>"; };
@@ -267,7 +264,6 @@
 				15276E611E5BCD120032EDE4 /* BackgroundView.swift */,
 				15CA3FBE1E5CE9FC008ACD8D /* EditorView.swift */,
 				15CA3FC01E5CEAD2008ACD8D /* LineNumbersRulerView.swift */,
-				1558E6F51ECFAF3700468F86 /* PullableContentView.swift */,
 				153E276B1F15650300CD473C /* WindowDragHandleView.swift */,
 			);
 			name = Views;
@@ -736,7 +732,6 @@
 				15DB0BE91E64FD9B00170795 /* EditorTheme.swift in Sources */,
 				15CA3FBF1E5CE9FC008ACD8D /* EditorView.swift in Sources */,
 				1582F9431FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */,
-				1558E6F61ECFAF3700468F86 /* PullableContentView.swift in Sources */,
 				1558E6F31ECFAF1000468F86 /* NSTextView+Additions.swift in Sources */,
 				15276E5F1E5BBEEF0032EDE4 /* Preferences.swift in Sources */,
 				15CA3FC11E5CEAD2008ACD8D /* LineNumbersRulerView.swift in Sources */,
@@ -777,7 +772,6 @@
 				15A0FB7A1ED0C46500B1DD8C /* EditorTheme.swift in Sources */,
 				15A0FB7B1ED0C46500B1DD8C /* EditorView.swift in Sources */,
 				1582F9441FEB02E000FE69A9 /* ConcreteTextStorage.m in Sources */,
-				15A0FB7C1ED0C46500B1DD8C /* PullableContentView.swift in Sources */,
 				15A0FB7D1ED0C46500B1DD8C /* NSTextView+Additions.swift in Sources */,
 				15A0FB7E1ED0C46500B1DD8C /* Preferences.swift in Sources */,
 				15A0FB7F1ED0C46500B1DD8C /* LineNumbersRulerView.swift in Sources */,

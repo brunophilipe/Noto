@@ -44,13 +44,13 @@ class ThemePreferencesController: NSViewController
 	{
         super.viewDidLoad()
         // Do view setup here.
-
+		
+		editorPreviewTextView.invisiblesLayoutManager?.editorLayoutManagerDataSource = self
+		
 		createObservers()
 		updateFontPreview()
 		updateFontPreviewColors()
 		updateThemeColors()
-
-		editorPreviewTextView.lineNumbersVisible = true
 
 		NSColorPanel.shared.showsAlpha = false
     }
@@ -65,6 +65,9 @@ class ThemePreferencesController: NSViewController
 		super.viewWillAppear()
 
 		updateThemesMenu()
+		
+		editorPreviewTextView.lineNumbersVisible = true
+		editorPreviewTextView.showsInvisibleCharacters = true
 	}
 
 	private func createObservers()
@@ -465,6 +468,19 @@ class ThemePreferencesController: NSViewController
 	@IBAction func didClickShowHelp(_ sender: Any)
 	{
 		NSHelpManager.shared.openHelpAnchor(AppDelegate.HelpAnchor.preferencesThemes, inBook: AppDelegate.helpBookName)
+	}
+}
+
+extension ThemePreferencesController: EditorLayoutManagerDataSource
+{
+	func invisiblesColor() -> NSColor
+	{
+		return Preferences.instance.editorTheme.invisiblesForeground
+	}
+	
+	func invisiblesPointSize() -> CGFloat
+	{
+		return Preferences.instance.editorFont.pointSize
 	}
 }
 
