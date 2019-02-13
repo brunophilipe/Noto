@@ -581,7 +581,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"$SRCROOT/Noto/Supporting Files/Info-AppStore.plist\"";
+			shellScript = "/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n/bin/sh \"Noto/Supporting Files/BumpBuild.sh\" \"$SRCROOT/Noto/Supporting Files/Info-AppStore.plist\"\n";
 		};
 		1558E6F81ECFF14700468F86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -594,7 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n\nhtmlAcks=$(cat \"Pods/Target Support Files/Pods-Noto/Pods-Noto-acknowledgements.markdown\" | markdown)\n\necho \"<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"utf-8\\\"/><style>body{font-family: sans-serif}</style></head><body>$htmlAcks</body></html>\" > \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/acknowledgements.html\"";
+			shellScript = "mkdir -p \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n\nhtmlAcks=$(cat \"Pods/Target Support Files/Pods-Noto/Pods-Noto-acknowledgements.markdown\" | markdown)\n\necho \"<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"utf-8\\\"/><style>body{font-family: sans-serif}</style></head><body>$htmlAcks</body></html>\" > \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/acknowledgements.html\"\n";
 		};
 		15A0FB9C1ED0C46500B1DD8C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
