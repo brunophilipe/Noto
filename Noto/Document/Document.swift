@@ -76,7 +76,7 @@ class Document: NSDocument
 
 	override var windowNibName: NSNib.Name
 	{
-		return .init(rawValue: "Document")
+		return "Document"
 	}
 
 	override var shouldRunSavePanelWithAccessoryView: Bool

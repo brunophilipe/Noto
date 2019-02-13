@@ -209,7 +209,7 @@ extension PrintAccessoryViewController // Maker
 {
 	static func make() -> PrintAccessoryViewController
 	{
-		return PrintAccessoryViewController(nibName: NSNib.Name(rawValue: "PrintAccessoryViewController"), bundle: Bundle.main)
+		return PrintAccessoryViewController(nibName: "PrintAccessoryViewController", bundle: Bundle.main)
 	}
 }
 

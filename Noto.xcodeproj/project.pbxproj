@@ -477,7 +477,7 @@
 					150CFAB71E2A83CF000B69E5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = R85D3K8ATT;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -966,7 +966,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG SPARKLE";
 				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -986,7 +986,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SPARKLE;
 				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1008,7 +1008,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1029,7 +1029,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Noto/Supporting Files/Noto-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1046,6 +1046,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};
 			name = Debug;
@@ -1063,6 +1064,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brunophilipe.Noto.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noto.app/Contents/MacOS/Noto";
 			};
 			name = Release;

@@ -78,6 +78,6 @@ class StatusInfoBarController: NSViewController, InfoBar
 
 	static func make() -> StatusInfoBarController
 	{
-		return StatusInfoBarController(nibName: NSNib.Name(rawValue: "StatusInfoBarController"), bundle: Bundle.main)
+		return StatusInfoBarController(nibName: "StatusInfoBarController", bundle: Bundle.main)
 	}
 }

@@ -153,7 +153,7 @@ class EditorPreferencesViewController: NSViewController
 		return true
 	}
 	
-	override func changeFont(_ sender: Any?)
+	func changeFont(_ sender: Any?)
 	{
 		if let fontManager = sender as? NSFontManager
 		{
@@ -185,12 +185,12 @@ extension EditorPreferencesViewController: PreferencesController, CCNPreferences
 	
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImage.Name.fontPanel)
+		return NSImage(named: NSImage.fontPanelName)
 	}
 	
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = EditorPreferencesViewController(nibName: NSNib.Name(rawValue: "EditorPreferencesViewController"), bundle: Bundle.main)
+		let controller = EditorPreferencesViewController(nibName: "EditorPreferencesViewController", bundle: Bundle.main)
 		controller.preferencesWindow = window
 		return controller
 	}

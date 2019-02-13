@@ -323,7 +323,7 @@ class EditorView: NSTextView
 
 		// Re-render current text with new typing attributes
 		var typingAttributes = self.typingAttributes
-		typingAttributes[NSAttributedStringKey.paragraphStyle] = paragraphStyle
+		typingAttributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
 		self.typingAttributes = typingAttributes
 
 		let textString = self.string as NSString

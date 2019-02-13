@@ -33,27 +33,27 @@ let kNotoErrorDomain = "com.brunophilipe.Noto"
 class AppDelegate: NSObject, NSApplicationDelegate
 {
 	fileprivate let preferencesController = CCNPreferencesWindowController()
-	fileprivate let aboutWindowController = TRexAboutWindowController(windowNibName: NSNib.Name(rawValue: "PFAboutWindow"))
+	fileprivate let aboutWindowController = TRexAboutWindowController(windowNibName: "PFAboutWindow")
 
 	@IBOutlet weak var disabledInfoBarMenuItem: NSMenuItem!
 	@IBOutlet weak var hudInfoBarMenuItem: NSMenuItem!
 	@IBOutlet weak var statusBarInfoBarMenuItem: NSMenuItem!
 
-	static let helpBookName = NSHelpManager.BookName(Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as! String)
+	static let helpBookName = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as! String
 
 	struct HelpAnchor
 	{
-		static let preferencesGeneral		= NSHelpManager.AnchorName("general-prefs")
-		static let preferencesEditor		= NSHelpManager.AnchorName("editor-prefs")
-		static let preferencesThemes		= NSHelpManager.AnchorName("themes")
-		static let preferencesInfoBar		= NSHelpManager.AnchorName("infobar-prefs")
-		static let customThemes				= NSHelpManager.AnchorName("custom-themes")
-		static let startDocument			= NSHelpManager.AnchorName("start-a-document")
-		static let saveDocument				= NSHelpManager.AnchorName("save-a-document")
-		static let openDocument				= NSHelpManager.AnchorName("open-a-document")
-		static let changeDocumentEncoding	= NSHelpManager.AnchorName("change-document-encoding")
-		static let hearDocumentAloud		= NSHelpManager.AnchorName("hear-document-aloud")
-		static let overview					= NSHelpManager.AnchorName("overview")
+		static let preferencesGeneral		= "general-prefs"
+		static let preferencesEditor		= "editor-prefs"
+		static let preferencesThemes		= "themes"
+		static let preferencesInfoBar		= "infobar-prefs"
+		static let customThemes				= "custom-themes"
+		static let startDocument			= "start-a-document"
+		static let saveDocument				= "save-a-document"
+		static let openDocument				= "open-a-document"
+		static let changeDocumentEncoding	= "change-document-encoding"
+		static let hearDocumentAloud		= "hear-document-aloud"
+		static let overview					= "overview"
 	}
 
 	// Cocoa Bindings
@@ -146,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		let font: NSFont = NSFont(name: "HelveticaNeue", size: 11) ?? NSFont.systemFont(ofSize: 11)
 		let color: NSColor = NSColor.tertiaryLabelColor
 		let copyright = (bundle.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String) ?? "Copyright © 2017 Bruno Philipe. All rights reserved."
-		let attribs: [NSAttributedStringKey : AnyObject] = [.foregroundColor: color, .font: font]
+		let attribs: [NSAttributedString.Key : AnyObject] = [.foregroundColor: color, .font: font]
 
 		aboutWindowController.appCopyright = NSAttributedString(string: copyright, attributes: attribs)
 		aboutWindowController.windowShouldHaveShadow = true

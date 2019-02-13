@@ -185,7 +185,7 @@ class LineNumbersRulerView: NSRulerView
 
 			if charRange.location == paraRange.location
 			{
-				let gutterAttributes: [NSAttributedStringKey : Any]
+				let gutterAttributes: [NSAttributedString.Key : Any]
 				let intersectionRange = NSIntersectionRange(paraRange, selectedRange)
 
 				if !(intersectionRange.location == 0 && intersectionRange.length == 0) // Normal intersection
@@ -217,7 +217,7 @@ class LineNumbersRulerView: NSRulerView
 		// Special case: Draw line number for empty trailing lines and for the empty string text.
 		if emptyText || lastCharIsNewLine
 		{
-			let gutterAttributes: [NSAttributedStringKey : Any]
+			let gutterAttributes: [NSAttributedString.Key : Any]
 
 			if NSMaxRange(selectedRange) > lastCharIndex || lastCharIndex == 0
 			{
@@ -295,7 +295,7 @@ class LineNumbersRulerView: NSRulerView
 		return style
 	}
 
-	private var numberTextAttributes: [NSAttributedStringKey : Any]
+	private var numberTextAttributes: [NSAttributedString.Key : Any]
 	{
 		return [
 			.font: font,
@@ -304,7 +304,7 @@ class LineNumbersRulerView: NSRulerView
 		]
 	}
 
-	private var selectedNumberTextAttributes: [NSAttributedStringKey : Any]
+	private var selectedNumberTextAttributes: [NSAttributedString.Key : Any]
 	{
 		return [
 			.font: font,

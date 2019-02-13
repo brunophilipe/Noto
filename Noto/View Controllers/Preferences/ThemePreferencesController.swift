@@ -128,7 +128,7 @@ class ThemePreferencesController: NSViewController
 		return true
 	}
 
-	override func changeFont(_ sender: Any?)
+	func changeFont(_ sender: Any?)
 	{
 		if let fontManager = sender as? NSFontManager
 		{
@@ -498,12 +498,12 @@ extension ThemePreferencesController: PreferencesController, CCNPreferencesWindo
 
 	func preferenceIcon() -> NSImage!
 	{
-		return NSImage(named: NSImage.Name.colorPanel)
+		return NSImage(named: NSImage.colorPanelName)
 	}
 
 	static func make(preferencesWindow window: NSWindow) -> PreferencesController?
 	{
-		let controller = ThemePreferencesController(nibName: NSNib.Name(rawValue: "ThemePreferencesController"), bundle: Bundle.main)
+		let controller = ThemePreferencesController(nibName: "ThemePreferencesController", bundle: Bundle.main)
 		controller.preferencesWindow = window
 		return controller
 	}
