@@ -13,8 +13,10 @@ public enum WindowState {
     case Expanded
 }
 
+@objc(TRexAboutWindowController)
 open class TRexAboutWindowController : NSWindowController {
-    open var appName = ""
+        
+    @objc open var appName = ""
     open var appVersion = ""
     open var appCopyright = NSAttributedString()
     open var appCredits = NSAttributedString()
@@ -56,9 +58,9 @@ open class TRexAboutWindowController : NSWindowController {
         
         if self.appCopyright.string.isEmpty {
             let font = NSFont(name: "HelveticaNeue", size: 11.0) ?? NSFont.systemFont(ofSize: 11.0)
-            let color = floor(NSAppKitVersion.current.rawValue) <= NSAppKitVersion.macOS10_9.rawValue ? NSColor.lightGray : NSColor.tertiaryLabelColor
-            let attribs:[String:AnyObject] = [NSForegroundColorAttributeName:color,
-                                              NSFontAttributeName:font]
+            let color = floor(NSAppKitVersion.current.rawValue) <= Double((NSAppKitVersion.macOS10_9).rawValue) ? NSColor.lightGray : NSColor.tertiaryLabelColor
+            let attribs:[ NSAttributedString.Key : Any] = [.foregroundColor : color,
+                                                          .font : font]
             self.appCopyright = NSAttributedString(string: valueFromInfoDict("NSHumanReadableCopyright") ?? "", attributes:attribs)
         }
         
@@ -115,19 +117,19 @@ open class TRexAboutWindowController : NSWindowController {
         self.windowState = windowState == .Collapsed ? .Expanded : .Collapsed
     }
     
-    open func windowShouldClose(_ sender: AnyObject) -> Bool {
-        self.showCopyright(sender)
-        return true
-    }
+//    @objc open func windowShouldClose(_ sender: AnyObject) -> Bool {
+//        self.showCopyright(sender)
+//        return true
+//    }
     
-    override open func showWindow(_ sender: Any?) {
-        super.showWindow(sender)
-    }
+//    override open func showWindow(_ sender: Any?) {
+//        self.showWindow(sender)
+//    }
     
     //Button Actions
     @IBAction func visitWebsite(_ sender: AnyObject) {
         guard let url = self.appURL else { return }
-        NSWorkspace.shared().open(url)
+        NSWorkspace.shared.open(url)
     }
     
     @IBAction func showCredits(_ sender: AnyObject) {
